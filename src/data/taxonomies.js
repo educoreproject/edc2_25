@@ -171,13 +171,13 @@ export const stakeholderTaxonomy = [
     icon: '📐',
     children: [
       {
-        id: 'hr-open-consortium',
-        label: 'HR Open Standards Consortium',
+        id: 'credential-engine',
+        label: 'Credential Engine',
         businessNeeds: [
-          'Skills vocabulary adoption and feedback loops',
-          'Cross-standard alignment validation',
-          'Implementation reference architecture',
-          'Community of practice coordination',
+          'CTDL vocabulary adoption and credential transparency',
+          'Credential Registry publishing and discovery',
+          'Cross-standard alignment with 1EdTech specs',
+          'Community of practice for credential transparency',
         ],
       },
       {
@@ -194,7 +194,7 @@ export const stakeholderTaxonomy = [
         id: 't3-innovation',
         label: 'T3 Innovation Network',
         businessNeeds: [
-          'Trusted Career Profile ecosystem adoption',
+          'LER ecosystem coordination and adoption',
           'Interoperability testing and certification',
           'Employer engagement in credential trust frameworks',
           'Open-source reference implementations',
@@ -284,25 +284,25 @@ export const technicalResourcesTaxonomy = [
         scope: 'P-20W data interoperability',
       },
       {
-        id: 'hropen-skills',
-        label: 'HR Open Skills API',
-        url: 'https://hropenstandards.org',
-        description: 'JSON-LD schema for skills, competencies, and learning outcomes.',
-        scope: 'Skills and competency vocabulary',
-      },
-      {
-        id: 'tcp',
-        label: 'Trusted Career Profile (TCP)',
-        url: 'https://t3networkhub.org',
-        description: 'Interoperable format for sharing verified experience and credentials.',
-        scope: 'Portable learner records',
-      },
-      {
         id: 'ler-framework',
         label: 'Learning & Employment Records (LER)',
-        url: 'https://learningeconomy.io',
+        url: 'https://www.uschamberfoundation.org/t3-innovation-network',
         description: 'Competency taxonomy bridging education outcomes to employer requirements.',
         scope: 'Competency taxonomy',
+      },
+      {
+        id: 'case-framework',
+        label: 'CASE (Competency & Academic Standards Exchange)',
+        url: 'https://www.imsglobal.org/case',
+        description: 'REST/JSON API standard for exchanging competency frameworks and academic standards.',
+        scope: 'Competency framework exchange',
+      },
+      {
+        id: 'ctdl',
+        label: 'Credential Transparency Description Language (CTDL)',
+        url: 'https://credreg.net/ctdl',
+        description: 'Linked-data vocabulary for describing credentials, competencies, and organizations.',
+        scope: 'Credential transparency',
       },
     ],
   },
@@ -312,13 +312,6 @@ export const technicalResourcesTaxonomy = [
     icon: '🔐',
     children: [
       {
-        id: 'w3c-vc',
-        label: 'W3C Verifiable Credentials 2.0',
-        url: 'https://w3.org/TR/vc-data-model-2.0',
-        description: 'Cryptographically verifiable digital credentials for tamper-evident, decentralized trust.',
-        scope: 'Credential verification',
-      },
-      {
         id: 'w3c-did',
         label: 'W3C Decentralized Identifiers (DIDs)',
         url: 'https://w3.org/TR/did-core',
@@ -327,16 +320,16 @@ export const technicalResourcesTaxonomy = [
       },
       {
         id: 'open-badges',
-        label: 'Open Badges v3.0',
-        url: 'https://1edtech.org/open-badges',
-        description: 'Visual, verifiable digital badges for skills and achievements.',
+        label: 'Open Badges 3.0',
+        url: 'https://www.imsglobal.org/spec/ob/v3p0',
+        description: 'Visual, verifiable digital badges for skills and achievements aligned with W3C VCs.',
         scope: 'Achievement recognition',
       },
       {
         id: 'clr',
-        label: 'Comprehensive Learner Record (CLR)',
-        url: 'https://1edtech.org/clr',
-        description: 'Standard for rich, portable learner achievement records.',
+        label: 'Comprehensive Learner Record (CLR) 2.0',
+        url: 'https://www.imsglobal.org/spec/clr/v2p0',
+        description: 'Standard for comprehensive, portable learner achievement records extending Open Badges.',
         scope: 'Learner achievement records',
       },
     ],
@@ -354,25 +347,11 @@ export const technicalResourcesTaxonomy = [
         scope: 'Data serialization',
       },
       {
-        id: 'case-framework',
-        label: 'CASE (Competency & Academic Standards Exchange)',
-        url: 'https://1edtech.org/case',
-        description: 'Standard for exchanging competency frameworks and academic standards.',
-        scope: 'Standards exchange',
-      },
-      {
         id: 'xapi',
         label: 'xAPI (Experience API)',
         url: 'https://xapi.com',
         description: 'Specification for learning technology that records and tracks learning experiences.',
         scope: 'Learning activity tracking',
-      },
-      {
-        id: 'ctdl',
-        label: 'Credential Transparency Description Language (CTDL)',
-        url: 'https://credreg.net/ctdl',
-        description: 'Schema for describing credentials, competencies, and related resources.',
-        scope: 'Credential transparency',
       },
     ],
   },
@@ -402,13 +381,6 @@ export const technicalResourcesTaxonomy = [
         description: 'EU regulation on data protection and privacy.',
         scope: 'International data protection',
       },
-      {
-        id: 'data-sharing-template',
-        label: 'EDU Partner Data Sharing Agreement',
-        url: '#',
-        description: 'Template for data sharing agreements between EDU ecosystem partners.',
-        scope: 'Partner governance',
-      },
     ],
   },
 ];
@@ -436,7 +408,7 @@ export const useCasesCedsRdf = [
       { element: 'CredentialAwardDate', uri: 'https://ceds.ed.gov/element/000871', description: 'Date the credential was awarded.' },
       { element: 'CredentialVerification', uri: 'https://ceds.ed.gov/element/000872', description: 'Method by which the credential can be verified.' },
     ],
-    relatedStandards: ['w3c-vc', 'tcp', 'open-badges'],
+    relatedStandards: ['open-badges', 'clr', 'ctdl'],
   },
   {
     id: 'uc-skills-mapping',
@@ -456,7 +428,7 @@ export const useCasesCedsRdf = [
       { element: 'CompetencySet', uri: 'https://ceds.ed.gov/element/000875', description: 'A group of related competency definitions.' },
       { element: 'LearningStandard', uri: 'https://ceds.ed.gov/element/000876', description: 'A statement of an expectation for student learning.' },
     ],
-    relatedStandards: ['hropen-skills', 'ler-framework', 'case-framework'],
+    relatedStandards: ['ler-framework', 'case-framework', 'ctdl'],
   },
   {
     id: 'uc-workforce-mobility',
@@ -476,7 +448,7 @@ export const useCasesCedsRdf = [
       { element: 'WorkforceProgram', uri: 'https://ceds.ed.gov/element/000879', description: 'A program designed to prepare individuals for employment.' },
       { element: 'SkillRequirement', uri: 'https://ceds.ed.gov/element/000880', description: 'A skill required for a specific occupation or role.' },
     ],
-    relatedStandards: ['tcp', 'hropen-skills', 'ctdl'],
+    relatedStandards: ['ler-framework', 'ctdl', 'clr'],
   },
   {
     id: 'uc-transcript-exchange',
@@ -496,7 +468,7 @@ export const useCasesCedsRdf = [
       { element: 'K12Enrollment', uri: 'https://ceds.ed.gov/element/000883', description: 'A student enrollment in a K–12 school.' },
       { element: 'K12GradeLevel', uri: 'https://ceds.ed.gov/element/000884', description: 'The grade level of a student.' },
     ],
-    relatedStandards: ['ceds', 'tcp'],
+    relatedStandards: ['ceds', 'clr'],
   },
   {
     id: 'uc-postsecondary-credentials',
@@ -516,7 +488,7 @@ export const useCasesCedsRdf = [
       { element: 'PsProgram', uri: 'https://ceds.ed.gov/element/000887', description: 'A postsecondary academic program.' },
       { element: 'PsInstitution', uri: 'https://ceds.ed.gov/element/000888', description: 'A postsecondary educational institution.' },
     ],
-    relatedStandards: ['w3c-vc', 'open-badges', 'clr'],
+    relatedStandards: ['open-badges', 'clr', 'ctdl'],
   },
   {
     id: 'uc-cte-pathways',
@@ -536,7 +508,7 @@ export const useCasesCedsRdf = [
       { element: 'CTEIndustryAlignment', uri: 'https://ceds.ed.gov/element/000891', description: 'Alignment between CTE programs and industry standards.' },
       { element: 'CTEConcentrator', uri: 'https://ceds.ed.gov/element/000892', description: 'A student who has met a threshold in a CTE pathway.' },
     ],
-    relatedStandards: ['hropen-skills', 'ler-framework', 'ctdl'],
+    relatedStandards: ['ler-framework', 'case-framework', 'ctdl'],
   },
   {
     id: 'uc-assessment-results',
@@ -576,7 +548,7 @@ export const useCasesCedsRdf = [
       { element: 'AuthorizationDocument', uri: 'https://ceds.ed.gov/element/000899', description: 'A document authorizing data access or sharing.' },
       { element: 'DataSharingAgreement', uri: 'https://ceds.ed.gov/element/000900', description: 'A formal agreement for sharing data between parties.' },
     ],
-    relatedStandards: ['ferpa', 'coppa', 'data-sharing-template'],
+    relatedStandards: ['ferpa', 'coppa'],
   },
   {
     id: 'uc-equity-access',
@@ -596,7 +568,7 @@ export const useCasesCedsRdf = [
       { element: 'EconomicDisadvantageStatus', uri: 'https://ceds.ed.gov/element/000903', description: 'Indicator of economic disadvantage for equity analysis.' },
       { element: 'EnglishLearnerStatus', uri: 'https://ceds.ed.gov/element/000904', description: 'Classification as an English language learner.' },
     ],
-    relatedStandards: ['ceds', 'tcp'],
+    relatedStandards: ['ceds', 'clr'],
   },
 ];
 
