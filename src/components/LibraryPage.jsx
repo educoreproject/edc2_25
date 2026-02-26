@@ -124,29 +124,6 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
         </ExplainerBadge>
       )}
 
-      {/* AI Mode Panel */}
-      {aiMode && (
-        <div className="mb-6 bg-gray-900 rounded-xl p-5 text-green-300 font-mono text-xs shadow-lg">
-          <div className="text-gray-500 text-xs mb-2">// AI Discovery Mode — structured query interface</div>
-          <div className="text-green-400 font-bold mb-3">GET /api/library/search</div>
-          <div className="bg-gray-800/80 rounded-lg p-4 mb-3">
-            <div>{`{`}</div>
-            <div className="pl-4">{`"query": "${query || '*'}",`}</div>
-            <div className="pl-4">{`"filters": {`}</div>
-            <div className="pl-8">{`"category": "${category}",`}</div>
-            <div className="pl-8">{`"implementationBurden": "${burden}",`}</div>
-            <div className="pl-8">{`"accessLevel": "${accessFilter}",`}</div>
-            <div className="pl-8">{`"requiredCapabilities": ${JSON.stringify(capabilityFilter)},`}</div>
-            <div className="pl-8">{`"equityLevel": "${equityFilter}",`}</div>
-            <div className="pl-8">{`"privacyLevel": "${privacyFilter}"`}</div>
-            <div className="pl-4">{`},`}</div>
-            <div className="pl-4">{`"fields": ["id", "aiSummary", "aiUnlocksSummary", "aiTaxonomy", "implementationBurden", "burdenRubric", "commonlyPairedWith"]`}</div>
-            <div>{`}`}</div>
-          </div>
-          <div className="text-gray-400">→ Returning {filtered.length} result{filtered.length !== 1 ? 's' : ''}</div>
-        </div>
-      )}
-
       <div className="flex gap-6">
         {/* Sidebar filters */}
         <aside className="w-60 flex-shrink-0">
