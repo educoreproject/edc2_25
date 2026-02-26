@@ -14,10 +14,10 @@
 export const libraryEntries = [
   {
     id: 'lrw-competency-framework',
-    title: 'IEEE 1484.2-2024 LER Ecosystem Standard',
+    title: 'IEEE P1484.2 LER Ecosystem Standard',
     type: 'Standard',
     category: 'Learner Records',
-    description: 'IEEE recommended practice for Learning and Employment Record (LER) ecosystems. Defines a common global framework for designing and deploying systems that issue, hold, and present verifiable credentials for education, skills-based hiring, and career advancement.',
+    description: 'IEEE P1484.2 Recommended Practices for Learning and Employment Record (LER) Ecosystems are intended to help system architects and engineers design and deploy systems that leverage shared standards and technologies to support ecosystem-scale issuing, holding, and presenting verifiable credentials for education, skills-based hiring, and career advancement.',
     owner: 'IEEE Computer Society',
     governanceBody: 'IEEE Computer Society / Learning Technology Standards Committee (C/LTSC)',
     lastUpdated: '2024-08-23',
@@ -43,7 +43,6 @@ export const libraryEntries = [
     requiredCapabilities: ['W3C Verifiable Credentials support', 'W3C DID infrastructure', 'Digital wallet integration (for Holder role)', 'Credential registry access (recommended)'],
     implementationGuidance: 'Start by identifying which LER ecosystem role(s) your system will fulfill: Awarder (issuer), Holder (wallet/learner), Reviewer (verifier), or Registry (governance). Implement W3C VC and DID support as the normative foundation. Use Open Badges 3.0 or CLR 2.0 as the credential format. Align trust model to the standard\'s five recommended components.',
     referenceImplementations: [
-      { name: 'T3 Innovation Network LER Resources', url: 'https://www.uschamberfoundation.org/t3-innovation-network', description: 'Ecosystem coordination, pilot programs, and implementation guidance from the T3 Innovation Network.' },
       { name: 'IEEE 1484.2-2024 Standard (IEEE Store)', url: 'https://standards.ieee.org/ieee/1484.2/11406/', description: 'Official published standard document.' },
     ],
     samplePayloads: [
@@ -66,9 +65,8 @@ export const libraryEntries = [
     ],
     knownAdopters: ['T3 Innovation Network pilot partners', 'US Chamber of Commerce Foundation', 'Credential Engine', 'AACRAO'],
     technicalDocLinks: [
-      { label: 'IEEE 1484.2-2024 Working Group', url: 'https://sagroups.ieee.org/1484-2/' },
+      { label: 'Project Website', url: 'https://sagroups.ieee.org/1484-2/' },
       { label: 'IEEE Standard (purchase)', url: 'https://standards.ieee.org/ieee/1484.2/11406/' },
-      { label: 'T3 Innovation Network Resources', url: 'https://www.uschamberfoundation.org/t3-innovation-network' },
     ],
     // Cross-spec awareness
     commonlyPairedWith: [
@@ -420,7 +418,7 @@ export const libraryEntries = [
 
 // Human-readable title lookup keyed by entry ID.
 export const entryTitles = {
-  'lrw-competency-framework': 'IEEE 1484.2 LER Standard',
+  'lrw-competency-framework': 'IEEE P1484.2 LER Ecosystem Standard',
   'case-v1': 'CASE v1.1',
   'ctdl': 'CTDL',
   'open-badges-v3': 'Open Badges 3.0',

@@ -29,7 +29,7 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
   const [equityFilter, setEquityFilter] = useState('All');
   const [privacyFilter, setPrivacyFilter] = useState('All');
   const [showExplainers, setShowExplainers] = useState(true);
-  const [aiMode, setAiMode] = useState(false);
+
   const [sortBy, setSortBy] = useState('relevant');
 
   useEffect(() => {
@@ -108,15 +108,6 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
                   : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
             >
               {showExplainers ? 'Explainers ON' : 'Explainers OFF'}
-            </button>
-            <button
-              onClick={() => setAiMode(!aiMode)}
-              className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-colors
-                ${aiMode
-                  ? 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100'
-                  : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
-            >
-              {aiMode ? 'AI Mode ON' : 'AI Mode'}
             </button>
           </div>
         </div>

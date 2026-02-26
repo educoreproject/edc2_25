@@ -38,7 +38,7 @@ export const cedsDomains = [
 export const cedsAlignmentMatrix = [
   {
     entryId: 'lrw-competency-framework',
-    entryShortName: 'IEEE 1484.2 LER Standard',
+    entryShortName: 'IEEE P1484.2 LER Ecosystem Standard',
     domains: {
       credentials: {
         status: 'full',
