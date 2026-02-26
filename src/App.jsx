@@ -36,10 +36,10 @@ function Footer() {
           <div>
             <div className="font-semibold text-gray-700 mb-3 text-xs uppercase tracking-wider">Standards Bodies</div>
             <div className="space-y-2">
-              <div className="hover:text-gray-700 cursor-pointer transition-colors">HR Open Standards</div>
+              <div className="hover:text-gray-700 cursor-pointer transition-colors">1EdTech Consortium</div>
+              <div className="hover:text-gray-700 cursor-pointer transition-colors">Credential Engine</div>
               <div className="hover:text-gray-700 cursor-pointer transition-colors">T3 Innovation Network</div>
-              <div className="hover:text-gray-700 cursor-pointer transition-colors">W3C Credentials CG</div>
-              <div className="hover:text-gray-700 cursor-pointer transition-colors">IMS Global</div>
+              <div className="hover:text-gray-700 cursor-pointer transition-colors">CEDS</div>
             </div>
           </div>
           <div>

@@ -202,7 +202,7 @@ export const stakeholderTaxonomy = [
       },
       {
         id: 'ims-1edtech',
-        label: '1EdTech (formerly IMS Global)',
+        label: '1EdTech Consortium',
         businessNeeds: [
           'Open Badges and CLR alignment',
           'LTI and CASE standard coordination',
@@ -293,7 +293,7 @@ export const technicalResourcesTaxonomy = [
       {
         id: 'case-framework',
         label: 'CASE (Competency & Academic Standards Exchange)',
-        url: 'https://www.imsglobal.org/case',
+        url: 'https://www.1edtech.org/standards/case',
         description: 'REST/JSON API standard for exchanging competency frameworks and academic standards.',
         scope: 'Competency framework exchange',
       },
@@ -321,14 +321,14 @@ export const technicalResourcesTaxonomy = [
       {
         id: 'open-badges',
         label: 'Open Badges 3.0',
-        url: 'https://www.imsglobal.org/spec/ob/v3p0',
+        url: 'https://www.1edtech.org/standards/open-badges',
         description: 'Visual, verifiable digital badges for skills and achievements aligned with W3C VCs.',
         scope: 'Achievement recognition',
       },
       {
         id: 'clr',
         label: 'Comprehensive Learner Record (CLR) 2.0',
-        url: 'https://www.imsglobal.org/spec/clr/v2p0',
+        url: 'https://www.1edtech.org/standards/clr',
         description: 'Standard for comprehensive, portable learner achievement records extending Open Badges.',
         scope: 'Learner achievement records',
       },

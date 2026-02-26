@@ -123,7 +123,7 @@ export const cedsAlignmentMatrix = [
 
   {
     entryId: 'case-v1',
-    entryShortName: 'CASE v1.0',
+    entryShortName: 'CASE v1.1',
     domains: {
       credentials: {
         status: 'partial',

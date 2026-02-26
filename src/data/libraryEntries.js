@@ -89,17 +89,17 @@ export const libraryEntries = [
   },
   {
     id: 'case-v1',
-    title: 'Competency & Academic Standards Exchange (CASE) v1.0',
+    title: 'Competency & Academic Standards Exchange (CASE) v1.1',
     type: 'Standard',
     category: 'Competency Frameworks',
     description: '1EdTech standard for exchanging competency frameworks and academic standards as structured, machine-readable data via a REST/JSON API. Enables systems to publish, discover, and align competency definitions across institutions and platforms.',
     owner: '1EdTech Consortium',
-    governanceBody: '1EdTech Consortium (formerly IMS Global)',
+    governanceBody: '1EdTech Consortium',
     lastUpdated: '2025-06-01',
-    version: '1.0',
+    version: '1.1',
     accessLevel: 'open',
     opennessStatus: 'open',
-    accessUrl: 'https://www.imsglobal.org/case',
+    accessUrl: 'https://www.1edtech.org/standards/case',
     authoritativeRepoUrl: 'https://github.com/1EdTech/CASE-Specification',
     tags: ['competency', 'CASE', 'academic-standards', '1EdTech', 'REST-API', 'framework-exchange'],
     aiTaxonomy: ['competency-exchange', 'academic-standards', 'framework-api'],
@@ -116,7 +116,7 @@ export const libraryEntries = [
     requiredCapabilities: ['REST API client', 'JSON parser', 'Competency data model (for publishers)'],
     implementationGuidance: 'Start as a CASE consumer: query existing published frameworks (e.g., state standards) via the REST API. Build a local cache of competency trees. Phase 2: publish your own institutional competency frameworks. Use the CASE Network sandbox for testing.',
     referenceImplementations: [
-      { name: 'CASE Network', url: 'https://casenetwork.imsglobal.org', description: 'Public registry of CASE-published competency frameworks from states and organizations.' },
+      { name: 'CASE Network', url: 'https://casenetwork.1edtech.org', description: 'Public registry of CASE-published competency frameworks from states and organizations.' },
       { name: 'OpenSALT', url: 'https://github.com/opensalt/opensalt', description: 'Open-source CASE framework editor and publisher.' },
     ],
     samplePayloads: [
@@ -137,9 +137,9 @@ export const libraryEntries = [
     ],
     knownAdopters: ['Achieve (state standards)', 'OpenSALT community', 'Multiple US state education agencies', 'Credential Engine'],
     technicalDocLinks: [
-      { label: 'CASE v1.0 Specification', url: 'https://www.imsglobal.org/spec/case/v1p0' },
-      { label: 'CASE REST API Endpoints', url: 'https://www.imsglobal.org/spec/case/v1p0/errata' },
-      { label: 'CASE Network (Public Registry)', url: 'https://casenetwork.imsglobal.org' },
+      { label: 'CASE v1.1 Specification', url: 'https://www.1edtech.org/spec/case/v1p1' },
+      { label: 'CASE REST API Binding', url: 'https://www.1edtech.org/spec/case/v1p1/rest_binding' },
+      { label: 'CASE Network (Public Registry)', url: 'https://casenetwork.1edtech.org' },
     ],
     commonlyPairedWith: [
       { id: 'lrw-competency-framework', rationale: 'LER references competency frameworks that CASE makes exchangeable. CASE provides the API plumbing for distributing competency definitions used in LER records.' },
@@ -244,12 +244,12 @@ export const libraryEntries = [
     category: 'Digital Credentials',
     description: '1EdTech standard for issuing, displaying, and verifying digital badges and micro-credentials. Version 3.0 aligns with W3C Verifiable Credentials, enabling cryptographic verification and decentralized trust for achievement recognition.',
     owner: '1EdTech Consortium',
-    governanceBody: '1EdTech Consortium (formerly IMS Global)',
+    governanceBody: '1EdTech Consortium',
     lastUpdated: '2024-12-01',
     version: '3.0',
     accessLevel: 'open',
     opennessStatus: 'open',
-    accessUrl: 'https://www.imsglobal.org/spec/ob/v3p0',
+    accessUrl: 'https://www.1edtech.org/standards/open-badges',
     authoritativeRepoUrl: 'https://github.com/1EdTech/openbadges-specification',
     tags: ['open-badges', 'micro-credentials', 'digital-badges', '1EdTech', 'verifiable-credentials', 'JSON-LD', 'achievement'],
     aiTaxonomy: ['digital-badge', 'micro-credential', 'achievement-verification'],
@@ -266,7 +266,7 @@ export const libraryEntries = [
     requiredCapabilities: ['JSON-LD processing', 'Cryptographic signing (for issuers)', 'Badge display/rendering UI', 'REST API client'],
     implementationGuidance: 'Start as a badge verifier/displayer: accept and render OB3 badges from other issuers. Use a managed badge platform (Badgr, Credly, Accredible) for initial issuance to skip infrastructure. Custom issuance requires W3C VC signing infrastructure. Test with 1EdTech conformance suite.',
     referenceImplementations: [
-      { name: '1EdTech OB3 Conformance Suite', url: 'https://www.imsglobal.org/spec/ob/v3p0/cert', description: 'Official conformance testing tool for Open Badges 3.0 implementations.' },
+      { name: '1EdTech OB3 Conformance Suite', url: 'https://www.1edtech.org/spec/ob/v3p0/cert', description: 'Official conformance testing tool for Open Badges 3.0 implementations.' },
       { name: 'Badgr (open-source)', url: 'https://github.com/concentricsky/badgr-server', description: 'Open-source badge issuing platform supporting OB3.' },
     ],
     samplePayloads: [
@@ -297,9 +297,9 @@ export const libraryEntries = [
     ],
     knownAdopters: ['Credly', 'Badgr/Instructure', 'Accredible', 'Digital Promise', 'Mozilla Foundation (original OB creator)'],
     technicalDocLinks: [
-      { label: 'Open Badges 3.0 Specification', url: 'https://www.imsglobal.org/spec/ob/v3p0' },
-      { label: 'OB3 Implementation Guide', url: 'https://www.imsglobal.org/spec/ob/v3p0/impl' },
-      { label: '1EdTech Certification Program', url: 'https://www.imsglobal.org/cc/detail.cfm' },
+      { label: 'Open Badges 3.0 Specification', url: 'https://www.1edtech.org/spec/ob/v3p0' },
+      { label: 'OB3 Implementation Guide', url: 'https://www.1edtech.org/spec/ob/v3p0/impl' },
+      { label: '1EdTech Certification Program', url: 'https://www.1edtech.org/certification' },
     ],
     commonlyPairedWith: [
       { id: 'clr-v2', rationale: 'CLR aggregates individual Open Badges into a comprehensive learner record. Open Badges are the building blocks; CLR is the container.' },
@@ -328,12 +328,12 @@ export const libraryEntries = [
     category: 'Learner Records',
     description: '1EdTech standard for comprehensive, portable learner achievement records. CLR 2.0 extends Open Badges 3.0 to aggregate multiple achievements, competencies, and experiences into a single verifiable record aligned with W3C Verifiable Credentials.',
     owner: '1EdTech Consortium',
-    governanceBody: '1EdTech Consortium (formerly IMS Global)',
+    governanceBody: '1EdTech Consortium',
     lastUpdated: '2024-12-01',
     version: '2.0',
     accessLevel: 'open',
     opennessStatus: 'open',
-    accessUrl: 'https://www.imsglobal.org/spec/clr/v2p0',
+    accessUrl: 'https://www.1edtech.org/standards/clr',
     authoritativeRepoUrl: 'https://github.com/1EdTech/CLR-Specification',
     tags: ['CLR', 'comprehensive-learner-record', 'learner-record', '1EdTech', 'verifiable-credentials', 'JSON-LD', 'portable-record'],
     aiTaxonomy: ['learner-record', 'credential-aggregation', 'portable-record'],
@@ -350,7 +350,7 @@ export const libraryEntries = [
     requiredCapabilities: ['JSON-LD processing', 'W3C VC signing infrastructure', 'Credential aggregation pipeline', 'Learner consent UI', 'Open Badges 3.0 compatibility'],
     implementationGuidance: 'Begin by implementing Open Badges 3.0 support first — CLR extends OB3. Start as a CLR consumer: accept and display CLR records from other issuers. Phase 2: aggregate your own badges/achievements into CLR records. Phase 3: implement full issuance with consent management and VC signing. Use 1EdTech conformance suite for validation.',
     referenceImplementations: [
-      { name: '1EdTech CLR Conformance Suite', url: 'https://www.imsglobal.org/spec/clr/v2p0/cert', description: 'Official conformance testing for CLR 2.0 implementations.' },
+      { name: '1EdTech CLR Conformance Suite', url: 'https://www.1edtech.org/spec/clr/v2p0/cert', description: 'Official conformance testing for CLR 2.0 implementations.' },
       { name: 'CLR Reference Implementation', url: 'https://github.com/1EdTech/CLR-Reference', description: 'Reference implementation demonstrating CLR record creation and verification.' },
     ],
     samplePayloads: [
@@ -385,9 +385,9 @@ export const libraryEntries = [
     ],
     knownAdopters: ['Western Governors University', 'AACRAO (Digital Connect)', 'Parchment', 'National Student Clearinghouse'],
     technicalDocLinks: [
-      { label: 'CLR 2.0 Specification', url: 'https://www.imsglobal.org/spec/clr/v2p0' },
-      { label: 'CLR Implementation Guide', url: 'https://www.imsglobal.org/spec/clr/v2p0/impl' },
-      { label: 'CLR & Open Badges Relationship', url: 'https://www.imsglobal.org/activity/comprehensive-learner-record' },
+      { label: 'CLR 2.0 Specification', url: 'https://www.1edtech.org/spec/clr/v2p0' },
+      { label: 'CLR Implementation Guide', url: 'https://www.1edtech.org/spec/clr/v2p0/impl' },
+      { label: 'CLR & Open Badges Relationship', url: 'https://www.1edtech.org/standards/clr' },
     ],
     commonlyPairedWith: [
       { id: 'open-badges-v3', rationale: 'CLR 2.0 extends Open Badges 3.0. Individual badges are aggregated into CLR records. Implement OB3 first as the foundation.' },
@@ -414,7 +414,7 @@ export const libraryEntries = [
 // Human-readable title lookup keyed by entry ID.
 export const entryTitles = {
   'lrw-competency-framework': 'LER Competency Framework',
-  'case-v1': 'CASE v1.0',
+  'case-v1': 'CASE v1.1',
   'ctdl': 'CTDL',
   'open-badges-v3': 'Open Badges 3.0',
   'clr-v2': 'CLR 2.0',
