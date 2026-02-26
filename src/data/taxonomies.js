@@ -285,10 +285,10 @@ export const technicalResourcesTaxonomy = [
       },
       {
         id: 'ler-framework',
-        label: 'Learning & Employment Records (LER)',
-        url: 'https://www.uschamberfoundation.org/t3-innovation-network',
-        description: 'Competency taxonomy bridging education outcomes to employer requirements.',
-        scope: 'Competency taxonomy',
+        label: 'IEEE 1484.2-2024 LER Ecosystem Standard',
+        url: 'https://sagroups.ieee.org/1484-2/',
+        description: 'IEEE recommended practice for LER ecosystems — defines roles and architecture for issuing, holding, and verifying credentials.',
+        scope: 'LER ecosystem architecture',
       },
       {
         id: 'case-framework',

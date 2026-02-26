@@ -14,75 +14,82 @@
 export const libraryEntries = [
   {
     id: 'lrw-competency-framework',
-    title: 'Learning & Employment Records (LER) Competency Framework',
-    type: 'Framework',
+    title: 'IEEE 1484.2-2024 LER Ecosystem Standard',
+    type: 'Standard',
     category: 'Learner Records',
-    description: 'Structured competency taxonomy aligned to workforce needs, providing a bridge between educational outcomes and employer requirements. Serves as the overarching framework that CASE, CTDL, Open Badges, and CLR implement pieces of.',
-    owner: 'US Chamber of Commerce Foundation',
-    governanceBody: 'US Chamber of Commerce Foundation / T3 Innovation Network',
-    lastUpdated: '2025-07-20',
-    version: '2.1',
+    description: 'IEEE recommended practice for Learning and Employment Record (LER) ecosystems. Defines a common global framework for designing and deploying systems that issue, hold, and present verifiable credentials for education, skills-based hiring, and career advancement.',
+    owner: 'IEEE Computer Society',
+    governanceBody: 'IEEE Computer Society / Learning Technology Standards Committee (C/LTSC)',
+    lastUpdated: '2024-08-23',
+    version: '2024',
     accessLevel: 'open',
     opennessStatus: 'open',
-    accessUrl: 'https://www.uschamberfoundation.org/t3-innovation-network',
-    authoritativeRepoUrl: 'https://github.com/uschamber/ler-competency-framework',
-    tags: ['competency', 'LER', 'workforce', 'taxonomy', 'employer-aligned', '1EdTech', 'credential-engine'],
+    accessUrl: 'https://sagroups.ieee.org/1484-2/',
+    authoritativeRepoUrl: null,
+    tags: ['LER', 'IEEE', 'verifiable-credentials', 'ecosystem', 'workforce', 'skills-based-hiring', 'career-advancement', 'credential-engine', '1EdTech'],
     // AI/analytics metadata
-    aiTaxonomy: ['competency-taxonomy', 'employer-alignment', 'skills-mapping'],
-    aiSummary: 'Competency taxonomy bridging education and workforce. Use to map curriculum outcomes to employer skill requirements.',
-    aiUnlocksSummary: 'Enables your product to translate educational outcomes into employer-recognized competencies. Unlocks curriculum-to-job alignment, competency gap analysis, and sector-specific skill mapping — helping learners see the workforce value of what they learn.',
+    aiTaxonomy: ['ler-ecosystem', 'credential-architecture', 'skills-based-hiring'],
+    aiSummary: 'IEEE recommended practice defining the architecture and roles for LER ecosystems. Use as the overarching blueprint when building systems for issuing, holding, and verifying education and employment credentials.',
+    aiUnlocksSummary: 'Provides the ecosystem-level architecture for your product to participate in LER credential exchange. Defines the roles (Awarder, Holder, Reviewer, Wallet, Registry) and trust model that connect issuers, learners, and employers — positioning your platform within a standards-based, interoperable credential ecosystem for skills-based hiring.',
     // Implementation fields
-    implementationBurden: 'low',
-    implementationBurdenRationale: 'Well-documented taxonomy with flat file exports (CSV/JSON). No API integration required for basic use. Sector extensions may require additional mapping work.',
+    implementationBurden: 'medium',
+    implementationBurdenRationale: 'The standard is a recommended practice (architectural blueprint), not a wire protocol. Implementation burden depends on which ecosystem role(s) your system fulfills. Leverages W3C VC and DID as normative foundations.',
     burdenRubric: {
-      engineering: { level: 'low', note: '1–2 weeks for basic import and mapping. Sector extensions add 1 week each.' },
-      infrastructure: { level: 'low', note: 'Static taxonomy files. No server-side infrastructure required.' },
-      legal: { level: 'low', note: 'Open license. No agreements needed.' },
-      timeline: '2–4 weeks for a complete integration',
+      engineering: { level: 'moderate', note: '4–8 weeks to align an existing system to the LER architecture. Longer if building W3C VC infrastructure from scratch.' },
+      infrastructure: { level: 'moderate', note: 'Requires W3C VC-compatible credential infrastructure. Digital wallet integration needed for Holder role. Registry infrastructure for governance role.' },
+      legal: { level: 'low', note: 'IEEE standard is publicly referenced. No licensing fees for conformance. Data sharing agreements needed for multi-party ecosystems.' },
+      timeline: '4–12 weeks depending on ecosystem role and existing infrastructure',
     },
-    requiredCapabilities: ['Data import tooling', 'Taxonomy management (recommended)'],
-    implementationGuidance: 'Download the CSV/JSON exports and map your existing competency data to the LER framework categories. Start with a single sector (e.g., healthcare or IT) to validate the mapping before expanding. Use the provided crosswalk files for common skill-to-competency translations.',
+    requiredCapabilities: ['W3C Verifiable Credentials support', 'W3C DID infrastructure', 'Digital wallet integration (for Holder role)', 'Credential registry access (recommended)'],
+    implementationGuidance: 'Start by identifying which LER ecosystem role(s) your system will fulfill: Awarder (issuer), Holder (wallet/learner), Reviewer (verifier), or Registry (governance). Implement W3C VC and DID support as the normative foundation. Use Open Badges 3.0 or CLR 2.0 as the credential format. Align trust model to the standard\'s five recommended components.',
     referenceImplementations: [
-      { name: 'LER Taxonomy Browser', url: 'https://github.com/uschamber/ler-taxonomy-browser', description: 'Interactive web app for browsing and searching the competency taxonomy.' },
+      { name: 'T3 Innovation Network LER Resources', url: 'https://www.uschamberfoundation.org/t3-innovation-network', description: 'Ecosystem coordination, pilot programs, and implementation guidance from the T3 Innovation Network.' },
+      { name: 'IEEE 1484.2-2024 Standard (IEEE Store)', url: 'https://standards.ieee.org/ieee/1484.2/11406/', description: 'Official published standard document.' },
     ],
     samplePayloads: [
       {
-        label: 'Competency Definition (JSON)',
+        label: 'LER Ecosystem Roles (conceptual)',
         language: 'json',
         code: `{
-  "competencyId": "ler:healthcare:patient-care-fundamentals",
-  "name": "Patient Care Fundamentals",
-  "sector": "Healthcare",
-  "category": "Clinical Skills",
-  "alignedSkills": ["patient-assessment", "vital-signs", "care-planning"],
-  "proficiencyScale": ["awareness", "application", "mastery"]
+  "ecosystem": "IEEE 1484.2-2024 LER",
+  "roles": {
+    "awarder": "Issues verifiable credentials (W3C VC)",
+    "holder": "Manages credentials in a digital wallet",
+    "reviewer": "Verifies credential authenticity and claims",
+    "transmitter": "Delivers credentials between parties",
+    "registry": "Provides trusted governance catalogs",
+    "talentMarketplace": "Matches skills to employment opportunities"
+  },
+  "normativeFoundations": ["W3C Verifiable Credentials", "W3C DIDs"]
 }`,
       },
     ],
-    knownAdopters: ['EMSI/Lightcast', 'Credential Engine', 'National Association of Manufacturers', 'CompTIA'],
+    knownAdopters: ['T3 Innovation Network pilot partners', 'US Chamber of Commerce Foundation', 'Credential Engine', 'AACRAO'],
     technicalDocLinks: [
-      { label: 'Framework Documentation', url: 'https://www.uschamberfoundation.org/t3-innovation-network/ler' },
-      { label: 'Sector Crosswalk Files', url: 'https://www.uschamberfoundation.org/t3-innovation-network/crosswalks' },
+      { label: 'IEEE 1484.2-2024 Working Group', url: 'https://sagroups.ieee.org/1484-2/' },
+      { label: 'IEEE Standard (purchase)', url: 'https://standards.ieee.org/ieee/1484.2/11406/' },
+      { label: 'T3 Innovation Network Resources', url: 'https://www.uschamberfoundation.org/t3-innovation-network' },
     ],
     // Cross-spec awareness
     commonlyPairedWith: [
-      { id: 'case-v1', rationale: 'CASE provides the competency framework exchange mechanism that LER references for competency alignment across education and workforce.' },
-      { id: 'ctdl', rationale: 'CTDL provides the linked-data vocabulary for describing credentials referenced in LER records, enabling credential transparency.' },
-      { id: 'clr-v2', rationale: 'CLR is the primary record format for packaging LER data into a comprehensive, portable learner record.' },
-      { id: 'open-badges-v3', rationale: 'Open Badges 3.0 provides the micro-credential and achievement format that feeds into LER-compatible learner records.' },
+      { id: 'case-v1', rationale: 'CASE provides the competency framework exchange mechanism referenced by LER ecosystems for competency alignment across education and workforce.' },
+      { id: 'ctdl', rationale: 'CTDL provides the linked-data vocabulary for describing credentials within the LER ecosystem, enabling credential transparency and registry discovery.' },
+      { id: 'clr-v2', rationale: 'CLR 2.0 is a primary credential format for packaging LER data into comprehensive, portable learner records built on W3C VCs.' },
+      { id: 'open-badges-v3', rationale: 'Open Badges 3.0 provides the micro-credential format that feeds into LER ecosystems, also built on W3C VCs as required by IEEE 1484.2.' },
     ],
-    compatibilityNotes: 'The LER Framework provides the overarching competency structure that CASE makes exchangeable, CTDL makes discoverable, and CLR/Open Badges make portable. It is the conceptual backbone connecting these implementation standards.',
+    compatibilityNotes: 'IEEE 1484.2-2024 is the ecosystem architecture standard — it defines roles and trust models. CASE, CTDL, Open Badges, and CLR are the implementation standards that fulfill specific roles within the LER ecosystem. The standard normatively references W3C VCs and DIDs, and informatively references CEDS, CASE, CTDL, CLR, and Credential Registry.',
     // Equity field
     equityConsiderations: {
       level: 'medium-concern',
-      notes: 'Taxonomy reflects current labor market which may embed historical inequities. Review sector-specific terms for bias before exposing to learners. Community validation process exists but is opt-in.',
+      notes: 'The standard acknowledges the need for equitable access to credential infrastructure. Digital wallet requirements may create barriers for learners without smartphones or stable internet. Alternative presentation methods should be supported.',
       lifDerived: false,
     },
     // Privacy field
     privacyConsiderations: {
-      level: 'low-concern',
-      notes: 'Framework document only. No PII involved at the framework level. Usage analytics of framework adoption may require disclosure.',
-      dataClassification: 'public',
+      level: 'medium-concern',
+      notes: 'LER ecosystems involve PII in verifiable credentials. The standard recommends selective disclosure and privacy-preserving verification. Implementers must address FERPA compliance for education records and consent management for credential sharing.',
+      dataClassification: 'architectural-standard',
+      regulations: ['FERPA', 'state privacy laws'],
     },
     relatedResources: ['case-v1', 'ctdl', 'open-badges-v3', 'clr-v2'],
     status: 'approved',
@@ -413,7 +420,7 @@ export const libraryEntries = [
 
 // Human-readable title lookup keyed by entry ID.
 export const entryTitles = {
-  'lrw-competency-framework': 'LER Competency Framework',
+  'lrw-competency-framework': 'IEEE 1484.2 LER Standard',
   'case-v1': 'CASE v1.1',
   'ctdl': 'CTDL',
   'open-badges-v3': 'Open Badges 3.0',
@@ -428,7 +435,7 @@ export const categoryFilters = [
   'Digital Credentials',
 ];
 
-export const typeFilters = ['All', 'Standard', 'Framework'];
+export const typeFilters = ['All', 'Standard'];
 
 export const burdenFilters = ['All', 'low', 'medium', 'high'];
 
