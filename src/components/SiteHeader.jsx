@@ -7,7 +7,6 @@
 export default function SiteHeader({ activePage, onNavigate }) {
   const navItems = [
     { id: 'library',   label: 'Library' },
-    { id: 'pdd',       label: 'Product Description' },
     { id: 'standards', label: 'Standards' },
     { id: 'partners',  label: 'Partners' },
     { id: 'ceds',      label: 'CEDS Alignment' },

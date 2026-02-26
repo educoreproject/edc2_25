@@ -4,7 +4,6 @@
 import { useState } from 'react';
 import SiteHeader from './components/SiteHeader';
 import LibraryPage from './components/LibraryPage';
-import PddPage from './components/PddPage';
 import StandardsPage from './components/StandardsPage';
 import PartnersPage from './components/PartnersPage';
 import CedsAlignmentPage from './components/CedsAlignmentPage';
@@ -81,11 +80,10 @@ export default function App() {
         onClearSelection={() => setSelectedEntryId(null)}
       />
     ),
-    pdd: <PddPage showExplainers={true} />,
     standards: <StandardsPage />,
     partners: <PartnersPage />,
     ceds: <CedsAlignmentPage onNavigateToEntry={handleNavigateToEntry} />,
-    taxonomies: <TaxonomiesPage />,
+    taxonomies: <TaxonomiesPage onNavigateToEntry={handleNavigateToEntry} />,
   };
 
   return (

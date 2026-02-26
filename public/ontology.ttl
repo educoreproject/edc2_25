@@ -809,8 +809,6 @@ educore:CedsDomain a owl:Class ;
     educore:referenceImplementation <https://firsteducore.org/ontology#ref-impl/open-badges-v3/0> ;
     educore:referenceImplementation <https://firsteducore.org/ontology#ref-impl/open-badges-v3/1> ;
     educore:technicalDocLink <https://firsteducore.org/ontology#doc-link/open-badges-v3/0> ;
-    educore:technicalDocLink <https://firsteducore.org/ontology#doc-link/open-badges-v3/1> ;
-    educore:technicalDocLink <https://firsteducore.org/ontology#doc-link/open-badges-v3/2> ;
     educore:cedsAlignment <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/credentials> ;
     educore:cedsAlignment <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/competencies> ;
     educore:cedsAlignment <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/workforce> ;
@@ -871,14 +869,6 @@ educore:CedsDomain a owl:Class ;
 <https://firsteducore.org/ontology#doc-link/open-badges-v3/0> a educore:TechnicalDocLink ;
     rdfs:label "Open Badges 3.0 Specification" ;
     foaf:page <https://www.1edtech.org/spec/ob/v3p0> .
-
-<https://firsteducore.org/ontology#doc-link/open-badges-v3/1> a educore:TechnicalDocLink ;
-    rdfs:label "OB3 Implementation Guide" ;
-    foaf:page <https://www.1edtech.org/spec/ob/v3p0/impl> .
-
-<https://firsteducore.org/ontology#doc-link/open-badges-v3/2> a educore:TechnicalDocLink ;
-    rdfs:label "1EdTech Certification Program" ;
-    foaf:page <https://www.1edtech.org/certification> .
 
 <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/credentials> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/open-badges-v3> ;
@@ -996,7 +986,6 @@ educore:CedsDomain a owl:Class ;
     educore:opennessStatus "open" ;
     educore:status "approved" ;
     foaf:page <https://www.1edtech.org/standards/clr> ;
-    educore:authoritativeRepoUrl <https://github.com/1EdTech/CLR-Specification> ;
     educore:aiSummary "Standard for aggregating achievements, badges, and competencies into a comprehensive, verifiable learner record. Use when building learner portfolios, transcript alternatives, or comprehensive credential packages." ;
     educore:aiUnlocksSummary "Enables your product to create comprehensive, portable learner records that aggregate badges, credentials, competencies, and experiences into a single verifiable package. Unlocks holistic learner profiles, transcript modernization, competency-based record-keeping, and cross-institutional record portability — giving learners a complete, verifiable picture of their achievements." ;
     educore:aiTaxonomy "learner-record" ;
@@ -1035,7 +1024,6 @@ educore:CedsDomain a owl:Class ;
     educore:referenceImplementation <https://firsteducore.org/ontology#ref-impl/clr-v2/1> ;
     educore:technicalDocLink <https://firsteducore.org/ontology#doc-link/clr-v2/0> ;
     educore:technicalDocLink <https://firsteducore.org/ontology#doc-link/clr-v2/1> ;
-    educore:technicalDocLink <https://firsteducore.org/ontology#doc-link/clr-v2/2> ;
     educore:cedsAlignment <https://firsteducore.org/ontology#ceds-alignment/clr-v2/credentials> ;
     educore:cedsAlignment <https://firsteducore.org/ontology#ceds-alignment/clr-v2/competencies> ;
     educore:cedsAlignment <https://firsteducore.org/ontology#ceds-alignment/clr-v2/workforce> ;
@@ -1102,10 +1090,6 @@ educore:CedsDomain a owl:Class ;
 <https://firsteducore.org/ontology#doc-link/clr-v2/1> a educore:TechnicalDocLink ;
     rdfs:label "CLR Implementation Guide" ;
     foaf:page <https://www.1edtech.org/spec/clr/v2p0/impl> .
-
-<https://firsteducore.org/ontology#doc-link/clr-v2/2> a educore:TechnicalDocLink ;
-    rdfs:label "CLR & Open Badges Relationship" ;
-    foaf:page <https://www.1edtech.org/standards/clr> .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/credentials> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/clr-v2> ;

@@ -302,8 +302,6 @@ export const libraryEntries = [
     knownAdopters: ['Credly', 'Badgr/Instructure', 'Accredible', 'Digital Promise', 'Mozilla Foundation (original OB creator)'],
     technicalDocLinks: [
       { label: 'Open Badges 3.0 Specification', url: 'https://www.1edtech.org/spec/ob/v3p0' },
-      { label: 'OB3 Implementation Guide', url: 'https://www.1edtech.org/spec/ob/v3p0/impl' },
-      { label: '1EdTech Certification Program', url: 'https://www.1edtech.org/certification' },
     ],
     commonlyPairedWith: [
       { id: 'clr-v2', rationale: 'CLR aggregates individual Open Badges into a comprehensive learner record. Open Badges are the building blocks; CLR is the container.' },
@@ -338,7 +336,7 @@ export const libraryEntries = [
     accessLevel: 'open',
     opennessStatus: 'open',
     accessUrl: 'https://www.1edtech.org/standards/clr',
-    authoritativeRepoUrl: 'https://github.com/1EdTech/CLR-Specification',
+    authoritativeRepoUrl: null,
     tags: ['CLR', 'comprehensive-learner-record', 'learner-record', '1EdTech', 'verifiable-credentials', 'JSON-LD', 'portable-record'],
     aiTaxonomy: ['learner-record', 'credential-aggregation', 'portable-record'],
     aiSummary: 'Standard for aggregating achievements, badges, and competencies into a comprehensive, verifiable learner record. Use when building learner portfolios, transcript alternatives, or comprehensive credential packages.',
@@ -391,7 +389,6 @@ export const libraryEntries = [
     technicalDocLinks: [
       { label: 'CLR 2.0 Specification', url: 'https://www.1edtech.org/spec/clr/v2p0' },
       { label: 'CLR Implementation Guide', url: 'https://www.1edtech.org/spec/clr/v2p0/impl' },
-      { label: 'CLR & Open Badges Relationship', url: 'https://www.1edtech.org/standards/clr' },
     ],
     commonlyPairedWith: [
       { id: 'open-badges-v3', rationale: 'CLR 2.0 extends Open Badges 3.0. Individual badges are aggregated into CLR records. Implement OB3 first as the foundation.' },

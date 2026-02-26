@@ -9,7 +9,196 @@ import {
   useCasesCedsRdf,
   getAllBusinessNeeds,
 } from '../data/taxonomies';
+import { libraryEntries } from '../data/libraryEntries';
+import { cedsAlignmentMatrix, cedsDomains } from '../data/cedsAlignment';
 import ExplainerBadge from './ExplainerBadge';
+
+const burdenIcon = { low: '🟢', medium: '🟡', high: '🔴' };
+const burdenLabel = { low: 'Low', medium: 'Moderate', high: 'High' };
+const burdenOrder = { low: 0, medium: 1, high: 2 };
+const rubricLevelColor = {
+  low: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  moderate: 'bg-amber-50 text-amber-700 border-amber-200',
+  high: 'bg-red-50 text-red-700 border-red-200',
+};
+const cedsStatusColor = {
+  full: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  partial: 'bg-amber-50 text-amber-700 border-amber-200',
+};
+
+// Build a label lookup for CEDS domain IDs
+const cedsDomainLabels = Object.fromEntries(cedsDomains.map(d => [d.id, d.label]));
+
+function computeRoadmap(selectedNeeds) {
+  if (selectedNeeds.size === 0) return [];
+
+  // Step 1: Collect relevant CEDS domains from selected needs
+  const relevantDomains = new Set();
+  const matchedUseCases = new Set();
+
+  for (const key of selectedNeeds.keys()) {
+    if (key.startsWith('uc::')) {
+      // Use case need — extract use case ID directly
+      const ucId = key.split('::')[1];
+      const uc = useCasesCedsRdf.find(u => u.id === ucId);
+      if (uc) {
+        matchedUseCases.add(uc.id);
+        uc.cedsDomains.forEach(d => relevantDomains.add(d));
+      }
+    } else {
+      // Stakeholder need — extract stakeholder ID, find matching use cases
+      const stakeholderId = key.split('::')[0];
+      for (const uc of useCasesCedsRdf) {
+        if (uc.stakeholders.includes(stakeholderId)) {
+          matchedUseCases.add(uc.id);
+          uc.cedsDomains.forEach(d => relevantDomains.add(d));
+        }
+      }
+    }
+  }
+
+  if (relevantDomains.size === 0) return [];
+
+  // Step 2: Score each library entry by CEDS alignment to relevant domains
+  const scored = libraryEntries.map(entry => {
+    const alignment = cedsAlignmentMatrix.find(a => a.entryId === entry.id);
+    if (!alignment) return null;
+
+    let fullCount = 0;
+    let partialCount = 0;
+    const matchedDomains = [];
+
+    for (const domain of relevantDomains) {
+      const domainData = alignment.domains[domain];
+      if (domainData) {
+        if (domainData.status === 'full') {
+          fullCount++;
+          matchedDomains.push({ domain, status: 'full' });
+        } else if (domainData.status === 'partial') {
+          partialCount++;
+          matchedDomains.push({ domain, status: 'partial' });
+        }
+      }
+    }
+
+    const score = fullCount * 2 + partialCount;
+    if (score === 0) return null;
+
+    return { entry, score, fullCount, partialCount, matchedDomains };
+  }).filter(Boolean);
+
+  // Step 3: Sort by score desc, then burden asc
+  scored.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return (burdenOrder[a.entry.implementationBurden] || 0) - (burdenOrder[b.entry.implementationBurden] || 0);
+  });
+
+  return scored;
+}
+
+function RoadmapCard({ item, onNavigateToEntry }) {
+  const { entry, matchedDomains, fullCount, partialCount } = item;
+  const [showCapabilities, setShowCapabilities] = useState(false);
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+      {/* Header */}
+      <div className="px-4 py-3 border-b border-gray-100">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 min-w-0">
+            <h4 className="text-sm font-semibold text-gray-900 truncate">{entry.title}</h4>
+            <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-md border border-gray-200 whitespace-nowrap flex-shrink-0">
+              {entry.category}
+            </span>
+          </div>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <span className="text-xs font-medium">
+              {burdenIcon[entry.implementationBurden]} {burdenLabel[entry.implementationBurden]} burden
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-4 py-3 space-y-3">
+        {/* CEDS domain alignment for matched domains */}
+        <div>
+          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">CEDS Alignment</div>
+          <div className="flex flex-wrap gap-1.5">
+            {matchedDomains.map(({ domain, status }) => (
+              <span
+                key={domain}
+                className={`text-xs px-2 py-0.5 rounded-md border font-medium ${cedsStatusColor[status]}`}
+              >
+                {cedsDomainLabels[domain] || domain} ({status})
+              </span>
+            ))}
+          </div>
+          <div className="text-xs text-gray-400 mt-1">
+            {fullCount} full + {partialCount} partial alignment{fullCount + partialCount !== 1 ? 's' : ''} with your needs
+          </div>
+        </div>
+
+        {/* Burden rubric summary */}
+        {entry.burdenRubric && (
+          <div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Burden Breakdown</div>
+            <div className="grid grid-cols-3 gap-2">
+              {['engineering', 'infrastructure', 'legal'].map(dim => {
+                const r = entry.burdenRubric[dim];
+                if (!r) return null;
+                return (
+                  <div key={dim} className="bg-gray-50 rounded-lg px-2.5 py-2">
+                    <div className="text-[10px] text-gray-400 uppercase tracking-wider capitalize">{dim}</div>
+                    <span className={`text-xs font-medium px-1.5 py-0.5 rounded border capitalize inline-block mt-0.5 ${rubricLevelColor[r.level]}`}>
+                      {r.level}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            {entry.burdenRubric.timeline && (
+              <div className="flex items-center gap-1.5 mt-2 text-xs text-gray-500">
+                <span>Timeline:</span>
+                <span className="font-medium text-gray-700">{entry.burdenRubric.timeline}</span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Required capabilities (collapsible) */}
+        {entry.requiredCapabilities?.length > 0 && (
+          <div>
+            <button
+              onClick={() => setShowCapabilities(!showCapabilities)}
+              className="text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-1 hover:text-gray-700 transition-colors"
+            >
+              <span>{showCapabilities ? '▼' : '▶'}</span>
+              Required Capabilities ({entry.requiredCapabilities.length})
+            </button>
+            {showCapabilities && (
+              <div className="mt-1.5 space-y-1">
+                {entry.requiredCapabilities.map(cap => (
+                  <div key={cap} className="text-xs text-gray-600 bg-gray-50 rounded px-2.5 py-1.5 flex items-start gap-1.5">
+                    <span className="text-indigo-400 mt-px">-</span>
+                    {cap}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Action */}
+        <button
+          onClick={() => onNavigateToEntry?.(entry.id)}
+          className="text-xs font-medium text-indigo-600 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-50 transition-colors"
+        >
+          View in Library
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function StakeholderCard({ group, searchQuery, selectedNeeds, onToggleNeed }) {
   const [expanded, setExpanded] = useState(null);
@@ -206,7 +395,7 @@ function UseCaseCard({ useCase, searchQuery, selectedNeeds, onToggleNeed }) {
   );
 }
 
-export default function TaxonomiesPage() {
+export default function TaxonomiesPage({ onNavigateToEntry }) {
   const [activeTab, setActiveTab] = useState('stakeholders');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedNeeds, setSelectedNeeds] = useState(new Map());
@@ -219,6 +408,8 @@ export default function TaxonomiesPage() {
     const q = searchQuery.toLowerCase();
     return allNeeds.filter(n => n.need.toLowerCase().includes(q));
   }, [searchQuery, allNeeds]);
+
+  const roadmap = useMemo(() => computeRoadmap(selectedNeeds), [selectedNeeds]);
 
   const toggleNeed = (key, need, source) => {
     setSelectedNeeds(prev => {
@@ -294,32 +485,59 @@ export default function TaxonomiesPage() {
         )}
       </div>
 
-      {/* Selected needs summary */}
+      {/* Selected needs + Implementation Roadmap */}
       {selectedNeeds.size > 0 && (
-        <div className="mb-5 bg-indigo-50/50 border border-indigo-200/60 rounded-xl p-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="text-xs font-semibold text-indigo-700 uppercase tracking-wider">
-              Selected Business Needs ({selectedNeeds.size})
-            </div>
-            <button
-              onClick={() => setSelectedNeeds(new Map())}
-              className="text-xs text-indigo-500 hover:text-indigo-700 transition-colors"
-            >
-              Clear all
-            </button>
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {Array.from(selectedNeeds.entries()).map(([key, { need, source }]) => (
+        <div className="mb-5 space-y-4">
+          {/* Selected needs chips */}
+          <div className="bg-indigo-50/50 border border-indigo-200/60 rounded-xl p-4">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-xs font-semibold text-indigo-700 uppercase tracking-wider">
+                Selected Business Needs ({selectedNeeds.size})
+              </div>
               <button
-                key={key}
-                onClick={() => toggleNeed(key, need, source)}
-                className="text-xs bg-white border border-indigo-200 text-indigo-600 px-2 py-1 rounded-lg hover:bg-indigo-50 flex items-center gap-1 transition-colors shadow-sm"
+                onClick={() => setSelectedNeeds(new Map())}
+                className="text-xs text-indigo-500 hover:text-indigo-700 transition-colors"
               >
-                {need}
-                <span className="text-indigo-300 ml-1">×</span>
+                Clear all
               </button>
-            ))}
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {Array.from(selectedNeeds.entries()).map(([key, { need, source }]) => (
+                <button
+                  key={key}
+                  onClick={() => toggleNeed(key, need, source)}
+                  className="text-xs bg-white border border-indigo-200 text-indigo-600 px-2 py-1 rounded-lg hover:bg-indigo-50 flex items-center gap-1 transition-colors shadow-sm"
+                >
+                  {need}
+                  <span className="text-indigo-300 ml-1">×</span>
+                </button>
+              ))}
+            </div>
           </div>
+
+          {/* Implementation Roadmap */}
+          {roadmap.length > 0 && (
+            <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 border border-indigo-200/40 rounded-xl p-5">
+              <div className="flex items-center gap-2 mb-1">
+                <h3 className="text-base font-bold text-gray-900">Your Implementation Roadmap</h3>
+                <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md font-medium">
+                  {roadmap.length} standard{roadmap.length !== 1 ? 's' : ''}
+                </span>
+              </div>
+              <p className="text-xs text-gray-500 mb-4">
+                Based on your selected business needs, these standards are most relevant — ranked by alignment strength and implementation burden.
+              </p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                {roadmap.map(item => (
+                  <RoadmapCard
+                    key={item.entry.id}
+                    item={item}
+                    onNavigateToEntry={onNavigateToEntry}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

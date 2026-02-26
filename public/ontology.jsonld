@@ -1485,12 +1485,6 @@
       "https://firsteducore.org/ontology#technicalDocLink": [
         {
           "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/0"
-        },
-        {
-          "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/1"
-        },
-        {
-          "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/2"
         }
       ],
       "https://firsteducore.org/ontology#cedsAlignment": [
@@ -1615,22 +1609,6 @@
       "rdfs:label": "Open Badges 3.0 Specification",
       "foaf:page": {
         "@id": "https://www.1edtech.org/spec/ob/v3p0"
-      }
-    },
-    {
-      "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/1",
-      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
-      "rdfs:label": "OB3 Implementation Guide",
-      "foaf:page": {
-        "@id": "https://www.1edtech.org/spec/ob/v3p0/impl"
-      }
-    },
-    {
-      "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/2",
-      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
-      "rdfs:label": "1EdTech Certification Program",
-      "foaf:page": {
-        "@id": "https://www.1edtech.org/certification"
       }
     },
     {
@@ -1888,9 +1866,6 @@
       "foaf:page": {
         "@id": "https://www.1edtech.org/standards/clr"
       },
-      "https://firsteducore.org/ontology#authoritativeRepoUrl": {
-        "@id": "https://github.com/1EdTech/CLR-Specification"
-      },
       "https://firsteducore.org/ontology#implementationGuidance": "Begin by implementing Open Badges 3.0 support first — CLR extends OB3. Start as a CLR consumer: accept and display CLR records from other issuers. Phase 2: aggregate your own badges/achievements into CLR records. Phase 3: implement full issuance with consent management and VC signing. Use 1EdTech conformance suite for validation.",
       "https://firsteducore.org/ontology#commonlyPairedWith": [
         {
@@ -1937,9 +1912,6 @@
         },
         {
           "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/1"
-        },
-        {
-          "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/2"
         }
       ],
       "https://firsteducore.org/ontology#cedsAlignment": [
@@ -2074,14 +2046,6 @@
       "rdfs:label": "CLR Implementation Guide",
       "foaf:page": {
         "@id": "https://www.1edtech.org/spec/clr/v2p0/impl"
-      }
-    },
-    {
-      "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/2",
-      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
-      "rdfs:label": "CLR & Open Badges Relationship",
-      "foaf:page": {
-        "@id": "https://www.1edtech.org/standards/clr"
       }
     },
     {
