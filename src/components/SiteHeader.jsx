@@ -10,7 +10,7 @@ export default function SiteHeader({ activePage, onNavigate }) {
     { id: 'standards', label: 'Standards' },
     { id: 'partners',  label: 'Partners' },
     { id: 'ceds',      label: 'CEDS Alignment' },
-    { id: 'taxonomies', label: 'Taxonomies' },
+    { id: 'taxonomies', label: 'Needs Explorer' },
   ];
 
   return (

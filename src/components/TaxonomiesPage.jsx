@@ -400,6 +400,7 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedNeeds, setSelectedNeeds] = useState(new Map());
   const [showExplainers, setShowExplainers] = useState(true);
+  const [showRoadmap, setShowRoadmap] = useState(false);
 
   const allNeeds = useMemo(() => getAllBusinessNeeds(), []);
 
@@ -409,7 +410,11 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
     return allNeeds.filter(n => n.need.toLowerCase().includes(q));
   }, [searchQuery, allNeeds]);
 
-  const roadmap = useMemo(() => computeRoadmap(selectedNeeds), [selectedNeeds]);
+  // Only compute roadmap when user has explicitly requested it
+  const roadmap = useMemo(
+    () => (showRoadmap ? computeRoadmap(selectedNeeds) : []),
+    [selectedNeeds, showRoadmap],
+  );
 
   const toggleNeed = (key, need, source) => {
     setSelectedNeeds(prev => {
@@ -421,6 +426,8 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
       }
       return next;
     });
+    // Hide roadmap when selections change so user can keep picking
+    setShowRoadmap(false);
   };
 
   const tabs = [
@@ -488,14 +495,14 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
       {/* Selected needs + Implementation Roadmap */}
       {selectedNeeds.size > 0 && (
         <div className="mb-5 space-y-4">
-          {/* Selected needs chips */}
+          {/* Selected needs chips + Create Roadmap button */}
           <div className="bg-indigo-50/50 border border-indigo-200/60 rounded-xl p-4">
             <div className="flex items-center justify-between mb-2">
               <div className="text-xs font-semibold text-indigo-700 uppercase tracking-wider">
                 Selected Business Needs ({selectedNeeds.size})
               </div>
               <button
-                onClick={() => setSelectedNeeds(new Map())}
+                onClick={() => { setSelectedNeeds(new Map()); setShowRoadmap(false); }}
                 className="text-xs text-indigo-500 hover:text-indigo-700 transition-colors"
               >
                 Clear all
@@ -513,16 +520,37 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
                 </button>
               ))}
             </div>
+
+            {/* Create Roadmap CTA */}
+            {!showRoadmap && (
+              <button
+                onClick={() => setShowRoadmap(true)}
+                className="mt-3 bg-indigo-600 text-white text-sm font-medium rounded-lg px-5 py-2.5 hover:bg-indigo-700 transition-colors shadow-sm flex items-center gap-2"
+              >
+                Create My Roadmap
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            )}
           </div>
 
-          {/* Implementation Roadmap */}
-          {roadmap.length > 0 && (
+          {/* Implementation Roadmap — only shown after user clicks Create */}
+          {showRoadmap && roadmap.length > 0 && (
             <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 border border-indigo-200/40 rounded-xl p-5">
-              <div className="flex items-center gap-2 mb-1">
-                <h3 className="text-base font-bold text-gray-900">Your Implementation Roadmap</h3>
-                <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md font-medium">
-                  {roadmap.length} standard{roadmap.length !== 1 ? 's' : ''}
-                </span>
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-base font-bold text-gray-900">Your Implementation Roadmap</h3>
+                  <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md font-medium">
+                    {roadmap.length} standard{roadmap.length !== 1 ? 's' : ''}
+                  </span>
+                </div>
+                <button
+                  onClick={() => setShowRoadmap(false)}
+                  className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  Hide roadmap
+                </button>
               </div>
               <p className="text-xs text-gray-500 mb-4">
                 Based on your selected business needs, these standards are most relevant — ranked by alignment strength and implementation burden.
