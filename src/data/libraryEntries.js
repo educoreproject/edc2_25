@@ -105,7 +105,7 @@ export const libraryEntries = [
     accessLevel: 'open',
     opennessStatus: 'open',
     accessUrl: 'https://www.1edtech.org/standards/case',
-    authoritativeRepoUrl: 'https://github.com/1EdTech/CASE-Specification',
+    authoritativeRepoUrl: null,
     tags: ['competency', 'CASE', 'academic-standards', '1EdTech', 'REST-API', 'framework-exchange'],
     aiTaxonomy: ['competency-exchange', 'academic-standards', 'framework-api'],
     aiSummary: 'REST/JSON API standard for publishing and exchanging competency frameworks. Use when systems need to share, align, or discover competency definitions across platforms.',
@@ -142,8 +142,7 @@ export const libraryEntries = [
     ],
     knownAdopters: ['Achieve (state standards)', 'OpenSALT community', 'Multiple US state education agencies', 'Credential Engine'],
     technicalDocLinks: [
-      { label: 'CASE v1.1 Specification', url: 'https://www.1edtech.org/spec/case/v1p1' },
-      { label: 'CASE REST API Binding', url: 'https://www.1edtech.org/spec/case/v1p1/rest_binding' },
+      { label: 'CASE v1.1 Specification Documentation', url: 'https://www.imsglobal.org/spec/case/v1p1' },
       { label: 'CASE Network (Public Registry)', url: 'https://casenetwork.1edtech.org' },
     ],
     commonlyPairedWith: [

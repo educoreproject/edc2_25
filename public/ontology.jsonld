@@ -1,0 +1,2298 @@
+{
+  "@context": {
+    "educore": "https://firsteducore.org/ontology#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/credentials",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Credentials",
+      "dcterms:identifier": "credentials"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/competencies",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Competencies",
+      "dcterms:identifier": "competencies"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/workforce",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Workforce",
+      "dcterms:identifier": "workforce"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/assessments",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Assessments",
+      "dcterms:identifier": "assessments"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/learningResources",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Learning Resources",
+      "dcterms:identifier": "learningResources"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/k12",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "K–12",
+      "dcterms:identifier": "k12"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/postsecondary",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Postsecondary",
+      "dcterms:identifier": "postsecondary"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/cte",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Career & Technical",
+      "dcterms:identifier": "cte"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/adultEd",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Adult Education",
+      "dcterms:identifier": "adultEd"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/earlyLearning",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Early Learning",
+      "dcterms:identifier": "earlyLearning"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/authN",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Auth & Authorization",
+      "dcterms:identifier": "authN"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/implVars",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Implementation Variables",
+      "dcterms:identifier": "implVars"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-domain/facilities",
+      "@type": "https://firsteducore.org/ontology#CedsDomain",
+      "rdfs:label": "Facilities",
+      "dcterms:identifier": "facilities"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework",
+      "@type": "https://firsteducore.org/ontology#Specification",
+      "dcterms:identifier": "lrw-competency-framework",
+      "dcterms:title": "IEEE P1484.2 LER Ecosystem Standard",
+      "dcterms:description": "IEEE P1484.2 Recommended Practices for Learning and Employment Record (LER) Ecosystems are intended to help system architects and engineers design and deploy systems that leverage shared standards and technologies to support ecosystem-scale issuing, holding, and presenting verifiable credentials for education, skills-based hiring, and career advancement.",
+      "dcterms:type": "Standard",
+      "https://firsteducore.org/ontology#category": "Learner Records",
+      "https://firsteducore.org/ontology#owner": "IEEE Computer Society",
+      "https://firsteducore.org/ontology#governanceBody": "IEEE Computer Society / Learning Technology Standards Committee (C/LTSC)",
+      "dcterms:modified": {
+        "@value": "2024-08-23",
+        "@type": "xsd:date"
+      },
+      "https://firsteducore.org/ontology#version": "2024",
+      "https://firsteducore.org/ontology#accessLevel": "open",
+      "https://firsteducore.org/ontology#opennessStatus": "open",
+      "https://firsteducore.org/ontology#status": "approved",
+      "https://firsteducore.org/ontology#aiSummary": "IEEE recommended practice defining the architecture and roles for LER ecosystems. Use as the overarching blueprint when building systems for issuing, holding, and verifying education and employment credentials.",
+      "https://firsteducore.org/ontology#aiUnlocksSummary": "Provides the ecosystem-level architecture for your product to participate in LER credential exchange. Defines the roles (Awarder, Holder, Reviewer, Wallet, Registry) and trust model that connect issuers, learners, and employers — positioning your platform within a standards-based, interoperable credential ecosystem for skills-based hiring.",
+      "https://firsteducore.org/ontology#aiTaxonomy": [
+        "ler-ecosystem",
+        "credential-architecture",
+        "skills-based-hiring"
+      ],
+      "dcterms:subject": [
+        "LER",
+        "IEEE",
+        "verifiable-credentials",
+        "ecosystem",
+        "workforce",
+        "skills-based-hiring",
+        "career-advancement",
+        "credential-engine",
+        "1EdTech"
+      ],
+      "https://firsteducore.org/ontology#implementationBurden": "medium",
+      "https://firsteducore.org/ontology#implementationBurdenRationale": "The standard is a recommended practice (architectural blueprint), not a wire protocol. Implementation burden depends on which ecosystem role(s) your system fulfills. Leverages W3C VC and DID as normative foundations.",
+      "https://firsteducore.org/ontology#requiredCapability": [
+        "W3C Verifiable Credentials support",
+        "W3C DID infrastructure",
+        "Digital wallet integration (for Holder role)",
+        "Credential registry access (recommended)"
+      ],
+      "https://firsteducore.org/ontology#knownAdopter": [
+        "T3 Innovation Network pilot partners",
+        "US Chamber of Commerce Foundation",
+        "Credential Engine",
+        "AACRAO"
+      ],
+      "https://firsteducore.org/ontology#compatibilityNotes": "IEEE 1484.2-2024 is the ecosystem architecture standard — it defines roles and trust models. CASE, CTDL, Open Badges, and CLR are the implementation standards that fulfill specific roles within the LER ecosystem. The standard normatively references W3C VCs and DIDs, and informatively references CEDS, CASE, CTDL, CLR, and Credential Registry.",
+      "foaf:page": {
+        "@id": "https://sagroups.ieee.org/1484-2/"
+      },
+      "https://firsteducore.org/ontology#implementationGuidance": "Start by identifying which LER ecosystem role(s) your system will fulfill: Awarder (issuer), Holder (wallet/learner), Reviewer (verifier), or Registry (governance). Implement W3C VC and DID support as the normative foundation. Use Open Badges 3.0 or CLR 2.0 as the credential format. Align trust model to the standard's five recommended components.",
+      "https://firsteducore.org/ontology#commonlyPairedWith": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/case-v1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/ctdl"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+        }
+      ],
+      "https://firsteducore.org/ontology#relatedResource": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/case-v1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/ctdl"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+        }
+      ],
+      "https://firsteducore.org/ontology#burdenRubric": {
+        "@id": "https://firsteducore.org/ontology#burden-rubric/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#equityConsiderations": {
+        "@id": "https://firsteducore.org/ontology#equity/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#privacyConsiderations": {
+        "@id": "https://firsteducore.org/ontology#privacy/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#referenceImplementation": [
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/lrw-competency-framework/0"
+        }
+      ],
+      "https://firsteducore.org/ontology#technicalDocLink": [
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/lrw-competency-framework/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/lrw-competency-framework/1"
+        }
+      ],
+      "https://firsteducore.org/ontology#cedsAlignment": [
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/credentials"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/competencies"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/workforce"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/assessments"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/learningResources"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/k12"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/postsecondary"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/cte"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/adultEd"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/earlyLearning"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/authN"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/implVars"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/facilities"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/lrw-competency-framework/engineering",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "engineering",
+      "https://firsteducore.org/ontology#level": "moderate",
+      "https://firsteducore.org/ontology#note": "4–8 weeks to align an existing system to the LER architecture. Longer if building W3C VC infrastructure from scratch."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/lrw-competency-framework/infrastructure",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "infrastructure",
+      "https://firsteducore.org/ontology#level": "moderate",
+      "https://firsteducore.org/ontology#note": "Requires W3C VC-compatible credential infrastructure. Digital wallet integration needed for Holder role. Registry infrastructure for governance role."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/lrw-competency-framework/legal",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "legal",
+      "https://firsteducore.org/ontology#level": "low",
+      "https://firsteducore.org/ontology#note": "IEEE standard is publicly referenced. No licensing fees for conformance. Data sharing agreements needed for multi-party ecosystems."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-rubric/lrw-competency-framework",
+      "@type": "https://firsteducore.org/ontology#BurdenRubric",
+      "https://firsteducore.org/ontology#timeline": "4–12 weeks depending on ecosystem role and existing infrastructure",
+      "https://firsteducore.org/ontology#engineering": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/lrw-competency-framework/engineering"
+      },
+      "https://firsteducore.org/ontology#infrastructure": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/lrw-competency-framework/infrastructure"
+      },
+      "https://firsteducore.org/ontology#legal": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/lrw-competency-framework/legal"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#equity/lrw-competency-framework",
+      "@type": "https://firsteducore.org/ontology#EquityConsideration",
+      "https://firsteducore.org/ontology#level": "medium-concern",
+      "https://firsteducore.org/ontology#notes": "The standard acknowledges the need for equitable access to credential infrastructure. Digital wallet requirements may create barriers for learners without smartphones or stable internet. Alternative presentation methods should be supported.",
+      "https://firsteducore.org/ontology#lifDerived": {
+        "@value": "false",
+        "@type": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#privacy/lrw-competency-framework",
+      "@type": "https://firsteducore.org/ontology#PrivacyConsideration",
+      "https://firsteducore.org/ontology#level": "medium-concern",
+      "https://firsteducore.org/ontology#notes": "LER ecosystems involve PII in verifiable credentials. The standard recommends selective disclosure and privacy-preserving verification. Implementers must address FERPA compliance for education records and consent management for credential sharing.",
+      "https://firsteducore.org/ontology#dataClassification": "architectural-standard",
+      "https://firsteducore.org/ontology#regulation": [
+        "FERPA",
+        "state privacy laws"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/lrw-competency-framework/0",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "IEEE 1484.2-2024 Standard (IEEE Store)",
+      "foaf:page": {
+        "@id": "https://standards.ieee.org/ieee/1484.2/11406/"
+      },
+      "dcterms:description": "Official published standard document."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/lrw-competency-framework/0",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "Project Website",
+      "foaf:page": {
+        "@id": "https://sagroups.ieee.org/1484-2/"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/lrw-competency-framework/1",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "IEEE Standard (purchase)",
+      "foaf:page": {
+        "@id": "https://standards.ieee.org/ieee/1484.2/11406/"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/credentials",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/credentials"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "Core focus of the LER standard. Defines ecosystem roles (Awarder, Holder, Reviewer) for credential issuance and verification built on W3C VCs.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "Credential",
+        "CredentialType",
+        "CredentialAwardedBy",
+        "CredentialAwardStatus",
+        "CredentialVerification"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/competencies",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/competencies"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "LER credentials carry competency evidence. The standard informatively references CASE and CTDL for competency framework exchange and description.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CompetencyFramework",
+        "CompetencyDefinition",
+        "CompetencySet",
+        "LearningStandard"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/workforce",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/workforce"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "Skills-based hiring and career advancement are primary use cases. LER Talent Marketplace role directly addresses workforce credential matching.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "WorkforceProgram",
+        "EmploymentRecord",
+        "OccupationalClassification",
+        "SkillRequirement"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/assessments",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/assessments"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "LER credentials can carry assessment outcomes as verifiable claims. The standard does not model assessment event structure.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Assessments domain models full assessment lifecycle; LER standard focuses on credential-level outcomes.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AssessmentResult"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/learningResources",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/learningResources"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "LER credentials can reference learning experiences. The standard does not model learning resource metadata at CEDS level of detail.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "LearningResource"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/k12",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/k12"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "K–12 credentials (diplomas, course completions) are valid LER use cases. Standard is education-level agnostic.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS K12 includes detailed enrollment, attendance, and discipline data beyond LER scope.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "K12StudentAcademicRecord"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/postsecondary",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/postsecondary"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "Postsecondary credential issuance and verification is a primary LER use case. Strong alignment with CEDS postsecondary credential elements.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "PsDegreeOrCertificate",
+        "PsStudentAcademicRecord",
+        "PsProgram"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/cte",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/cte"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CTE and industry credential portability are core LER objectives. The standard directly addresses skills-based hiring that CTE programs feed into.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CTEProgram",
+        "CTEOccupationalCluster",
+        "CTEIndustryAlignment"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/adultEd",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/adultEd"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Adult education credentials (GED, workforce certificates) are valid LER use cases. No adult-education-specific modeling in the standard.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AdultEducationProgram"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/earlyLearning",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/earlyLearning"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "LER standard is not designed for early childhood contexts.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains not represented."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/authN",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/authN"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "LER standard normatively requires W3C DIDs for identity. Defines trust, verification, and wallet roles that directly address authentication and authorization.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "PersonIdentifier",
+        "AuthorizationDocument"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/implVars",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/implVars"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "LER Registry role provides organizational identity and governance catalogs. Partial alignment with CEDS Implementation Variables.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "ImplementationStatus",
+        "OrganizationIdentificationSystem"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/facilities",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "No overlap."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#spec/case-v1",
+      "@type": "https://firsteducore.org/ontology#Specification",
+      "dcterms:identifier": "case-v1",
+      "dcterms:title": "Competency & Academic Standards Exchange (CASE) v1.1",
+      "dcterms:description": "1EdTech standard for exchanging competency frameworks and academic standards as structured, machine-readable data via a REST/JSON API. Enables systems to publish, discover, and align competency definitions across institutions and platforms.",
+      "dcterms:type": "Standard",
+      "https://firsteducore.org/ontology#category": "Competency Frameworks",
+      "https://firsteducore.org/ontology#owner": "1EdTech Consortium",
+      "https://firsteducore.org/ontology#governanceBody": "1EdTech Consortium",
+      "dcterms:modified": {
+        "@value": "2025-06-01",
+        "@type": "xsd:date"
+      },
+      "https://firsteducore.org/ontology#version": "1.1",
+      "https://firsteducore.org/ontology#accessLevel": "open",
+      "https://firsteducore.org/ontology#opennessStatus": "open",
+      "https://firsteducore.org/ontology#status": "approved",
+      "https://firsteducore.org/ontology#aiSummary": "REST/JSON API standard for publishing and exchanging competency frameworks. Use when systems need to share, align, or discover competency definitions across platforms.",
+      "https://firsteducore.org/ontology#aiUnlocksSummary": "Enables your product to publish, consume, and align competency frameworks from multiple authorities (state standards, industry frameworks, institutional outcomes). Unlocks cross-institutional competency alignment, dynamic curriculum mapping, and automated standards crosswalking.",
+      "https://firsteducore.org/ontology#aiTaxonomy": [
+        "competency-exchange",
+        "academic-standards",
+        "framework-api"
+      ],
+      "dcterms:subject": [
+        "competency",
+        "CASE",
+        "academic-standards",
+        "1EdTech",
+        "REST-API",
+        "framework-exchange"
+      ],
+      "https://firsteducore.org/ontology#implementationBurden": "medium",
+      "https://firsteducore.org/ontology#implementationBurdenRationale": "Well-defined REST API with JSON responses. Moderate effort for consumer-side; higher for publisher-side where you must model your competency data into CASE format.",
+      "https://firsteducore.org/ontology#requiredCapability": [
+        "REST API client",
+        "JSON parser",
+        "Competency data model (for publishers)"
+      ],
+      "https://firsteducore.org/ontology#knownAdopter": [
+        "Achieve (state standards)",
+        "OpenSALT community",
+        "Multiple US state education agencies",
+        "Credential Engine"
+      ],
+      "https://firsteducore.org/ontology#compatibilityNotes": "CASE is complementary to CTDL (competency definitions vs. credential descriptions) and CLR (competency references in learner records). No overlaps or conflicts. JSON format is simpler than JSON-LD — consider a JSON-LD bridge if integrating with CTDL.",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/standards/case"
+      },
+      "https://firsteducore.org/ontology#implementationGuidance": "Start as a CASE consumer: query existing published frameworks (e.g., state standards) via the REST API. Build a local cache of competency trees. Phase 2: publish your own institutional competency frameworks. Use the CASE Network sandbox for testing.",
+      "https://firsteducore.org/ontology#commonlyPairedWith": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/ctdl"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+        }
+      ],
+      "https://firsteducore.org/ontology#relatedResource": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/ctdl"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+        }
+      ],
+      "https://firsteducore.org/ontology#burdenRubric": {
+        "@id": "https://firsteducore.org/ontology#burden-rubric/case-v1"
+      },
+      "https://firsteducore.org/ontology#equityConsiderations": {
+        "@id": "https://firsteducore.org/ontology#equity/case-v1"
+      },
+      "https://firsteducore.org/ontology#privacyConsiderations": {
+        "@id": "https://firsteducore.org/ontology#privacy/case-v1"
+      },
+      "https://firsteducore.org/ontology#referenceImplementation": [
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/case-v1/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/case-v1/1"
+        }
+      ],
+      "https://firsteducore.org/ontology#technicalDocLink": [
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/case-v1/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/case-v1/1"
+        }
+      ],
+      "https://firsteducore.org/ontology#cedsAlignment": [
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/credentials"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/competencies"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/workforce"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/assessments"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/learningResources"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/k12"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/postsecondary"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/cte"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/adultEd"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/earlyLearning"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/authN"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/implVars"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/facilities"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/case-v1/engineering",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "engineering",
+      "https://firsteducore.org/ontology#level": "moderate",
+      "https://firsteducore.org/ontology#note": "3–6 weeks for consumer integration; 6–10 weeks to publish frameworks via the API."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/case-v1/infrastructure",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "infrastructure",
+      "https://firsteducore.org/ontology#level": "low",
+      "https://firsteducore.org/ontology#note": "Standard REST API endpoints. No specialized infrastructure required."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/case-v1/legal",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "legal",
+      "https://firsteducore.org/ontology#level": "low",
+      "https://firsteducore.org/ontology#note": "Open standard. 1EdTech membership recommended but not required for basic use."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-rubric/case-v1",
+      "@type": "https://firsteducore.org/ontology#BurdenRubric",
+      "https://firsteducore.org/ontology#timeline": "4–10 weeks depending on consumer vs. publisher role",
+      "https://firsteducore.org/ontology#engineering": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/case-v1/engineering"
+      },
+      "https://firsteducore.org/ontology#infrastructure": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/case-v1/infrastructure"
+      },
+      "https://firsteducore.org/ontology#legal": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/case-v1/legal"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#equity/case-v1",
+      "@type": "https://firsteducore.org/ontology#EquityConsideration",
+      "https://firsteducore.org/ontology#level": "low-concern",
+      "https://firsteducore.org/ontology#notes": "Framework exchange standard with no PII. Equity concern: published frameworks may embed curriculum biases. Review competency language for cultural neutrality before adoption.",
+      "https://firsteducore.org/ontology#lifDerived": {
+        "@value": "false",
+        "@type": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#privacy/case-v1",
+      "@type": "https://firsteducore.org/ontology#PrivacyConsideration",
+      "https://firsteducore.org/ontology#level": "low-concern",
+      "https://firsteducore.org/ontology#notes": "Schema/framework data only. No learner PII involved. Published frameworks are public data.",
+      "https://firsteducore.org/ontology#dataClassification": "public"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/case-v1/0",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "CASE Network",
+      "foaf:page": {
+        "@id": "https://casenetwork.1edtech.org"
+      },
+      "dcterms:description": "Public registry of CASE-published competency frameworks from states and organizations."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/case-v1/1",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "OpenSALT",
+      "foaf:page": {
+        "@id": "https://github.com/opensalt/opensalt"
+      },
+      "dcterms:description": "Open-source CASE framework editor and publisher."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/case-v1/0",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "CASE v1.1 Specification Documentation",
+      "foaf:page": {
+        "@id": "https://www.imsglobal.org/spec/case/v1p1"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/case-v1/1",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "CASE Network (Public Registry)",
+      "foaf:page": {
+        "@id": "https://casenetwork.1edtech.org"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/credentials",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/credentials"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "CASE defines competency criteria that inform credential requirements but does not model credential issuance or attainment.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Credential includes attainment date, issuing org, and verification — CASE covers competency definitions only.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CredentialCriteria"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/competencies",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/competencies"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CASE is purpose-built for competency framework exchange. Deep alignment with CEDS CompetencyFramework, CompetencyDefinition, and LearningStandard entities.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CompetencyFramework",
+        "CompetencyDefinition",
+        "LearningStandard",
+        "LearningStandardItem"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/workforce",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/workforce"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Workforce competency frameworks can be published via CASE. Does not model employment records or workforce programs directly.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Workforce includes EmploymentRecord and WorkforceProgram — not in CASE scope.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "OccupationalClassification",
+        "SkillRequirement"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/assessments",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/assessments"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "CASE does not model assessments. Competency frameworks may inform assessment design but CASE is not an assessment standard.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Assessments domain (test structure, items, results) is entirely outside CASE scope."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/learningResources",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/learningResources"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Competency frameworks published via CASE can be used to align learning resources, but CASE does not model resource metadata.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Learning Resources includes URL, media type, educational level — not in CASE scope.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "LearningResourceEducationalAlignment"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/k12",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/k12"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CASE is widely adopted for K–12 state academic standards exchange. US state education agencies publish standards via CASE Network.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "K12CourseCompetencySet",
+        "LearningStandard",
+        "LearningStandardItem"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/postsecondary",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/postsecondary"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Postsecondary competency frameworks can use CASE but adoption is lower than K–12. Alignment with CEDS postsecondary competency records.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Postsecondary includes enrollment, program, degree — CASE covers only competency definitions.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "PsStudentCompetencyRecord"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/cte",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/cte"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CTE industry competency frameworks are a primary CASE use case. Strong alignment with CEDS CTE occupational cluster and industry alignment elements.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CTEProgram",
+        "CTEOccupationalCluster",
+        "CTEIndustryAlignment"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/adultEd",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/adultEd"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Adult education competency frameworks can be exchanged via CASE but no adult-education-specific modeling exists.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AdultEducationProgram"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/earlyLearning",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/earlyLearning"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "No early learning frameworks currently published via CASE.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented in CASE."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/authN",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/authN"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "CASE defines no authentication or authorization model. API access uses standard OAuth2."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/implVars",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/implVars"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "No implementation variable modeling."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/facilities",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/case-v1"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "No overlap."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#spec/ctdl",
+      "@type": "https://firsteducore.org/ontology#Specification",
+      "dcterms:identifier": "ctdl",
+      "dcterms:title": "Credential Transparency Description Language (CTDL)",
+      "dcterms:description": "Linked-data vocabulary (JSON-LD/RDF) for describing credentials, organizations, competencies, and their relationships. Maintained by Credential Engine, CTDL powers the Credential Registry and enables machine-readable credential transparency at national scale.",
+      "dcterms:type": "Standard",
+      "https://firsteducore.org/ontology#category": "Credential Transparency",
+      "https://firsteducore.org/ontology#owner": "Credential Engine",
+      "https://firsteducore.org/ontology#governanceBody": "Credential Engine",
+      "dcterms:modified": {
+        "@value": "2025-08-01",
+        "@type": "xsd:date"
+      },
+      "https://firsteducore.org/ontology#version": "current",
+      "https://firsteducore.org/ontology#accessLevel": "open",
+      "https://firsteducore.org/ontology#opennessStatus": "open",
+      "https://firsteducore.org/ontology#status": "approved",
+      "https://firsteducore.org/ontology#aiSummary": "Linked-data vocabulary for describing credentials, their requirements, and issuing organizations. Use when publishing or consuming credential metadata for transparency and discovery.",
+      "https://firsteducore.org/ontology#aiUnlocksSummary": "Enables your product to describe credentials in a machine-readable, semantically rich format that the Credential Registry and search engines can index. Unlocks credential discovery, comparison, and pathway mapping at national scale — letting learners and employers find and evaluate credentials across thousands of providers.",
+      "https://firsteducore.org/ontology#aiTaxonomy": [
+        "credential-vocabulary",
+        "linked-data",
+        "transparency"
+      ],
+      "dcterms:subject": [
+        "CTDL",
+        "credential-transparency",
+        "linked-data",
+        "JSON-LD",
+        "RDF",
+        "Credential-Engine",
+        "registry"
+      ],
+      "https://firsteducore.org/ontology#implementationBurden": "medium",
+      "https://firsteducore.org/ontology#implementationBurdenRationale": "JSON-LD/RDF requires familiarity with linked data concepts. Credential Engine provides tools and APIs that reduce the burden. Publishing to the Registry has a structured onboarding process.",
+      "https://firsteducore.org/ontology#requiredCapability": [
+        "JSON-LD understanding",
+        "Credential data modeling",
+        "REST API client (for Registry integration)"
+      ],
+      "https://firsteducore.org/ontology#knownAdopter": [
+        "Credential Engine publisher network (4,000+ organizations)",
+        "US state longitudinal data systems",
+        "Lumina Foundation grantees",
+        "EMSI/Lightcast"
+      ],
+      "https://firsteducore.org/ontology#compatibilityNotes": "CTDL is the description/transparency layer while Open Badges and CLR are the issuance/record layers. CTDL describes what a credential IS; OB3/CLR record that a learner HAS one. They are complementary, not competing. CTDL uses JSON-LD; ensure JSON-LD tooling is available if integrating with CASE (plain JSON).",
+      "foaf:page": {
+        "@id": "https://credreg.net/ctdl/terms"
+      },
+      "https://firsteducore.org/ontology#authoritativeRepoUrl": {
+        "@id": "https://github.com/CredentialEngine/CTDL_Json_Validation_Schema"
+      },
+      "https://firsteducore.org/ontology#implementationGuidance": "Begin by exploring the Credential Registry search to understand CTDL data in practice. Map your credentials to CTDL terms using the CTDL Handbook. Use the Credential Engine publisher tool for initial data entry. For programmatic integration, use the Registry API.",
+      "https://firsteducore.org/ontology#commonlyPairedWith": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/case-v1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        }
+      ],
+      "https://firsteducore.org/ontology#relatedResource": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/case-v1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        }
+      ],
+      "https://firsteducore.org/ontology#burdenRubric": {
+        "@id": "https://firsteducore.org/ontology#burden-rubric/ctdl"
+      },
+      "https://firsteducore.org/ontology#equityConsiderations": {
+        "@id": "https://firsteducore.org/ontology#equity/ctdl"
+      },
+      "https://firsteducore.org/ontology#privacyConsiderations": {
+        "@id": "https://firsteducore.org/ontology#privacy/ctdl"
+      },
+      "https://firsteducore.org/ontology#referenceImplementation": [
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/ctdl/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/ctdl/1"
+        }
+      ],
+      "https://firsteducore.org/ontology#technicalDocLink": [
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/ctdl/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/ctdl/1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/ctdl/2"
+        }
+      ],
+      "https://firsteducore.org/ontology#cedsAlignment": [
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/credentials"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/competencies"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/workforce"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/assessments"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/learningResources"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/k12"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/postsecondary"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/cte"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/adultEd"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/earlyLearning"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/authN"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/implVars"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/facilities"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/ctdl/engineering",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "engineering",
+      "https://firsteducore.org/ontology#level": "moderate",
+      "https://firsteducore.org/ontology#note": "4–8 weeks to model and publish credentials in CTDL. 2–4 weeks for consumer/search integration via Registry API."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/ctdl/infrastructure",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "infrastructure",
+      "https://firsteducore.org/ontology#level": "low",
+      "https://firsteducore.org/ontology#note": "Credential Engine hosts the Registry. Publishers need minimal infrastructure beyond data preparation."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/ctdl/legal",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "legal",
+      "https://firsteducore.org/ontology#level": "low",
+      "https://firsteducore.org/ontology#note": "Open vocabulary. No licensing. Publishing agreement with Credential Engine is straightforward."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-rubric/ctdl",
+      "@type": "https://firsteducore.org/ontology#BurdenRubric",
+      "https://firsteducore.org/ontology#timeline": "4–8 weeks for publishing; 2–4 weeks for consuming Registry data",
+      "https://firsteducore.org/ontology#engineering": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/ctdl/engineering"
+      },
+      "https://firsteducore.org/ontology#infrastructure": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/ctdl/infrastructure"
+      },
+      "https://firsteducore.org/ontology#legal": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/ctdl/legal"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#equity/ctdl",
+      "@type": "https://firsteducore.org/ontology#EquityConsideration",
+      "https://firsteducore.org/ontology#level": "low-concern",
+      "https://firsteducore.org/ontology#notes": "Vocabulary standard describing credentials. Equity benefit: makes credential information transparent and discoverable to underserved populations. Concern: credential descriptions may omit alternative or non-traditional pathways if not intentionally included.",
+      "https://firsteducore.org/ontology#lifDerived": {
+        "@value": "false",
+        "@type": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#privacy/ctdl",
+      "@type": "https://firsteducore.org/ontology#PrivacyConsideration",
+      "https://firsteducore.org/ontology#level": "low-concern",
+      "https://firsteducore.org/ontology#notes": "Describes credentials and organizations — no learner PII. Published data is public by design. Organizations publishing to the Registry share institutional information voluntarily.",
+      "https://firsteducore.org/ontology#dataClassification": "public"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/ctdl/0",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "Credential Finder",
+      "foaf:page": {
+        "@id": "https://credentialfinder.org"
+      },
+      "dcterms:description": "National registry of credentials described in CTDL. Searchable by learners, employers, and systems."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/ctdl/1",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "CTDL Explorer",
+      "foaf:page": {
+        "@id": "https://credreg.net/ctdl/explorer"
+      },
+      "dcterms:description": "Interactive browser for CTDL vocabulary terms and relationships."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/ctdl/0",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "CTDL Terms & Vocabulary",
+      "foaf:page": {
+        "@id": "https://credreg.net/ctdl/terms"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/ctdl/1",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "CTDL Handbook",
+      "foaf:page": {
+        "@id": "https://credreg.net/ctdl/handbook"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/ctdl/2",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "Credential Registry API",
+      "foaf:page": {
+        "@id": "https://credreg.net/registry/assistant"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/credentials",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/credentials"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CTDL is credential-centric. Deep alignment with CEDS Credential entity including credential type taxonomy, issuing organizations, and requirements.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "Credential",
+        "CredentialType",
+        "CredentialAwardedBy",
+        "CredentialCriteria"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/competencies",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/competencies"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CTDL models competency frameworks and their relationship to credentials. Credential Engine maintains CTDL-ASN for competency-specific vocabulary.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CompetencyFramework",
+        "CompetencyDefinition",
+        "CompetencySet"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/workforce",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/workforce"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "Workforce credentials and occupational alignment are core CTDL use cases. Credential Registry includes O*NET and SOC code alignment.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "WorkforceProgram",
+        "OccupationalClassification",
+        "SkillRequirement"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/assessments",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/assessments"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "CTDL can describe assessment-based credentials but does not model assessment events, items, or sessions.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Assessments domain models full assessment lifecycle; CTDL only describes the resulting credential.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AssessmentResult"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/learningResources",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/learningResources"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "CTDL can reference learning opportunities associated with credentials. Does not model resource metadata at the CEDS level of detail.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "LearningResource",
+        "LearningResourceEducationalAlignment"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/k12",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/k12"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "K–12 credentials can be described in CTDL but adoption is lower than in postsecondary. Some K–12 industry certification programs are in the Registry.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS K12 student record data is not modeled in CTDL.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "K12CourseCompetencySet"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/postsecondary",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/postsecondary"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "Postsecondary degrees and certificates are primary CTDL content. Strong alignment with CEDS Postsecondary credential and program elements.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "PsDegreeOrCertificate",
+        "PsProgram",
+        "PsStudentAcademicRecord"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/cte",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/cte"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CTE/industry credentials are heavily represented in the Credential Registry. Strong alignment with CEDS CTE program and occupational cluster elements.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CTEProgram",
+        "CTEOccupationalCluster",
+        "CTEIndustryAlignment"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/adultEd",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/adultEd"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Adult education credentials (GED, HiSET, workforce certificates) can be described in CTDL. No adult-education-specific vocabulary.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AdultEducationProgram"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/earlyLearning",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/earlyLearning"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "Early learning credentials are not typically described in CTDL.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/authN",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/authN"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "CTDL does not model authentication or authorization. Registry access uses standard API keys."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/implVars",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/implVars"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Organization identifiers in CTDL (CTID, DUNS) partially align with CEDS Implementation Variables for organizational identification.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "ImplementationStatus",
+        "OrganizationIdentificationSystem"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/facilities",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/ctdl"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "No overlap."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#spec/open-badges-v3",
+      "@type": "https://firsteducore.org/ontology#Specification",
+      "dcterms:identifier": "open-badges-v3",
+      "dcterms:title": "Open Badges 3.0",
+      "dcterms:description": "1EdTech standard for issuing, displaying, and verifying digital badges and micro-credentials. Version 3.0 aligns with W3C Verifiable Credentials, enabling cryptographic verification and decentralized trust for achievement recognition.",
+      "dcterms:type": "Standard",
+      "https://firsteducore.org/ontology#category": "Digital Credentials",
+      "https://firsteducore.org/ontology#owner": "1EdTech Consortium",
+      "https://firsteducore.org/ontology#governanceBody": "1EdTech Consortium",
+      "dcterms:modified": {
+        "@value": "2024-12-01",
+        "@type": "xsd:date"
+      },
+      "https://firsteducore.org/ontology#version": "3.0",
+      "https://firsteducore.org/ontology#accessLevel": "open",
+      "https://firsteducore.org/ontology#opennessStatus": "open",
+      "https://firsteducore.org/ontology#status": "approved",
+      "https://firsteducore.org/ontology#aiSummary": "Standard for issuing and verifying digital badges aligned with W3C VCs. Use when implementing achievement recognition, micro-credentialing, or skill badge systems.",
+      "https://firsteducore.org/ontology#aiUnlocksSummary": "Enables your product to issue, display, and verify portable digital badges that learners can share across platforms and with employers. Unlocks micro-credentialing programs, stackable credential pathways, and verifiable achievement sharing — with W3C VC alignment providing cryptographic trust without centralized verification.",
+      "https://firsteducore.org/ontology#aiTaxonomy": [
+        "digital-badge",
+        "micro-credential",
+        "achievement-verification"
+      ],
+      "dcterms:subject": [
+        "open-badges",
+        "micro-credentials",
+        "digital-badges",
+        "1EdTech",
+        "verifiable-credentials",
+        "JSON-LD",
+        "achievement"
+      ],
+      "https://firsteducore.org/ontology#implementationBurden": "medium",
+      "https://firsteducore.org/ontology#implementationBurdenRationale": "OB3 is well-documented with robust tooling. The W3C VC alignment adds cryptographic complexity but managed services exist. Issuing is more complex than consuming/verifying.",
+      "https://firsteducore.org/ontology#requiredCapability": [
+        "JSON-LD processing",
+        "Cryptographic signing (for issuers)",
+        "Badge display/rendering UI",
+        "REST API client"
+      ],
+      "https://firsteducore.org/ontology#knownAdopter": [
+        "Credly",
+        "Badgr/Instructure",
+        "Accredible",
+        "Digital Promise",
+        "Mozilla Foundation (original OB creator)"
+      ],
+      "https://firsteducore.org/ontology#compatibilityNotes": "OB3 is built on W3C Verifiable Credentials, so it inherits VC trust infrastructure. CLR 2.0 extends OB3 — they share the same data model foundation. CTDL can describe the same credentials that OB3 issues, providing the transparency layer. No conflicts with CASE; competency frameworks from CASE can be referenced as badge criteria.",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/standards/open-badges"
+      },
+      "https://firsteducore.org/ontology#authoritativeRepoUrl": {
+        "@id": "https://github.com/1EdTech/openbadges-specification"
+      },
+      "https://firsteducore.org/ontology#implementationGuidance": "Start as a badge verifier/displayer: accept and render OB3 badges from other issuers. Use a managed badge platform (Badgr, Credly, Accredible) for initial issuance to skip infrastructure. Custom issuance requires W3C VC signing infrastructure. Test with 1EdTech conformance suite.",
+      "https://firsteducore.org/ontology#commonlyPairedWith": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/ctdl"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        }
+      ],
+      "https://firsteducore.org/ontology#relatedResource": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/ctdl"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        }
+      ],
+      "https://firsteducore.org/ontology#burdenRubric": {
+        "@id": "https://firsteducore.org/ontology#burden-rubric/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#equityConsiderations": {
+        "@id": "https://firsteducore.org/ontology#equity/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#privacyConsiderations": {
+        "@id": "https://firsteducore.org/ontology#privacy/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#referenceImplementation": [
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/open-badges-v3/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/open-badges-v3/1"
+        }
+      ],
+      "https://firsteducore.org/ontology#technicalDocLink": [
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/2"
+        }
+      ],
+      "https://firsteducore.org/ontology#cedsAlignment": [
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/credentials"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/competencies"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/workforce"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/assessments"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/learningResources"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/k12"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/postsecondary"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/cte"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/adultEd"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/earlyLearning"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/authN"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/implVars"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/facilities"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/open-badges-v3/engineering",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "engineering",
+      "https://firsteducore.org/ontology#level": "moderate",
+      "https://firsteducore.org/ontology#note": "4–8 weeks for issuer implementation; 2–3 weeks for verifier/displayer. Managed badge platforms reduce to 1–2 weeks."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/open-badges-v3/infrastructure",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "infrastructure",
+      "https://firsteducore.org/ontology#level": "moderate",
+      "https://firsteducore.org/ontology#note": "Issuers need key management for VC signing. Managed badge platforms (Badgr, Credly) handle infrastructure."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/open-badges-v3/legal",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "legal",
+      "https://firsteducore.org/ontology#level": "low",
+      "https://firsteducore.org/ontology#note": "Open standard. 1EdTech certification available but not required."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-rubric/open-badges-v3",
+      "@type": "https://firsteducore.org/ontology#BurdenRubric",
+      "https://firsteducore.org/ontology#timeline": "3–8 weeks depending on issuer vs. consumer role and managed vs. custom implementation",
+      "https://firsteducore.org/ontology#engineering": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/open-badges-v3/engineering"
+      },
+      "https://firsteducore.org/ontology#infrastructure": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/open-badges-v3/infrastructure"
+      },
+      "https://firsteducore.org/ontology#legal": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/open-badges-v3/legal"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#equity/open-badges-v3",
+      "@type": "https://firsteducore.org/ontology#EquityConsideration",
+      "https://firsteducore.org/ontology#level": "medium-concern",
+      "https://firsteducore.org/ontology#notes": "Badge UX must be accessible across devices and literacy levels. Visual badge design should meet WCAG standards. Wallet/sharing UX can be a barrier for low-digital-literacy populations. Consider QR code and paper-friendly fallbacks.",
+      "https://firsteducore.org/ontology#lifDerived": {
+        "@value": "true",
+        "@type": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#privacy/open-badges-v3",
+      "@type": "https://firsteducore.org/ontology#PrivacyConsideration",
+      "https://firsteducore.org/ontology#level": "medium-concern",
+      "https://firsteducore.org/ontology#notes": "Badges contain learner achievement data. Hosted badge verification can create tracking vectors. Learner consent required before public sharing. Revocation mechanisms needed for accuracy. FERPA considerations when badges are issued by educational institutions.",
+      "https://firsteducore.org/ontology#dataClassification": "credential-metadata",
+      "https://firsteducore.org/ontology#regulation": [
+        "FERPA (educational contexts)",
+        "GDPR (international)"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/open-badges-v3/0",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "1EdTech OB3 Conformance Suite",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/spec/ob/v3p0/cert"
+      },
+      "dcterms:description": "Official conformance testing tool for Open Badges 3.0 implementations."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/open-badges-v3/1",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "Badgr (open-source)",
+      "foaf:page": {
+        "@id": "https://github.com/concentricsky/badgr-server"
+      },
+      "dcterms:description": "Open-source badge issuing platform supporting OB3."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/0",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "Open Badges 3.0 Specification",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/spec/ob/v3p0"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/1",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "OB3 Implementation Guide",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/spec/ob/v3p0/impl"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/open-badges-v3/2",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "1EdTech Certification Program",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/certification"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/credentials",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/credentials"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "OB3 is a credential issuance standard. Full alignment with CEDS Credential entity including issuer, award status, and criteria.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "Credential",
+        "CredentialType",
+        "CredentialAwardedBy",
+        "CredentialAwardStatus"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/competencies",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/competencies"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Badges can reference competency definitions as achievement criteria but do not define competency frameworks themselves.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Competencies domain defines full framework structure; OB3 only references competencies.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CompetencyDefinition"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/workforce",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/workforce"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Workforce badges and micro-credentials exist as an OB3 use case. Badges can reference occupational alignments.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Workforce includes EmploymentRecord and WorkforceProgram — not modeled in OB3.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "SkillRequirement",
+        "OccupationalClassification"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/assessments",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/assessments"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Badge criteria can reference assessment results. OB3 does not model assessment structure (test, session, item).",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS models full assessment lifecycle; OB3 only records the resulting achievement.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AssessmentResult",
+        "AssessmentPerformanceLevel"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/learningResources",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/learningResources"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Badge criteria can link to learning resources. OB3 does not model CEDS LearningResource metadata fields.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "LearningResource"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/k12",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/k12"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "K–12 badges are a growing use case (e.g., digital merit badges, skill endorsements). Partial alignment with CEDS K12 academic records.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS K12 includes detailed enrollment, course, and attendance data beyond OB3 scope.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "K12StudentAcademicRecord"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/postsecondary",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/postsecondary"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "Higher ed micro-credentials and co-curricular badges are a primary OB3 use case. Strong alignment with CEDS postsecondary credential elements.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "PsDegreeOrCertificate",
+        "PsStudentAcademicRecord"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/cte",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/cte"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "CTE skill badges exist but OB3 is not CTE-native. Industry certification badges align with CEDS CTE industry alignment.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CTEProgram",
+        "CTEIndustryAlignment"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/adultEd",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/adultEd"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Adult learning badges are applicable for workforce development and continuing education contexts.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AdultEducationProgram"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/earlyLearning",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/earlyLearning"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "Not applicable in early learning context."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/authN",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/authN"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "OB3 uses W3C VC identity (DIDs) for issuer and holder identification. Partial alignment with CEDS person identity elements.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Auth models full system access and role management — OB3 only handles credential identity.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "PersonIdentifier"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/implVars",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/implVars"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Issuer identity and badge status registries partially align with CEDS Implementation Variables.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "ImplementationStatus",
+        "OrganizationIdentificationSystem"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/facilities",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "No overlap."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#spec/clr-v2",
+      "@type": "https://firsteducore.org/ontology#Specification",
+      "dcterms:identifier": "clr-v2",
+      "dcterms:title": "Comprehensive Learner Record (CLR) 2.0",
+      "dcterms:description": "1EdTech standard for comprehensive, portable learner achievement records. CLR 2.0 extends Open Badges 3.0 to aggregate multiple achievements, competencies, and experiences into a single verifiable record aligned with W3C Verifiable Credentials.",
+      "dcterms:type": "Standard",
+      "https://firsteducore.org/ontology#category": "Learner Records",
+      "https://firsteducore.org/ontology#owner": "1EdTech Consortium",
+      "https://firsteducore.org/ontology#governanceBody": "1EdTech Consortium",
+      "dcterms:modified": {
+        "@value": "2024-12-01",
+        "@type": "xsd:date"
+      },
+      "https://firsteducore.org/ontology#version": "2.0",
+      "https://firsteducore.org/ontology#accessLevel": "open",
+      "https://firsteducore.org/ontology#opennessStatus": "open",
+      "https://firsteducore.org/ontology#status": "approved",
+      "https://firsteducore.org/ontology#aiSummary": "Standard for aggregating achievements, badges, and competencies into a comprehensive, verifiable learner record. Use when building learner portfolios, transcript alternatives, or comprehensive credential packages.",
+      "https://firsteducore.org/ontology#aiUnlocksSummary": "Enables your product to create comprehensive, portable learner records that aggregate badges, credentials, competencies, and experiences into a single verifiable package. Unlocks holistic learner profiles, transcript modernization, competency-based record-keeping, and cross-institutional record portability — giving learners a complete, verifiable picture of their achievements.",
+      "https://firsteducore.org/ontology#aiTaxonomy": [
+        "learner-record",
+        "credential-aggregation",
+        "portable-record"
+      ],
+      "dcterms:subject": [
+        "CLR",
+        "comprehensive-learner-record",
+        "learner-record",
+        "1EdTech",
+        "verifiable-credentials",
+        "JSON-LD",
+        "portable-record"
+      ],
+      "https://firsteducore.org/ontology#implementationBurden": "high",
+      "https://firsteducore.org/ontology#implementationBurdenRationale": "CLR 2.0 builds on OB3 and W3C VC, requiring familiarity with both. Aggregating multiple credential types into a coherent record adds data modeling complexity. Managed platforms exist but full custom implementation is significant.",
+      "https://firsteducore.org/ontology#requiredCapability": [
+        "JSON-LD processing",
+        "W3C VC signing infrastructure",
+        "Credential aggregation pipeline",
+        "Learner consent UI",
+        "Open Badges 3.0 compatibility"
+      ],
+      "https://firsteducore.org/ontology#knownAdopter": [
+        "Western Governors University",
+        "AACRAO (Digital Connect)",
+        "Parchment",
+        "National Student Clearinghouse"
+      ],
+      "https://firsteducore.org/ontology#compatibilityNotes": "CLR 2.0 is a superset of Open Badges 3.0 — every OB3 badge can be included in a CLR. Both are built on W3C Verifiable Credentials. CTDL can describe CLR-issued credentials for registry transparency. CASE competency identifiers can be referenced in CLR achievement criteria. The entire LER stack fits together without conflicts.",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/standards/clr"
+      },
+      "https://firsteducore.org/ontology#authoritativeRepoUrl": {
+        "@id": "https://github.com/1EdTech/CLR-Specification"
+      },
+      "https://firsteducore.org/ontology#implementationGuidance": "Begin by implementing Open Badges 3.0 support first — CLR extends OB3. Start as a CLR consumer: accept and display CLR records from other issuers. Phase 2: aggregate your own badges/achievements into CLR records. Phase 3: implement full issuance with consent management and VC signing. Use 1EdTech conformance suite for validation.",
+      "https://firsteducore.org/ontology#commonlyPairedWith": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/case-v1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        }
+      ],
+      "https://firsteducore.org/ontology#relatedResource": [
+        {
+          "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/case-v1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        }
+      ],
+      "https://firsteducore.org/ontology#burdenRubric": {
+        "@id": "https://firsteducore.org/ontology#burden-rubric/clr-v2"
+      },
+      "https://firsteducore.org/ontology#equityConsiderations": {
+        "@id": "https://firsteducore.org/ontology#equity/clr-v2"
+      },
+      "https://firsteducore.org/ontology#privacyConsiderations": {
+        "@id": "https://firsteducore.org/ontology#privacy/clr-v2"
+      },
+      "https://firsteducore.org/ontology#referenceImplementation": [
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/clr-v2/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ref-impl/clr-v2/1"
+        }
+      ],
+      "https://firsteducore.org/ontology#technicalDocLink": [
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/0"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/1"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/2"
+        }
+      ],
+      "https://firsteducore.org/ontology#cedsAlignment": [
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/credentials"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/competencies"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/workforce"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/assessments"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/learningResources"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/k12"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/postsecondary"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/cte"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/adultEd"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/earlyLearning"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/authN"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/implVars"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/facilities"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/clr-v2/engineering",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "engineering",
+      "https://firsteducore.org/ontology#level": "high",
+      "https://firsteducore.org/ontology#note": "8–16 weeks for full issuer implementation. 4–6 weeks for consumer/viewer. Managed platforms reduce effort."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/clr-v2/infrastructure",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "infrastructure",
+      "https://firsteducore.org/ontology#level": "high",
+      "https://firsteducore.org/ontology#note": "Requires credential aggregation pipeline, W3C VC signing infrastructure, and learner consent management."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-dimension/clr-v2/legal",
+      "@type": "https://firsteducore.org/ontology#BurdenDimension",
+      "rdfs:label": "legal",
+      "https://firsteducore.org/ontology#level": "moderate",
+      "https://firsteducore.org/ontology#note": "Learner data aggregation requires consent management. FERPA compliance for educational institutions. 1EdTech certification available."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#burden-rubric/clr-v2",
+      "@type": "https://firsteducore.org/ontology#BurdenRubric",
+      "https://firsteducore.org/ontology#timeline": "3–6 months for full implementation; 6–8 weeks for consumer-only mode",
+      "https://firsteducore.org/ontology#engineering": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/clr-v2/engineering"
+      },
+      "https://firsteducore.org/ontology#infrastructure": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/clr-v2/infrastructure"
+      },
+      "https://firsteducore.org/ontology#legal": {
+        "@id": "https://firsteducore.org/ontology#burden-dimension/clr-v2/legal"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#equity/clr-v2",
+      "@type": "https://firsteducore.org/ontology#EquityConsideration",
+      "https://firsteducore.org/ontology#level": "medium-concern",
+      "https://firsteducore.org/ontology#notes": "CLR aggregation complexity can create a digital divide. Learners with fewer institutional touchpoints may have thinner CLR records, potentially disadvantaging them. Ensure CLR viewers present non-traditional achievements equitably. Wallet UX accessibility is critical.",
+      "https://firsteducore.org/ontology#lifDerived": {
+        "@value": "true",
+        "@type": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#privacy/clr-v2",
+      "@type": "https://firsteducore.org/ontology#PrivacyConsideration",
+      "https://firsteducore.org/ontology#level": "high-concern",
+      "https://firsteducore.org/ontology#notes": "CLR records aggregate comprehensive learner data including achievements, competencies, and institutional history. FERPA compliance mandatory for educational issuers. Learner consent required for each achievement included. Selective disclosure mechanisms (from W3C VC) should be implemented to let learners share only relevant portions.",
+      "https://firsteducore.org/ontology#dataClassification": "PII / educational-record",
+      "https://firsteducore.org/ontology#regulation": [
+        "FERPA",
+        "COPPA (under-13 contexts)",
+        "GDPR (international)",
+        "state privacy laws"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/clr-v2/0",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "1EdTech CLR Conformance Suite",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/spec/clr/v2p0/cert"
+      },
+      "dcterms:description": "Official conformance testing for CLR 2.0 implementations."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ref-impl/clr-v2/1",
+      "@type": "https://firsteducore.org/ontology#ReferenceImplementation",
+      "rdfs:label": "CLR Reference Implementation",
+      "foaf:page": {
+        "@id": "https://github.com/1EdTech/CLR-Reference"
+      },
+      "dcterms:description": "Reference implementation demonstrating CLR record creation and verification."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/0",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "CLR 2.0 Specification",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/spec/clr/v2p0"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/1",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "CLR Implementation Guide",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/spec/clr/v2p0/impl"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#doc-link/clr-v2/2",
+      "@type": "https://firsteducore.org/ontology#TechnicalDocLink",
+      "rdfs:label": "CLR & Open Badges Relationship",
+      "foaf:page": {
+        "@id": "https://www.1edtech.org/standards/clr"
+      }
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/credentials",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/credentials"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CLR aggregates credentials into comprehensive records. Full alignment with CEDS Credential entity including verification and award lifecycle.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "Credential",
+        "CredentialType",
+        "CredentialAwardedBy",
+        "CredentialAwardStatus",
+        "CredentialVerification"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/competencies",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/competencies"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CLR records carry competency evidence as first-class achievements. Competency references align with CEDS CompetencyDefinition and CompetencySet.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CompetencyDefinition",
+        "CompetencySet",
+        "LearningStandardItem"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/workforce",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/workforce"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CLR is designed for workforce mobility with comprehensive achievement records. Employment history and workforce credentials map to CEDS Workforce domain.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "WorkforceProgram",
+        "EmploymentRecord",
+        "OccupationalClassification"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/assessments",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/assessments"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "CLR can carry assessment outcomes as achievements but does not model assessment event structure.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS models assessment sessions, items, and accommodations — CLR only records outcomes.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AssessmentResult",
+        "AssessmentPerformanceLevel"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/learningResources",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/learningResources"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "CLR references learning experiences but does not model resource metadata at the CEDS level of detail.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "LearningResource"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/k12",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/k12"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "K–12 transcript alternative is a CLR use case but adoption is still developing. Partial alignment with CEDS K12 academic records.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS K12 includes detailed attendance, discipline, and special education data beyond CLR scope.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "K12StudentAcademicRecord",
+        "K12CourseSection"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/postsecondary",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/postsecondary"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "Postsecondary comprehensive records are a primary CLR use case. Strong alignment with CEDS postsecondary academic record and credential elements.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "PsStudentAcademicRecord",
+        "PsProgram",
+        "PsDegreeOrCertificate"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/cte",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/cte"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "full",
+      "https://firsteducore.org/ontology#notes": "CTE pathway completion records align well with CLR. Industry certifications and program completions map to CEDS CTE domain.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "CTEProgram",
+        "CTEIndustryAlignment",
+        "CTEOccupationalCluster"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/adultEd",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/adultEd"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Adult learner records can use CLR for credential aggregation. Partial alignment with CEDS adult education program elements.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "AdultEducationProgram",
+        "AdultEducationEnrollment"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/earlyLearning",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/earlyLearning"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "CLR is not designed for early childhood records.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented in CLR."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/authN",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/authN"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "CLR uses W3C VC identity infrastructure (DIDs) for issuer and holder identification. Consent management aligns with CEDS authorization concepts.",
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Auth models full system access and role management beyond CLR identity scope.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "PersonIdentifier",
+        "AuthorizationDocument"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/implVars",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/implVars"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "partial",
+      "https://firsteducore.org/ontology#notes": "Organization identifiers and credential status registries partially align with CEDS Implementation Variables.",
+      "https://firsteducore.org/ontology#cedsElement": [
+        "ImplementationStatus",
+        "OrganizationIdentificationSystem"
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/facilities",
+      "@type": "https://firsteducore.org/ontology#CedsAlignment",
+      "https://firsteducore.org/ontology#specification": {
+        "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+      },
+      "https://firsteducore.org/ontology#cedsDomain": {
+        "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
+      },
+      "https://firsteducore.org/ontology#alignmentStatus": "gap",
+      "https://firsteducore.org/ontology#notes": "No overlap."
+    }
+  ]
+}
