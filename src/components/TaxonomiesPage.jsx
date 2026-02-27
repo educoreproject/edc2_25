@@ -406,8 +406,54 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
   // AI Interoperability Mapper state
   const [aiQuery, setAiQuery] = useState('');
   const [aiResponse, setAiResponse] = useState('');
+  const [aiSources, setAiSources] = useState([]); // parsed ontology URIs cited
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState('');
+
+  // Fetch and condense the ontology for the AI context
+  const fetchOntologyContext = async () => {
+    const res = await fetch('/ontology.jsonld');
+    if (!res.ok) return null;
+    const data = await res.json();
+    const graph = data['@graph'] || [];
+
+    const BASE = 'https://firsteducore.org/ontology#';
+    const getVal = (node, key) => node[key] ?? node[BASE + key] ?? '';
+    const getStr = (node, key) => { const v = getVal(node, key); return typeof v === 'string' ? v : v?.['@value'] ?? ''; };
+    const getArr = (node, key) => { const v = getVal(node, key); return Array.isArray(v) ? v : v ? [v] : []; };
+
+    // Extract specs
+    const specs = graph.filter(n => n['@type']?.endsWith('Specification')).map(n => ({
+      uri: n['@id'],
+      title: n['dcterms:title'] || '',
+      category: getStr(n, 'category'),
+      owner: getStr(n, 'owner'),
+      burden: getStr(n, 'implementationBurden'),
+      aiSummary: getStr(n, 'aiSummary'),
+      compatibilityNotes: getStr(n, 'compatibilityNotes'),
+      guidance: getStr(n, 'implementationGuidance'),
+      pairedWith: getArr(n, 'commonlyPairedWith').map(r => r['@id'] || r),
+      page: n['foaf:page']?.['@id'] || '',
+    }));
+
+    // Extract CEDS domains
+    const domains = graph.filter(n => n['@type']?.endsWith('CedsDomain')).map(n => ({
+      uri: n['@id'],
+      label: n['rdfs:label'] || '',
+    }));
+
+    // Extract alignments
+    const alignments = graph.filter(n => n['@type']?.endsWith('CedsAlignment')).map(n => ({
+      uri: n['@id'],
+      spec: getVal(n, 'specification')?.['@id'] || '',
+      domain: getVal(n, 'cedsDomain')?.['@id'] || '',
+      status: getStr(n, 'alignmentStatus'),
+      notes: getStr(n, 'notes'),
+      elements: getArr(n, 'cedsElement'),
+    }));
+
+    return { specs, domains, alignments };
+  };
 
   const handleAiSubmit = async () => {
     if (!aiQuery.trim()) return;
@@ -421,8 +467,22 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
     setAiLoading(true);
     setAiError('');
     setAiResponse('');
+    setAiSources([]);
 
     try {
+      // Fetch the ontology to include as grounding context
+      const ontology = await fetchOntologyContext();
+
+      const ontologyContext = ontology
+        ? `\n\nYou have access to the EDU Reference Library ontology (JSON-LD at https://firsteducore.org/ontology). Use it to ground your answer.\n\n## Specifications in the ontology:\n${ontology.specs.map(s =>
+            `- **${s.title}** (${s.uri})\n  Category: ${s.category} | Owner: ${s.owner} | Burden: ${s.burden}\n  Summary: ${s.aiSummary}\n  Guidance: ${s.guidance}\n  Compatibility: ${s.compatibilityNotes}\n  Paired with: ${s.pairedWith.join(', ')}\n  Spec page: ${s.page}`
+          ).join('\n')}\n\n## CEDS Domains:\n${ontology.domains.map(d => `- ${d.label} (${d.uri})`).join('\n')}\n\n## CEDS Alignment Triples (spec → domain → status):\n${ontology.alignments.map(a => `- ${a.spec} → ${a.domain} = ${a.status}${a.notes ? ': ' + a.notes : ''}${a.elements.length ? ' [elements: ' + a.elements.join(', ') + ']' : ''}`).join('\n')}`
+        : '';
+
+      const systemPrompt = `Using only final interoperability specifications from 1edtech, A4L, IEEE, create a user friendly response to this question that includes links to the technical specification and some implementation steps.
+
+IMPORTANT: Your answer must be grounded in the EDU Reference Library ontology provided below. At the end of your response, include a section titled "## Ontology Resources Used" that lists every educore: URI from the ontology that you referenced in your answer, one per line, formatted as: \`<URI>\`. Only list URIs that actually exist in the ontology data provided.${ontologyContext}`;
+
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -432,10 +492,7 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
         body: JSON.stringify({
           model: 'gpt-4o',
           messages: [
-            {
-              role: 'system',
-              content: 'Using only final interoperability specifications from 1edtech, A4L, IEEE, create a user friendly response to this question that includes links to the technical specification and some implementation steps',
-            },
+            { role: 'system', content: systemPrompt },
             { role: 'user', content: aiQuery },
           ],
         }),
@@ -447,7 +504,37 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
       }
 
       const data = await res.json();
-      setAiResponse(data.choices?.[0]?.message?.content || 'No response received.');
+      const fullResponse = data.choices?.[0]?.message?.content || 'No response received.';
+
+      // Parse out the "Ontology Resources Used" section and extract URIs
+      const sourceSplit = fullResponse.split(/## Ontology Resources Used/i);
+      const mainResponse = sourceSplit[0].trim();
+      const sourcesSection = sourceSplit[1] || '';
+
+      // Extract URIs from backtick-wrapped or bare URIs
+      const uriPattern = /`?(https:\/\/firsteducore\.org\/ontology#[^\s`]+)`?/g;
+      const foundUris = [];
+      let match;
+      while ((match = uriPattern.exec(sourcesSection)) !== null) {
+        foundUris.push(match[1]);
+      }
+
+      // Enrich URIs with labels from ontology
+      const enrichedSources = foundUris.map(uri => {
+        if (!ontology) return { uri, label: uri };
+        const spec = ontology.specs.find(s => s.uri === uri);
+        if (spec) return { uri, label: spec.title, type: 'Specification' };
+        const domain = ontology.domains.find(d => d.uri === uri);
+        if (domain) return { uri, label: domain.label, type: 'CEDS Domain' };
+        const alignment = ontology.alignments.find(a => a.uri === uri);
+        if (alignment) return { uri, label: `${alignment.status} alignment`, type: 'CEDS Alignment', status: alignment.status };
+        // Fallback: show the local name
+        const localName = uri.replace('https://firsteducore.org/ontology#', '');
+        return { uri, label: localName, type: 'Resource' };
+      });
+
+      setAiResponse(mainResponse);
+      setAiSources(enrichedSources);
     } catch (err) {
       setAiError(err.message || 'An unexpected error occurred.');
     } finally {
@@ -553,7 +640,7 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
           </button>
           {aiQuery.trim() && !aiLoading && (
             <button
-              onClick={() => { setAiQuery(''); setAiResponse(''); setAiError(''); }}
+              onClick={() => { setAiQuery(''); setAiResponse(''); setAiError(''); setAiSources([]); }}
               className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
             >
               Clear
@@ -568,18 +655,68 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
         )}
 
         {aiResponse && (
-          <div className="mt-4 bg-white border border-gray-200 rounded-xl px-5 py-4 shadow-sm prose prose-sm prose-indigo max-w-none">
-            <ReactMarkdown
-              components={{
-                a: ({ children, ...props }) => (
-                  <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-800 underline">
-                    {children}
+          <div className="mt-4 space-y-3">
+            <div className="bg-white border border-gray-200 rounded-xl px-5 py-4 shadow-sm prose prose-sm prose-indigo max-w-none">
+              <ReactMarkdown
+                components={{
+                  a: ({ children, ...props }) => (
+                    <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-800 underline">
+                      {children}
+                    </a>
+                  ),
+                }}
+              >
+                {aiResponse}
+              </ReactMarkdown>
+            </div>
+
+            {/* Ontology Sources Panel */}
+            {aiSources.length > 0 && (
+              <div className="bg-indigo-50/50 border border-indigo-200/60 rounded-xl px-5 py-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-5 h-5 bg-indigo-600 rounded flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-2.04a4.5 4.5 0 00-1.242-7.244l-4.5-4.5a4.5 4.5 0 00-6.364 6.364L4.34 8.798" />
+                    </svg>
+                  </div>
+                  <div className="text-xs font-semibold text-indigo-800 uppercase tracking-wider">
+                    Ontology Resources Used ({aiSources.length})
+                  </div>
+                  <a
+                    href="/ontology.jsonld"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-auto text-[10px] text-indigo-500 hover:text-indigo-700 font-medium transition-colors"
+                  >
+                    View full JSON-LD
                   </a>
-                ),
-              }}
-            >
-              {aiResponse}
-            </ReactMarkdown>
+                </div>
+                <div className="space-y-1.5">
+                  {aiSources.map((source, i) => (
+                    <div key={i} className="flex items-center gap-2 bg-white rounded-lg border border-indigo-100 px-3 py-2">
+                      <span className={`text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded border flex-shrink-0
+                        ${source.type === 'Specification' ? 'bg-indigo-50 text-indigo-600 border-indigo-200'
+                          : source.type === 'CEDS Domain' ? 'bg-sky-50 text-sky-600 border-sky-200'
+                          : source.type === 'CEDS Alignment' ? (
+                              source.status === 'full' ? 'bg-emerald-50 text-emerald-600 border-emerald-200'
+                              : source.status === 'partial' ? 'bg-amber-50 text-amber-600 border-amber-200'
+                              : 'bg-gray-50 text-gray-600 border-gray-200')
+                          : 'bg-gray-50 text-gray-600 border-gray-200'}`}
+                      >
+                        {source.type}
+                      </span>
+                      <span className="text-sm font-medium text-gray-800">{source.label}</span>
+                      <code className="ml-auto text-[10px] text-gray-400 font-mono truncate max-w-xs hidden sm:block">
+                        {source.uri.replace('https://firsteducore.org/ontology#', 'educore:')}
+                      </code>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[10px] text-indigo-400 mt-2">
+                  These RDF resources from the EDU ontology were used to ground this response. URIs resolve to <code>ontology.jsonld</code>.
+                </p>
+              </div>
+            )}
           </div>
         )}
       </div>
