@@ -80,7 +80,7 @@ export default function App() {
         onClearSelection={() => setSelectedEntryId(null)}
       />
     ),
-    standards: <StandardsPage />,
+    standards: <StandardsPage onNavigateToEntry={handleNavigateToEntry} />,
     partners: <PartnersPage />,
     ceds: <CedsAlignmentPage onNavigateToEntry={handleNavigateToEntry} />,
     taxonomies: <TaxonomiesPage onNavigateToEntry={handleNavigateToEntry} />,
