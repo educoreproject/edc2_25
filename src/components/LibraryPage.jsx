@@ -180,8 +180,23 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
     setAiSources([]);
 
     try {
+      console.group('%c[EDU AI] Interoperability Mapping Request', 'color: #4f46e5; font-weight: bold');
+      console.log('%cUser query:', 'font-weight: bold', aiQuery);
+
+      console.log('%c[1/4] Fetching ontology (ontology.jsonld)…', 'color: #6366f1');
       const ontology = await fetchOntologyContext();
+      if (ontology) {
+        console.log('%c[1/4] Ontology loaded:', 'color: #16a34a',
+          `${ontology.specs.length} specs, ${ontology.domains.length} CEDS domains, ${ontology.alignments.length} alignment triples`);
+        console.table(ontology.specs.map(s => ({ title: s.title, uri: s.uri, burden: s.burden, category: s.category })));
+        console.table(ontology.domains.map(d => ({ label: d.label, uri: d.uri })));
+      } else {
+        console.warn('%c[1/4] Ontology fetch failed — proceeding without RDF context', 'color: #dc2626');
+      }
+
+      console.log('%c[2/4] Building stakeholder & use case context…', 'color: #6366f1');
       const { stakeholders, useCases } = buildStakeholderContext();
+      console.log(`  ${stakeholders.length} stakeholders, ${useCases.length} use cases`);
 
       const ontologyContext = ontology
         ? `\n\nYou have access to the EDU Reference Library ontology (JSON-LD at https://firsteducore.org/ontology). Use it to ground your answer.\n\n## Specifications in the ontology:\n${ontology.specs.map(s =>
@@ -211,6 +226,13 @@ List every educore: URI you referenced, one per line, formatted as: \`<URI>\`
 \`\`\`
 Choose the stakeholder IDs and use case IDs from the lists below that are MOST RELEVANT to the user's question. Select only the ones that directly apply.${ontologyContext}${stakeholderContext}`;
 
+      console.log('%c[3/4] System prompt assembled', 'color: #6366f1', `(${systemPrompt.length} chars)`);
+      console.groupCollapsed('Full system prompt');
+      console.log(systemPrompt);
+      console.groupEnd();
+
+      console.log('%c[4/4] Sending to OpenAI (gpt-4o)…', 'color: #6366f1');
+
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -233,6 +255,12 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
 
       const data = await res.json();
       const fullResponse = data.choices?.[0]?.message?.content || 'No response received.';
+
+      console.log('%cResponse received', 'color: #16a34a; font-weight: bold',
+        `(${data.usage?.total_tokens || '?'} tokens)`);
+      console.groupCollapsed('Full AI response (raw)');
+      console.log(fullResponse);
+      console.groupEnd();
 
       const sourceSplit = fullResponse.split(/## Ontology Resources Used/i);
       const mainResponse = sourceSplit[0].trim();
@@ -294,6 +322,13 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
         return { uri, label: localName, type: 'Resource' };
       });
 
+      console.log('%cOntology URIs extracted:', 'color: #6366f1; font-weight: bold', foundUris.length);
+      if (foundUris.length > 0) {
+        console.table(enrichedSources.map(s => ({ type: s.type, label: s.label, uri: s.uri.replace('https://firsteducore.org/ontology#', 'educore:') })));
+      } else {
+        console.warn('No ontology URIs found in response — sources panel will be empty');
+      }
+
       setAiResponse(mainResponse);
       setAiSources(enrichedSources);
 
@@ -304,14 +339,21 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
           const sIds = activated.stakeholderIds || [];
           const ucIds = activated.useCaseIds || [];
 
+          console.log('%cActivated context:', 'color: #6366f1; font-weight: bold',
+            { stakeholderIds: sIds, useCaseIds: ucIds });
+
           if (sIds.length > 0 || ucIds.length > 0) {
             onActivateNeeds?.(sIds, ucIds);
           }
         } catch (_) {
-          // JSON parse failed — silently skip auto-activation
+          console.warn('Failed to parse activated context JSON');
         }
       }
+
+      console.groupEnd(); // close [EDU AI] group
     } catch (err) {
+      console.error('%c[EDU AI] Error:', 'color: #dc2626', err.message);
+      console.groupEnd();
       setAiError(err.message || 'An unexpected error occurred.');
     } finally {
       setAiLoading(false);
