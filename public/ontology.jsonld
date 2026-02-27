@@ -239,7 +239,7 @@
       "@type": "https://firsteducore.org/ontology#BurdenDimension",
       "rdfs:label": "engineering",
       "https://firsteducore.org/ontology#level": "moderate",
-      "https://firsteducore.org/ontology#note": "4–8 weeks to align an existing system to the LER architecture. Longer if building W3C VC infrastructure from scratch."
+      "https://firsteducore.org/ontology#note": "Aligning an existing system to the LER architecture requires moderate effort. Higher if building W3C VC infrastructure from scratch."
     },
     {
       "@id": "https://firsteducore.org/ontology#burden-dimension/lrw-competency-framework/infrastructure",
@@ -258,7 +258,7 @@
     {
       "@id": "https://firsteducore.org/ontology#burden-rubric/lrw-competency-framework",
       "@type": "https://firsteducore.org/ontology#BurdenRubric",
-      "https://firsteducore.org/ontology#timeline": "4–12 weeks depending on ecosystem role and existing infrastructure",
+      "https://firsteducore.org/ontology#timeline": null,
       "https://firsteducore.org/ontology#engineering": {
         "@id": "https://firsteducore.org/ontology#burden-dimension/lrw-competency-framework/engineering"
       },
@@ -671,7 +671,7 @@
       "@type": "https://firsteducore.org/ontology#BurdenDimension",
       "rdfs:label": "engineering",
       "https://firsteducore.org/ontology#level": "moderate",
-      "https://firsteducore.org/ontology#note": "3–6 weeks for consumer integration; 6–10 weeks to publish frameworks via the API."
+      "https://firsteducore.org/ontology#note": "Consumer integration is straightforward; publishing frameworks via the API requires more significant modeling effort."
     },
     {
       "@id": "https://firsteducore.org/ontology#burden-dimension/case-v1/infrastructure",
@@ -690,7 +690,7 @@
     {
       "@id": "https://firsteducore.org/ontology#burden-rubric/case-v1",
       "@type": "https://firsteducore.org/ontology#BurdenRubric",
-      "https://firsteducore.org/ontology#timeline": "4–10 weeks depending on consumer vs. publisher role",
+      "https://firsteducore.org/ontology#timeline": null,
       "https://firsteducore.org/ontology#engineering": {
         "@id": "https://firsteducore.org/ontology#burden-dimension/case-v1/engineering"
       },
@@ -1101,7 +1101,7 @@
       "@type": "https://firsteducore.org/ontology#BurdenDimension",
       "rdfs:label": "engineering",
       "https://firsteducore.org/ontology#level": "moderate",
-      "https://firsteducore.org/ontology#note": "4–8 weeks to model and publish credentials in CTDL. 2–4 weeks for consumer/search integration via Registry API."
+      "https://firsteducore.org/ontology#note": "Modeling and publishing credentials in CTDL requires moderate effort. Consumer/search integration via Registry API is lighter."
     },
     {
       "@id": "https://firsteducore.org/ontology#burden-dimension/ctdl/infrastructure",
@@ -1120,7 +1120,7 @@
     {
       "@id": "https://firsteducore.org/ontology#burden-rubric/ctdl",
       "@type": "https://firsteducore.org/ontology#BurdenRubric",
-      "https://firsteducore.org/ontology#timeline": "4–8 weeks for publishing; 2–4 weeks for consuming Registry data",
+      "https://firsteducore.org/ontology#timeline": null,
       "https://firsteducore.org/ontology#engineering": {
         "@id": "https://firsteducore.org/ontology#burden-dimension/ctdl/engineering"
       },
@@ -1540,7 +1540,7 @@
       "@type": "https://firsteducore.org/ontology#BurdenDimension",
       "rdfs:label": "engineering",
       "https://firsteducore.org/ontology#level": "moderate",
-      "https://firsteducore.org/ontology#note": "4–8 weeks for issuer implementation; 2–3 weeks for verifier/displayer. Managed badge platforms reduce to 1–2 weeks."
+      "https://firsteducore.org/ontology#note": "Issuer implementation requires moderate effort; verifier/displayer is lighter. Managed badge platforms significantly reduce engineering burden."
     },
     {
       "@id": "https://firsteducore.org/ontology#burden-dimension/open-badges-v3/infrastructure",
@@ -1559,7 +1559,7 @@
     {
       "@id": "https://firsteducore.org/ontology#burden-rubric/open-badges-v3",
       "@type": "https://firsteducore.org/ontology#BurdenRubric",
-      "https://firsteducore.org/ontology#timeline": "3–8 weeks depending on issuer vs. consumer role and managed vs. custom implementation",
+      "https://firsteducore.org/ontology#timeline": null,
       "https://firsteducore.org/ontology#engineering": {
         "@id": "https://firsteducore.org/ontology#burden-dimension/open-badges-v3/engineering"
       },
@@ -1967,7 +1967,7 @@
       "@type": "https://firsteducore.org/ontology#BurdenDimension",
       "rdfs:label": "engineering",
       "https://firsteducore.org/ontology#level": "high",
-      "https://firsteducore.org/ontology#note": "8–16 weeks for full issuer implementation. 4–6 weeks for consumer/viewer. Managed platforms reduce effort."
+      "https://firsteducore.org/ontology#note": "Full issuer implementation is a significant engineering effort. Consumer/viewer integration is more moderate. Managed platforms reduce effort."
     },
     {
       "@id": "https://firsteducore.org/ontology#burden-dimension/clr-v2/infrastructure",
@@ -1986,7 +1986,7 @@
     {
       "@id": "https://firsteducore.org/ontology#burden-rubric/clr-v2",
       "@type": "https://firsteducore.org/ontology#BurdenRubric",
-      "https://firsteducore.org/ontology#timeline": "3–6 months for full implementation; 6–8 weeks for consumer-only mode",
+      "https://firsteducore.org/ontology#timeline": null,
       "https://firsteducore.org/ontology#engineering": {
         "@id": "https://firsteducore.org/ontology#burden-dimension/clr-v2/engineering"
       },
