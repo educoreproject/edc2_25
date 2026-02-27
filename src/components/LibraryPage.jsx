@@ -242,11 +242,44 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
       const sourcesSection = contextSplit[0] || '';
       const activatedSection = contextSplit[1] || '';
 
-      const uriPattern = /`?(https:\/\/firsteducore\.org\/ontology#[^\s`]+)`?/g;
+      // Match full URIs or educore: shorthand
+      const fullUriPattern = /`?(https:\/\/firsteducore\.org\/ontology#[^\s`<>)]+)`?/g;
+      const shortPattern = /`?educore:([^\s`<>)]+)`?/g;
       const foundUris = [];
       let match;
-      while ((match = uriPattern.exec(sourcesSection)) !== null) {
+      while ((match = fullUriPattern.exec(sourcesSection)) !== null) {
         foundUris.push(match[1]);
+      }
+      while ((match = shortPattern.exec(sourcesSection)) !== null) {
+        const expanded = `https://firsteducore.org/ontology#${match[1]}`;
+        if (!foundUris.includes(expanded)) foundUris.push(expanded);
+      }
+
+      // If no URIs found in the sources section, scan the main response too
+      if (foundUris.length === 0) {
+        const fullScan = /`?(https:\/\/firsteducore\.org\/ontology#[^\s`<>)]+)`?/g;
+        const shortScan = /`?educore:([^\s`<>)]+)`?/g;
+        while ((match = fullScan.exec(fullResponse)) !== null) {
+          if (!foundUris.includes(match[1])) foundUris.push(match[1]);
+        }
+        while ((match = shortScan.exec(fullResponse)) !== null) {
+          const expanded = `https://firsteducore.org/ontology#${match[1]}`;
+          if (!foundUris.includes(expanded)) foundUris.push(expanded);
+        }
+      }
+
+      // Last resort: match spec names from ontology against the main response text
+      if (foundUris.length === 0 && ontology) {
+        for (const spec of ontology.specs) {
+          if (mainResponse.includes(spec.title)) {
+            foundUris.push(spec.uri);
+          }
+        }
+        for (const domain of ontology.domains) {
+          if (mainResponse.includes(domain.label)) {
+            foundUris.push(domain.uri);
+          }
+        }
       }
 
       const enrichedSources = foundUris.map(uri => {
