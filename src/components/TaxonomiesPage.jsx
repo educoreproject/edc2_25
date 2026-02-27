@@ -2,8 +2,7 @@
 // Displays three taxonomies: Stakeholders, Technical Resources & Standards,
 // and Use Cases mapped to CEDS RDF.
 
-import { useState, useMemo } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { useState, useMemo, useEffect } from 'react';
 import {
   stakeholderTaxonomy,
   technicalResourcesTaxonomy,
@@ -396,90 +395,17 @@ function UseCaseCard({ useCase, searchQuery, selectedNeeds, onToggleNeed }) {
   );
 }
 
-export default function TaxonomiesPage({ onNavigateToEntry }) {
+export default function TaxonomiesPage({ onNavigateToEntry, pendingActivation, onClearActivation }) {
   const [activeTab, setActiveTab] = useState('stakeholders');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedNeeds, setSelectedNeeds] = useState(new Map());
   const [showExplainers, setShowExplainers] = useState(true);
   const [showRoadmap, setShowRoadmap] = useState(false);
 
-  // AI Interoperability Mapper state
-  const [aiQuery, setAiQuery] = useState('');
-  const [aiResponse, setAiResponse] = useState('');
-  const [aiSources, setAiSources] = useState([]); // parsed ontology URIs cited
-  const [aiLoading, setAiLoading] = useState(false);
-  const [aiError, setAiError] = useState('');
-
-  // Fetch and condense the ontology for the AI context
-  const fetchOntologyContext = async () => {
-    const res = await fetch('/ontology.jsonld');
-    if (!res.ok) return null;
-    const data = await res.json();
-    const graph = data['@graph'] || [];
-
-    const BASE = 'https://firsteducore.org/ontology#';
-    const getVal = (node, key) => node[key] ?? node[BASE + key] ?? '';
-    const getStr = (node, key) => { const v = getVal(node, key); return typeof v === 'string' ? v : v?.['@value'] ?? ''; };
-    const getArr = (node, key) => { const v = getVal(node, key); return Array.isArray(v) ? v : v ? [v] : []; };
-
-    // Extract specs
-    const specs = graph.filter(n => n['@type']?.endsWith('Specification')).map(n => ({
-      uri: n['@id'],
-      title: n['dcterms:title'] || '',
-      category: getStr(n, 'category'),
-      owner: getStr(n, 'owner'),
-      burden: getStr(n, 'implementationBurden'),
-      aiSummary: getStr(n, 'aiSummary'),
-      compatibilityNotes: getStr(n, 'compatibilityNotes'),
-      guidance: getStr(n, 'implementationGuidance'),
-      pairedWith: getArr(n, 'commonlyPairedWith').map(r => r['@id'] || r),
-      page: n['foaf:page']?.['@id'] || '',
-    }));
-
-    // Extract CEDS domains
-    const domains = graph.filter(n => n['@type']?.endsWith('CedsDomain')).map(n => ({
-      uri: n['@id'],
-      label: n['rdfs:label'] || '',
-    }));
-
-    // Extract alignments
-    const alignments = graph.filter(n => n['@type']?.endsWith('CedsAlignment')).map(n => ({
-      uri: n['@id'],
-      spec: getVal(n, 'specification')?.['@id'] || '',
-      domain: getVal(n, 'cedsDomain')?.['@id'] || '',
-      status: getStr(n, 'alignmentStatus'),
-      notes: getStr(n, 'notes'),
-      elements: getArr(n, 'cedsElement'),
-    }));
-
-    return { specs, domains, alignments };
-  };
-
-  // Build context about stakeholders and use cases for AI to reference
-  const buildStakeholderContext = () => {
-    const stakeholders = stakeholderTaxonomy.flatMap(group =>
-      group.children.map(child => ({
-        id: child.id,
-        label: child.label,
-        group: group.label,
-        needs: child.businessNeeds,
-      }))
-    );
-    const useCases = useCasesCedsRdf.map(uc => ({
-      id: uc.id,
-      label: uc.label,
-      stakeholders: uc.stakeholders,
-      businessNeeds: uc.businessNeeds,
-      cedsDomains: uc.cedsDomains,
-    }));
-    return { stakeholders, useCases };
-  };
-
   // Auto-select business needs by stakeholder IDs and use case IDs
   const autoSelectNeeds = (stakeholderIds, useCaseIds) => {
     const next = new Map();
 
-    // Select stakeholder business needs
     for (const sId of stakeholderIds) {
       for (const group of stakeholderTaxonomy) {
         const child = group.children.find(c => c.id === sId);
@@ -492,7 +418,6 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
       }
     }
 
-    // Select use case business needs
     for (const ucId of useCaseIds) {
       const uc = useCasesCedsRdf.find(u => u.id === ucId);
       if (uc) {
@@ -506,133 +431,16 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
     return next;
   };
 
-  const handleAiSubmit = async () => {
-    if (!aiQuery.trim()) return;
-
-    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-    if (!apiKey) {
-      setAiError('OpenAI API key not configured. Set VITE_OPENAI_API_KEY in your environment.');
-      return;
+  // Handle pending activation from the AI on the Standards page
+  useEffect(() => {
+    if (pendingActivation) {
+      const { stakeholderIds, useCaseIds } = pendingActivation;
+      const autoSelected = autoSelectNeeds(stakeholderIds, useCaseIds);
+      setSelectedNeeds(autoSelected);
+      setShowRoadmap(true);
+      onClearActivation?.();
     }
-
-    setAiLoading(true);
-    setAiError('');
-    setAiResponse('');
-    setAiSources([]);
-
-    try {
-      // Fetch the ontology to include as grounding context
-      const ontology = await fetchOntologyContext();
-      const { stakeholders, useCases } = buildStakeholderContext();
-
-      const ontologyContext = ontology
-        ? `\n\nYou have access to the EDU Reference Library ontology (JSON-LD at https://firsteducore.org/ontology). Use it to ground your answer.\n\n## Specifications in the ontology:\n${ontology.specs.map(s =>
-            `- **${s.title}** (${s.uri})\n  Category: ${s.category} | Owner: ${s.owner} | Burden: ${s.burden}\n  Summary: ${s.aiSummary}\n  Compatibility: ${s.compatibilityNotes}\n  Paired with: ${s.pairedWith.join(', ')}\n  Spec page: ${s.page}`
-          ).join('\n')}\n\n## CEDS Domains:\n${ontology.domains.map(d => `- ${d.label} (${d.uri})`).join('\n')}\n\n## CEDS Alignment Triples (spec → domain → status):\n${ontology.alignments.map(a => `- ${a.spec} → ${a.domain} = ${a.status}${a.notes ? ': ' + a.notes : ''}${a.elements.length ? ' [elements: ' + a.elements.join(', ') + ']' : ''}`).join('\n')}`
-        : '';
-
-      const stakeholderContext = `\n\n## Available Stakeholders (use these exact IDs):\n${stakeholders.map(s => `- id: "${s.id}" | ${s.label} (${s.group})`).join('\n')}\n\n## Available Use Cases (use these exact IDs):\n${useCases.map(uc => `- id: "${uc.id}" | ${uc.label} | CEDS domains: ${uc.cedsDomains.join(', ')} | stakeholders: ${uc.stakeholders.join(', ')}`).join('\n')}`;
-
-      const systemPrompt = `You are the EDU Reference Library AI assistant. Answer interoperability questions using the ontology data below.
-
-RESPONSE FORMAT RULES:
-1. Keep your answer BRIEF — 2-4 short paragraphs maximum. Focus on WHICH specifications are needed and WHY, not detailed implementation steps.
-2. For each specification you recommend, mention its implementation burden level (low/medium/high).
-3. Include links to the technical specification pages.
-4. At the end of your response, include TWO structured sections:
-
-## Ontology Resources Used
-List every educore: URI you referenced, one per line, formatted as: \`<URI>\`
-
-## Activated Context
-\`\`\`json
-{
-  "stakeholderIds": ["id1", "id2"],
-  "useCaseIds": ["uc-id1", "uc-id2"]
-}
-\`\`\`
-Choose the stakeholder IDs and use case IDs from the lists below that are MOST RELEVANT to the user's question. Select only the ones that directly apply.${ontologyContext}${stakeholderContext}`;
-
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o',
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: aiQuery },
-          ],
-        }),
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.error?.message || `API request failed (${res.status})`);
-      }
-
-      const data = await res.json();
-      const fullResponse = data.choices?.[0]?.message?.content || 'No response received.';
-
-      // Parse out the "Ontology Resources Used" section
-      const sourceSplit = fullResponse.split(/## Ontology Resources Used/i);
-      const mainResponse = sourceSplit[0].trim();
-      const afterMain = sourceSplit[1] || '';
-
-      // Split off the "Activated Context" section
-      const contextSplit = afterMain.split(/## Activated Context/i);
-      const sourcesSection = contextSplit[0] || '';
-      const activatedSection = contextSplit[1] || '';
-
-      // Extract ontology URIs
-      const uriPattern = /`?(https:\/\/firsteducore\.org\/ontology#[^\s`]+)`?/g;
-      const foundUris = [];
-      let match;
-      while ((match = uriPattern.exec(sourcesSection)) !== null) {
-        foundUris.push(match[1]);
-      }
-
-      // Enrich URIs with labels from ontology
-      const enrichedSources = foundUris.map(uri => {
-        if (!ontology) return { uri, label: uri };
-        const spec = ontology.specs.find(s => s.uri === uri);
-        if (spec) return { uri, label: spec.title, type: 'Specification' };
-        const domain = ontology.domains.find(d => d.uri === uri);
-        if (domain) return { uri, label: domain.label, type: 'CEDS Domain' };
-        const alignment = ontology.alignments.find(a => a.uri === uri);
-        if (alignment) return { uri, label: `${alignment.status} alignment`, type: 'CEDS Alignment', status: alignment.status };
-        const localName = uri.replace('https://firsteducore.org/ontology#', '');
-        return { uri, label: localName, type: 'Resource' };
-      });
-
-      setAiResponse(mainResponse);
-      setAiSources(enrichedSources);
-
-      // Parse the activated context JSON and auto-select business needs
-      const jsonMatch = activatedSection.match(/```json\s*([\s\S]*?)```/);
-      if (jsonMatch) {
-        try {
-          const activated = JSON.parse(jsonMatch[1]);
-          const sIds = activated.stakeholderIds || [];
-          const ucIds = activated.useCaseIds || [];
-
-          if (sIds.length > 0 || ucIds.length > 0) {
-            const autoSelected = autoSelectNeeds(sIds, ucIds);
-            setSelectedNeeds(autoSelected);
-            setShowRoadmap(true);
-          }
-        } catch (_) {
-          // JSON parse failed — silently skip auto-activation
-        }
-      }
-    } catch (err) {
-      setAiError(err.message || 'An unexpected error occurred.');
-    } finally {
-      setAiLoading(false);
-    }
-  };
+  }, [pendingActivation]);
 
   const allNeeds = useMemo(() => getAllBusinessNeeds(), []);
 

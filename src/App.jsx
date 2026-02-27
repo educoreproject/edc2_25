@@ -67,10 +67,17 @@ function Footer() {
 export default function App() {
   const [activePage, setActivePage] = useState('library');
   const [selectedEntryId, setSelectedEntryId] = useState(null);
+  const [pendingActivation, setPendingActivation] = useState(null);
 
   const handleNavigateToEntry = (entryId) => {
     setSelectedEntryId(entryId);
     setActivePage('library');
+  };
+
+  // Called by StandardsPage AI when it activates stakeholder/use case context
+  const handleActivateNeeds = (stakeholderIds, useCaseIds) => {
+    setPendingActivation({ stakeholderIds, useCaseIds });
+    setActivePage('taxonomies');
   };
 
   const pages = {
@@ -81,10 +88,21 @@ export default function App() {
         onClearSelection={() => setSelectedEntryId(null)}
       />
     ),
-    standards: <StandardsPage onNavigateToEntry={handleNavigateToEntry} />,
+    standards: (
+      <StandardsPage
+        onNavigateToEntry={handleNavigateToEntry}
+        onActivateNeeds={handleActivateNeeds}
+      />
+    ),
     partners: <PartnersPage />,
     ceds: <CedsAlignmentPage onNavigateToEntry={handleNavigateToEntry} />,
-    taxonomies: <TaxonomiesPage onNavigateToEntry={handleNavigateToEntry} />,
+    taxonomies: (
+      <TaxonomiesPage
+        onNavigateToEntry={handleNavigateToEntry}
+        pendingActivation={pendingActivation}
+        onClearActivation={() => setPendingActivation(null)}
+      />
+    ),
     vocabulary: <VocabularyPage />,
   };
 
