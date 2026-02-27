@@ -3,6 +3,7 @@
 // and Use Cases mapped to CEDS RDF.
 
 import { useState, useMemo } from 'react';
+import ReactMarkdown from 'react-markdown';
 import {
   stakeholderTaxonomy,
   technicalResourcesTaxonomy,
@@ -402,6 +403,58 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
   const [showExplainers, setShowExplainers] = useState(true);
   const [showRoadmap, setShowRoadmap] = useState(false);
 
+  // AI Interoperability Mapper state
+  const [aiQuery, setAiQuery] = useState('');
+  const [aiResponse, setAiResponse] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState('');
+
+  const handleAiSubmit = async () => {
+    if (!aiQuery.trim()) return;
+
+    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+    if (!apiKey) {
+      setAiError('OpenAI API key not configured. Set VITE_OPENAI_API_KEY in your environment.');
+      return;
+    }
+
+    setAiLoading(true);
+    setAiError('');
+    setAiResponse('');
+
+    try {
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o',
+          messages: [
+            {
+              role: 'system',
+              content: 'Using only final interoperability specifications from 1edtech, A4L, IEEE, create a user friendly response to this question that includes links to the technical specification and some implementation steps',
+            },
+            { role: 'user', content: aiQuery },
+          ],
+        }),
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error?.message || `API request failed (${res.status})`);
+      }
+
+      const data = await res.json();
+      setAiResponse(data.choices?.[0]?.message?.content || 'No response received.');
+    } catch (err) {
+      setAiError(err.message || 'An unexpected error occurred.');
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
   const allNeeds = useMemo(() => getAllBusinessNeeds(), []);
 
   const searchResults = useMemo(() => {
@@ -464,6 +517,72 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
           The searchable business needs allow stakeholders to self-identify and discover relevant resources.
         </ExplainerBadge>
       )}
+
+      {/* AI Interoperability Mapper */}
+      <div className="mb-8 bg-gradient-to-br from-slate-50 to-indigo-50/30 border border-indigo-200/40 rounded-xl p-6">
+        <h2 className="text-lg font-bold text-gray-900 mb-1">Interoperability Mapping Assistant</h2>
+        <p className="text-sm text-gray-500 mb-4 max-w-3xl">
+          Describe your interoperability scenario below — the standards your system uses, the standards you need to
+          exchange data with, and any non-standard local fields. Get an AI-generated mapping guide grounded in
+          1EdTech, A4L, and IEEE specifications.
+        </p>
+        <textarea
+          value={aiQuery}
+          onChange={e => setAiQuery(e.target.value)}
+          placeholder="My system adheres to Standard X. I need to send/receive data to/from a system that stores its data in Standard Y. However, my system has non-standard local data fields A, B, C. Generate an executable mapping/translation document."
+          rows={6}
+          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 transition-shadow placeholder:text-gray-400 resize-y"
+        />
+        <div className="mt-3 flex items-center gap-3">
+          <button
+            onClick={handleAiSubmit}
+            disabled={aiLoading || !aiQuery.trim()}
+            className="bg-indigo-600 text-white text-sm font-medium rounded-lg px-5 py-2.5 hover:bg-indigo-700 transition-colors shadow-sm flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {aiLoading ? (
+              <>
+                <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Generating…
+              </>
+            ) : (
+              'Generate Mapping'
+            )}
+          </button>
+          {aiQuery.trim() && !aiLoading && (
+            <button
+              onClick={() => { setAiQuery(''); setAiResponse(''); setAiError(''); }}
+              className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              Clear
+            </button>
+          )}
+        </div>
+
+        {aiError && (
+          <div className="mt-4 bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">
+            {aiError}
+          </div>
+        )}
+
+        {aiResponse && (
+          <div className="mt-4 bg-white border border-gray-200 rounded-xl px-5 py-4 shadow-sm prose prose-sm prose-indigo max-w-none">
+            <ReactMarkdown
+              components={{
+                a: ({ children, ...props }) => (
+                  <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-800 underline">
+                    {children}
+                  </a>
+                ),
+              }}
+            >
+              {aiResponse}
+            </ReactMarkdown>
+          </div>
+        )}
+      </div>
 
       {/* Search */}
       <div className="mb-5">
