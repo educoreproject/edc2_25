@@ -583,6 +583,9 @@
         },
         {
           "@id": "https://firsteducore.org/ontology#spec/clr-v2"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/open-badges-v3"
         }
       ],
       "https://firsteducore.org/ontology#relatedResource": [
@@ -1007,6 +1010,9 @@
         },
         {
           "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#spec/clr-v2"
         }
       ],
       "https://firsteducore.org/ontology#relatedResource": [

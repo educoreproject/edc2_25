@@ -149,6 +149,7 @@ export const libraryEntries = [
       { id: 'lrw-competency-framework', rationale: 'LER references competency frameworks that CASE makes exchangeable. CASE provides the API plumbing for distributing competency definitions used in LER records.' },
       { id: 'ctdl', rationale: 'CTDL describes credentials and their competency requirements. CASE provides the competency framework data that CTDL credential descriptions reference.' },
       { id: 'clr-v2', rationale: 'CLR records reference competencies achieved by learners. CASE provides the canonical framework identifiers that CLR uses for competency alignment.' },
+      { id: 'open-badges-v3', rationale: 'Open Badges can reference CASE competency framework URIs/UUIDs as the achievement criteria, linking badge achievements to canonical skill definitions.' },
     ],
     compatibilityNotes: 'CASE is complementary to CTDL (competency definitions vs. credential descriptions) and CLR (competency references in learner records). No overlaps or conflicts. JSON format is simpler than JSON-LD — consider a JSON-LD bridge if integrating with CTDL.',
     equityConsiderations: {
@@ -226,6 +227,7 @@ export const libraryEntries = [
       { id: 'case-v1', rationale: 'CTDL credential descriptions reference competency frameworks. CASE provides the machine-readable competency data that CTDL credentials point to for their requirements.' },
       { id: 'open-badges-v3', rationale: 'Open Badges 3.0 credentials can embed CTDL metadata for richer credential descriptions. CTDL alignment adds discoverability via the Credential Registry.' },
       { id: 'lrw-competency-framework', rationale: 'LER competency taxonomy provides the workforce-aligned competency structure that CTDL credential descriptions reference.' },
+      { id: 'clr-v2', rationale: 'CLR records aggregate credentials described by CTDL. CTDL skill URIs/UUIDs can be referenced in CLR achievement entries for semantic interoperability.' },
     ],
     compatibilityNotes: 'CTDL is the description/transparency layer while Open Badges and CLR are the issuance/record layers. CTDL describes what a credential IS; OB3/CLR record that a learner HAS one. They are complementary, not competing. CTDL uses JSON-LD; ensure JSON-LD tooling is available if integrating with CASE (plain JSON).',
     equityConsiderations: {
