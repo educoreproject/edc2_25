@@ -5,6 +5,46 @@ import { useState } from 'react';
 import { cedsDomains, cedsAlignmentMatrix, getDomainSummary } from '../data/cedsAlignment';
 import ExplainerBadge from './ExplainerBadge';
 
+// Lookup from CEDS element notation to canonical ontology URI
+const cedsElementUri = {
+  // Credentials
+  Credential: 'C200087', CredentialDefinition: 'C200087', CredentialAward: 'C200079',
+  CredentialType: 'C000071', CredentialDefinitionVerificationType: 'C001753',
+  PersonCredential: 'C200280',
+  // Competencies
+  CompetencyDefinition: 'C200065', CompetencyFramework: 'C200067', CompetencySet: 'C200068',
+  // Workforce
+  WorkforceEmploymentQuarterlyData: 'C200373', StandardOccupationalClassification: 'P000730',
+  WorkforceProgramParticipation: 'C200375',
+  // K-12
+  K12StudentAcademicRecord: 'C200210', CourseSection: 'C200074',
+  K12StudentEnrollment: 'C200219', GradeLevel: 'C002175',
+  // Postsecondary
+  PersonDegreeOrCertificate: 'C200281', PostsecondaryStudentAcademicRecord: 'C200336',
+  PostsecondaryProgram: 'C200331', PostsecondaryInstitution: 'C200329',
+  // CTE
+  ProgramParticipationCareerAndTechnical: 'C200318', CareerCluster: 'C001288',
+  CareerAndTechnicalEducationInstructorIndustryCertification: 'C001318',
+  CareerAndTechnicalEducationConcentrator: 'C000037',
+  // Assessments
+  AssessmentResult: 'C200047', AssessmentPerformanceLevel: 'C200038',
+  Assessment: 'C200010', AssessmentItem: 'C200023',
+  // Data Governance
+  PersonIdentification: 'C200291', Authorization: 'C200055', AuthorizationDocument: 'C200056',
+  // Equity
+  PersonLanguage: 'C200293', PersonDisability: 'C200285',
+  EconomicDisadvantageStatus: 'C000086', EnglishLearnerStatus: 'C000180',
+  // Other
+  PersonProgramParticipation: 'C200309', LearningResource: 'C200229',
+  ImplementationStatus: 'C000851', OrganizationIdentificationSystem: 'C000827',
+};
+
+function cedsElementHref(elementName) {
+  const code = cedsElementUri[elementName];
+  if (code) return `http://ceds.ed.gov/terms#${code}`;
+  return null;
+}
+
 const statusConfig = {
   full:    { bg: 'bg-emerald-50',  border: 'border-emerald-300', text: 'text-emerald-700', dot: '🟢', label: 'Full overlap'    },
   partial: { bg: 'bg-amber-50',    border: 'border-amber-300',   text: 'text-amber-700',   dot: '🟡', label: 'Partial overlap' },
@@ -60,15 +100,22 @@ function AlignmentDetail({ entryRow, domain, onClose }) {
               Matching CEDS elements / entities
             </div>
             <div className="flex flex-wrap gap-1.5">
-              {data.cedsElements.map(el => (
-                <a key={el}
-                   href={`https://ceds.ed.gov/desHome.aspx`}
-                   target="_blank" rel="noreferrer"
-                   className="text-xs font-mono bg-indigo-50 text-indigo-600 border border-indigo-200 px-2 py-0.5 rounded-lg hover:bg-indigo-100 transition-colors"
-                   title="Search this element in the CEDS ontology">
-                  {el} ↗
-                </a>
-              ))}
+              {data.cedsElements.map(el => {
+                const href = cedsElementHref(el);
+                return href ? (
+                  <a key={el}
+                     href={href}
+                     target="_blank" rel="noreferrer"
+                     className="text-xs font-mono bg-indigo-50 text-indigo-600 border border-indigo-200 px-2 py-0.5 rounded-lg hover:bg-indigo-100 transition-colors"
+                     title={href}>
+                    {el} ↗
+                  </a>
+                ) : (
+                  <span key={el} className="text-xs font-mono bg-gray-50 text-gray-600 border border-gray-200 px-2 py-0.5 rounded-lg">
+                    {el}
+                  </span>
+                );
+              })}
             </div>
           </div>
         )}
@@ -369,11 +416,20 @@ export default function CedsAlignmentPage({ onNavigateToEntry }) {
                             <p className="text-xs text-gray-500 leading-relaxed">{data.notes}</p>
                             {data.cedsElements?.length > 0 && (
                               <div className="flex flex-wrap gap-1 mt-1.5">
-                                {data.cedsElements.map(el => (
-                                  <span key={el} className="text-xs font-mono bg-white border border-indigo-100 text-indigo-600 px-1.5 py-0.5 rounded">
-                                    {el}
-                                  </span>
-                                ))}
+                                {data.cedsElements.map(el => {
+                                  const href = cedsElementHref(el);
+                                  return href ? (
+                                    <a key={el} href={href} target="_blank" rel="noreferrer"
+                                       className="text-xs font-mono bg-white border border-indigo-100 text-indigo-600 px-1.5 py-0.5 rounded hover:bg-indigo-50 transition-colors"
+                                       title={href}>
+                                      {el} ↗
+                                    </a>
+                                  ) : (
+                                    <span key={el} className="text-xs font-mono bg-white border border-gray-100 text-gray-600 px-1.5 py-0.5 rounded">
+                                      {el}
+                                    </span>
+                                  );
+                                })}
                               </div>
                             )}
                           </div>
