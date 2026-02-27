@@ -8,6 +8,7 @@ import StandardsPage from './components/StandardsPage';
 import PartnersPage from './components/PartnersPage';
 import CedsAlignmentPage from './components/CedsAlignmentPage';
 import TaxonomiesPage from './components/TaxonomiesPage';
+import VocabularyPage from './components/VocabularyPage';
 
 function Footer() {
   return (
@@ -84,6 +85,7 @@ export default function App() {
     partners: <PartnersPage />,
     ceds: <CedsAlignmentPage onNavigateToEntry={handleNavigateToEntry} />,
     taxonomies: <TaxonomiesPage onNavigateToEntry={handleNavigateToEntry} />,
+    vocabulary: <VocabularyPage />,
   };
 
   return (
