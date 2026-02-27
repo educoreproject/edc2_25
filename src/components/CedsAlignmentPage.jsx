@@ -457,7 +457,7 @@ export default function CedsAlignmentPage({ onNavigateToEntry }) {
         <div>
           <strong className="text-gray-500">CEDS sources:</strong>{' '}
           <a href="https://ceds.ed.gov/desHome.aspx" target="_blank" rel="noreferrer" className="text-indigo-500 hover:text-indigo-700 transition-colors">
-            ceds.ed.gov — CEDS Ontology (v11, 13 domains)
+            ceds.ed.gov — CEDS Ontology (v13, 13 domains)
           </a>
           {' · '}
           <a href="https://github.com/CEDStandards/CEDS-Elements" target="_blank" rel="noreferrer" className="text-indigo-500 hover:text-indigo-700 transition-colors">
