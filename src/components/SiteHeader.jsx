@@ -6,11 +6,11 @@
 
 export default function SiteHeader({ activePage, onNavigate }) {
   const navItems = [
+    { id: 'taxonomies', label: 'Needs Explorer' },
     { id: 'library',   label: 'Library' },
     { id: 'standards', label: 'Standards' },
     { id: 'partners',  label: 'Partners' },
     { id: 'ceds',      label: 'CEDS Alignment' },
-    { id: 'taxonomies', label: 'Needs Explorer' },
   ];
 
   return (
