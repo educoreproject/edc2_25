@@ -455,6 +455,57 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
     return { specs, domains, alignments };
   };
 
+  // Build context about stakeholders and use cases for AI to reference
+  const buildStakeholderContext = () => {
+    const stakeholders = stakeholderTaxonomy.flatMap(group =>
+      group.children.map(child => ({
+        id: child.id,
+        label: child.label,
+        group: group.label,
+        needs: child.businessNeeds,
+      }))
+    );
+    const useCases = useCasesCedsRdf.map(uc => ({
+      id: uc.id,
+      label: uc.label,
+      stakeholders: uc.stakeholders,
+      businessNeeds: uc.businessNeeds,
+      cedsDomains: uc.cedsDomains,
+    }));
+    return { stakeholders, useCases };
+  };
+
+  // Auto-select business needs by stakeholder IDs and use case IDs
+  const autoSelectNeeds = (stakeholderIds, useCaseIds) => {
+    const next = new Map();
+
+    // Select stakeholder business needs
+    for (const sId of stakeholderIds) {
+      for (const group of stakeholderTaxonomy) {
+        const child = group.children.find(c => c.id === sId);
+        if (child) {
+          child.businessNeeds.forEach((need, i) => {
+            const key = `${child.id}::${i}`;
+            next.set(key, { need, source: child.label });
+          });
+        }
+      }
+    }
+
+    // Select use case business needs
+    for (const ucId of useCaseIds) {
+      const uc = useCasesCedsRdf.find(u => u.id === ucId);
+      if (uc) {
+        uc.businessNeeds.forEach((need, i) => {
+          const key = `uc::${uc.id}::${i}`;
+          next.set(key, { need, source: uc.label });
+        });
+      }
+    }
+
+    return next;
+  };
+
   const handleAiSubmit = async () => {
     if (!aiQuery.trim()) return;
 
@@ -472,16 +523,35 @@ export default function TaxonomiesPage({ onNavigateToEntry }) {
     try {
       // Fetch the ontology to include as grounding context
       const ontology = await fetchOntologyContext();
+      const { stakeholders, useCases } = buildStakeholderContext();
 
       const ontologyContext = ontology
         ? `\n\nYou have access to the EDU Reference Library ontology (JSON-LD at https://firsteducore.org/ontology). Use it to ground your answer.\n\n## Specifications in the ontology:\n${ontology.specs.map(s =>
-            `- **${s.title}** (${s.uri})\n  Category: ${s.category} | Owner: ${s.owner} | Burden: ${s.burden}\n  Summary: ${s.aiSummary}\n  Guidance: ${s.guidance}\n  Compatibility: ${s.compatibilityNotes}\n  Paired with: ${s.pairedWith.join(', ')}\n  Spec page: ${s.page}`
+            `- **${s.title}** (${s.uri})\n  Category: ${s.category} | Owner: ${s.owner} | Burden: ${s.burden}\n  Summary: ${s.aiSummary}\n  Compatibility: ${s.compatibilityNotes}\n  Paired with: ${s.pairedWith.join(', ')}\n  Spec page: ${s.page}`
           ).join('\n')}\n\n## CEDS Domains:\n${ontology.domains.map(d => `- ${d.label} (${d.uri})`).join('\n')}\n\n## CEDS Alignment Triples (spec → domain → status):\n${ontology.alignments.map(a => `- ${a.spec} → ${a.domain} = ${a.status}${a.notes ? ': ' + a.notes : ''}${a.elements.length ? ' [elements: ' + a.elements.join(', ') + ']' : ''}`).join('\n')}`
         : '';
 
-      const systemPrompt = `Using only final interoperability specifications from 1edtech, A4L, IEEE, create a user friendly response to this question that includes links to the technical specification and some implementation steps.
+      const stakeholderContext = `\n\n## Available Stakeholders (use these exact IDs):\n${stakeholders.map(s => `- id: "${s.id}" | ${s.label} (${s.group})`).join('\n')}\n\n## Available Use Cases (use these exact IDs):\n${useCases.map(uc => `- id: "${uc.id}" | ${uc.label} | CEDS domains: ${uc.cedsDomains.join(', ')} | stakeholders: ${uc.stakeholders.join(', ')}`).join('\n')}`;
 
-IMPORTANT: Your answer must be grounded in the EDU Reference Library ontology provided below. At the end of your response, include a section titled "## Ontology Resources Used" that lists every educore: URI from the ontology that you referenced in your answer, one per line, formatted as: \`<URI>\`. Only list URIs that actually exist in the ontology data provided.${ontologyContext}`;
+      const systemPrompt = `You are the EDU Reference Library AI assistant. Answer interoperability questions using the ontology data below.
+
+RESPONSE FORMAT RULES:
+1. Keep your answer BRIEF — 2-4 short paragraphs maximum. Focus on WHICH specifications are needed and WHY, not detailed implementation steps.
+2. For each specification you recommend, mention its implementation burden level (low/medium/high).
+3. Include links to the technical specification pages.
+4. At the end of your response, include TWO structured sections:
+
+## Ontology Resources Used
+List every educore: URI you referenced, one per line, formatted as: \`<URI>\`
+
+## Activated Context
+\`\`\`json
+{
+  "stakeholderIds": ["id1", "id2"],
+  "useCaseIds": ["uc-id1", "uc-id2"]
+}
+\`\`\`
+Choose the stakeholder IDs and use case IDs from the lists below that are MOST RELEVANT to the user's question. Select only the ones that directly apply.${ontologyContext}${stakeholderContext}`;
 
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -506,12 +576,17 @@ IMPORTANT: Your answer must be grounded in the EDU Reference Library ontology pr
       const data = await res.json();
       const fullResponse = data.choices?.[0]?.message?.content || 'No response received.';
 
-      // Parse out the "Ontology Resources Used" section and extract URIs
+      // Parse out the "Ontology Resources Used" section
       const sourceSplit = fullResponse.split(/## Ontology Resources Used/i);
       const mainResponse = sourceSplit[0].trim();
-      const sourcesSection = sourceSplit[1] || '';
+      const afterMain = sourceSplit[1] || '';
 
-      // Extract URIs from backtick-wrapped or bare URIs
+      // Split off the "Activated Context" section
+      const contextSplit = afterMain.split(/## Activated Context/i);
+      const sourcesSection = contextSplit[0] || '';
+      const activatedSection = contextSplit[1] || '';
+
+      // Extract ontology URIs
       const uriPattern = /`?(https:\/\/firsteducore\.org\/ontology#[^\s`]+)`?/g;
       const foundUris = [];
       let match;
@@ -528,13 +603,30 @@ IMPORTANT: Your answer must be grounded in the EDU Reference Library ontology pr
         if (domain) return { uri, label: domain.label, type: 'CEDS Domain' };
         const alignment = ontology.alignments.find(a => a.uri === uri);
         if (alignment) return { uri, label: `${alignment.status} alignment`, type: 'CEDS Alignment', status: alignment.status };
-        // Fallback: show the local name
         const localName = uri.replace('https://firsteducore.org/ontology#', '');
         return { uri, label: localName, type: 'Resource' };
       });
 
       setAiResponse(mainResponse);
       setAiSources(enrichedSources);
+
+      // Parse the activated context JSON and auto-select business needs
+      const jsonMatch = activatedSection.match(/```json\s*([\s\S]*?)```/);
+      if (jsonMatch) {
+        try {
+          const activated = JSON.parse(jsonMatch[1]);
+          const sIds = activated.stakeholderIds || [];
+          const ucIds = activated.useCaseIds || [];
+
+          if (sIds.length > 0 || ucIds.length > 0) {
+            const autoSelected = autoSelectNeeds(sIds, ucIds);
+            setSelectedNeeds(autoSelected);
+            setShowRoadmap(true);
+          }
+        } catch (_) {
+          // JSON parse failed — silently skip auto-activation
+        }
+      }
     } catch (err) {
       setAiError(err.message || 'An unexpected error occurred.');
     } finally {
