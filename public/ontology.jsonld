@@ -329,9 +329,9 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "Credential",
         "CredentialType",
-        "CredentialAwardedBy",
-        "CredentialAwardStatus",
-        "CredentialVerification"
+        "CredentialAward",
+        "CredentialDefinition",
+        "CredentialDefinitionVerificationType"
       ]
     },
     {
@@ -349,7 +349,7 @@
         "CompetencyFramework",
         "CompetencyDefinition",
         "CompetencySet",
-        "LearningStandard"
+        "CompetencyDefinition"
       ]
     },
     {
@@ -364,10 +364,10 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "Skills-based hiring and career advancement are primary use cases. LER Talent Marketplace role directly addresses workforce credential matching.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "WorkforceProgram",
-        "EmploymentRecord",
-        "OccupationalClassification",
-        "SkillRequirement"
+        "WorkforceProgramParticipation",
+        "WorkforceEmploymentQuarterlyData",
+        "StandardOccupationalClassification",
+        "CompetencyDefinition"
       ]
     },
     {
@@ -429,9 +429,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "Postsecondary credential issuance and verification is a primary LER use case. Strong alignment with CEDS postsecondary credential elements.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "PsDegreeOrCertificate",
-        "PsStudentAcademicRecord",
-        "PsProgram"
+        "PersonDegreeOrCertificate",
+        "PostsecondaryStudentAcademicRecord",
+        "PostsecondaryProgram"
       ]
     },
     {
@@ -446,9 +446,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "CTE and industry credential portability are core LER objectives. The standard directly addresses skills-based hiring that CTE programs feed into.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "CTEProgram",
-        "CTEOccupationalCluster",
-        "CTEIndustryAlignment"
+        "ProgramParticipationCareerAndTechnical",
+        "CareerCluster",
+        "CareerAndTechnicalEducationInstructorIndustryCertification"
       ]
     },
     {
@@ -463,7 +463,7 @@
       "https://firsteducore.org/ontology#alignmentStatus": "partial",
       "https://firsteducore.org/ontology#notes": "Adult education credentials (GED, workforce certificates) are valid LER use cases. No adult-education-specific modeling in the standard.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "AdultEducationProgram"
+        "PersonProgramParticipation"
       ]
     },
     {
@@ -491,7 +491,7 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "LER standard normatively requires W3C DIDs for identity. Defines trust, verification, and wallet roles that directly address authentication and authorization.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "PersonIdentifier",
+        "PersonIdentification",
         "AuthorizationDocument"
       ]
     },
@@ -765,7 +765,7 @@
       "https://firsteducore.org/ontology#notes": "CASE defines competency criteria that inform credential requirements but does not model credential issuance or attainment.",
       "https://firsteducore.org/ontology#gapNotes": "CEDS Credential includes attainment date, issuing org, and verification — CASE covers competency definitions only.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "CredentialCriteria"
+        "CredentialDefinition"
       ]
     },
     {
@@ -782,8 +782,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "CompetencyFramework",
         "CompetencyDefinition",
-        "LearningStandard",
-        "LearningStandardItem"
+        "CompetencyDefinition",
+        "CompetencyDefinition"
       ]
     },
     {
@@ -799,8 +799,8 @@
       "https://firsteducore.org/ontology#notes": "Workforce competency frameworks can be published via CASE. Does not model employment records or workforce programs directly.",
       "https://firsteducore.org/ontology#gapNotes": "CEDS Workforce includes EmploymentRecord and WorkforceProgram — not in CASE scope.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "OccupationalClassification",
-        "SkillRequirement"
+        "StandardOccupationalClassification",
+        "CompetencyDefinition"
       ]
     },
     {
@@ -829,7 +829,7 @@
       "https://firsteducore.org/ontology#notes": "Competency frameworks published via CASE can be used to align learning resources, but CASE does not model resource metadata.",
       "https://firsteducore.org/ontology#gapNotes": "CEDS Learning Resources includes URL, media type, educational level — not in CASE scope.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "LearningResourceEducationalAlignment"
+        "LearningResource"
       ]
     },
     {
@@ -844,9 +844,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "CASE is widely adopted for K–12 state academic standards exchange. US state education agencies publish standards via CASE Network.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "K12CourseCompetencySet",
-        "LearningStandard",
-        "LearningStandardItem"
+        "CompetencySet",
+        "CompetencyDefinition",
+        "CompetencyDefinition"
       ]
     },
     {
@@ -862,7 +862,7 @@
       "https://firsteducore.org/ontology#notes": "Postsecondary competency frameworks can use CASE but adoption is lower than K–12. Alignment with CEDS postsecondary competency records.",
       "https://firsteducore.org/ontology#gapNotes": "CEDS Postsecondary includes enrollment, program, degree — CASE covers only competency definitions.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "PsStudentCompetencyRecord"
+        "PostsecondaryStudentAcademicRecord"
       ]
     },
     {
@@ -877,9 +877,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "CTE industry competency frameworks are a primary CASE use case. Strong alignment with CEDS CTE occupational cluster and industry alignment elements.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "CTEProgram",
-        "CTEOccupationalCluster",
-        "CTEIndustryAlignment"
+        "ProgramParticipationCareerAndTechnical",
+        "CareerCluster",
+        "CareerAndTechnicalEducationInstructorIndustryCertification"
       ]
     },
     {
@@ -894,7 +894,7 @@
       "https://firsteducore.org/ontology#alignmentStatus": "partial",
       "https://firsteducore.org/ontology#notes": "Adult education competency frameworks can be exchanged via CASE but no adult-education-specific modeling exists.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "AdultEducationProgram"
+        "PersonProgramParticipation"
       ]
     },
     {
@@ -1204,8 +1204,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "Credential",
         "CredentialType",
-        "CredentialAwardedBy",
-        "CredentialCriteria"
+        "CredentialAward",
+        "CredentialDefinition"
       ]
     },
     {
@@ -1237,9 +1237,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "Workforce credentials and occupational alignment are core CTDL use cases. Credential Registry includes O*NET and SOC code alignment.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "WorkforceProgram",
-        "OccupationalClassification",
-        "SkillRequirement"
+        "WorkforceProgramParticipation",
+        "StandardOccupationalClassification",
+        "CompetencyDefinition"
       ]
     },
     {
@@ -1271,7 +1271,7 @@
       "https://firsteducore.org/ontology#notes": "CTDL can reference learning opportunities associated with credentials. Does not model resource metadata at the CEDS level of detail.",
       "https://firsteducore.org/ontology#cedsElement": [
         "LearningResource",
-        "LearningResourceEducationalAlignment"
+        "LearningResource"
       ]
     },
     {
@@ -1287,7 +1287,7 @@
       "https://firsteducore.org/ontology#notes": "K–12 credentials can be described in CTDL but adoption is lower than in postsecondary. Some K–12 industry certification programs are in the Registry.",
       "https://firsteducore.org/ontology#gapNotes": "CEDS K12 student record data is not modeled in CTDL.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "K12CourseCompetencySet"
+        "CompetencySet"
       ]
     },
     {
@@ -1302,9 +1302,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "Postsecondary degrees and certificates are primary CTDL content. Strong alignment with CEDS Postsecondary credential and program elements.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "PsDegreeOrCertificate",
-        "PsProgram",
-        "PsStudentAcademicRecord"
+        "PersonDegreeOrCertificate",
+        "PostsecondaryProgram",
+        "PostsecondaryStudentAcademicRecord"
       ]
     },
     {
@@ -1319,9 +1319,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "CTE/industry credentials are heavily represented in the Credential Registry. Strong alignment with CEDS CTE program and occupational cluster elements.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "CTEProgram",
-        "CTEOccupationalCluster",
-        "CTEIndustryAlignment"
+        "ProgramParticipationCareerAndTechnical",
+        "CareerCluster",
+        "CareerAndTechnicalEducationInstructorIndustryCertification"
       ]
     },
     {
@@ -1336,7 +1336,7 @@
       "https://firsteducore.org/ontology#alignmentStatus": "partial",
       "https://firsteducore.org/ontology#notes": "Adult education credentials (GED, HiSET, workforce certificates) can be described in CTDL. No adult-education-specific vocabulary.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "AdultEducationProgram"
+        "PersonProgramParticipation"
       ]
     },
     {
@@ -1631,8 +1631,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "Credential",
         "CredentialType",
-        "CredentialAwardedBy",
-        "CredentialAwardStatus"
+        "CredentialAward",
+        "CredentialDefinition"
       ]
     },
     {
@@ -1664,8 +1664,8 @@
       "https://firsteducore.org/ontology#notes": "Workforce badges and micro-credentials exist as an OB3 use case. Badges can reference occupational alignments.",
       "https://firsteducore.org/ontology#gapNotes": "CEDS Workforce includes EmploymentRecord and WorkforceProgram — not modeled in OB3.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "SkillRequirement",
-        "OccupationalClassification"
+        "CompetencyDefinition",
+        "StandardOccupationalClassification"
       ]
     },
     {
@@ -1728,8 +1728,8 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "Higher ed micro-credentials and co-curricular badges are a primary OB3 use case. Strong alignment with CEDS postsecondary credential elements.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "PsDegreeOrCertificate",
-        "PsStudentAcademicRecord"
+        "PersonDegreeOrCertificate",
+        "PostsecondaryStudentAcademicRecord"
       ]
     },
     {
@@ -1744,8 +1744,8 @@
       "https://firsteducore.org/ontology#alignmentStatus": "partial",
       "https://firsteducore.org/ontology#notes": "CTE skill badges exist but OB3 is not CTE-native. Industry certification badges align with CEDS CTE industry alignment.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "CTEProgram",
-        "CTEIndustryAlignment"
+        "ProgramParticipationCareerAndTechnical",
+        "CareerAndTechnicalEducationInstructorIndustryCertification"
       ]
     },
     {
@@ -1760,7 +1760,7 @@
       "https://firsteducore.org/ontology#alignmentStatus": "partial",
       "https://firsteducore.org/ontology#notes": "Adult learning badges are applicable for workforce development and continuing education contexts.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "AdultEducationProgram"
+        "PersonProgramParticipation"
       ]
     },
     {
@@ -1788,7 +1788,7 @@
       "https://firsteducore.org/ontology#notes": "OB3 uses W3C VC identity (DIDs) for issuer and holder identification. Partial alignment with CEDS person identity elements.",
       "https://firsteducore.org/ontology#gapNotes": "CEDS Auth models full system access and role management — OB3 only handles credential identity.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "PersonIdentifier"
+        "PersonIdentification"
       ]
     },
     {
@@ -2068,9 +2068,9 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "Credential",
         "CredentialType",
-        "CredentialAwardedBy",
-        "CredentialAwardStatus",
-        "CredentialVerification"
+        "CredentialAward",
+        "CredentialDefinition",
+        "CredentialDefinitionVerificationType"
       ]
     },
     {
@@ -2087,7 +2087,7 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "CompetencyDefinition",
         "CompetencySet",
-        "LearningStandardItem"
+        "CompetencyDefinition"
       ]
     },
     {
@@ -2102,9 +2102,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "CLR is designed for workforce mobility with comprehensive achievement records. Employment history and workforce credentials map to CEDS Workforce domain.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "WorkforceProgram",
-        "EmploymentRecord",
-        "OccupationalClassification"
+        "WorkforceProgramParticipation",
+        "WorkforceEmploymentQuarterlyData",
+        "StandardOccupationalClassification"
       ]
     },
     {
@@ -2153,7 +2153,7 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS K12 includes detailed attendance, discipline, and special education data beyond CLR scope.",
       "https://firsteducore.org/ontology#cedsElement": [
         "K12StudentAcademicRecord",
-        "K12CourseSection"
+        "CourseSection"
       ]
     },
     {
@@ -2168,9 +2168,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "Postsecondary comprehensive records are a primary CLR use case. Strong alignment with CEDS postsecondary academic record and credential elements.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "PsStudentAcademicRecord",
-        "PsProgram",
-        "PsDegreeOrCertificate"
+        "PostsecondaryStudentAcademicRecord",
+        "PostsecondaryProgram",
+        "PersonDegreeOrCertificate"
       ]
     },
     {
@@ -2185,9 +2185,9 @@
       "https://firsteducore.org/ontology#alignmentStatus": "full",
       "https://firsteducore.org/ontology#notes": "CTE pathway completion records align well with CLR. Industry certifications and program completions map to CEDS CTE domain.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "CTEProgram",
-        "CTEIndustryAlignment",
-        "CTEOccupationalCluster"
+        "ProgramParticipationCareerAndTechnical",
+        "CareerAndTechnicalEducationInstructorIndustryCertification",
+        "CareerCluster"
       ]
     },
     {
@@ -2202,8 +2202,8 @@
       "https://firsteducore.org/ontology#alignmentStatus": "partial",
       "https://firsteducore.org/ontology#notes": "Adult learner records can use CLR for credential aggregation. Partial alignment with CEDS adult education program elements.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "AdultEducationProgram",
-        "AdultEducationEnrollment"
+        "PersonProgramParticipation",
+        "PersonProgramParticipation"
       ]
     },
     {
@@ -2232,7 +2232,7 @@
       "https://firsteducore.org/ontology#notes": "CLR uses W3C VC identity infrastructure (DIDs) for issuer and holder identification. Consent management aligns with CEDS authorization concepts.",
       "https://firsteducore.org/ontology#gapNotes": "CEDS Auth models full system access and role management beyond CLR identity scope.",
       "https://firsteducore.org/ontology#cedsElement": [
-        "PersonIdentifier",
+        "PersonIdentification",
         "AuthorizationDocument"
       ]
     },

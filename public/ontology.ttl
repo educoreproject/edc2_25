@@ -220,9 +220,9 @@ educore:CedsDomain a owl:Class ;
     educore:notes "Core focus of the LER standard. Defines ecosystem roles (Awarder, Holder, Reviewer) for credential issuance and verification built on W3C VCs." ;
     educore:cedsElement "Credential" ;
     educore:cedsElement "CredentialType" ;
-    educore:cedsElement "CredentialAwardedBy" ;
-    educore:cedsElement "CredentialAwardStatus" ;
-    educore:cedsElement "CredentialVerification" .
+    educore:cedsElement "CredentialAward" ;
+    educore:cedsElement "CredentialDefinition" ;
+    educore:cedsElement "CredentialDefinitionVerificationType" .
 
 <https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/competencies> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/lrw-competency-framework> ;
@@ -232,17 +232,17 @@ educore:CedsDomain a owl:Class ;
     educore:cedsElement "CompetencyFramework" ;
     educore:cedsElement "CompetencyDefinition" ;
     educore:cedsElement "CompetencySet" ;
-    educore:cedsElement "LearningStandard" .
+    educore:cedsElement "CompetencyDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/workforce> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/lrw-competency-framework> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/workforce> ;
     educore:alignmentStatus "full" ;
     educore:notes "Skills-based hiring and career advancement are primary use cases. LER Talent Marketplace role directly addresses workforce credential matching." ;
-    educore:cedsElement "WorkforceProgram" ;
-    educore:cedsElement "EmploymentRecord" ;
-    educore:cedsElement "OccupationalClassification" ;
-    educore:cedsElement "SkillRequirement" .
+    educore:cedsElement "WorkforceProgramParticipation" ;
+    educore:cedsElement "WorkforceEmploymentQuarterlyData" ;
+    educore:cedsElement "StandardOccupationalClassification" ;
+    educore:cedsElement "CompetencyDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/assessments> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/lrw-competency-framework> ;
@@ -272,25 +272,25 @@ educore:CedsDomain a owl:Class ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/postsecondary> ;
     educore:alignmentStatus "full" ;
     educore:notes "Postsecondary credential issuance and verification is a primary LER use case. Strong alignment with CEDS postsecondary credential elements." ;
-    educore:cedsElement "PsDegreeOrCertificate" ;
-    educore:cedsElement "PsStudentAcademicRecord" ;
-    educore:cedsElement "PsProgram" .
+    educore:cedsElement "PersonDegreeOrCertificate" ;
+    educore:cedsElement "PostsecondaryStudentAcademicRecord" ;
+    educore:cedsElement "PostsecondaryProgram" .
 
 <https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/cte> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/lrw-competency-framework> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/cte> ;
     educore:alignmentStatus "full" ;
     educore:notes "CTE and industry credential portability are core LER objectives. The standard directly addresses skills-based hiring that CTE programs feed into." ;
-    educore:cedsElement "CTEProgram" ;
-    educore:cedsElement "CTEOccupationalCluster" ;
-    educore:cedsElement "CTEIndustryAlignment" .
+    educore:cedsElement "ProgramParticipationCareerAndTechnical" ;
+    educore:cedsElement "CareerCluster" ;
+    educore:cedsElement "CareerAndTechnicalEducationInstructorIndustryCertification" .
 
 <https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/adultEd> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/lrw-competency-framework> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/adultEd> ;
     educore:alignmentStatus "partial" ;
     educore:notes "Adult education credentials (GED, workforce certificates) are valid LER use cases. No adult-education-specific modeling in the standard." ;
-    educore:cedsElement "AdultEducationProgram" .
+    educore:cedsElement "PersonProgramParticipation" .
 
 <https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/earlyLearning> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/lrw-competency-framework> ;
@@ -304,7 +304,7 @@ educore:CedsDomain a owl:Class ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/authN> ;
     educore:alignmentStatus "full" ;
     educore:notes "LER standard normatively requires W3C DIDs for identity. Defines trust, verification, and wallet roles that directly address authentication and authorization." ;
-    educore:cedsElement "PersonIdentifier" ;
+    educore:cedsElement "PersonIdentification" ;
     educore:cedsElement "AuthorizationDocument" .
 
 <https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/implVars> a educore:CedsAlignment ;
@@ -439,7 +439,7 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "CASE defines competency criteria that inform credential requirements but does not model credential issuance or attainment." ;
     educore:gapNotes "CEDS Credential includes attainment date, issuing org, and verification — CASE covers competency definitions only." ;
-    educore:cedsElement "CredentialCriteria" .
+    educore:cedsElement "CredentialDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/case-v1/competencies> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/case-v1> ;
@@ -448,8 +448,8 @@ educore:CedsDomain a owl:Class ;
     educore:notes "CASE is purpose-built for competency framework exchange. Deep alignment with CEDS CompetencyFramework, CompetencyDefinition, and LearningStandard entities." ;
     educore:cedsElement "CompetencyFramework" ;
     educore:cedsElement "CompetencyDefinition" ;
-    educore:cedsElement "LearningStandard" ;
-    educore:cedsElement "LearningStandardItem" .
+    educore:cedsElement "CompetencyDefinition" ;
+    educore:cedsElement "CompetencyDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/case-v1/workforce> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/case-v1> ;
@@ -457,8 +457,8 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "Workforce competency frameworks can be published via CASE. Does not model employment records or workforce programs directly." ;
     educore:gapNotes "CEDS Workforce includes EmploymentRecord and WorkforceProgram — not in CASE scope." ;
-    educore:cedsElement "OccupationalClassification" ;
-    educore:cedsElement "SkillRequirement" .
+    educore:cedsElement "StandardOccupationalClassification" ;
+    educore:cedsElement "CompetencyDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/case-v1/assessments> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/case-v1> ;
@@ -473,16 +473,16 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "Competency frameworks published via CASE can be used to align learning resources, but CASE does not model resource metadata." ;
     educore:gapNotes "CEDS Learning Resources includes URL, media type, educational level — not in CASE scope." ;
-    educore:cedsElement "LearningResourceEducationalAlignment" .
+    educore:cedsElement "LearningResource" .
 
 <https://firsteducore.org/ontology#ceds-alignment/case-v1/k12> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/case-v1> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/k12> ;
     educore:alignmentStatus "full" ;
     educore:notes "CASE is widely adopted for K–12 state academic standards exchange. US state education agencies publish standards via CASE Network." ;
-    educore:cedsElement "K12CourseCompetencySet" ;
-    educore:cedsElement "LearningStandard" ;
-    educore:cedsElement "LearningStandardItem" .
+    educore:cedsElement "CompetencySet" ;
+    educore:cedsElement "CompetencyDefinition" ;
+    educore:cedsElement "CompetencyDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/case-v1/postsecondary> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/case-v1> ;
@@ -490,23 +490,23 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "Postsecondary competency frameworks can use CASE but adoption is lower than K–12. Alignment with CEDS postsecondary competency records." ;
     educore:gapNotes "CEDS Postsecondary includes enrollment, program, degree — CASE covers only competency definitions." ;
-    educore:cedsElement "PsStudentCompetencyRecord" .
+    educore:cedsElement "PostsecondaryStudentAcademicRecord" .
 
 <https://firsteducore.org/ontology#ceds-alignment/case-v1/cte> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/case-v1> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/cte> ;
     educore:alignmentStatus "full" ;
     educore:notes "CTE industry competency frameworks are a primary CASE use case. Strong alignment with CEDS CTE occupational cluster and industry alignment elements." ;
-    educore:cedsElement "CTEProgram" ;
-    educore:cedsElement "CTEOccupationalCluster" ;
-    educore:cedsElement "CTEIndustryAlignment" .
+    educore:cedsElement "ProgramParticipationCareerAndTechnical" ;
+    educore:cedsElement "CareerCluster" ;
+    educore:cedsElement "CareerAndTechnicalEducationInstructorIndustryCertification" .
 
 <https://firsteducore.org/ontology#ceds-alignment/case-v1/adultEd> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/case-v1> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/adultEd> ;
     educore:alignmentStatus "partial" ;
     educore:notes "Adult education competency frameworks can be exchanged via CASE but no adult-education-specific modeling exists." ;
-    educore:cedsElement "AdultEducationProgram" .
+    educore:cedsElement "PersonProgramParticipation" .
 
 <https://firsteducore.org/ontology#ceds-alignment/case-v1/earlyLearning> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/case-v1> ;
@@ -659,8 +659,8 @@ educore:CedsDomain a owl:Class ;
     educore:notes "CTDL is credential-centric. Deep alignment with CEDS Credential entity including credential type taxonomy, issuing organizations, and requirements." ;
     educore:cedsElement "Credential" ;
     educore:cedsElement "CredentialType" ;
-    educore:cedsElement "CredentialAwardedBy" ;
-    educore:cedsElement "CredentialCriteria" .
+    educore:cedsElement "CredentialAward" ;
+    educore:cedsElement "CredentialDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/ctdl/competencies> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/ctdl> ;
@@ -676,9 +676,9 @@ educore:CedsDomain a owl:Class ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/workforce> ;
     educore:alignmentStatus "full" ;
     educore:notes "Workforce credentials and occupational alignment are core CTDL use cases. Credential Registry includes O*NET and SOC code alignment." ;
-    educore:cedsElement "WorkforceProgram" ;
-    educore:cedsElement "OccupationalClassification" ;
-    educore:cedsElement "SkillRequirement" .
+    educore:cedsElement "WorkforceProgramParticipation" ;
+    educore:cedsElement "StandardOccupationalClassification" ;
+    educore:cedsElement "CompetencyDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/ctdl/assessments> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/ctdl> ;
@@ -694,7 +694,7 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "CTDL can reference learning opportunities associated with credentials. Does not model resource metadata at the CEDS level of detail." ;
     educore:cedsElement "LearningResource" ;
-    educore:cedsElement "LearningResourceEducationalAlignment" .
+    educore:cedsElement "LearningResource" .
 
 <https://firsteducore.org/ontology#ceds-alignment/ctdl/k12> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/ctdl> ;
@@ -702,32 +702,32 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "K–12 credentials can be described in CTDL but adoption is lower than in postsecondary. Some K–12 industry certification programs are in the Registry." ;
     educore:gapNotes "CEDS K12 student record data is not modeled in CTDL." ;
-    educore:cedsElement "K12CourseCompetencySet" .
+    educore:cedsElement "CompetencySet" .
 
 <https://firsteducore.org/ontology#ceds-alignment/ctdl/postsecondary> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/ctdl> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/postsecondary> ;
     educore:alignmentStatus "full" ;
     educore:notes "Postsecondary degrees and certificates are primary CTDL content. Strong alignment with CEDS Postsecondary credential and program elements." ;
-    educore:cedsElement "PsDegreeOrCertificate" ;
-    educore:cedsElement "PsProgram" ;
-    educore:cedsElement "PsStudentAcademicRecord" .
+    educore:cedsElement "PersonDegreeOrCertificate" ;
+    educore:cedsElement "PostsecondaryProgram" ;
+    educore:cedsElement "PostsecondaryStudentAcademicRecord" .
 
 <https://firsteducore.org/ontology#ceds-alignment/ctdl/cte> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/ctdl> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/cte> ;
     educore:alignmentStatus "full" ;
     educore:notes "CTE/industry credentials are heavily represented in the Credential Registry. Strong alignment with CEDS CTE program and occupational cluster elements." ;
-    educore:cedsElement "CTEProgram" ;
-    educore:cedsElement "CTEOccupationalCluster" ;
-    educore:cedsElement "CTEIndustryAlignment" .
+    educore:cedsElement "ProgramParticipationCareerAndTechnical" ;
+    educore:cedsElement "CareerCluster" ;
+    educore:cedsElement "CareerAndTechnicalEducationInstructorIndustryCertification" .
 
 <https://firsteducore.org/ontology#ceds-alignment/ctdl/adultEd> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/ctdl> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/adultEd> ;
     educore:alignmentStatus "partial" ;
     educore:notes "Adult education credentials (GED, HiSET, workforce certificates) can be described in CTDL. No adult-education-specific vocabulary." ;
-    educore:cedsElement "AdultEducationProgram" .
+    educore:cedsElement "PersonProgramParticipation" .
 
 <https://firsteducore.org/ontology#ceds-alignment/ctdl/earlyLearning> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/ctdl> ;
@@ -875,8 +875,8 @@ educore:CedsDomain a owl:Class ;
     educore:notes "OB3 is a credential issuance standard. Full alignment with CEDS Credential entity including issuer, award status, and criteria." ;
     educore:cedsElement "Credential" ;
     educore:cedsElement "CredentialType" ;
-    educore:cedsElement "CredentialAwardedBy" ;
-    educore:cedsElement "CredentialAwardStatus" .
+    educore:cedsElement "CredentialAward" ;
+    educore:cedsElement "CredentialDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/competencies> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/open-badges-v3> ;
@@ -892,8 +892,8 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "Workforce badges and micro-credentials exist as an OB3 use case. Badges can reference occupational alignments." ;
     educore:gapNotes "CEDS Workforce includes EmploymentRecord and WorkforceProgram — not modeled in OB3." ;
-    educore:cedsElement "SkillRequirement" ;
-    educore:cedsElement "OccupationalClassification" .
+    educore:cedsElement "CompetencyDefinition" ;
+    educore:cedsElement "StandardOccupationalClassification" .
 
 <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/assessments> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/open-badges-v3> ;
@@ -924,23 +924,23 @@ educore:CedsDomain a owl:Class ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/postsecondary> ;
     educore:alignmentStatus "full" ;
     educore:notes "Higher ed micro-credentials and co-curricular badges are a primary OB3 use case. Strong alignment with CEDS postsecondary credential elements." ;
-    educore:cedsElement "PsDegreeOrCertificate" ;
-    educore:cedsElement "PsStudentAcademicRecord" .
+    educore:cedsElement "PersonDegreeOrCertificate" ;
+    educore:cedsElement "PostsecondaryStudentAcademicRecord" .
 
 <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/cte> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/open-badges-v3> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/cte> ;
     educore:alignmentStatus "partial" ;
     educore:notes "CTE skill badges exist but OB3 is not CTE-native. Industry certification badges align with CEDS CTE industry alignment." ;
-    educore:cedsElement "CTEProgram" ;
-    educore:cedsElement "CTEIndustryAlignment" .
+    educore:cedsElement "ProgramParticipationCareerAndTechnical" ;
+    educore:cedsElement "CareerAndTechnicalEducationInstructorIndustryCertification" .
 
 <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/adultEd> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/open-badges-v3> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/adultEd> ;
     educore:alignmentStatus "partial" ;
     educore:notes "Adult learning badges are applicable for workforce development and continuing education contexts." ;
-    educore:cedsElement "AdultEducationProgram" .
+    educore:cedsElement "PersonProgramParticipation" .
 
 <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/earlyLearning> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/open-badges-v3> ;
@@ -954,7 +954,7 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "OB3 uses W3C VC identity (DIDs) for issuer and holder identification. Partial alignment with CEDS person identity elements." ;
     educore:gapNotes "CEDS Auth models full system access and role management — OB3 only handles credential identity." ;
-    educore:cedsElement "PersonIdentifier" .
+    educore:cedsElement "PersonIdentification" .
 
 <https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/implVars> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/open-badges-v3> ;
@@ -1095,9 +1095,9 @@ educore:CedsDomain a owl:Class ;
     educore:notes "CLR aggregates credentials into comprehensive records. Full alignment with CEDS Credential entity including verification and award lifecycle." ;
     educore:cedsElement "Credential" ;
     educore:cedsElement "CredentialType" ;
-    educore:cedsElement "CredentialAwardedBy" ;
-    educore:cedsElement "CredentialAwardStatus" ;
-    educore:cedsElement "CredentialVerification" .
+    educore:cedsElement "CredentialAward" ;
+    educore:cedsElement "CredentialDefinition" ;
+    educore:cedsElement "CredentialDefinitionVerificationType" .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/competencies> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/clr-v2> ;
@@ -1106,16 +1106,16 @@ educore:CedsDomain a owl:Class ;
     educore:notes "CLR records carry competency evidence as first-class achievements. Competency references align with CEDS CompetencyDefinition and CompetencySet." ;
     educore:cedsElement "CompetencyDefinition" ;
     educore:cedsElement "CompetencySet" ;
-    educore:cedsElement "LearningStandardItem" .
+    educore:cedsElement "CompetencyDefinition" .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/workforce> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/clr-v2> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/workforce> ;
     educore:alignmentStatus "full" ;
     educore:notes "CLR is designed for workforce mobility with comprehensive achievement records. Employment history and workforce credentials map to CEDS Workforce domain." ;
-    educore:cedsElement "WorkforceProgram" ;
-    educore:cedsElement "EmploymentRecord" ;
-    educore:cedsElement "OccupationalClassification" .
+    educore:cedsElement "WorkforceProgramParticipation" ;
+    educore:cedsElement "WorkforceEmploymentQuarterlyData" ;
+    educore:cedsElement "StandardOccupationalClassification" .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/assessments> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/clr-v2> ;
@@ -1140,33 +1140,33 @@ educore:CedsDomain a owl:Class ;
     educore:notes "K–12 transcript alternative is a CLR use case but adoption is still developing. Partial alignment with CEDS K12 academic records." ;
     educore:gapNotes "CEDS K12 includes detailed attendance, discipline, and special education data beyond CLR scope." ;
     educore:cedsElement "K12StudentAcademicRecord" ;
-    educore:cedsElement "K12CourseSection" .
+    educore:cedsElement "CourseSection" .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/postsecondary> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/clr-v2> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/postsecondary> ;
     educore:alignmentStatus "full" ;
     educore:notes "Postsecondary comprehensive records are a primary CLR use case. Strong alignment with CEDS postsecondary academic record and credential elements." ;
-    educore:cedsElement "PsStudentAcademicRecord" ;
-    educore:cedsElement "PsProgram" ;
-    educore:cedsElement "PsDegreeOrCertificate" .
+    educore:cedsElement "PostsecondaryStudentAcademicRecord" ;
+    educore:cedsElement "PostsecondaryProgram" ;
+    educore:cedsElement "PersonDegreeOrCertificate" .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/cte> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/clr-v2> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/cte> ;
     educore:alignmentStatus "full" ;
     educore:notes "CTE pathway completion records align well with CLR. Industry certifications and program completions map to CEDS CTE domain." ;
-    educore:cedsElement "CTEProgram" ;
-    educore:cedsElement "CTEIndustryAlignment" ;
-    educore:cedsElement "CTEOccupationalCluster" .
+    educore:cedsElement "ProgramParticipationCareerAndTechnical" ;
+    educore:cedsElement "CareerAndTechnicalEducationInstructorIndustryCertification" ;
+    educore:cedsElement "CareerCluster" .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/adultEd> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/clr-v2> ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/adultEd> ;
     educore:alignmentStatus "partial" ;
     educore:notes "Adult learner records can use CLR for credential aggregation. Partial alignment with CEDS adult education program elements." ;
-    educore:cedsElement "AdultEducationProgram" ;
-    educore:cedsElement "AdultEducationEnrollment" .
+    educore:cedsElement "PersonProgramParticipation" ;
+    educore:cedsElement "PersonProgramParticipation" .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/earlyLearning> a educore:CedsAlignment ;
     educore:specification <https://firsteducore.org/ontology#spec/clr-v2> ;
@@ -1181,7 +1181,7 @@ educore:CedsDomain a owl:Class ;
     educore:alignmentStatus "partial" ;
     educore:notes "CLR uses W3C VC identity infrastructure (DIDs) for issuer and holder identification. Consent management aligns with CEDS authorization concepts." ;
     educore:gapNotes "CEDS Auth models full system access and role management beyond CLR identity scope." ;
-    educore:cedsElement "PersonIdentifier" ;
+    educore:cedsElement "PersonIdentification" ;
     educore:cedsElement "AuthorizationDocument" .
 
 <https://firsteducore.org/ontology#ceds-alignment/clr-v2/implVars> a educore:CedsAlignment ;
