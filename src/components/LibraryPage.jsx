@@ -168,12 +168,6 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
   const handleAiSubmit = async () => {
     if (!aiQuery.trim()) return;
 
-    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-    if (!apiKey) {
-      setAiError('OpenAI API key not configured. Set VITE_OPENAI_API_KEY in your environment.');
-      return;
-    }
-
     setAiLoading(true);
     setAiError('');
     setAiResponse('');
@@ -230,6 +224,14 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
       console.groupCollapsed('Full system prompt');
       console.log(systemPrompt);
       console.groupEnd();
+
+      // Check API key right before the call (deferred so ontology logging always runs)
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+      if (!apiKey) {
+        console.warn('%c[4/4] No API key — set VITE_OPENAI_API_KEY', 'color: #dc2626');
+        console.groupEnd();
+        throw new Error('OpenAI API key not configured. Set VITE_OPENAI_API_KEY in your environment.');
+      }
 
       console.log('%c[4/4] Sending to OpenAI (gpt-4o)…', 'color: #6366f1');
 
