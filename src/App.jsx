@@ -74,7 +74,7 @@ export default function App() {
     setActivePage('library');
   };
 
-  // Called by StandardsPage AI when it activates stakeholder/use case context
+  // Called by LibraryPage AI when it activates stakeholder/use case context
   const handleActivateNeeds = (stakeholderIds, useCaseIds) => {
     setPendingActivation({ stakeholderIds, useCaseIds });
     setActivePage('taxonomies');
@@ -86,14 +86,10 @@ export default function App() {
         selectedEntryId={selectedEntryId}
         onNavigateToEntry={handleNavigateToEntry}
         onClearSelection={() => setSelectedEntryId(null)}
-      />
-    ),
-    standards: (
-      <StandardsPage
-        onNavigateToEntry={handleNavigateToEntry}
         onActivateNeeds={handleActivateNeeds}
       />
     ),
+    standards: <StandardsPage onNavigateToEntry={handleNavigateToEntry} />,
     partners: <PartnersPage />,
     ceds: <CedsAlignmentPage onNavigateToEntry={handleNavigateToEntry} />,
     taxonomies: (
