@@ -2263,6 +2263,2711 @@
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
       "https://firsteducore.org/ontology#notes": "No overlap."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/0",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Framework Identifier",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_identifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "Used to generate @id IRI (same in both SCD and CTDL formats)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_identifier",
+      "@type": "rdf:Property",
+      "rdfs:label": "identifier",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.identifier",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "@id",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.@id",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:identifier",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:identifier",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "OpenBadgeCredential.id",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrCredential.id"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/1",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Framework URI",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_uri"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "Used as @id IRI if provided"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_uri",
+      "@type": "rdf:Property",
+      "rdfs:label": "uri",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.uri",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "@id",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.@id",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "@id",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.@id",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "OpenBadgeCredential.id",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrCredential.id"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/2",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Framework Title / Name",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_title"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_name"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "Direct mapping — same concept, different namespace"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_title",
+      "@type": "rdf:Property",
+      "rdfs:label": "title",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.title",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_name",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:name",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.scd:name",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_name",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:name",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:name",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_name",
+      "@type": "rdf:Property",
+      "rdfs:label": "name",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.name",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_name",
+      "@type": "rdf:Property",
+      "rdfs:label": "name",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrCredential.name"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/3",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Framework Description",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_description"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "Direct mapping (same in all formats)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_description",
+      "@type": "rdf:Property",
+      "rdfs:label": "description",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.description",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_description"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_description",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:description",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.scd:description",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_description"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_description",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:description",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:description",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_description"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_description"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_description",
+      "@type": "rdf:Property",
+      "rdfs:label": "description",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.description",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_description"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_description",
+      "@type": "rdf:Property",
+      "rdfs:label": "description",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrCredential.description"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/4",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Language",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_language"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_language"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: language; ASN-CTDL: inLanguage"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_language",
+      "@type": "rdf:Property",
+      "rdfs:label": "language",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.language",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_language"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_language",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:language",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.scd:language",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:inLanguage",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:inLanguage"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/5",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Version",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_version"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_version"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: version; ASN-CTDL: no direct equivalent"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_version",
+      "@type": "rdf:Property",
+      "rdfs:label": "version",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.version",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_version"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_version",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:version",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.scd:version"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/6",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Date Modified",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_lastChangeDateTime"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_dateModified"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "Direct mapping (same in both formats)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_lastChangeDateTime",
+      "@type": "rdf:Property",
+      "rdfs:label": "lastChangeDateTime",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.lastChangeDateTime",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_dateModified"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_dateModified",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:dateModified",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.scd:dateModified",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:dateModified",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:dateModified"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/7",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Publisher",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_publisher"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_publisher"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_issuer"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_issuer"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "OB3/CLR use issuer (a Profile object) rather than publisher string"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_publisher",
+      "@type": "rdf:Property",
+      "rdfs:label": "publisher",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.publisher",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_publisher"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_issuer"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_issuer"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_publisher",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:publisher",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.scd:publisher",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_issuer"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_issuer"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:publisher",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:publisher",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_issuer"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_issuer"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_issuer",
+      "@type": "rdf:Property",
+      "rdfs:label": "issuer",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "OpenBadgeCredential.issuer",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_issuer"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_issuer",
+      "@type": "rdf:Property",
+      "rdfs:label": "issuer",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrCredential.issuer"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/8",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Official Source URL",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_officialSourceURL"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_url"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_source"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: url; ASN-CTDL: source"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_officialSourceURL",
+      "@type": "rdf:Property",
+      "rdfs:label": "officialSourceURL",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.officialSourceURL",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_url"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_source"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_url",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:url",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.scd:url",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_source"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_source",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:source",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:source"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/9",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Adoption / Publication Status",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_adoptionStatus"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_publicationStatusType"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: no equivalent; ASN-CTDL: publicationStatusType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_adoptionStatus",
+      "@type": "rdf:Property",
+      "rdfs:label": "adoptionStatus",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.adoptionStatus",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_publicationStatusType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_publicationStatusType",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:publicationStatusType",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:publicationStatusType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/10",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Education Level (Framework)",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_educationLevel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: no equivalent at framework level; ASN-CTDL: educationLevelType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_educationLevel",
+      "@type": "rdf:Property",
+      "rdfs:label": "educationLevel",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.educationLevel",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:educationLevelType",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:educationLevelType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/11",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Subject",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_subject"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_localSubject"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: no equivalent; ASN-CTDL: localSubject"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_subject",
+      "@type": "rdf:Property",
+      "rdfs:label": "subject",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.subject",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_localSubject"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_localSubject",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:localSubject",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:localSubject"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/12",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Rights",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_rights"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_rights"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: no equivalent; ASN-CTDL: rights"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_rights",
+      "@type": "rdf:Property",
+      "rdfs:label": "rights",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.rights",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_rights"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_rights",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:rights",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:rights"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/13",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "License",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_license"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_license"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: no equivalent; ASN-CTDL: license"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_license",
+      "@type": "rdf:Property",
+      "rdfs:label": "license",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.license",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_license"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_license",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:license",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:license"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/14",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Notes / Comments (Framework)",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_notes"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_comment"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFDocument → CompetencyFramework",
+      "rdfs:comment": "IEEE SCD: no equivalent; ASN-CTDL: comment"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_notes",
+      "@type": "rdf:Property",
+      "rdfs:label": "notes",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.notes",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_comment"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_comment",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:comment",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:comment"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/15",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Competency Identifier",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_identifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "Used to generate @id IRI"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_identifier",
+      "@type": "rdf:Property",
+      "rdfs:label": "identifier",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.identifier",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "@id",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.@id",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.id",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.id"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/16",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Competency URI",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_uri"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "Used as @id IRI if provided"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_uri",
+      "@type": "rdf:Property",
+      "rdfs:label": "uri",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.uri",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "@id",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.@id"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/17",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Full Statement / Competency Text",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_fullStatement"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_statement"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_criteria_narrative"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "IEEE SCD: statement; ASN-CTDL: competencyText; OB3: criteria.narrative"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_fullStatement",
+      "@type": "rdf:Property",
+      "rdfs:label": "fullStatement",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.fullStatement",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_statement"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_criteria_narrative"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_statement",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:statement",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:statement",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_criteria_narrative"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:competencyText",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:competencyText",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_criteria_narrative"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_criteria_narrative",
+      "@type": "rdf:Property",
+      "rdfs:label": "criteria.narrative",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.criteria.narrative"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/18",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Abbreviated Statement / Label",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_abbreviatedStatement"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_abbreviatedStatement"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "IEEE SCD: abbreviatedStatement; ASN-CTDL: competencyLabel; OB3: name"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_abbreviatedStatement",
+      "@type": "rdf:Property",
+      "rdfs:label": "abbreviatedStatement",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.abbreviatedStatement",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_abbreviatedStatement"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_abbreviatedStatement",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:abbreviatedStatement",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:abbreviatedStatement",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:competencyLabel",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:competencyLabel",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_name",
+      "@type": "rdf:Property",
+      "rdfs:label": "name",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.name"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/19",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Alternative Label",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_alternativeLabel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_alternativeLabel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_skos_altLabel"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "IEEE SCD: alternativeLabel; ASN-CTDL: skos:altLabel"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_alternativeLabel",
+      "@type": "rdf:Property",
+      "rdfs:label": "alternativeLabel",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.alternativeLabel",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_alternativeLabel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_skos_altLabel"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_alternativeLabel",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:alternativeLabel",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:alternativeLabel",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_skos_altLabel"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_skos_altLabel",
+      "@type": "rdf:Property",
+      "rdfs:label": "skos:altLabel",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.skos:altLabel"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/20",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Concept Keywords",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_conceptKeywords"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_conceptKeyword"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_tag"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "Direct mapping (array). OB3 uses tag for similar purpose"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_conceptKeywords",
+      "@type": "rdf:Property",
+      "rdfs:label": "conceptKeywords",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.conceptKeywords",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_conceptKeyword"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_tag"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_conceptKeyword",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:conceptKeyword",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:conceptKeyword",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_tag"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:conceptKeyword",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:conceptKeyword",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_tag"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_tag",
+      "@type": "rdf:Property",
+      "rdfs:label": "tag",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.tag"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/21",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Hierarchy Code",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_hierarchyCode"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_hierarchyCode"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "IEEE SCD: hierarchyCode; ASN-CTDL: codedNotation"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_hierarchyCode",
+      "@type": "rdf:Property",
+      "rdfs:label": "hierarchyCode",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.hierarchyCode",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_hierarchyCode"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_hierarchyCode",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:hierarchyCode",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:hierarchyCode",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:codedNotation",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:codedNotation"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/22",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Human Coding Scheme",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_humanCodingScheme"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_humanCodingScheme"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "ASN-CTDL: codedNotation (or altCodedNotation for secondary codes)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_humanCodingScheme",
+      "@type": "rdf:Property",
+      "rdfs:label": "humanCodingScheme",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.humanCodingScheme",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_humanCodingScheme"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_humanCodingScheme",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:humanCodingScheme",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:humanCodingScheme",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:codedNotation",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:codedNotation"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/23",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Competency Category / Type",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_CFItemType"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_competencyCategory"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_achievementType"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "Direct mapping (same in both formats). OB3 uses achievementType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_CFItemType",
+      "@type": "rdf:Property",
+      "rdfs:label": "CFItemType",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.CFItemType",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_competencyCategory"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_achievementType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_competencyCategory",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:competencyCategory",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:competencyCategory",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_achievementType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:competencyCategory",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:competencyCategory",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_achievementType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_achievementType",
+      "@type": "rdf:Property",
+      "rdfs:label": "achievementType",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.achievementType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/24",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Language (Competency)",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_language"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_language"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "IEEE SCD: language; ASN-CTDL: inLanguage"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_language",
+      "@type": "rdf:Property",
+      "rdfs:label": "language",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.language",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_language"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_language",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:language",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:language",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:inLanguage",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:inLanguage"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/25",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Education Level (Competency)",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_educationLevel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_educationLevel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "IEEE SCD: educationLevel; ASN-CTDL: educationLevelType (expects skos:Concept)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_educationLevel",
+      "@type": "rdf:Property",
+      "rdfs:label": "educationLevel",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.educationLevel",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_educationLevel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_educationLevel",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:educationLevel",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyDefinition.scd:educationLevel",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:educationLevelType",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:educationLevelType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/26",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Concept Keywords URI",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_conceptKeywordsUri"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptTerm"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "IEEE SCD: no equivalent; ASN-CTDL: conceptTerm (skos:Concept)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_conceptKeywordsUri",
+      "@type": "rdf:Property",
+      "rdfs:label": "conceptKeywordsUri",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.conceptKeywordsUri",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptTerm"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptTerm",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:conceptTerm",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:conceptTerm"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/27",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Notes / Comments (Competency)",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_notes"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_comment"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFItem → CompetencyDefinition",
+      "rdfs:comment": "IEEE SCD: no equivalent; ASN-CTDL: comment"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_notes",
+      "@type": "rdf:Property",
+      "rdfs:label": "notes",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.notes",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_comment"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_comment",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:comment",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:comment"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/28",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Association Identifier",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_identifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "Used to generate @id IRI"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_identifier",
+      "@type": "rdf:Property",
+      "rdfs:label": "identifier",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.identifier",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "@id",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.@id"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/29",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Association URI",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_uri"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "Used as @id IRI if provided"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_uri",
+      "@type": "rdf:Property",
+      "rdfs:label": "uri",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.uri",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_id"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "@id",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.@id"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/30",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Child Relationship (isChildOf)",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_associationType_isChildOf"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_hasPart"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_isChildOf"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "IEEE SCD: hasPart (separate ResourceAssociation); ASN-CTDL: isChildOf (direct property)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_associationType_isChildOf",
+      "@type": "rdf:Property",
+      "rdfs:label": "associationType=isChildOf",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.associationType",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_hasPart"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_isChildOf"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_hasPart",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:relationType=hasPart",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.scd:relationType",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_isChildOf"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_isChildOf",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:isChildOf",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:isChildOf"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/31",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Precedes / Prerequisite",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_associationType_precedes"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_precedes"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_prerequisiteAlignment"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "IEEE SCD: precedes; ASN-CTDL: prerequisiteAlignment"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_associationType_precedes",
+      "@type": "rdf:Property",
+      "rdfs:label": "associationType=precedes",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.associationType",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_precedes"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_prerequisiteAlignment"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_precedes",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:relationType=precedes",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.scd:relationType",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_prerequisiteAlignment"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_prerequisiteAlignment",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:prerequisiteAlignment",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:prerequisiteAlignment"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/32",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Skill Level / Progression",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_associationType_hasSkillLevel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_competencyLevel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_asn_hasProgressionLevel"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "IEEE SCD: competencyLevel; ASN-CTDL: hasProgressionLevel (references progression model)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_associationType_hasSkillLevel",
+      "@type": "rdf:Property",
+      "rdfs:label": "associationType=hasSkillLevel",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.associationType",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_competencyLevel"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_asn_hasProgressionLevel"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType_competencyLevel",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:relationType=competencyLevel",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.scd:relationType",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_asn_hasProgressionLevel"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_asn_hasProgressionLevel",
+      "@type": "rdf:Property",
+      "rdfs:label": "asn:hasProgressionLevel",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.asn:hasProgressionLevel"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/33",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Other Association Types",
+      "https://firsteducore.org/ontology#matchStrength": "related",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_associationType_other"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_various_alignment_props"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "IEEE SCD: unmapped types pass through; ASN-CTDL: various alignment properties"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_associationType_other",
+      "@type": "rdf:Property",
+      "rdfs:label": "associationType (other)",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.associationType",
+      "skos:relatedMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_various_alignment_props"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_relationType",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:relationType",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.scd:relationType",
+      "skos:relatedMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_various_alignment_props"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_various_alignment_props",
+      "@type": "rdf:Property",
+      "rdfs:label": "various alignment props",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:alignTo / ceasn:alignFrom"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/34",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Origin Node URI",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_originNodeURI"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_sourceNode_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_property_on_origin"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "IEEE SCD: sourceNode in ResourceAssociation; ASN-CTDL: direct property on Competency"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_originNodeURI",
+      "@type": "rdf:Property",
+      "rdfs:label": "originNodeURI",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.originNodeURI",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_sourceNode_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_property_on_origin"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_sourceNode_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:sourceNode.@id",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.scd:sourceNode.@id",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_property_on_origin"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_property_on_origin",
+      "@type": "rdf:Property",
+      "rdfs:label": "property on origin",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency (direct property)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/35",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Destination Node URI",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_destinationNodeURI"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_targetNode_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_value_of_property"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "IEEE SCD: targetNode in ResourceAssociation; ASN-CTDL: value of relationship property"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_destinationNodeURI",
+      "@type": "rdf:Property",
+      "rdfs:label": "destinationNodeURI",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.destinationNodeURI",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_targetNode_id"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_value_of_property"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_targetNode_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:targetNode.@id",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.scd:targetNode.@id",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_value_of_property"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_value_of_property",
+      "@type": "rdf:Property",
+      "rdfs:label": "value of property",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency (value of relationship property)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/36",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Sequence Number",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_sequenceNumber"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_sequenceNumber"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_listID"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "IEEE SCD: sequenceNumber; ASN-CTDL: listID (alphanumeric position)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_sequenceNumber",
+      "@type": "rdf:Property",
+      "rdfs:label": "sequenceNumber",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.sequenceNumber",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_sequenceNumber"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_listID"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_sequenceNumber",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:sequenceNumber",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.scd:sequenceNumber",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_listID"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_listID",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:listID",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:listID"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/37",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Date Modified (Association)",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_lastChangeDateTime"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_dateModified"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "Direct mapping (same in both formats)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_lastChangeDateTime",
+      "@type": "rdf:Property",
+      "rdfs:label": "lastChangeDateTime",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.lastChangeDateTime",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_dateModified"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_dateModified",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:dateModified",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation.scd:dateModified",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:dateModified",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:dateModified"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/38",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Document Reference (Association)",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_CFDocumentURI"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_isPartOf"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "CFAssociation → ResourceAssociation",
+      "rdfs:comment": "IEEE SCD: no equivalent; ASN-CTDL: isPartOf (framework reference)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_CFDocumentURI",
+      "@type": "rdf:Property",
+      "rdfs:label": "CFDocumentURI",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFAssociation.CFDocumentURI",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_isPartOf"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_isPartOf",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:isPartOf",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:isPartOf"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/39",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Type Declaration (@type)",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_type"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_type"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_type"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_type"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "Format-Specific",
+      "rdfs:comment": "All formats declare type; OB3/CLR use W3C VC type arrays"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_type",
+      "@type": "rdf:Property",
+      "rdfs:label": "@type",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "@type (scd:CompetencyFramework / scd:CompetencyDefinition / scd:ResourceAssociation)",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_type"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_type"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_type"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_type",
+      "@type": "rdf:Property",
+      "rdfs:label": "@type",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "@type (ceasn:CompetencyFramework / ceasn:Competency)",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_type"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_type"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "type: [\"VerifiableCredential\", \"OpenBadgeCredential\"]",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_type"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "type: [\"VerifiableCredential\", \"ClrCredential\"]"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/40",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Context Declaration (@context)",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_context"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_context"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_context"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_context"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "Format-Specific",
+      "rdfs:comment": "All use JSON-LD @context with different namespace URIs"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_context",
+      "@type": "rdf:Property",
+      "rdfs:label": "@context",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "@context (scd namespace)",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_context"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_context"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_context"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_context",
+      "@type": "rdf:Property",
+      "rdfs:label": "@context",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "@context (ceasn + skos namespaces)",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_context"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_context"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_context",
+      "@type": "rdf:Property",
+      "rdfs:label": "@context",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "@context (W3C VC + OB3 context)",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_context"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_context",
+      "@type": "rdf:Property",
+      "rdfs:label": "@context",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "@context (W3C VC + CLR context)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/41",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Graph Container (@graph)",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_graph"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_graph"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "Format-Specific",
+      "rdfs:comment": "Both SCD and CTDL use @graph to contain all translated entities"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_graph",
+      "@type": "rdf:Property",
+      "rdfs:label": "@graph",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "@graph",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_graph"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_graph",
+      "@type": "rdf:Property",
+      "rdfs:label": "@graph",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "@graph"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/42",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Separate Association Objects",
+      "https://firsteducore.org/ontology#matchStrength": "related",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_ResourceAssociation"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_direct_properties"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "Format-Specific",
+      "rdfs:comment": "IEEE SCD: separate association objects; ASN-CTDL: relationships are direct properties on Competency"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ieeescd_scd_ResourceAssociation",
+      "@type": "rdf:Property",
+      "rdfs:label": "scd:ResourceAssociation",
+      "https://firsteducore.org/ontology#specKey": "ieee-scd",
+      "https://firsteducore.org/ontology#jsonPath": "ResourceAssociation (separate objects)",
+      "skos:relatedMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_direct_properties"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_direct_properties",
+      "@type": "rdf:Property",
+      "rdfs:label": "direct properties",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Relationships are direct properties on Competency"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/43",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Has Child (inverse)",
+      "https://firsteducore.org/ontology#matchStrength": "related",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_hasChild"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "Format-Specific",
+      "rdfs:comment": "ASN-CTDL only: inverse of isChildOf, indicates child competencies"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_hasChild",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:hasChild",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "CompetencyFramework.ceasn:hasChild"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/44",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Alignment Properties",
+      "https://firsteducore.org/ontology#matchStrength": "related",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_alignTo_ceasn_alignFrom"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "Format-Specific",
+      "rdfs:comment": "ASN-CTDL only: alignment properties for equivalency assertions"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/asnctdl_ceasn_alignTo_ceasn_alignFrom",
+      "@type": "rdf:Property",
+      "rdfs:label": "ceasn:alignTo / ceasn:alignFrom",
+      "https://firsteducore.org/ontology#specKey": "asn-ctdl",
+      "https://firsteducore.org/ontology#jsonPath": "Competency.ceasn:alignTo / ceasn:alignFrom"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/45",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Credential Subject",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_credentialSubject"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_credentialSubject"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "OB3/CLR Extension",
+      "rdfs:comment": "Both use W3C VC credentialSubject. OB3: AchievementSubject; CLR: ClrSubject"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_credentialSubject",
+      "@type": "rdf:Property",
+      "rdfs:label": "credentialSubject",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "OpenBadgeCredential.credentialSubject",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_credentialSubject"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_credentialSubject",
+      "@type": "rdf:Property",
+      "rdfs:label": "credentialSubject",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrCredential.credentialSubject"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/46",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Achievement / Badge",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_achievement"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_verifiableCredential_credentialSubject_achievement"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "OB3/CLR Extension",
+      "rdfs:comment": "OB3: single achievement per credential; CLR: aggregates multiple achievements"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_achievement",
+      "@type": "rdf:Property",
+      "rdfs:label": "achievement",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "AchievementSubject.achievement",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_verifiableCredential_credentialSubject_achievement"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_verifiableCredential_credentialSubject_achievement",
+      "@type": "rdf:Property",
+      "rdfs:label": "verifiableCredential[].credentialSubject.achievement",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrSubject.verifiableCredential[].credentialSubject.achievement"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/47",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Achievement Name",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_title"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_name"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "OB3/CLR Extension",
+      "rdfs:comment": "OB3/CLR Achievement.name maps loosely to CASE title or abbreviatedStatement"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_title",
+      "@type": "rdf:Property",
+      "rdfs:label": "title",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFDocument.title",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_name"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_name",
+      "@type": "rdf:Property",
+      "rdfs:label": "name",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.name",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_name"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_name",
+      "@type": "rdf:Property",
+      "rdfs:label": "name",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.name"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/48",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Criteria Narrative",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_fullStatement"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_criteria_narrative"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_criteria_narrative"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "OB3/CLR Extension",
+      "rdfs:comment": "OB3/CLR criteria.narrative is a loose equivalent of the full competency statement"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_fullStatement",
+      "@type": "rdf:Property",
+      "rdfs:label": "fullStatement",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.fullStatement",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_criteria_narrative"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_criteria_narrative"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_criteria_narrative",
+      "@type": "rdf:Property",
+      "rdfs:label": "criteria.narrative",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.criteria.narrative",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_criteria_narrative"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_criteria_narrative",
+      "@type": "rdf:Property",
+      "rdfs:label": "criteria.narrative",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.criteria.narrative"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/49",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Issuer Profile",
+      "https://firsteducore.org/ontology#matchStrength": "equivalent",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_issuer"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_issuer"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "OB3/CLR Extension",
+      "rdfs:comment": "Both use a Profile object with id, type, and name"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_issuer",
+      "@type": "rdf:Property",
+      "rdfs:label": "issuer",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "OpenBadgeCredential.issuer (Profile)",
+      "owl:equivalentProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_issuer"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_issuer",
+      "@type": "rdf:Property",
+      "rdfs:label": "issuer",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrCredential.issuer (Profile)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/50",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Credential Aggregation",
+      "https://firsteducore.org/ontology#matchStrength": "related",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_verifiableCredential"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "OB3/CLR Extension",
+      "rdfs:comment": "CLR 2.0 only: array of embedded VerifiableCredentials (typically OpenBadgeCredentials)"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_verifiableCredential",
+      "@type": "rdf:Property",
+      "rdfs:label": "verifiableCredential",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "ClrSubject.verifiableCredential[]"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field-mapping/51",
+      "@type": "https://firsteducore.org/ontology#FieldMapping",
+      "rdfs:label": "Achievement Type",
+      "https://firsteducore.org/ontology#matchStrength": "close",
+      "https://firsteducore.org/ontology#mapsProperty": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/case11_CFItemType"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_achievementType"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_achievementType"
+        }
+      ],
+      "https://firsteducore.org/ontology#entityType": "OB3/CLR Extension",
+      "rdfs:comment": "OB3/CLR achievementType maps to CASE CFItemType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/case11_CFItemType",
+      "@type": "rdf:Property",
+      "rdfs:label": "CFItemType",
+      "https://firsteducore.org/ontology#specKey": "case-1.1",
+      "https://firsteducore.org/ontology#jsonPath": "CFItem.CFItemType",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/ob3_achievementType"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_achievementType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/ob3_achievementType",
+      "@type": "rdf:Property",
+      "rdfs:label": "achievementType",
+      "https://firsteducore.org/ontology#specKey": "ob3",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.achievementType",
+      "skos:closeMatch": [
+        {
+          "@id": "https://firsteducore.org/ontology#field/clr20_achievementType"
+        }
+      ]
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#field/clr20_achievementType",
+      "@type": "rdf:Property",
+      "rdfs:label": "achievementType",
+      "https://firsteducore.org/ontology#specKey": "clr-2.0",
+      "https://firsteducore.org/ontology#jsonPath": "Achievement.achievementType"
     }
   ]
 }

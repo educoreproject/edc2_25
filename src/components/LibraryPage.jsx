@@ -10,6 +10,7 @@ import {
   stakeholderTaxonomy,
   useCasesCedsRdf,
 } from '../data/taxonomies';
+import { fieldMappings, specLabels } from '../data/fieldMappings';
 import LibraryEntryCard from './LibraryEntryCard';
 import ExplainerBadge from './ExplainerBadge';
 import WireframeBox from './WireframeBox';
@@ -165,6 +166,20 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
     return { stakeholders, useCases };
   };
 
+  const buildFieldMappingContext = () => {
+    const specKeys = Object.keys(specLabels);
+    const header = `| Concept | ${specKeys.map(k => specLabels[k]).join(' | ')} | Strength |`;
+    const sep = `|---|${specKeys.map(() => '---').join('|')}|---|`;
+    const rows = fieldMappings.map(m => {
+      const cells = specKeys.map(k => {
+        const entry = m.mappings[k];
+        return entry ? `\`${entry.field}\`` : '—';
+      });
+      return `| ${m.concept} | ${cells.join(' | ')} | ${m.matchStrength} |`;
+    });
+    return `${header}\n${sep}\n${rows.join('\n')}`;
+  };
+
   const handleAiSubmit = async () => {
     if (!aiQuery.trim()) return;
 
@@ -200,6 +215,12 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
 
       const stakeholderContext = `\n\n## Available Stakeholders (use these exact IDs):\n${stakeholders.map(s => `- id: "${s.id}" | ${s.label} (${s.group})`).join('\n')}\n\n## Available Use Cases (use these exact IDs):\n${useCases.map(uc => `- id: "${uc.id}" | ${uc.label} | CEDS domains: ${uc.cedsDomains.join(', ')} | stakeholders: ${uc.stakeholders.join(', ')}`).join('\n')}`;
 
+      console.log('%c[2.5/4] Building field-level crosswalk context…', 'color: #6366f1');
+      const fieldMappingTable = buildFieldMappingContext();
+      console.log(`  ${fieldMappings.length} field mappings across ${Object.keys(specLabels).length} specs`);
+
+      const fieldMappingContext = `\n\n## Field-Level Crosswalk (CASE 1.1 ↔ IEEE SCD ↔ ASN-CTDL ↔ OB3 ↔ CLR 2.0)\nUse this table to answer specific field mapping questions. When a user asks how to map a field from one standard to another, reference the exact field names and paths below.\n\n${fieldMappingTable}`;
+
       const systemPrompt = `You are the EDU Reference Library AI assistant. Answer interoperability questions using the ontology data below.
 
 RESPONSE FORMAT RULES:
@@ -218,7 +239,7 @@ List every educore: URI you referenced, one per line, formatted as: \`<URI>\`
   "useCaseIds": ["uc-id1", "uc-id2"]
 }
 \`\`\`
-Choose the stakeholder IDs and use case IDs from the lists below that are MOST RELEVANT to the user's question. Select only the ones that directly apply.${ontologyContext}${stakeholderContext}`;
+Choose the stakeholder IDs and use case IDs from the lists below that are MOST RELEVANT to the user's question. Select only the ones that directly apply.${ontologyContext}${stakeholderContext}${fieldMappingContext}`;
 
       console.log('%c[3/4] System prompt assembled', 'color: #6366f1', `(${systemPrompt.length} chars)`);
       console.groupCollapsed('Full system prompt');

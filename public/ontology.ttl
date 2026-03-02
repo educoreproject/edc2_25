@@ -48,6 +48,10 @@ educore:CedsDomain a owl:Class ;
     rdfs:label "CedsDomain" ;
     rdfs:comment "A CEDS (Common Education Data Standards) ontology domain" .
 
+educore:FieldMapping a owl:Class ;
+    rdfs:label "FieldMapping" ;
+    rdfs:comment "A cross-standard field-level mapping linking equivalent properties across specifications" .
+
 <https://firsteducore.org/ontology#ceds-domain/credentials> a educore:CedsDomain ;
     rdfs:label "Credentials" ;
     dcterms:identifier "credentials" .
@@ -1197,3 +1201,1427 @@ educore:CedsDomain a owl:Class ;
     educore:cedsDomain <https://firsteducore.org/ontology#ceds-domain/facilities> ;
     educore:alignmentStatus "gap" ;
     educore:notes "No overlap." .
+
+# ─── Field-Level Crosswalk Mappings ───
+
+<https://firsteducore.org/ontology#field-mapping/0> a educore:FieldMapping ;
+    rdfs:label "Framework Identifier" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Used to generate @id IRI (same in both SCD and CTDL formats)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_identifier> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_id> .
+
+<https://firsteducore.org/ontology#field/case11_identifier> a rdf:Property ;
+    rdfs:label "identifier" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.identifier" .
+
+<https://firsteducore.org/ontology#field/ieeescd_id> a rdf:Property ;
+    rdfs:label "@id" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.@id" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier> a rdf:Property ;
+    rdfs:label "ceasn:identifier" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:identifier" .
+
+<https://firsteducore.org/ontology#field/ob3_id> a rdf:Property ;
+    rdfs:label "id" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "OpenBadgeCredential.id" .
+
+<https://firsteducore.org/ontology#field/clr20_id> a rdf:Property ;
+    rdfs:label "id" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrCredential.id" .
+
+<https://firsteducore.org/ontology#field/case11_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+<https://firsteducore.org/ontology#field/case11_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier> .
+<https://firsteducore.org/ontology#field/case11_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_id> .
+<https://firsteducore.org/ontology#field/case11_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+<https://firsteducore.org/ontology#field/ieeescd_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier> .
+<https://firsteducore.org/ontology#field/ieeescd_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_id> .
+<https://firsteducore.org/ontology#field/ieeescd_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_id> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+<https://firsteducore.org/ontology#field/ob3_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+
+<https://firsteducore.org/ontology#field-mapping/1> a educore:FieldMapping ;
+    rdfs:label "Framework URI" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Used as @id IRI if provided" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_uri> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_id> .
+
+<https://firsteducore.org/ontology#field/case11_uri> a rdf:Property ;
+    rdfs:label "uri" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.uri" .
+
+<https://firsteducore.org/ontology#field/ieeescd_id> a rdf:Property ;
+    rdfs:label "@id" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.@id" .
+
+<https://firsteducore.org/ontology#field/asnctdl_id> a rdf:Property ;
+    rdfs:label "@id" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.@id" .
+
+<https://firsteducore.org/ontology#field/ob3_id> a rdf:Property ;
+    rdfs:label "id" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "OpenBadgeCredential.id" .
+
+<https://firsteducore.org/ontology#field/clr20_id> a rdf:Property ;
+    rdfs:label "id" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrCredential.id" .
+
+<https://firsteducore.org/ontology#field/case11_uri> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+<https://firsteducore.org/ontology#field/case11_uri> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_id> .
+<https://firsteducore.org/ontology#field/case11_uri> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_id> .
+<https://firsteducore.org/ontology#field/case11_uri> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+<https://firsteducore.org/ontology#field/ieeescd_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_id> .
+<https://firsteducore.org/ontology#field/ieeescd_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_id> .
+<https://firsteducore.org/ontology#field/ieeescd_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+<https://firsteducore.org/ontology#field/asnctdl_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_id> .
+<https://firsteducore.org/ontology#field/asnctdl_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+<https://firsteducore.org/ontology#field/ob3_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+
+<https://firsteducore.org/ontology#field-mapping/2> a educore:FieldMapping ;
+    rdfs:label "Framework Title / Name" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Direct mapping — same concept, different namespace" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_title> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_name> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_name> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_name> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_name> .
+
+<https://firsteducore.org/ontology#field/case11_title> a rdf:Property ;
+    rdfs:label "title" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.title" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_name> a rdf:Property ;
+    rdfs:label "scd:name" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.scd:name" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_name> a rdf:Property ;
+    rdfs:label "ceasn:name" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:name" .
+
+<https://firsteducore.org/ontology#field/ob3_name> a rdf:Property ;
+    rdfs:label "name" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.name" .
+
+<https://firsteducore.org/ontology#field/clr20_name> a rdf:Property ;
+    rdfs:label "name" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrCredential.name" .
+
+<https://firsteducore.org/ontology#field/case11_title> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_name> .
+<https://firsteducore.org/ontology#field/case11_title> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_name> .
+<https://firsteducore.org/ontology#field/case11_title> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_name> .
+<https://firsteducore.org/ontology#field/case11_title> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_name> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_name> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_name> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_name> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_name> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_name> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_name> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_name> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_name> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_name> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_name> .
+<https://firsteducore.org/ontology#field/ob3_name> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_name> .
+
+<https://firsteducore.org/ontology#field-mapping/3> a educore:FieldMapping ;
+    rdfs:label "Framework Description" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Direct mapping (same in all formats)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_description> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_description> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_description> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_description> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_description> .
+
+<https://firsteducore.org/ontology#field/case11_description> a rdf:Property ;
+    rdfs:label "description" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.description" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_description> a rdf:Property ;
+    rdfs:label "scd:description" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.scd:description" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_description> a rdf:Property ;
+    rdfs:label "ceasn:description" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:description" .
+
+<https://firsteducore.org/ontology#field/ob3_description> a rdf:Property ;
+    rdfs:label "description" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.description" .
+
+<https://firsteducore.org/ontology#field/clr20_description> a rdf:Property ;
+    rdfs:label "description" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrCredential.description" .
+
+<https://firsteducore.org/ontology#field/case11_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_description> .
+<https://firsteducore.org/ontology#field/case11_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_description> .
+<https://firsteducore.org/ontology#field/case11_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_description> .
+<https://firsteducore.org/ontology#field/case11_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_description> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_description> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_description> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_description> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_description> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_description> .
+<https://firsteducore.org/ontology#field/ob3_description> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_description> .
+
+<https://firsteducore.org/ontology#field-mapping/4> a educore:FieldMapping ;
+    rdfs:label "Language" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: language; ASN-CTDL: inLanguage" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_language> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_language> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage> .
+
+<https://firsteducore.org/ontology#field/case11_language> a rdf:Property ;
+    rdfs:label "language" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.language" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_language> a rdf:Property ;
+    rdfs:label "scd:language" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.scd:language" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage> a rdf:Property ;
+    rdfs:label "ceasn:inLanguage" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:inLanguage" .
+
+<https://firsteducore.org/ontology#field/case11_language> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_language> .
+<https://firsteducore.org/ontology#field/case11_language> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_language> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage> .
+
+<https://firsteducore.org/ontology#field-mapping/5> a educore:FieldMapping ;
+    rdfs:label "Version" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: version; ASN-CTDL: no direct equivalent" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_version> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_version> .
+
+<https://firsteducore.org/ontology#field/case11_version> a rdf:Property ;
+    rdfs:label "version" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.version" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_version> a rdf:Property ;
+    rdfs:label "scd:version" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.scd:version" .
+
+<https://firsteducore.org/ontology#field/case11_version> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_version> .
+
+<https://firsteducore.org/ontology#field-mapping/6> a educore:FieldMapping ;
+    rdfs:label "Date Modified" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Direct mapping (same in both formats)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_lastChangeDateTime> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_dateModified> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified> .
+
+<https://firsteducore.org/ontology#field/case11_lastChangeDateTime> a rdf:Property ;
+    rdfs:label "lastChangeDateTime" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.lastChangeDateTime" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_dateModified> a rdf:Property ;
+    rdfs:label "scd:dateModified" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.scd:dateModified" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified> a rdf:Property ;
+    rdfs:label "ceasn:dateModified" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:dateModified" .
+
+<https://firsteducore.org/ontology#field/case11_lastChangeDateTime> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_dateModified> .
+<https://firsteducore.org/ontology#field/case11_lastChangeDateTime> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_dateModified> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified> .
+
+<https://firsteducore.org/ontology#field-mapping/7> a educore:FieldMapping ;
+    rdfs:label "Publisher" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "OB3/CLR use issuer (a Profile object) rather than publisher string" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_publisher> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_publisher> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_issuer> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_issuer> .
+
+<https://firsteducore.org/ontology#field/case11_publisher> a rdf:Property ;
+    rdfs:label "publisher" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.publisher" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_publisher> a rdf:Property ;
+    rdfs:label "scd:publisher" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.scd:publisher" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher> a rdf:Property ;
+    rdfs:label "ceasn:publisher" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:publisher" .
+
+<https://firsteducore.org/ontology#field/ob3_issuer> a rdf:Property ;
+    rdfs:label "issuer" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "OpenBadgeCredential.issuer" .
+
+<https://firsteducore.org/ontology#field/clr20_issuer> a rdf:Property ;
+    rdfs:label "issuer" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrCredential.issuer" .
+
+<https://firsteducore.org/ontology#field/case11_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_publisher> .
+<https://firsteducore.org/ontology#field/case11_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher> .
+<https://firsteducore.org/ontology#field/case11_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/ob3_issuer> .
+<https://firsteducore.org/ontology#field/case11_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_issuer> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/ob3_issuer> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_issuer> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/ob3_issuer> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_publisher> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_issuer> .
+<https://firsteducore.org/ontology#field/ob3_issuer> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_issuer> .
+
+<https://firsteducore.org/ontology#field-mapping/8> a educore:FieldMapping ;
+    rdfs:label "Official Source URL" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: url; ASN-CTDL: source" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_officialSourceURL> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_url> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_source> .
+
+<https://firsteducore.org/ontology#field/case11_officialSourceURL> a rdf:Property ;
+    rdfs:label "officialSourceURL" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.officialSourceURL" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_url> a rdf:Property ;
+    rdfs:label "scd:url" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyFramework.scd:url" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_source> a rdf:Property ;
+    rdfs:label "ceasn:source" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:source" .
+
+<https://firsteducore.org/ontology#field/case11_officialSourceURL> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_url> .
+<https://firsteducore.org/ontology#field/case11_officialSourceURL> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_source> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_url> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_source> .
+
+<https://firsteducore.org/ontology#field-mapping/9> a educore:FieldMapping ;
+    rdfs:label "Adoption / Publication Status" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: no equivalent; ASN-CTDL: publicationStatusType" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_adoptionStatus> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_publicationStatusType> .
+
+<https://firsteducore.org/ontology#field/case11_adoptionStatus> a rdf:Property ;
+    rdfs:label "adoptionStatus" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.adoptionStatus" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_publicationStatusType> a rdf:Property ;
+    rdfs:label "ceasn:publicationStatusType" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:publicationStatusType" .
+
+<https://firsteducore.org/ontology#field/case11_adoptionStatus> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_publicationStatusType> .
+
+<https://firsteducore.org/ontology#field-mapping/10> a educore:FieldMapping ;
+    rdfs:label "Education Level (Framework)" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: no equivalent at framework level; ASN-CTDL: educationLevelType" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_educationLevel> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType> .
+
+<https://firsteducore.org/ontology#field/case11_educationLevel> a rdf:Property ;
+    rdfs:label "educationLevel" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.educationLevel" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType> a rdf:Property ;
+    rdfs:label "ceasn:educationLevelType" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:educationLevelType" .
+
+<https://firsteducore.org/ontology#field/case11_educationLevel> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType> .
+
+<https://firsteducore.org/ontology#field-mapping/11> a educore:FieldMapping ;
+    rdfs:label "Subject" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: no equivalent; ASN-CTDL: localSubject" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_subject> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_localSubject> .
+
+<https://firsteducore.org/ontology#field/case11_subject> a rdf:Property ;
+    rdfs:label "subject" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.subject" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_localSubject> a rdf:Property ;
+    rdfs:label "ceasn:localSubject" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:localSubject" .
+
+<https://firsteducore.org/ontology#field/case11_subject> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_localSubject> .
+
+<https://firsteducore.org/ontology#field-mapping/12> a educore:FieldMapping ;
+    rdfs:label "Rights" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: no equivalent; ASN-CTDL: rights" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_rights> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_rights> .
+
+<https://firsteducore.org/ontology#field/case11_rights> a rdf:Property ;
+    rdfs:label "rights" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.rights" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_rights> a rdf:Property ;
+    rdfs:label "ceasn:rights" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:rights" .
+
+<https://firsteducore.org/ontology#field/case11_rights> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_rights> .
+
+<https://firsteducore.org/ontology#field-mapping/13> a educore:FieldMapping ;
+    rdfs:label "License" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: no equivalent; ASN-CTDL: license" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_license> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_license> .
+
+<https://firsteducore.org/ontology#field/case11_license> a rdf:Property ;
+    rdfs:label "license" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.license" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_license> a rdf:Property ;
+    rdfs:label "ceasn:license" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:license" .
+
+<https://firsteducore.org/ontology#field/case11_license> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_license> .
+
+<https://firsteducore.org/ontology#field-mapping/14> a educore:FieldMapping ;
+    rdfs:label "Notes / Comments (Framework)" ;
+    educore:entityType "CFDocument → CompetencyFramework" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: no equivalent; ASN-CTDL: comment" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_notes> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_comment> .
+
+<https://firsteducore.org/ontology#field/case11_notes> a rdf:Property ;
+    rdfs:label "notes" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.notes" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_comment> a rdf:Property ;
+    rdfs:label "ceasn:comment" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:comment" .
+
+<https://firsteducore.org/ontology#field/case11_notes> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_comment> .
+
+<https://firsteducore.org/ontology#field-mapping/15> a educore:FieldMapping ;
+    rdfs:label "Competency Identifier" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Used to generate @id IRI" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_identifier> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_id> .
+
+<https://firsteducore.org/ontology#field/case11_identifier> a rdf:Property ;
+    rdfs:label "identifier" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.identifier" .
+
+<https://firsteducore.org/ontology#field/ieeescd_id> a rdf:Property ;
+    rdfs:label "@id" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.@id" .
+
+<https://firsteducore.org/ontology#field/ob3_id> a rdf:Property ;
+    rdfs:label "id" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.id" .
+
+<https://firsteducore.org/ontology#field/clr20_id> a rdf:Property ;
+    rdfs:label "id" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "Achievement.id" .
+
+<https://firsteducore.org/ontology#field/case11_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+<https://firsteducore.org/ontology#field/case11_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_id> .
+<https://firsteducore.org/ontology#field/case11_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+<https://firsteducore.org/ontology#field/ieeescd_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_id> .
+<https://firsteducore.org/ontology#field/ieeescd_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+<https://firsteducore.org/ontology#field/ob3_id> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_id> .
+
+<https://firsteducore.org/ontology#field-mapping/16> a educore:FieldMapping ;
+    rdfs:label "Competency URI" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Used as @id IRI if provided" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_uri> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+
+<https://firsteducore.org/ontology#field/case11_uri> a rdf:Property ;
+    rdfs:label "uri" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.uri" .
+
+<https://firsteducore.org/ontology#field/ieeescd_id> a rdf:Property ;
+    rdfs:label "@id" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.@id" .
+
+<https://firsteducore.org/ontology#field/case11_uri> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+
+<https://firsteducore.org/ontology#field-mapping/17> a educore:FieldMapping ;
+    rdfs:label "Full Statement / Competency Text" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: statement; ASN-CTDL: competencyText; OB3: criteria.narrative" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_fullStatement> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_statement> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_criteria_narrative> .
+
+<https://firsteducore.org/ontology#field/case11_fullStatement> a rdf:Property ;
+    rdfs:label "fullStatement" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.fullStatement" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_statement> a rdf:Property ;
+    rdfs:label "scd:statement" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:statement" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText> a rdf:Property ;
+    rdfs:label "ceasn:competencyText" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:competencyText" .
+
+<https://firsteducore.org/ontology#field/ob3_criteria_narrative> a rdf:Property ;
+    rdfs:label "criteria.narrative" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.criteria.narrative" .
+
+<https://firsteducore.org/ontology#field/case11_fullStatement> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_statement> .
+<https://firsteducore.org/ontology#field/case11_fullStatement> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText> .
+<https://firsteducore.org/ontology#field/case11_fullStatement> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_criteria_narrative> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_statement> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_statement> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_criteria_narrative> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyText> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_criteria_narrative> .
+
+<https://firsteducore.org/ontology#field-mapping/18> a educore:FieldMapping ;
+    rdfs:label "Abbreviated Statement / Label" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: abbreviatedStatement; ASN-CTDL: competencyLabel; OB3: name" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_abbreviatedStatement> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_abbreviatedStatement> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_name> .
+
+<https://firsteducore.org/ontology#field/case11_abbreviatedStatement> a rdf:Property ;
+    rdfs:label "abbreviatedStatement" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.abbreviatedStatement" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_abbreviatedStatement> a rdf:Property ;
+    rdfs:label "scd:abbreviatedStatement" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:abbreviatedStatement" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel> a rdf:Property ;
+    rdfs:label "ceasn:competencyLabel" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:competencyLabel" .
+
+<https://firsteducore.org/ontology#field/ob3_name> a rdf:Property ;
+    rdfs:label "name" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.name" .
+
+<https://firsteducore.org/ontology#field/case11_abbreviatedStatement> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_abbreviatedStatement> .
+<https://firsteducore.org/ontology#field/case11_abbreviatedStatement> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel> .
+<https://firsteducore.org/ontology#field/case11_abbreviatedStatement> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_name> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_abbreviatedStatement> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_abbreviatedStatement> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_name> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyLabel> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_name> .
+
+<https://firsteducore.org/ontology#field-mapping/19> a educore:FieldMapping ;
+    rdfs:label "Alternative Label" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: alternativeLabel; ASN-CTDL: skos:altLabel" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_alternativeLabel> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_alternativeLabel> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_skos_altLabel> .
+
+<https://firsteducore.org/ontology#field/case11_alternativeLabel> a rdf:Property ;
+    rdfs:label "alternativeLabel" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.alternativeLabel" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_alternativeLabel> a rdf:Property ;
+    rdfs:label "scd:alternativeLabel" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:alternativeLabel" .
+
+<https://firsteducore.org/ontology#field/asnctdl_skos_altLabel> a rdf:Property ;
+    rdfs:label "skos:altLabel" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.skos:altLabel" .
+
+<https://firsteducore.org/ontology#field/case11_alternativeLabel> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_alternativeLabel> .
+<https://firsteducore.org/ontology#field/case11_alternativeLabel> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_skos_altLabel> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_alternativeLabel> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_skos_altLabel> .
+
+<https://firsteducore.org/ontology#field-mapping/20> a educore:FieldMapping ;
+    rdfs:label "Concept Keywords" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Direct mapping (array). OB3 uses tag for similar purpose" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_conceptKeywords> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_conceptKeyword> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_tag> .
+
+<https://firsteducore.org/ontology#field/case11_conceptKeywords> a rdf:Property ;
+    rdfs:label "conceptKeywords" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.conceptKeywords" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_conceptKeyword> a rdf:Property ;
+    rdfs:label "scd:conceptKeyword" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:conceptKeyword" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword> a rdf:Property ;
+    rdfs:label "ceasn:conceptKeyword" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:conceptKeyword" .
+
+<https://firsteducore.org/ontology#field/ob3_tag> a rdf:Property ;
+    rdfs:label "tag" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.tag" .
+
+<https://firsteducore.org/ontology#field/case11_conceptKeywords> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_conceptKeyword> .
+<https://firsteducore.org/ontology#field/case11_conceptKeywords> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword> .
+<https://firsteducore.org/ontology#field/case11_conceptKeywords> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_tag> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_conceptKeyword> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_conceptKeyword> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_tag> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptKeyword> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_tag> .
+
+<https://firsteducore.org/ontology#field-mapping/21> a educore:FieldMapping ;
+    rdfs:label "Hierarchy Code" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: hierarchyCode; ASN-CTDL: codedNotation" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_hierarchyCode> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_hierarchyCode> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation> .
+
+<https://firsteducore.org/ontology#field/case11_hierarchyCode> a rdf:Property ;
+    rdfs:label "hierarchyCode" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.hierarchyCode" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_hierarchyCode> a rdf:Property ;
+    rdfs:label "scd:hierarchyCode" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:hierarchyCode" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation> a rdf:Property ;
+    rdfs:label "ceasn:codedNotation" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:codedNotation" .
+
+<https://firsteducore.org/ontology#field/case11_hierarchyCode> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_hierarchyCode> .
+<https://firsteducore.org/ontology#field/case11_hierarchyCode> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_hierarchyCode> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation> .
+
+<https://firsteducore.org/ontology#field-mapping/22> a educore:FieldMapping ;
+    rdfs:label "Human Coding Scheme" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "ASN-CTDL: codedNotation (or altCodedNotation for secondary codes)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_humanCodingScheme> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_humanCodingScheme> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation> .
+
+<https://firsteducore.org/ontology#field/case11_humanCodingScheme> a rdf:Property ;
+    rdfs:label "humanCodingScheme" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.humanCodingScheme" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_humanCodingScheme> a rdf:Property ;
+    rdfs:label "scd:humanCodingScheme" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:humanCodingScheme" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation> a rdf:Property ;
+    rdfs:label "ceasn:codedNotation" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:codedNotation" .
+
+<https://firsteducore.org/ontology#field/case11_humanCodingScheme> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_humanCodingScheme> .
+<https://firsteducore.org/ontology#field/case11_humanCodingScheme> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_humanCodingScheme> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_codedNotation> .
+
+<https://firsteducore.org/ontology#field-mapping/23> a educore:FieldMapping ;
+    rdfs:label "Competency Category / Type" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Direct mapping (same in both formats). OB3 uses achievementType" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_CFItemType> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_competencyCategory> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_achievementType> .
+
+<https://firsteducore.org/ontology#field/case11_CFItemType> a rdf:Property ;
+    rdfs:label "CFItemType" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.CFItemType" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_competencyCategory> a rdf:Property ;
+    rdfs:label "scd:competencyCategory" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:competencyCategory" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory> a rdf:Property ;
+    rdfs:label "ceasn:competencyCategory" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:competencyCategory" .
+
+<https://firsteducore.org/ontology#field/ob3_achievementType> a rdf:Property ;
+    rdfs:label "achievementType" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.achievementType" .
+
+<https://firsteducore.org/ontology#field/case11_CFItemType> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_competencyCategory> .
+<https://firsteducore.org/ontology#field/case11_CFItemType> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory> .
+<https://firsteducore.org/ontology#field/case11_CFItemType> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_achievementType> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_competencyCategory> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_competencyCategory> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_achievementType> .
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_competencyCategory> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_achievementType> .
+
+<https://firsteducore.org/ontology#field-mapping/24> a educore:FieldMapping ;
+    rdfs:label "Language (Competency)" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: language; ASN-CTDL: inLanguage" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_language> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_language> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage> .
+
+<https://firsteducore.org/ontology#field/case11_language> a rdf:Property ;
+    rdfs:label "language" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.language" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_language> a rdf:Property ;
+    rdfs:label "scd:language" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:language" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage> a rdf:Property ;
+    rdfs:label "ceasn:inLanguage" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:inLanguage" .
+
+<https://firsteducore.org/ontology#field/case11_language> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_language> .
+<https://firsteducore.org/ontology#field/case11_language> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_language> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_inLanguage> .
+
+<https://firsteducore.org/ontology#field-mapping/25> a educore:FieldMapping ;
+    rdfs:label "Education Level (Competency)" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: educationLevel; ASN-CTDL: educationLevelType (expects skos:Concept)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_educationLevel> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_educationLevel> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType> .
+
+<https://firsteducore.org/ontology#field/case11_educationLevel> a rdf:Property ;
+    rdfs:label "educationLevel" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.educationLevel" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_educationLevel> a rdf:Property ;
+    rdfs:label "scd:educationLevel" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "CompetencyDefinition.scd:educationLevel" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType> a rdf:Property ;
+    rdfs:label "ceasn:educationLevelType" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:educationLevelType" .
+
+<https://firsteducore.org/ontology#field/case11_educationLevel> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_educationLevel> .
+<https://firsteducore.org/ontology#field/case11_educationLevel> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_educationLevel> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_educationLevelType> .
+
+<https://firsteducore.org/ontology#field-mapping/26> a educore:FieldMapping ;
+    rdfs:label "Concept Keywords URI" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: no equivalent; ASN-CTDL: conceptTerm (skos:Concept)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_conceptKeywordsUri> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptTerm> .
+
+<https://firsteducore.org/ontology#field/case11_conceptKeywordsUri> a rdf:Property ;
+    rdfs:label "conceptKeywordsUri" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.conceptKeywordsUri" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptTerm> a rdf:Property ;
+    rdfs:label "ceasn:conceptTerm" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:conceptTerm" .
+
+<https://firsteducore.org/ontology#field/case11_conceptKeywordsUri> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_conceptTerm> .
+
+<https://firsteducore.org/ontology#field-mapping/27> a educore:FieldMapping ;
+    rdfs:label "Notes / Comments (Competency)" ;
+    educore:entityType "CFItem → CompetencyDefinition" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: no equivalent; ASN-CTDL: comment" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_notes> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_comment> .
+
+<https://firsteducore.org/ontology#field/case11_notes> a rdf:Property ;
+    rdfs:label "notes" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.notes" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_comment> a rdf:Property ;
+    rdfs:label "ceasn:comment" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:comment" .
+
+<https://firsteducore.org/ontology#field/case11_notes> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_comment> .
+
+<https://firsteducore.org/ontology#field-mapping/28> a educore:FieldMapping ;
+    rdfs:label "Association Identifier" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Used to generate @id IRI" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_identifier> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+
+<https://firsteducore.org/ontology#field/case11_identifier> a rdf:Property ;
+    rdfs:label "identifier" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.identifier" .
+
+<https://firsteducore.org/ontology#field/ieeescd_id> a rdf:Property ;
+    rdfs:label "@id" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.@id" .
+
+<https://firsteducore.org/ontology#field/case11_identifier> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+
+<https://firsteducore.org/ontology#field-mapping/29> a educore:FieldMapping ;
+    rdfs:label "Association URI" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Used as @id IRI if provided" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_uri> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+
+<https://firsteducore.org/ontology#field/case11_uri> a rdf:Property ;
+    rdfs:label "uri" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.uri" .
+
+<https://firsteducore.org/ontology#field/ieeescd_id> a rdf:Property ;
+    rdfs:label "@id" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.@id" .
+
+<https://firsteducore.org/ontology#field/case11_uri> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_id> .
+
+<https://firsteducore.org/ontology#field-mapping/30> a educore:FieldMapping ;
+    rdfs:label "Child Relationship (isChildOf)" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "IEEE SCD: hasPart (separate ResourceAssociation); ASN-CTDL: isChildOf (direct property)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_associationType_isChildOf> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_relationType_hasPart> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_isChildOf> .
+
+<https://firsteducore.org/ontology#field/case11_associationType_isChildOf> a rdf:Property ;
+    rdfs:label "associationType=isChildOf" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.associationType" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_relationType_hasPart> a rdf:Property ;
+    rdfs:label "scd:relationType=hasPart" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.scd:relationType" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_isChildOf> a rdf:Property ;
+    rdfs:label "ceasn:isChildOf" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:isChildOf" .
+
+<https://firsteducore.org/ontology#field/case11_associationType_isChildOf> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_relationType_hasPart> .
+<https://firsteducore.org/ontology#field/case11_associationType_isChildOf> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_isChildOf> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_relationType_hasPart> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_isChildOf> .
+
+<https://firsteducore.org/ontology#field-mapping/31> a educore:FieldMapping ;
+    rdfs:label "Precedes / Prerequisite" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: precedes; ASN-CTDL: prerequisiteAlignment" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_associationType_precedes> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_relationType_precedes> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_prerequisiteAlignment> .
+
+<https://firsteducore.org/ontology#field/case11_associationType_precedes> a rdf:Property ;
+    rdfs:label "associationType=precedes" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.associationType" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_relationType_precedes> a rdf:Property ;
+    rdfs:label "scd:relationType=precedes" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.scd:relationType" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_prerequisiteAlignment> a rdf:Property ;
+    rdfs:label "ceasn:prerequisiteAlignment" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:prerequisiteAlignment" .
+
+<https://firsteducore.org/ontology#field/case11_associationType_precedes> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_relationType_precedes> .
+<https://firsteducore.org/ontology#field/case11_associationType_precedes> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_prerequisiteAlignment> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_relationType_precedes> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_prerequisiteAlignment> .
+
+<https://firsteducore.org/ontology#field-mapping/32> a educore:FieldMapping ;
+    rdfs:label "Skill Level / Progression" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: competencyLevel; ASN-CTDL: hasProgressionLevel (references progression model)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_associationType_hasSkillLevel> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_relationType_competencyLevel> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_asn_hasProgressionLevel> .
+
+<https://firsteducore.org/ontology#field/case11_associationType_hasSkillLevel> a rdf:Property ;
+    rdfs:label "associationType=hasSkillLevel" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.associationType" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_relationType_competencyLevel> a rdf:Property ;
+    rdfs:label "scd:relationType=competencyLevel" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.scd:relationType" .
+
+<https://firsteducore.org/ontology#field/asnctdl_asn_hasProgressionLevel> a rdf:Property ;
+    rdfs:label "asn:hasProgressionLevel" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.asn:hasProgressionLevel" .
+
+<https://firsteducore.org/ontology#field/case11_associationType_hasSkillLevel> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_relationType_competencyLevel> .
+<https://firsteducore.org/ontology#field/case11_associationType_hasSkillLevel> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_asn_hasProgressionLevel> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_relationType_competencyLevel> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_asn_hasProgressionLevel> .
+
+<https://firsteducore.org/ontology#field-mapping/33> a educore:FieldMapping ;
+    rdfs:label "Other Association Types" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "related" ;
+    rdfs:comment "IEEE SCD: unmapped types pass through; ASN-CTDL: various alignment properties" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_associationType_other> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_relationType> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_various_alignment_props> .
+
+<https://firsteducore.org/ontology#field/case11_associationType_other> a rdf:Property ;
+    rdfs:label "associationType (other)" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.associationType" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_relationType> a rdf:Property ;
+    rdfs:label "scd:relationType" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.scd:relationType" .
+
+<https://firsteducore.org/ontology#field/asnctdl_various_alignment_props> a rdf:Property ;
+    rdfs:label "various alignment props" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:alignTo / ceasn:alignFrom" .
+
+<https://firsteducore.org/ontology#field/case11_associationType_other> skos:relatedMatch <https://firsteducore.org/ontology#field/ieeescd_scd_relationType> .
+<https://firsteducore.org/ontology#field/case11_associationType_other> skos:relatedMatch <https://firsteducore.org/ontology#field/asnctdl_various_alignment_props> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_relationType> skos:relatedMatch <https://firsteducore.org/ontology#field/asnctdl_various_alignment_props> .
+
+<https://firsteducore.org/ontology#field-mapping/34> a educore:FieldMapping ;
+    rdfs:label "Origin Node URI" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: sourceNode in ResourceAssociation; ASN-CTDL: direct property on Competency" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_originNodeURI> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_sourceNode_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_property_on_origin> .
+
+<https://firsteducore.org/ontology#field/case11_originNodeURI> a rdf:Property ;
+    rdfs:label "originNodeURI" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.originNodeURI" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_sourceNode_id> a rdf:Property ;
+    rdfs:label "scd:sourceNode.@id" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.scd:sourceNode.@id" .
+
+<https://firsteducore.org/ontology#field/asnctdl_property_on_origin> a rdf:Property ;
+    rdfs:label "property on origin" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency (direct property)" .
+
+<https://firsteducore.org/ontology#field/case11_originNodeURI> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_sourceNode_id> .
+<https://firsteducore.org/ontology#field/case11_originNodeURI> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_property_on_origin> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_sourceNode_id> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_property_on_origin> .
+
+<https://firsteducore.org/ontology#field-mapping/35> a educore:FieldMapping ;
+    rdfs:label "Destination Node URI" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: targetNode in ResourceAssociation; ASN-CTDL: value of relationship property" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_destinationNodeURI> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_targetNode_id> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_value_of_property> .
+
+<https://firsteducore.org/ontology#field/case11_destinationNodeURI> a rdf:Property ;
+    rdfs:label "destinationNodeURI" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.destinationNodeURI" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_targetNode_id> a rdf:Property ;
+    rdfs:label "scd:targetNode.@id" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.scd:targetNode.@id" .
+
+<https://firsteducore.org/ontology#field/asnctdl_value_of_property> a rdf:Property ;
+    rdfs:label "value of property" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency (value of relationship property)" .
+
+<https://firsteducore.org/ontology#field/case11_destinationNodeURI> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_targetNode_id> .
+<https://firsteducore.org/ontology#field/case11_destinationNodeURI> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_value_of_property> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_targetNode_id> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_value_of_property> .
+
+<https://firsteducore.org/ontology#field-mapping/36> a educore:FieldMapping ;
+    rdfs:label "Sequence Number" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: sequenceNumber; ASN-CTDL: listID (alphanumeric position)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_sequenceNumber> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_sequenceNumber> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_listID> .
+
+<https://firsteducore.org/ontology#field/case11_sequenceNumber> a rdf:Property ;
+    rdfs:label "sequenceNumber" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.sequenceNumber" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_sequenceNumber> a rdf:Property ;
+    rdfs:label "scd:sequenceNumber" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.scd:sequenceNumber" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_listID> a rdf:Property ;
+    rdfs:label "ceasn:listID" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:listID" .
+
+<https://firsteducore.org/ontology#field/case11_sequenceNumber> skos:closeMatch <https://firsteducore.org/ontology#field/ieeescd_scd_sequenceNumber> .
+<https://firsteducore.org/ontology#field/case11_sequenceNumber> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_listID> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_sequenceNumber> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_listID> .
+
+<https://firsteducore.org/ontology#field-mapping/37> a educore:FieldMapping ;
+    rdfs:label "Date Modified (Association)" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Direct mapping (same in both formats)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_lastChangeDateTime> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_dateModified> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified> .
+
+<https://firsteducore.org/ontology#field/case11_lastChangeDateTime> a rdf:Property ;
+    rdfs:label "lastChangeDateTime" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.lastChangeDateTime" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_dateModified> a rdf:Property ;
+    rdfs:label "scd:dateModified" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation.scd:dateModified" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified> a rdf:Property ;
+    rdfs:label "ceasn:dateModified" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:dateModified" .
+
+<https://firsteducore.org/ontology#field/case11_lastChangeDateTime> owl:equivalentProperty <https://firsteducore.org/ontology#field/ieeescd_scd_dateModified> .
+<https://firsteducore.org/ontology#field/case11_lastChangeDateTime> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified> .
+<https://firsteducore.org/ontology#field/ieeescd_scd_dateModified> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_dateModified> .
+
+<https://firsteducore.org/ontology#field-mapping/38> a educore:FieldMapping ;
+    rdfs:label "Document Reference (Association)" ;
+    educore:entityType "CFAssociation → ResourceAssociation" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "IEEE SCD: no equivalent; ASN-CTDL: isPartOf (framework reference)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_CFDocumentURI> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_isPartOf> .
+
+<https://firsteducore.org/ontology#field/case11_CFDocumentURI> a rdf:Property ;
+    rdfs:label "CFDocumentURI" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFAssociation.CFDocumentURI" .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_isPartOf> a rdf:Property ;
+    rdfs:label "ceasn:isPartOf" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:isPartOf" .
+
+<https://firsteducore.org/ontology#field/case11_CFDocumentURI> skos:closeMatch <https://firsteducore.org/ontology#field/asnctdl_ceasn_isPartOf> .
+
+<https://firsteducore.org/ontology#field-mapping/39> a educore:FieldMapping ;
+    rdfs:label "Type Declaration (@type)" ;
+    educore:entityType "Format-Specific" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "All formats declare type; OB3/CLR use W3C VC type arrays" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_type> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_type> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_type> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_type> .
+
+<https://firsteducore.org/ontology#field/ieeescd_type> a rdf:Property ;
+    rdfs:label "@type" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "@type (scd:CompetencyFramework / scd:CompetencyDefinition / scd:ResourceAssociation)" .
+
+<https://firsteducore.org/ontology#field/asnctdl_type> a rdf:Property ;
+    rdfs:label "@type" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "@type (ceasn:CompetencyFramework / ceasn:Competency)" .
+
+<https://firsteducore.org/ontology#field/ob3_type> a rdf:Property ;
+    rdfs:label "type" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "type: [\"VerifiableCredential\", \"OpenBadgeCredential\"]" .
+
+<https://firsteducore.org/ontology#field/clr20_type> a rdf:Property ;
+    rdfs:label "type" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "type: [\"VerifiableCredential\", \"ClrCredential\"]" .
+
+<https://firsteducore.org/ontology#field/ieeescd_type> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_type> .
+<https://firsteducore.org/ontology#field/ieeescd_type> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_type> .
+<https://firsteducore.org/ontology#field/ieeescd_type> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_type> .
+<https://firsteducore.org/ontology#field/asnctdl_type> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_type> .
+<https://firsteducore.org/ontology#field/asnctdl_type> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_type> .
+<https://firsteducore.org/ontology#field/ob3_type> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_type> .
+
+<https://firsteducore.org/ontology#field-mapping/40> a educore:FieldMapping ;
+    rdfs:label "Context Declaration (@context)" ;
+    educore:entityType "Format-Specific" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "All use JSON-LD @context with different namespace URIs" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_context> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_context> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_context> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_context> .
+
+<https://firsteducore.org/ontology#field/ieeescd_context> a rdf:Property ;
+    rdfs:label "@context" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "@context (scd namespace)" .
+
+<https://firsteducore.org/ontology#field/asnctdl_context> a rdf:Property ;
+    rdfs:label "@context" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "@context (ceasn + skos namespaces)" .
+
+<https://firsteducore.org/ontology#field/ob3_context> a rdf:Property ;
+    rdfs:label "@context" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "@context (W3C VC + OB3 context)" .
+
+<https://firsteducore.org/ontology#field/clr20_context> a rdf:Property ;
+    rdfs:label "@context" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "@context (W3C VC + CLR context)" .
+
+<https://firsteducore.org/ontology#field/ieeescd_context> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_context> .
+<https://firsteducore.org/ontology#field/ieeescd_context> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_context> .
+<https://firsteducore.org/ontology#field/ieeescd_context> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_context> .
+<https://firsteducore.org/ontology#field/asnctdl_context> owl:equivalentProperty <https://firsteducore.org/ontology#field/ob3_context> .
+<https://firsteducore.org/ontology#field/asnctdl_context> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_context> .
+<https://firsteducore.org/ontology#field/ob3_context> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_context> .
+
+<https://firsteducore.org/ontology#field-mapping/41> a educore:FieldMapping ;
+    rdfs:label "Graph Container (@graph)" ;
+    educore:entityType "Format-Specific" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Both SCD and CTDL use @graph to contain all translated entities" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_graph> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_graph> .
+
+<https://firsteducore.org/ontology#field/ieeescd_graph> a rdf:Property ;
+    rdfs:label "@graph" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "@graph" .
+
+<https://firsteducore.org/ontology#field/asnctdl_graph> a rdf:Property ;
+    rdfs:label "@graph" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "@graph" .
+
+<https://firsteducore.org/ontology#field/ieeescd_graph> owl:equivalentProperty <https://firsteducore.org/ontology#field/asnctdl_graph> .
+
+<https://firsteducore.org/ontology#field-mapping/42> a educore:FieldMapping ;
+    rdfs:label "Separate Association Objects" ;
+    educore:entityType "Format-Specific" ;
+    educore:matchStrength "related" ;
+    rdfs:comment "IEEE SCD: separate association objects; ASN-CTDL: relationships are direct properties on Competency" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ieeescd_scd_ResourceAssociation> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_direct_properties> .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_ResourceAssociation> a rdf:Property ;
+    rdfs:label "scd:ResourceAssociation" ;
+    educore:specKey "ieee-scd" ;
+    educore:jsonPath "ResourceAssociation (separate objects)" .
+
+<https://firsteducore.org/ontology#field/asnctdl_direct_properties> a rdf:Property ;
+    rdfs:label "direct properties" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Relationships are direct properties on Competency" .
+
+<https://firsteducore.org/ontology#field/ieeescd_scd_ResourceAssociation> skos:relatedMatch <https://firsteducore.org/ontology#field/asnctdl_direct_properties> .
+
+<https://firsteducore.org/ontology#field-mapping/43> a educore:FieldMapping ;
+    rdfs:label "Has Child (inverse)" ;
+    educore:entityType "Format-Specific" ;
+    educore:matchStrength "related" ;
+    rdfs:comment "ASN-CTDL only: inverse of isChildOf, indicates child competencies" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_hasChild> .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_hasChild> a rdf:Property ;
+    rdfs:label "ceasn:hasChild" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "CompetencyFramework.ceasn:hasChild" .
+
+<https://firsteducore.org/ontology#field-mapping/44> a educore:FieldMapping ;
+    rdfs:label "Alignment Properties" ;
+    educore:entityType "Format-Specific" ;
+    educore:matchStrength "related" ;
+    rdfs:comment "ASN-CTDL only: alignment properties for equivalency assertions" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/asnctdl_ceasn_alignTo_ceasn_alignFrom> .
+
+<https://firsteducore.org/ontology#field/asnctdl_ceasn_alignTo_ceasn_alignFrom> a rdf:Property ;
+    rdfs:label "ceasn:alignTo / ceasn:alignFrom" ;
+    educore:specKey "asn-ctdl" ;
+    educore:jsonPath "Competency.ceasn:alignTo / ceasn:alignFrom" .
+
+<https://firsteducore.org/ontology#field-mapping/45> a educore:FieldMapping ;
+    rdfs:label "Credential Subject" ;
+    educore:entityType "OB3/CLR Extension" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Both use W3C VC credentialSubject. OB3: AchievementSubject; CLR: ClrSubject" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_credentialSubject> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_credentialSubject> .
+
+<https://firsteducore.org/ontology#field/ob3_credentialSubject> a rdf:Property ;
+    rdfs:label "credentialSubject" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "OpenBadgeCredential.credentialSubject" .
+
+<https://firsteducore.org/ontology#field/clr20_credentialSubject> a rdf:Property ;
+    rdfs:label "credentialSubject" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrCredential.credentialSubject" .
+
+<https://firsteducore.org/ontology#field/ob3_credentialSubject> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_credentialSubject> .
+
+<https://firsteducore.org/ontology#field-mapping/46> a educore:FieldMapping ;
+    rdfs:label "Achievement / Badge" ;
+    educore:entityType "OB3/CLR Extension" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "OB3: single achievement per credential; CLR: aggregates multiple achievements" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_achievement> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_verifiableCredential_credentialSubject_achievement> .
+
+<https://firsteducore.org/ontology#field/ob3_achievement> a rdf:Property ;
+    rdfs:label "achievement" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "AchievementSubject.achievement" .
+
+<https://firsteducore.org/ontology#field/clr20_verifiableCredential_credentialSubject_achievement> a rdf:Property ;
+    rdfs:label "verifiableCredential[].credentialSubject.achievement" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrSubject.verifiableCredential[].credentialSubject.achievement" .
+
+<https://firsteducore.org/ontology#field/ob3_achievement> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_verifiableCredential_credentialSubject_achievement> .
+
+<https://firsteducore.org/ontology#field-mapping/47> a educore:FieldMapping ;
+    rdfs:label "Achievement Name" ;
+    educore:entityType "OB3/CLR Extension" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "OB3/CLR Achievement.name maps loosely to CASE title or abbreviatedStatement" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_title> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_name> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_name> .
+
+<https://firsteducore.org/ontology#field/case11_title> a rdf:Property ;
+    rdfs:label "title" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFDocument.title" .
+
+<https://firsteducore.org/ontology#field/ob3_name> a rdf:Property ;
+    rdfs:label "name" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.name" .
+
+<https://firsteducore.org/ontology#field/clr20_name> a rdf:Property ;
+    rdfs:label "name" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "Achievement.name" .
+
+<https://firsteducore.org/ontology#field/case11_title> skos:closeMatch <https://firsteducore.org/ontology#field/ob3_name> .
+<https://firsteducore.org/ontology#field/case11_title> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_name> .
+<https://firsteducore.org/ontology#field/ob3_name> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_name> .
+
+<https://firsteducore.org/ontology#field-mapping/48> a educore:FieldMapping ;
+    rdfs:label "Criteria Narrative" ;
+    educore:entityType "OB3/CLR Extension" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "OB3/CLR criteria.narrative is a loose equivalent of the full competency statement" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_fullStatement> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_criteria_narrative> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_criteria_narrative> .
+
+<https://firsteducore.org/ontology#field/case11_fullStatement> a rdf:Property ;
+    rdfs:label "fullStatement" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.fullStatement" .
+
+<https://firsteducore.org/ontology#field/ob3_criteria_narrative> a rdf:Property ;
+    rdfs:label "criteria.narrative" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.criteria.narrative" .
+
+<https://firsteducore.org/ontology#field/clr20_criteria_narrative> a rdf:Property ;
+    rdfs:label "criteria.narrative" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "Achievement.criteria.narrative" .
+
+<https://firsteducore.org/ontology#field/case11_fullStatement> skos:closeMatch <https://firsteducore.org/ontology#field/ob3_criteria_narrative> .
+<https://firsteducore.org/ontology#field/case11_fullStatement> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_criteria_narrative> .
+<https://firsteducore.org/ontology#field/ob3_criteria_narrative> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_criteria_narrative> .
+
+<https://firsteducore.org/ontology#field-mapping/49> a educore:FieldMapping ;
+    rdfs:label "Issuer Profile" ;
+    educore:entityType "OB3/CLR Extension" ;
+    educore:matchStrength "equivalent" ;
+    rdfs:comment "Both use a Profile object with id, type, and name" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_issuer> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_issuer> .
+
+<https://firsteducore.org/ontology#field/ob3_issuer> a rdf:Property ;
+    rdfs:label "issuer" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "OpenBadgeCredential.issuer (Profile)" .
+
+<https://firsteducore.org/ontology#field/clr20_issuer> a rdf:Property ;
+    rdfs:label "issuer" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrCredential.issuer (Profile)" .
+
+<https://firsteducore.org/ontology#field/ob3_issuer> owl:equivalentProperty <https://firsteducore.org/ontology#field/clr20_issuer> .
+
+<https://firsteducore.org/ontology#field-mapping/50> a educore:FieldMapping ;
+    rdfs:label "Credential Aggregation" ;
+    educore:entityType "OB3/CLR Extension" ;
+    educore:matchStrength "related" ;
+    rdfs:comment "CLR 2.0 only: array of embedded VerifiableCredentials (typically OpenBadgeCredentials)" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_verifiableCredential> .
+
+<https://firsteducore.org/ontology#field/clr20_verifiableCredential> a rdf:Property ;
+    rdfs:label "verifiableCredential" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "ClrSubject.verifiableCredential[]" .
+
+<https://firsteducore.org/ontology#field-mapping/51> a educore:FieldMapping ;
+    rdfs:label "Achievement Type" ;
+    educore:entityType "OB3/CLR Extension" ;
+    educore:matchStrength "close" ;
+    rdfs:comment "OB3/CLR achievementType maps to CASE CFItemType" ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/case11_CFItemType> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/ob3_achievementType> ;
+    educore:mapsProperty <https://firsteducore.org/ontology#field/clr20_achievementType> .
+
+<https://firsteducore.org/ontology#field/case11_CFItemType> a rdf:Property ;
+    rdfs:label "CFItemType" ;
+    educore:specKey "case-1.1" ;
+    educore:jsonPath "CFItem.CFItemType" .
+
+<https://firsteducore.org/ontology#field/ob3_achievementType> a rdf:Property ;
+    rdfs:label "achievementType" ;
+    educore:specKey "ob3" ;
+    educore:jsonPath "Achievement.achievementType" .
+
+<https://firsteducore.org/ontology#field/clr20_achievementType> a rdf:Property ;
+    rdfs:label "achievementType" ;
+    educore:specKey "clr-2.0" ;
+    educore:jsonPath "Achievement.achievementType" .
+
+<https://firsteducore.org/ontology#field/case11_CFItemType> skos:closeMatch <https://firsteducore.org/ontology#field/ob3_achievementType> .
+<https://firsteducore.org/ontology#field/case11_CFItemType> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_achievementType> .
+<https://firsteducore.org/ontology#field/ob3_achievementType> skos:closeMatch <https://firsteducore.org/ontology#field/clr20_achievementType> .
