@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1150" width="900" height="1150">
+  <defs>
+    <style>
+      .box { rx: 10; ry: 10; stroke-width: 2; }
+      .box-primary { fill: #eef2ff; stroke: #6366f1; }
+      .box-context { fill: #f0f9ff; stroke: #0ea5e9; }
+      .box-llm { fill: #fef3c7; stroke: #f59e0b; }
+      .box-output { fill: #ecfdf5; stroke: #10b981; }
+      .box-io { fill: #f8fafc; stroke: #64748b; }
+      .title { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: #1e1b4b; }
+      .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #64748b; }
+      .box-label { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #1e293b; }
+      .box-detail { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; }
+      .box-detail-sm { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; fill: #64748b; }
+      .arrow { fill: none; stroke: #94a3b8; stroke-width: 2; marker-end: url(#arrowhead); }
+      .arrow-label { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; fill: #6366f1; font-weight: 600; }
+      .stage-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #a5b4fc; font-weight: 700; letter-spacing: 1px; }
+      .parallel-bracket { fill: none; stroke: #cbd5e1; stroke-width: 1.5; stroke-dasharray: 6 3; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="1150" fill="#ffffff" rx="0"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" class="title">AI Interoperability Mapping Pipeline</text>
+  <text x="450" y="58" text-anchor="middle" class="subtitle">LibraryPage.jsx  handleAiSubmit()</text>
+
+  <!-- ======================== STAGE 1: USER INPUT ======================== -->
+  <text x="50" y="100" class="stage-label">STAGE 1</text>
+
+  <!-- User Query (parallelogram / I/O shape) -->
+  <polygon points="370,85 580,85 560,125 350,125" class="box-io" style="fill:#f8fafc;stroke:#64748b;stroke-width:2"/>
+  <text x="465" y="108" text-anchor="middle" class="box-label">User Query</text>
+  <text x="465" y="121" text-anchor="middle" class="box-detail-sm">aiQuery from textarea</text>
+
+  <!-- Arrow down from user query -->
+  <line x1="450" y1="125" x2="450" y2="155" class="arrow"/>
+
+  <!-- ======================== STAGE 2: PARALLEL CONTEXT ======================== -->
+  <text x="50" y="172" class="stage-label">STAGE 2</text>
+
+  <!-- Parallel context bracket -->
+  <rect x="65" y="155" width="770" height="250" class="parallel-bracket" rx="12"/>
+  <text x="85" y="175" class="stage-label" style="fill:#94a3b8; font-size:10px;">PARALLEL CONTEXT ASSEMBLY</text>
+
+  <!-- Fork arrows -->
+  <line x1="450" y1="155" x2="175" y2="195" class="arrow"/>
+  <line x1="450" y1="155" x2="450" y2="195" class="arrow"/>
+  <line x1="450" y1="155" x2="725" y2="195" class="arrow"/>
+
+  <!-- Context Box 1: RDF Ontology -->
+  <rect x="80" y="195" width="195" height="130" class="box box-context"/>
+  <text x="177" y="218" text-anchor="middle" class="box-label">Fetch RDF Ontology</text>
+  <text x="177" y="235" text-anchor="middle" class="box-detail">ontology.jsonld</text>
+  <line x1="95" y1="245" x2="260" y2="245" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="95" y="262" class="box-detail-sm">Specs: title, URI, burden,</text>
+  <text x="95" y="275" class="box-detail-sm">  category, aiSummary, pairedWith</text>
+  <text x="95" y="292" class="box-detail-sm">CEDS Domains: label, URI</text>
+  <text x="95" y="309" class="box-detail-sm">Alignments: spec-domain triples</text>
+
+  <!-- Context Box 2: Stakeholder -->
+  <rect x="315" y="195" width="270" height="130" class="box box-context"/>
+  <text x="450" y="218" text-anchor="middle" class="box-label">Stakeholder &amp; Use Case Context</text>
+  <text x="450" y="235" text-anchor="middle" class="box-detail">taxonomies.js</text>
+  <line x1="330" y1="245" x2="570" y2="245" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="330" y="262" class="box-detail-sm">stakeholderTaxonomy: id, label, group,</text>
+  <text x="330" y="275" class="box-detail-sm">  businessNeeds (flattened hierarchy)</text>
+  <text x="330" y="292" class="box-detail-sm">useCasesCedsRdf: id, label,</text>
+  <text x="330" y="309" class="box-detail-sm">  stakeholders[], cedsDomains[]</text>
+
+  <!-- Context Box 3: Field Mappings -->
+  <rect x="625" y="195" width="195" height="130" class="box box-context"/>
+  <text x="722" y="218" text-anchor="middle" class="box-label">Field Mapping Crosswalk</text>
+  <text x="722" y="235" text-anchor="middle" class="box-detail">fieldMappings.js</text>
+  <line x1="640" y1="245" x2="805" y2="245" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="640" y="262" class="box-detail-sm">52+ field concepts across</text>
+  <text x="640" y="275" class="box-detail-sm">5 specs: CASE 1.1, IEEE SCD,</text>
+  <text x="640" y="292" class="box-detail-sm">ASN-CTDL, OB3, CLR 2.0</text>
+  <text x="640" y="309" class="box-detail-sm">Rendered as markdown table</text>
+
+  <!-- Data-type labels on fork arrows -->
+  <text x="265" y="186" text-anchor="middle" class="arrow-label">fetchOntologyContext()</text>
+  <text x="450" y="186" text-anchor="middle" class="arrow-label">buildStakeholderContext()</text>
+  <text x="645" y="186" text-anchor="middle" class="arrow-label">buildFieldMappingContext()</text>
+
+  <!-- Join arrows from context boxes -->
+  <line x1="177" y1="325" x2="177" y2="365" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="325" x2="450" y2="365" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="722" y1="325" x2="722" y2="365" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <!-- Horizontal join line -->
+  <line x1="177" y1="365" x2="722" y2="365" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <!-- Down from join -->
+  <line x1="450" y1="365" x2="450" y2="380" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+
+  <!-- Arrow into merge -->
+  <line x1="450" y1="380" x2="450" y2="430" class="arrow"/>
+  <text x="460" y="418" class="arrow-label">merge all context</text>
+
+  <!-- ======================== STAGE 3: SYSTEM PROMPT ======================== -->
+  <text x="50" y="447" class="stage-label">STAGE 3</text>
+
+  <rect x="250" y="430" width="400" height="80" class="box box-primary"/>
+  <text x="450" y="458" text-anchor="middle" class="box-label">System Prompt Assembly</text>
+  <line x1="265" y1="465" x2="635" y2="465" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="265" y="482" class="box-detail-sm">1. Base instructions (response format rules)</text>
+  <text x="265" y="495" class="box-detail-sm">2. Ontology specs + domains + alignments</text>
+  <text x="450" y="482" class="box-detail-sm">3. Stakeholder + use case lists</text>
+  <text x="450" y="495" class="box-detail-sm">4. Field mapping crosswalk table</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="510" x2="450" y2="555" class="arrow"/>
+  <text x="460" y="540" class="arrow-label">systemPrompt (~10 KB)</text>
+
+  <!-- ======================== STAGE 4: LLM CALL ======================== -->
+  <text x="50" y="575" class="stage-label">STAGE 4</text>
+
+  <rect x="275" y="555" width="350" height="85" class="box box-llm"/>
+  <text x="450" y="583" text-anchor="middle" class="box-label">OpenAI API Call</text>
+  <line x1="290" y1="590" x2="610" y2="590" stroke="#fcd34d" stroke-width="1"/>
+  <text x="450" y="607" text-anchor="middle" class="box-detail">POST https://api.openai.com/v1/chat/completions</text>
+  <text x="450" y="622" text-anchor="middle" class="box-detail">model: gpt-4o</text>
+  <text x="450" y="635" text-anchor="middle" class="box-detail-sm">messages: [{ system: systemPrompt }, { user: aiQuery }]</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="640" x2="450" y2="675" class="arrow"/>
+  <text x="460" y="665" class="arrow-label">fullResponse (raw text)</text>
+
+  <!-- ======================== STAGE 5: RESPONSE PARSING ======================== -->
+  <text x="50" y="700" class="stage-label">STAGE 5</text>
+
+  <!-- Parallel parse bracket -->
+  <rect x="65" y="685" width="770" height="280" class="parallel-bracket" rx="12"/>
+  <text x="85" y="705" class="stage-label" style="fill:#94a3b8; font-size:10px;">RESPONSE PARSING &amp; EXTRACTION</text>
+
+  <!-- Fork arrows for parsing -->
+  <line x1="450" y1="675" x2="175" y2="720" class="arrow"/>
+  <line x1="450" y1="675" x2="450" y2="720" class="arrow"/>
+  <line x1="450" y1="675" x2="725" y2="720" class="arrow"/>
+
+  <!-- Parse labels -->
+  <text x="270" y="710" text-anchor="middle" class="arrow-label">split on ## headers</text>
+  <text x="450" y="710" text-anchor="middle" class="arrow-label">regex + fallback</text>
+  <text x="645" y="710" text-anchor="middle" class="arrow-label">JSON.parse</text>
+
+  <!-- Parse Box 1: Main Answer -->
+  <rect x="80" y="720" width="195" height="145" class="box box-output"/>
+  <text x="177" y="743" text-anchor="middle" class="box-label">Main Answer</text>
+  <line x1="95" y1="750" x2="260" y2="750" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="95" y="767" class="box-detail-sm">Split fullResponse on</text>
+  <text x="95" y="780" class="box-detail-sm">"## Ontology Resources Used"</text>
+  <text x="95" y="800" class="box-detail-sm">mainResponse = first section</text>
+  <text x="95" y="817" class="box-detail-sm">(2-4 paragraphs of markdown</text>
+  <text x="95" y="830" class="box-detail-sm"> with spec recommendations</text>
+  <text x="95" y="843" class="box-detail-sm"> and burden levels)</text>
+
+  <!-- Parse Box 2: URI Extraction -->
+  <rect x="315" y="720" width="270" height="145" class="box box-output"/>
+  <text x="450" y="743" text-anchor="middle" class="box-label">Ontology URI Extraction</text>
+  <line x1="330" y1="750" x2="570" y2="750" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="330" y="767" class="box-detail-sm">3-stage fallback strategy:</text>
+  <text x="330" y="784" class="box-detail-sm">A. Parse "Resources Used" section</text>
+  <text x="330" y="801" class="box-detail-sm">   regex: firsteducore.org/ontology#*</text>
+  <text x="330" y="818" class="box-detail-sm">B. Scan entire response for URIs</text>
+  <text x="330" y="835" class="box-detail-sm">C. Fallback: text-match spec titles</text>
+  <text x="330" y="852" class="box-detail-sm">Enrich: { uri, label, type, status }</text>
+
+  <!-- Parse Box 3: Activated Context -->
+  <rect x="625" y="720" width="195" height="145" class="box box-output"/>
+  <text x="722" y="743" text-anchor="middle" class="box-label">Activated Context</text>
+  <line x1="640" y1="750" x2="805" y2="750" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="640" y="767" class="box-detail-sm">Extract fenced JSON block</text>
+  <text x="640" y="784" class="box-detail-sm">from "## Activated Context"</text>
+  <text x="640" y="804" class="box-detail-sm">Parse:</text>
+  <text x="640" y="821" class="box-detail-sm">  stakeholderIds: string[]</text>
+  <text x="640" y="838" class="box-detail-sm">  useCaseIds: string[]</text>
+  <text x="640" y="855" class="box-detail-sm">Callback: onActivateNeeds()</text>
+
+  <!-- Join arrows from parse boxes -->
+  <line x1="177" y1="865" x2="177" y2="905" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="865" x2="450" y2="905" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="722" y1="865" x2="722" y2="905" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <!-- Horizontal join -->
+  <line x1="177" y1="905" x2="722" y2="905" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="905" x2="450" y2="920" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+
+  <!-- Arrow down to output -->
+  <line x1="450" y1="920" x2="450" y2="975" class="arrow"/>
+
+  <!-- ======================== STAGE 6: RENDERED OUTPUT ======================== -->
+  <text x="50" y="995" class="stage-label">STAGE 6</text>
+
+  <!-- Output fork -->
+  <line x1="450" y1="975" x2="175" y2="1010" class="arrow"/>
+  <line x1="450" y1="975" x2="450" y2="1010" class="arrow"/>
+  <line x1="450" y1="975" x2="725" y2="1010" class="arrow"/>
+
+  <!-- Output Box 1: Answer Panel -->
+  <rect x="80" y="1010" width="195" height="70" class="box box-primary"/>
+  <text x="177" y="1037" text-anchor="middle" class="box-label">Answer Panel</text>
+  <line x1="95" y1="1044" x2="260" y2="1044" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="177" y="1061" text-anchor="middle" class="box-detail-sm">Rendered markdown with</text>
+  <text x="177" y="1074" text-anchor="middle" class="box-detail-sm">spec recommendations</text>
+
+  <!-- Output Box 2: RDF Sources -->
+  <rect x="315" y="1010" width="270" height="70" class="box box-primary"/>
+  <text x="450" y="1037" text-anchor="middle" class="box-label">RDF Sources Panel</text>
+  <line x1="330" y1="1044" x2="570" y2="1044" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="450" y="1061" text-anchor="middle" class="box-detail-sm">enrichedSources[] displayed</text>
+  <text x="450" y="1074" text-anchor="middle" class="box-detail-sm">with type badges and URIs</text>
+
+  <!-- Output Box 3: Roadmap -->
+  <rect x="625" y="1010" width="195" height="70" class="box box-primary"/>
+  <text x="722" y="1037" text-anchor="middle" class="box-label">Roadmap Activation</text>
+  <line x1="640" y1="1044" x2="805" y2="1044" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="722" y="1061" text-anchor="middle" class="box-detail-sm">Stakeholder &amp; use case</text>
+  <text x="722" y="1074" text-anchor="middle" class="box-detail-sm">panels highlighted</text>
+
+  <!-- Footer -->
+  <text x="450" y="1130" text-anchor="middle" class="subtitle">FirstEduCore AI Interoperability Mapping Pipeline  |  docs/ai-search-flow.svg</text>
+</svg>
