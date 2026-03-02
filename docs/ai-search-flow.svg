@@ -119,11 +119,11 @@
   <text x="50" y="575" class="stage-label">STAGE 4</text>
 
   <rect x="275" y="555" width="350" height="85" class="box box-llm"/>
-  <text x="450" y="583" text-anchor="middle" class="box-label">OpenAI API Call</text>
+  <text x="450" y="583" text-anchor="middle" class="box-label">Anthropic API Call</text>
   <line x1="290" y1="590" x2="610" y2="590" stroke="#fcd34d" stroke-width="1"/>
-  <text x="450" y="607" text-anchor="middle" class="box-detail">POST https://api.openai.com/v1/chat/completions</text>
-  <text x="450" y="622" text-anchor="middle" class="box-detail">model: gpt-4o</text>
-  <text x="450" y="635" text-anchor="middle" class="box-detail-sm">messages: [{ system: systemPrompt }, { user: aiQuery }]</text>
+  <text x="450" y="607" text-anchor="middle" class="box-detail">POST https://api.anthropic.com/v1/messages</text>
+  <text x="450" y="622" text-anchor="middle" class="box-detail">model: claude-sonnet-4-6</text>
+  <text x="450" y="635" text-anchor="middle" class="box-detail-sm">system: systemPrompt, messages: [{ user: aiQuery }]</text>
 
   <!-- Arrow down -->
   <line x1="450" y1="640" x2="450" y2="675" class="arrow"/>

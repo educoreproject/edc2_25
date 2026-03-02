@@ -247,25 +247,28 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
       console.groupEnd();
 
       // Check API key right before the call (deferred so ontology logging always runs)
-      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+      const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY;
       if (!apiKey) {
-        console.warn('%c[4/4] No API key — set VITE_OPENAI_API_KEY', 'color: #dc2626');
+        console.warn('%c[4/4] No API key — set VITE_ANTHROPIC_API_KEY', 'color: #dc2626');
         console.groupEnd();
-        throw new Error('OpenAI API key not configured. Set VITE_OPENAI_API_KEY in your environment.');
+        throw new Error('Anthropic API key not configured. Set VITE_ANTHROPIC_API_KEY in your environment.');
       }
 
-      console.log('%c[4/4] Sending to OpenAI (gpt-4o)…', 'color: #6366f1');
+      console.log('%c[4/4] Sending to Anthropic (claude-sonnet-4-6)…', 'color: #6366f1');
 
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`,
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true',
         },
         body: JSON.stringify({
-          model: 'gpt-4o',
+          model: 'claude-sonnet-4-6',
+          max_tokens: 4096,
+          system: systemPrompt,
           messages: [
-            { role: 'system', content: systemPrompt },
             { role: 'user', content: aiQuery },
           ],
         }),
@@ -277,10 +280,10 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
       }
 
       const data = await res.json();
-      const fullResponse = data.choices?.[0]?.message?.content || 'No response received.';
+      const fullResponse = data.content?.[0]?.text || 'No response received.';
 
       console.log('%cResponse received', 'color: #16a34a; font-weight: bold',
-        `(${data.usage?.total_tokens || '?'} tokens)`);
+        `(${(data.usage?.input_tokens || 0) + (data.usage?.output_tokens || 0)} tokens)`);
       console.groupCollapsed('Full AI response (raw)');
       console.log(fullResponse);
       console.groupEnd();
