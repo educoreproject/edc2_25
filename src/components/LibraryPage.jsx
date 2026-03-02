@@ -25,7 +25,7 @@ const concernIcon = {
   'high-concern': '🔴',
 };
 
-export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry, onClearSelection, onActivateNeeds }) {
+export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry, onClearSelection, onActivateNeeds, hasPendingRoadmap, onGoToRoadmap }) {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('All');
   const [burden, setBurden] = useState('All');
@@ -529,7 +529,8 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
             <h2 className="text-base font-bold text-gray-900 mb-1">Interoperability Mapping Assistant</h2>
             <p className="text-xs text-gray-500 mb-3 max-w-2xl">
               Describe your interoperability scenario — the standards your system uses, the standards you need to
-              exchange data with, and any non-standard local fields.
+              exchange data with, and any non-standard local fields. Get an AI-generated mapping guide grounded in
+              1EdTech, A4L, and IEEE specifications from the site's RDF ontology.
             </p>
             <textarea
               value={aiQuery}
@@ -633,6 +634,19 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
                       These RDF resources from the EDU ontology were used to ground this response. URIs resolve to <code>ontology.jsonld</code>.
                     </p>
                   </div>
+                )}
+
+                {/* Navigate to roadmap button */}
+                {hasPendingRoadmap && (
+                  <button
+                    onClick={onGoToRoadmap}
+                    className="w-full bg-indigo-600 text-white text-sm font-medium rounded-lg px-5 py-3 hover:bg-indigo-700 transition-colors shadow-sm flex items-center justify-center gap-2"
+                  >
+                    View Implementation Roadmap
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </button>
                 )}
               </div>
             )}

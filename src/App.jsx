@@ -74,9 +74,14 @@ export default function App() {
     setActivePage('library');
   };
 
-  // Called by LibraryPage AI when it activates stakeholder/use case context
+  // Called by LibraryPage AI when it activates stakeholder/use case context.
+  // Stores activation but does NOT navigate — the user stays on the Library
+  // page to read the AI response. A button lets them jump to the roadmap.
   const handleActivateNeeds = (stakeholderIds, useCaseIds) => {
     setPendingActivation({ stakeholderIds, useCaseIds });
+  };
+
+  const handleGoToRoadmap = () => {
     setActivePage('taxonomies');
   };
 
@@ -87,6 +92,8 @@ export default function App() {
         onNavigateToEntry={handleNavigateToEntry}
         onClearSelection={() => setSelectedEntryId(null)}
         onActivateNeeds={handleActivateNeeds}
+        hasPendingRoadmap={!!pendingActivation}
+        onGoToRoadmap={handleGoToRoadmap}
       />
     ),
     standards: <StandardsPage onNavigateToEntry={handleNavigateToEntry} />,
