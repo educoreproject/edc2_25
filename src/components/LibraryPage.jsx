@@ -208,7 +208,7 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
       console.log(`  ${stakeholders.length} stakeholders, ${useCases.length} use cases`);
 
       const ontologyContext = ontology
-        ? `\n\nYou have access to the EDU Reference Library ontology (JSON-LD at https://firsteducore.org/ontology). Use it to ground your answer.\n\n## Specifications in the ontology:\n${ontology.specs.map(s =>
+        ? `\n\nYou have access to the EDU Reference Library ontology (JSON-LD at https://edc2-25.onrender.com/ontology.jsonld). Use it to ground your answer.\n\n## Specifications in the ontology:\n${ontology.specs.map(s =>
               `- **${s.title}** (${s.uri})\n  Category: ${s.category} | Owner: ${s.owner} | Burden: ${s.burden}\n  Summary: ${s.aiSummary}\n  Compatibility: ${s.compatibilityNotes}\n  Paired with: ${s.pairedWith.join(', ')}\n  Spec page: ${s.page}`
             ).join('\n')}\n\n## CEDS Domains:\n${ontology.domains.map(d => `- ${d.label} (${d.uri})`).join('\n')}\n\n## CEDS Alignment Triples (spec → domain → status):\n${ontology.alignments.map(a => `- ${a.spec} → ${a.domain} = ${a.status}${a.notes ? ': ' + a.notes : ''}${a.elements.length ? ' [elements: ' + a.elements.join(', ') + ']' : ''}`).join('\n')}`
         : '';
