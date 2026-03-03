@@ -8,6 +8,7 @@ import StandardsPage from './components/StandardsPage';
 import PartnersPage from './components/PartnersPage';
 import CedsAlignmentPage from './components/CedsAlignmentPage';
 import TaxonomiesPage from './components/TaxonomiesPage';
+import VocabularyPage from './components/VocabularyPage';
 
 function Footer() {
   return (
@@ -66,10 +67,22 @@ function Footer() {
 export default function App() {
   const [activePage, setActivePage] = useState('library');
   const [selectedEntryId, setSelectedEntryId] = useState(null);
+  const [pendingActivation, setPendingActivation] = useState(null);
 
   const handleNavigateToEntry = (entryId) => {
     setSelectedEntryId(entryId);
     setActivePage('library');
+  };
+
+  // Called by LibraryPage AI when it activates stakeholder/use case context.
+  // Stores activation but does NOT navigate — the user stays on the Library
+  // page to read the AI response. A button lets them jump to the roadmap.
+  const handleActivateNeeds = (stakeholderIds, useCaseIds) => {
+    setPendingActivation({ stakeholderIds, useCaseIds });
+  };
+
+  const handleGoToRoadmap = () => {
+    setActivePage('taxonomies');
   };
 
   const pages = {
@@ -78,12 +91,22 @@ export default function App() {
         selectedEntryId={selectedEntryId}
         onNavigateToEntry={handleNavigateToEntry}
         onClearSelection={() => setSelectedEntryId(null)}
+        onActivateNeeds={handleActivateNeeds}
+        hasPendingRoadmap={!!pendingActivation}
+        onGoToRoadmap={handleGoToRoadmap}
       />
     ),
     standards: <StandardsPage onNavigateToEntry={handleNavigateToEntry} />,
     partners: <PartnersPage />,
     ceds: <CedsAlignmentPage onNavigateToEntry={handleNavigateToEntry} />,
-    taxonomies: <TaxonomiesPage onNavigateToEntry={handleNavigateToEntry} />,
+    taxonomies: (
+      <TaxonomiesPage
+        onNavigateToEntry={handleNavigateToEntry}
+        pendingActivation={pendingActivation}
+        onClearActivation={() => setPendingActivation(null)}
+      />
+    ),
+    vocabulary: <VocabularyPage />,
   };
 
   return (

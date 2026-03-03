@@ -1,9 +1,13 @@
 // cedsAlignment.js — CEDS ontology vocabulary match-up data.
 //
-// Source: Common Education Data Standards (CEDS) v11+
-//   https://ceds.ed.gov  |  https://github.com/CEDStandards/CEDS-Elements
+// Source: Common Education Data Standards (CEDS) v13 Ontology
+//   https://ceds.ed.gov  |  https://github.com/CEDStandards/CEDS-Ontology
+//   Namespace: http://ceds.ed.gov/terms#
 //
-// CEDS has 13 official domains (v11):
+// Element names use official CEDS ontology skos:notation identifiers
+// (e.g. 'CompetencyDefinition' = http://ceds.ed.gov/terms#C200065).
+//
+// CEDS has 13 official domains:
 //   Early Learning, K12, Postsecondary, Career & Technical, Adult Education,
 //   Workforce, Assessments, Credentials, Competencies, Learning Resources,
 //   Facilities, Implementation Variables, Authentication & Authorization
@@ -11,7 +15,7 @@
 // For each library entry we map to each CEDS domain with:
 //   status: 'full' | 'partial' | 'gap'
 //   notes: short rationale
-//   cedsElements: specific CEDS element names or entity names that align
+//   cedsElements: CEDS ontology class/property notation names that align
 //   gapNotes: what CEDS covers that this standard does NOT address
 
 export const cedsDomains = [
@@ -42,19 +46,19 @@ export const cedsAlignmentMatrix = [
     domains: {
       credentials: {
         status: 'full',
-        cedsElements: ['Credential', 'CredentialType', 'CredentialAwardedBy', 'CredentialAwardStatus', 'CredentialVerification'],
+        cedsElements: ['Credential', 'CredentialType', 'CredentialAward', 'CredentialDefinition', 'CredentialDefinitionVerificationType'],
         notes: 'Core focus of the LER standard. Defines ecosystem roles (Awarder, Holder, Reviewer) for credential issuance and verification built on W3C VCs.',
         gapNotes: null,
       },
       competencies: {
         status: 'full',
-        cedsElements: ['CompetencyFramework', 'CompetencyDefinition', 'CompetencySet', 'LearningStandard'],
+        cedsElements: ['CompetencyFramework', 'CompetencyDefinition', 'CompetencySet', 'CompetencyDefinition'],
         notes: 'LER credentials carry competency evidence. The standard informatively references CASE and CTDL for competency framework exchange and description.',
         gapNotes: null,
       },
       workforce: {
         status: 'full',
-        cedsElements: ['WorkforceProgram', 'EmploymentRecord', 'OccupationalClassification', 'SkillRequirement'],
+        cedsElements: ['WorkforceProgramParticipation', 'WorkforceEmploymentQuarterlyData', 'StandardOccupationalClassification', 'CompetencyDefinition'],
         notes: 'Skills-based hiring and career advancement are primary use cases. LER Talent Marketplace role directly addresses workforce credential matching.',
         gapNotes: null,
       },
@@ -78,19 +82,19 @@ export const cedsAlignmentMatrix = [
       },
       postsecondary: {
         status: 'full',
-        cedsElements: ['PsDegreeOrCertificate', 'PsStudentAcademicRecord', 'PsProgram'],
+        cedsElements: ['PersonDegreeOrCertificate', 'PostsecondaryStudentAcademicRecord', 'PostsecondaryProgram'],
         notes: 'Postsecondary credential issuance and verification is a primary LER use case. Strong alignment with CEDS postsecondary credential elements.',
         gapNotes: null,
       },
       cte: {
         status: 'full',
-        cedsElements: ['CTEProgram', 'CTEOccupationalCluster', 'CTEIndustryAlignment'],
+        cedsElements: ['ProgramParticipationCareerAndTechnical', 'CareerCluster', 'CareerAndTechnicalEducationInstructorIndustryCertification'],
         notes: 'CTE and industry credential portability are core LER objectives. The standard directly addresses skills-based hiring that CTE programs feed into.',
         gapNotes: null,
       },
       adultEd: {
         status: 'partial',
-        cedsElements: ['AdultEducationProgram'],
+        cedsElements: ['PersonProgramParticipation'],
         notes: 'Adult education credentials (GED, workforce certificates) are valid LER use cases. No adult-education-specific modeling in the standard.',
         gapNotes: null,
       },
@@ -102,7 +106,7 @@ export const cedsAlignmentMatrix = [
       },
       authN: {
         status: 'full',
-        cedsElements: ['PersonIdentifier', 'AuthorizationDocument'],
+        cedsElements: ['PersonIdentification', 'AuthorizationDocument'],
         notes: 'LER standard normatively requires W3C DIDs for identity. Defines trust, verification, and wallet roles that directly address authentication and authorization.',
         gapNotes: null,
       },
@@ -127,19 +131,19 @@ export const cedsAlignmentMatrix = [
     domains: {
       credentials: {
         status: 'partial',
-        cedsElements: ['CredentialCriteria'],
+        cedsElements: ['CredentialDefinition'],
         notes: 'CASE defines competency criteria that inform credential requirements but does not model credential issuance or attainment.',
         gapNotes: 'CEDS Credential includes attainment date, issuing org, and verification — CASE covers competency definitions only.',
       },
       competencies: {
         status: 'full',
-        cedsElements: ['CompetencyFramework', 'CompetencyDefinition', 'LearningStandard', 'LearningStandardItem'],
+        cedsElements: ['CompetencyFramework', 'CompetencyDefinition', 'CompetencyDefinition', 'CompetencyDefinition'],
         notes: 'CASE is purpose-built for competency framework exchange. Deep alignment with CEDS CompetencyFramework, CompetencyDefinition, and LearningStandard entities.',
         gapNotes: null,
       },
       workforce: {
         status: 'partial',
-        cedsElements: ['OccupationalClassification', 'SkillRequirement'],
+        cedsElements: ['StandardOccupationalClassification', 'CompetencyDefinition'],
         notes: 'Workforce competency frameworks can be published via CASE. Does not model employment records or workforce programs directly.',
         gapNotes: 'CEDS Workforce includes EmploymentRecord and WorkforceProgram — not in CASE scope.',
       },
@@ -151,31 +155,31 @@ export const cedsAlignmentMatrix = [
       },
       learningResources: {
         status: 'partial',
-        cedsElements: ['LearningResourceEducationalAlignment'],
+        cedsElements: ['LearningResource'],
         notes: 'Competency frameworks published via CASE can be used to align learning resources, but CASE does not model resource metadata.',
         gapNotes: 'CEDS Learning Resources includes URL, media type, educational level — not in CASE scope.',
       },
       k12: {
         status: 'full',
-        cedsElements: ['K12CourseCompetencySet', 'LearningStandard', 'LearningStandardItem'],
+        cedsElements: ['CompetencySet', 'CompetencyDefinition', 'CompetencyDefinition'],
         notes: 'CASE is widely adopted for K–12 state academic standards exchange. US state education agencies publish standards via CASE Network.',
         gapNotes: null,
       },
       postsecondary: {
         status: 'partial',
-        cedsElements: ['PsStudentCompetencyRecord'],
+        cedsElements: ['PostsecondaryStudentAcademicRecord'],
         notes: 'Postsecondary competency frameworks can use CASE but adoption is lower than K–12. Alignment with CEDS postsecondary competency records.',
         gapNotes: 'CEDS Postsecondary includes enrollment, program, degree — CASE covers only competency definitions.',
       },
       cte: {
         status: 'full',
-        cedsElements: ['CTEProgram', 'CTEOccupationalCluster', 'CTEIndustryAlignment'],
+        cedsElements: ['ProgramParticipationCareerAndTechnical', 'CareerCluster', 'CareerAndTechnicalEducationInstructorIndustryCertification'],
         notes: 'CTE industry competency frameworks are a primary CASE use case. Strong alignment with CEDS CTE occupational cluster and industry alignment elements.',
         gapNotes: null,
       },
       adultEd: {
         status: 'partial',
-        cedsElements: ['AdultEducationProgram'],
+        cedsElements: ['PersonProgramParticipation'],
         notes: 'Adult education competency frameworks can be exchanged via CASE but no adult-education-specific modeling exists.',
         gapNotes: null,
       },
@@ -212,7 +216,7 @@ export const cedsAlignmentMatrix = [
     domains: {
       credentials: {
         status: 'full',
-        cedsElements: ['Credential', 'CredentialType', 'CredentialAwardedBy', 'CredentialCriteria'],
+        cedsElements: ['Credential', 'CredentialType', 'CredentialAward', 'CredentialDefinition'],
         notes: 'CTDL is credential-centric. Deep alignment with CEDS Credential entity including credential type taxonomy, issuing organizations, and requirements.',
         gapNotes: null,
       },
@@ -224,7 +228,7 @@ export const cedsAlignmentMatrix = [
       },
       workforce: {
         status: 'full',
-        cedsElements: ['WorkforceProgram', 'OccupationalClassification', 'SkillRequirement'],
+        cedsElements: ['WorkforceProgramParticipation', 'StandardOccupationalClassification', 'CompetencyDefinition'],
         notes: 'Workforce credentials and occupational alignment are core CTDL use cases. Credential Registry includes O*NET and SOC code alignment.',
         gapNotes: null,
       },
@@ -236,31 +240,31 @@ export const cedsAlignmentMatrix = [
       },
       learningResources: {
         status: 'partial',
-        cedsElements: ['LearningResource', 'LearningResourceEducationalAlignment'],
+        cedsElements: ['LearningResource', 'LearningResource'],
         notes: 'CTDL can reference learning opportunities associated with credentials. Does not model resource metadata at the CEDS level of detail.',
         gapNotes: null,
       },
       k12: {
         status: 'partial',
-        cedsElements: ['K12CourseCompetencySet'],
+        cedsElements: ['CompetencySet'],
         notes: 'K–12 credentials can be described in CTDL but adoption is lower than in postsecondary. Some K–12 industry certification programs are in the Registry.',
         gapNotes: 'CEDS K12 student record data is not modeled in CTDL.',
       },
       postsecondary: {
         status: 'full',
-        cedsElements: ['PsDegreeOrCertificate', 'PsProgram', 'PsStudentAcademicRecord'],
+        cedsElements: ['PersonDegreeOrCertificate', 'PostsecondaryProgram', 'PostsecondaryStudentAcademicRecord'],
         notes: 'Postsecondary degrees and certificates are primary CTDL content. Strong alignment with CEDS Postsecondary credential and program elements.',
         gapNotes: null,
       },
       cte: {
         status: 'full',
-        cedsElements: ['CTEProgram', 'CTEOccupationalCluster', 'CTEIndustryAlignment'],
+        cedsElements: ['ProgramParticipationCareerAndTechnical', 'CareerCluster', 'CareerAndTechnicalEducationInstructorIndustryCertification'],
         notes: 'CTE/industry credentials are heavily represented in the Credential Registry. Strong alignment with CEDS CTE program and occupational cluster elements.',
         gapNotes: null,
       },
       adultEd: {
         status: 'partial',
-        cedsElements: ['AdultEducationProgram'],
+        cedsElements: ['PersonProgramParticipation'],
         notes: 'Adult education credentials (GED, HiSET, workforce certificates) can be described in CTDL. No adult-education-specific vocabulary.',
         gapNotes: null,
       },
@@ -297,7 +301,7 @@ export const cedsAlignmentMatrix = [
     domains: {
       credentials: {
         status: 'full',
-        cedsElements: ['Credential', 'CredentialType', 'CredentialAwardedBy', 'CredentialAwardStatus'],
+        cedsElements: ['Credential', 'CredentialType', 'CredentialAward', 'CredentialDefinition'],
         notes: 'OB3 is a credential issuance standard. Full alignment with CEDS Credential entity including issuer, award status, and criteria.',
         gapNotes: null,
       },
@@ -309,7 +313,7 @@ export const cedsAlignmentMatrix = [
       },
       workforce: {
         status: 'partial',
-        cedsElements: ['SkillRequirement', 'OccupationalClassification'],
+        cedsElements: ['CompetencyDefinition', 'StandardOccupationalClassification'],
         notes: 'Workforce badges and micro-credentials exist as an OB3 use case. Badges can reference occupational alignments.',
         gapNotes: 'CEDS Workforce includes EmploymentRecord and WorkforceProgram — not modeled in OB3.',
       },
@@ -333,19 +337,19 @@ export const cedsAlignmentMatrix = [
       },
       postsecondary: {
         status: 'full',
-        cedsElements: ['PsDegreeOrCertificate', 'PsStudentAcademicRecord'],
+        cedsElements: ['PersonDegreeOrCertificate', 'PostsecondaryStudentAcademicRecord'],
         notes: 'Higher ed micro-credentials and co-curricular badges are a primary OB3 use case. Strong alignment with CEDS postsecondary credential elements.',
         gapNotes: null,
       },
       cte: {
         status: 'partial',
-        cedsElements: ['CTEProgram', 'CTEIndustryAlignment'],
+        cedsElements: ['ProgramParticipationCareerAndTechnical', 'CareerAndTechnicalEducationInstructorIndustryCertification'],
         notes: 'CTE skill badges exist but OB3 is not CTE-native. Industry certification badges align with CEDS CTE industry alignment.',
         gapNotes: null,
       },
       adultEd: {
         status: 'partial',
-        cedsElements: ['AdultEducationProgram'],
+        cedsElements: ['PersonProgramParticipation'],
         notes: 'Adult learning badges are applicable for workforce development and continuing education contexts.',
         gapNotes: null,
       },
@@ -357,7 +361,7 @@ export const cedsAlignmentMatrix = [
       },
       authN: {
         status: 'partial',
-        cedsElements: ['PersonIdentifier'],
+        cedsElements: ['PersonIdentification'],
         notes: 'OB3 uses W3C VC identity (DIDs) for issuer and holder identification. Partial alignment with CEDS person identity elements.',
         gapNotes: 'CEDS Auth models full system access and role management — OB3 only handles credential identity.',
       },
@@ -382,19 +386,19 @@ export const cedsAlignmentMatrix = [
     domains: {
       credentials: {
         status: 'full',
-        cedsElements: ['Credential', 'CredentialType', 'CredentialAwardedBy', 'CredentialAwardStatus', 'CredentialVerification'],
+        cedsElements: ['Credential', 'CredentialType', 'CredentialAward', 'CredentialDefinition', 'CredentialDefinitionVerificationType'],
         notes: 'CLR aggregates credentials into comprehensive records. Full alignment with CEDS Credential entity including verification and award lifecycle.',
         gapNotes: null,
       },
       competencies: {
         status: 'full',
-        cedsElements: ['CompetencyDefinition', 'CompetencySet', 'LearningStandardItem'],
+        cedsElements: ['CompetencyDefinition', 'CompetencySet', 'CompetencyDefinition'],
         notes: 'CLR records carry competency evidence as first-class achievements. Competency references align with CEDS CompetencyDefinition and CompetencySet.',
         gapNotes: null,
       },
       workforce: {
         status: 'full',
-        cedsElements: ['WorkforceProgram', 'EmploymentRecord', 'OccupationalClassification'],
+        cedsElements: ['WorkforceProgramParticipation', 'WorkforceEmploymentQuarterlyData', 'StandardOccupationalClassification'],
         notes: 'CLR is designed for workforce mobility with comprehensive achievement records. Employment history and workforce credentials map to CEDS Workforce domain.',
         gapNotes: null,
       },
@@ -412,25 +416,25 @@ export const cedsAlignmentMatrix = [
       },
       k12: {
         status: 'partial',
-        cedsElements: ['K12StudentAcademicRecord', 'K12CourseSection'],
+        cedsElements: ['K12StudentAcademicRecord', 'CourseSection'],
         notes: 'K–12 transcript alternative is a CLR use case but adoption is still developing. Partial alignment with CEDS K12 academic records.',
         gapNotes: 'CEDS K12 includes detailed attendance, discipline, and special education data beyond CLR scope.',
       },
       postsecondary: {
         status: 'full',
-        cedsElements: ['PsStudentAcademicRecord', 'PsProgram', 'PsDegreeOrCertificate'],
+        cedsElements: ['PostsecondaryStudentAcademicRecord', 'PostsecondaryProgram', 'PersonDegreeOrCertificate'],
         notes: 'Postsecondary comprehensive records are a primary CLR use case. Strong alignment with CEDS postsecondary academic record and credential elements.',
         gapNotes: null,
       },
       cte: {
         status: 'full',
-        cedsElements: ['CTEProgram', 'CTEIndustryAlignment', 'CTEOccupationalCluster'],
+        cedsElements: ['ProgramParticipationCareerAndTechnical', 'CareerAndTechnicalEducationInstructorIndustryCertification', 'CareerCluster'],
         notes: 'CTE pathway completion records align well with CLR. Industry certifications and program completions map to CEDS CTE domain.',
         gapNotes: null,
       },
       adultEd: {
         status: 'partial',
-        cedsElements: ['AdultEducationProgram', 'AdultEducationEnrollment'],
+        cedsElements: ['PersonProgramParticipation', 'PersonProgramParticipation'],
         notes: 'Adult learner records can use CLR for credential aggregation. Partial alignment with CEDS adult education program elements.',
         gapNotes: null,
       },
@@ -442,7 +446,7 @@ export const cedsAlignmentMatrix = [
       },
       authN: {
         status: 'partial',
-        cedsElements: ['PersonIdentifier', 'AuthorizationDocument'],
+        cedsElements: ['PersonIdentification', 'AuthorizationDocument'],
         notes: 'CLR uses W3C VC identity infrastructure (DIDs) for issuer and holder identification. Consent management aligns with CEDS authorization concepts.',
         gapNotes: 'CEDS Auth models full system access and role management beyond CLR identity scope.',
       },

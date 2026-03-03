@@ -2,7 +2,7 @@
 // Displays three taxonomies: Stakeholders, Technical Resources & Standards,
 // and Use Cases mapped to CEDS RDF.
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   stakeholderTaxonomy,
   technicalResourcesTaxonomy,
@@ -395,12 +395,52 @@ function UseCaseCard({ useCase, searchQuery, selectedNeeds, onToggleNeed }) {
   );
 }
 
-export default function TaxonomiesPage({ onNavigateToEntry }) {
+export default function TaxonomiesPage({ onNavigateToEntry, pendingActivation, onClearActivation }) {
   const [activeTab, setActiveTab] = useState('stakeholders');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedNeeds, setSelectedNeeds] = useState(new Map());
   const [showExplainers, setShowExplainers] = useState(true);
   const [showRoadmap, setShowRoadmap] = useState(false);
+
+  // Auto-select business needs by stakeholder IDs and use case IDs
+  const autoSelectNeeds = (stakeholderIds, useCaseIds) => {
+    const next = new Map();
+
+    for (const sId of stakeholderIds) {
+      for (const group of stakeholderTaxonomy) {
+        const child = group.children.find(c => c.id === sId);
+        if (child) {
+          child.businessNeeds.forEach((need, i) => {
+            const key = `${child.id}::${i}`;
+            next.set(key, { need, source: child.label });
+          });
+        }
+      }
+    }
+
+    for (const ucId of useCaseIds) {
+      const uc = useCasesCedsRdf.find(u => u.id === ucId);
+      if (uc) {
+        uc.businessNeeds.forEach((need, i) => {
+          const key = `uc::${uc.id}::${i}`;
+          next.set(key, { need, source: uc.label });
+        });
+      }
+    }
+
+    return next;
+  };
+
+  // Handle pending activation from the AI on the Standards page
+  useEffect(() => {
+    if (pendingActivation) {
+      const { stakeholderIds, useCaseIds } = pendingActivation;
+      const autoSelected = autoSelectNeeds(stakeholderIds, useCaseIds);
+      setSelectedNeeds(autoSelected);
+      setShowRoadmap(true);
+      onClearActivation?.();
+    }
+  }, [pendingActivation]);
 
   const allNeeds = useMemo(() => getAllBusinessNeeds(), []);
 

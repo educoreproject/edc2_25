@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { libraryEntries } from '../src/data/libraryEntries.js';
 import { cedsAlignmentMatrix, cedsDomains } from '../src/data/cedsAlignment.js';
+import { fieldMappings } from '../src/data/fieldMappings.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,6 +24,19 @@ const EQUITY = (id) => `${BASE}equity/${id}`;
 const PRIVACY = (id) => `${BASE}privacy/${id}`;
 const REF_IMPL = (specId, i) => `${BASE}ref-impl/${specId}/${i}`;
 const DOC_LINK = (specId, i) => `${BASE}doc-link/${specId}/${i}`;
+const FIELD_PROP = (specKey, fieldName) => {
+  // e.g. 'case-1.1', 'identifier' → 'educore:case11_identifier'
+  const prefix = specKey.replace(/[-.]/g, '');
+  const safe = fieldName.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
+  return `${BASE}field/${prefix}_${safe}`;
+};
+const FIELD_MAPPING = (i) => `${BASE}field-mapping/${i}`;
+
+const matchStrengthPredicate = {
+  equivalent: 'owl:equivalentProperty',
+  close:      'skos:closeMatch',
+  related:    'skos:relatedMatch',
+};
 
 // --- Turtle helpers ---
 
@@ -74,6 +88,7 @@ function generateTurtle() {
     ['TechnicalDocLink', 'A link to technical documentation'],
     ['CedsAlignment', 'Alignment assessment between a specification and a CEDS domain'],
     ['CedsDomain', 'A CEDS (Common Education Data Standards) ontology domain'],
+    ['FieldMapping', 'A cross-standard field-level mapping linking equivalent properties across specifications'],
   ];
   for (const [name, comment] of classes) {
     w(`educore:${name} a owl:Class ;`);
@@ -265,6 +280,50 @@ function generateTurtle() {
     }
   }
 
+  // Field-level crosswalk property mappings
+  w(`# ─── Field-Level Crosswalk Mappings ───`);
+  w('');
+  fieldMappings.forEach((mapping, i) => {
+    const predicate = matchStrengthPredicate[mapping.matchStrength] || 'skos:relatedMatch';
+    const specKeys = Object.keys(mapping.mappings);
+    const propUris = specKeys.map(k => FIELD_PROP(k, mapping.mappings[k].field));
+
+    // Declare the mapping node
+    w(`${uri(FIELD_MAPPING(i))} a educore:FieldMapping ;`);
+    w(`    rdfs:label ${literal(mapping.concept)} ;`);
+    if (mapping.entityType) {
+      w(`    educore:entityType ${literal(mapping.entityType)} ;`);
+    }
+    w(`    educore:matchStrength ${literal(mapping.matchStrength)} ;`);
+    if (mapping.notes) {
+      w(`    rdfs:comment ${literal(mapping.notes)} ;`);
+    }
+    for (const propUri of propUris) {
+      w(`    educore:mapsProperty ${uri(propUri)} ;`);
+    }
+    lines[lines.length - 1] = lines[lines.length - 1].replace(/ ;$/, ' .');
+    w('');
+
+    // Declare each property and emit equivalence/match triples between them
+    for (const specKey of specKeys) {
+      const m = mapping.mappings[specKey];
+      const propUri = FIELD_PROP(specKey, m.field);
+      w(`${uri(propUri)} a rdf:Property ;`);
+      w(`    rdfs:label ${literal(m.field)} ;`);
+      w(`    educore:specKey ${literal(specKey)} ;`);
+      w(`    educore:jsonPath ${literal(m.path)} .`);
+      w('');
+    }
+
+    // Emit pairwise match triples
+    for (let a = 0; a < propUris.length; a++) {
+      for (let b = a + 1; b < propUris.length; b++) {
+        w(`${uri(propUris[a])} ${predicate} ${uri(propUris[b])} .`);
+      }
+    }
+    if (propUris.length > 1) w('');
+  });
+
   return lines.join('\n');
 }
 
@@ -438,6 +497,52 @@ function generateJsonLd() {
       }
     }
   }
+
+  // Field-level crosswalk property mappings
+  fieldMappings.forEach((mapping, i) => {
+    const predicate = matchStrengthPredicate[mapping.matchStrength] || 'skos:relatedMatch';
+    const specKeys = Object.keys(mapping.mappings);
+    const propUris = specKeys.map(k => FIELD_PROP(k, mapping.mappings[k].field));
+
+    // Mapping node
+    const mappingNode = {
+      '@id': FIELD_MAPPING(i),
+      '@type': `${BASE}FieldMapping`,
+      'rdfs:label': mapping.concept,
+      [`${BASE}matchStrength`]: mapping.matchStrength,
+      [`${BASE}mapsProperty`]: propUris.map(u => ({ '@id': u })),
+    };
+    if (mapping.entityType) {
+      mappingNode[`${BASE}entityType`] = mapping.entityType;
+    }
+    if (mapping.notes) {
+      mappingNode['rdfs:comment'] = mapping.notes;
+    }
+    graph.push(mappingNode);
+
+    // Property nodes with match triples
+    for (let idx = 0; idx < specKeys.length; idx++) {
+      const specKey = specKeys[idx];
+      const m = mapping.mappings[specKey];
+      const propUri = FIELD_PROP(specKey, m.field);
+
+      const propNode = {
+        '@id': propUri,
+        '@type': 'rdf:Property',
+        'rdfs:label': m.field,
+        [`${BASE}specKey`]: specKey,
+        [`${BASE}jsonPath`]: m.path,
+      };
+
+      // Pairwise match triples
+      const matchTargets = propUris.filter((_, j) => j > idx);
+      if (matchTargets.length > 0) {
+        propNode[predicate] = matchTargets.map(u => ({ '@id': u }));
+      }
+
+      graph.push(propNode);
+    }
+  });
 
   return JSON.stringify({ '@context': context, '@graph': graph }, null, 2);
 }
