@@ -563,6 +563,30 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
               rows={4}
               className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 transition-shadow placeholder:text-gray-400 resize-y"
             />
+            {/* Suggested workflow chips */}
+            {!aiQuery.trim() && !aiResponse && (
+              <div className="mt-2 mb-1">
+                <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1.5">Try a scenario</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    { label: 'Issue W3C VCs from an LMS', query: 'Our LMS issues course completion records. We want to package them as W3C Verifiable Credentials using Open Badges 3.0 so learners can store them in a digital wallet and share with employers. What standards and roles from the IEEE LER ecosystem do we need?' },
+                    { label: 'Map CTDL credentials to CASE competencies', query: 'We publish credentials described in CTDL on the Credential Registry. We need to align the competencies referenced in those credentials to state academic standards published via CASE frameworks. How do the field mappings work between CTDL and CASE?' },
+                    { label: 'Build a CLR-based learner wallet', query: 'We are building a digital learner wallet that aggregates credentials from multiple issuers into a single Comprehensive Learner Record (CLR 2.0). What ecosystem roles from IEEE 1484.2 does our wallet fulfill, and how do Open Badges 3.0 achievements feed into the CLR?' },
+                    { label: 'Employer credential verification', query: 'An employer needs to verify a job candidate\'s skills credentials without contacting each issuing institution. The credentials were issued as Open Badges 3.0 VCs. What verification flow does the IEEE LER ecosystem recommend, and which CEDS domains are involved?' },
+                    { label: 'CTE pathway to industry credential', query: 'A CTE program wants to map its program competencies (published in CASE) to industry-recognized credentials listed in CTDL, then issue completions as Open Badges 3.0 that roll up into a CLR 2.0 for the learner. What is the standards integration path?' },
+                  ].map(chip => (
+                    <button
+                      key={chip.label}
+                      onClick={() => setAiQuery(chip.query)}
+                      className="text-xs bg-white border border-indigo-200/60 text-indigo-600 rounded-lg px-3 py-1.5 hover:bg-indigo-50 hover:border-indigo-300 transition-colors font-medium"
+                    >
+                      {chip.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="mt-2 flex items-center gap-3">
               <button
                 onClick={handleAiSubmit}
