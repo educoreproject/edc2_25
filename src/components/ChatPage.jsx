@@ -341,7 +341,9 @@ export default function ChatPage() {
     setRecipe(null);
 
     try {
-      const apiMessages = messages.map(m => ({ role: m.role, content: m.content }));
+      // The recipe system prompt embeds the full conversation text, so we only
+      // need a single user trigger message — avoids the "must end with user" error.
+      const apiMessages = [{ role: 'user', content: 'Please generate my personalized standards recipe now.' }];
       const text = await callClaude(apiMessages, recipeSystemPrompt(selectedRole, goalText, messages));
       setRecipe(text);
     } catch (err) {
