@@ -184,8 +184,8 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
     const slug = aiQuery.trim().toLowerCase()
       .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40);
 
-    const specList = aiSources
-      .filter(s => s.type === 'Specification')
+    const specSources = aiSources.filter(s => s.type === 'Specification');
+    const specList = specSources
       .map(s => `- **${s.label}** (\`${s.uri.replace('https://firsteducore.org/ontology#', 'educore:')}\`)`)
       .join('\n');
 
@@ -194,13 +194,59 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
       .map(s => `- ${s.label}`)
       .join('\n');
 
-    const specNames = aiSources.filter(s => s.type === 'Specification').map(s => s.label).join(', ');
+    const specNames = specSources.map(s => s.label).join(', ');
+
+    // Match recommended specs back to libraryEntries for sample payloads and burden rubrics
+    const matchedEntries = specSources.map(s => {
+      const localName = s.uri.replace('https://firsteducore.org/ontology#spec/', '');
+      return libraryEntries.find(e => e.id === localName);
+    }).filter(Boolean);
+
+    // Build sample payload section from matched entries
+    const payloadSection = matchedEntries.flatMap(entry =>
+      (entry.samplePayloads || []).map(p =>
+        `### ${entry.title} — ${p.label}\n\`\`\`${p.language}\n${p.code}\n\`\`\``
+      )
+    ).join('\n\n');
+
+    // Build burden rubric section
+    const burdenSection = matchedEntries.map(entry => {
+      if (!entry.burdenRubric) return '';
+      const rows = Object.entries(entry.burdenRubric)
+        .map(([dim, r]) => `| ${dim} | ${r.level} | ${r.note} |`).join('\n');
+      return `### ${entry.title} (overall: ${entry.implementationBurden})\n| Dimension | Level | Notes |\n|---|---|---|\n${rows}`;
+    }).filter(Boolean).join('\n\n');
+
+    // Build field mapping crosswalk for recommended specs
+    const specIds = matchedEntries.map(e => {
+      // Map entry IDs back to fieldMappings keys
+      const idMap = { 'case-v1': 'case-1.1', 'ctdl': 'asn-ctdl', 'open-badges-v3': 'ob3', 'clr-v2': 'clr-2.0', 'lrw-competency-framework': 'ieee-scd' };
+      return idMap[e.id] || e.id;
+    });
+    const relevantMappings = fieldMappings.filter(m =>
+      specIds.some(id => m.mappings[id])
+    );
+    let fieldMappingSection = '';
+    if (relevantMappings.length > 0) {
+      const activeKeys = Object.keys(specLabels).filter(k => specIds.includes(k));
+      const header = `| Concept | ${activeKeys.map(k => specLabels[k]).join(' | ')} | Strength |`;
+      const sep = `|---|${activeKeys.map(() => '---').join('|')}|---|`;
+      const rows = relevantMappings.map(m => {
+        const cells = activeKeys.map(k => {
+          const entry = m.mappings[k];
+          return entry ? `\`${entry.field}\` (\`${entry.path}\`)` : '—';
+        });
+        return `| ${m.concept} | ${cells.join(' | ')} | ${m.matchStrength} |`;
+      });
+      fieldMappingSection = `${header}\n${sep}\n${rows.join('\n')}`;
+    }
 
     const content = `---
 name: edu-interop-${slug || 'mapper'}
 description: >
-  Education data interoperability assistant for: ${aiQuery.slice(0, 120).replace(/\n/g, ' ')}
+  Education data interoperability skill for: ${aiQuery.slice(0, 120).replace(/\n/g, ' ')}
   TRIGGER when working on integrations involving ${specNames || 'education standards'}.
+  DO NOT TRIGGER for general programming tasks unrelated to education data exchange.
 ---
 
 # EDU Interoperability Skill
@@ -220,13 +266,172 @@ ${aiResponse}
 
 ---
 
+## Implementation Burden Rubrics
+${burdenSection || '_No burden rubrics available for the recommended standards._'}
+
+## Field-Level Crosswalk
+Use this table to map fields between the recommended specifications. Field paths use dot notation
+matching each spec's JSON/JSON-LD schema.
+
+${fieldMappingSection || '_No field mappings available for the recommended standards._'}
+
+## Sample JSON-LD Payloads
+Copy and adapt these templates for your implementation. Each payload follows the spec's normative
+JSON-LD structure.
+
+${payloadSection || '_No sample payloads available for the recommended standards._'}
+
+## Transport Layer Patterns
+
+When building a connector or integration between systems, use these patterns:
+
+### REST API Contract Template
+\`\`\`
+POST /api/v1/credentials/exchange
+Content-Type: application/ld+json
+Authorization: Bearer {oauth2_access_token}
+
+Accept: application/ld+json
+\`\`\`
+
+### OAuth 2.0 Institutional Trust Flow
+1. **Registration:** Each institution registers as an OAuth 2.0 client with the receiving system
+2. **Token request:** Client credentials grant (\`grant_type=client_credentials\`) with scope limited to data categories from NDPA Exhibit B
+3. **Token scoping:** Scopes should map to NDPA data categories (e.g., \`student:enrollment\`, \`student:demographics\`, \`student:assessment\`)
+4. **Token lifetime:** Short-lived (15-60 min) with no refresh tokens for batch transfers
+
+### Error Handling
+\`\`\`json
+{
+  "error": "invalid_scope",
+  "error_description": "Requested data category 'student:health' not authorized in DPA Exhibit B",
+  "ndpa_exhibit_b_ref": "Special Indicator > Medical alerts/health data"
+}
+\`\`\`
+
+## Student Data Privacy Compliance
+
+### SDPC National Data Privacy Agreement (NDPA v2.2)
+Reference: https://files.a4l.org/privacy/NDPA/NDPA_v2-2_STANDARD_WEB.pdf
+Registry: https://privacy.a4l.org/national-dpa/
+
+When exchanging student data between institutions or with providers, ensure a signed NDPA (or
+equivalent DPA) is in place. The NDPA defines the legal framework for all student data handled by
+the recommended specifications above.
+
+### NDPA Compliance Checklist
+
+**Before Implementation:**
+- [ ] Signed DPA/NDPA between all parties (LEA ↔ Provider or LEA ↔ LEA)
+- [ ] Exhibit A completed: Services described and scoped
+- [ ] Exhibit B completed: Specific data elements identified as Required (R) or Optional (O)
+- [ ] Exhibit F completed: Cybersecurity framework declared (NIST CSF, ISO 27000, CIS, or SDPC GESS)
+- [ ] Exhibit G attached if state-specific terms apply
+- [ ] Provider designated as School Official with legitimate educational interest (FERPA §99.31(a)(1))
+
+**NDPA Exhibit B — Data Categories (map your payloads to these):**
+- Application Technology Metadata (IP addresses, cookies)
+- Application Use Statistics (interaction metadata)
+- Assessment (standardized scores, observation data, voice recordings)
+- Attendance (school daily, class-level)
+- Communication (emails, blog entries captured)
+- Conduct (behavioral data)
+- Demographics (DOB, place of birth, gender, ethnicity, race, language)
+- Enrollment (school enrollment, grade level, homeroom, counselor, graduation year)
+- Parent/Guardian Contact Information (address, email, phone)
+- Parent/Guardian ID (linked parent-student identifiers)
+- Parent/Guardian Name
+- Schedule (courses, teacher names)
+- Special Indicator (ELL, low-income, medical, disability, IEP/504, homeless/foster)
+- Student Contact Information (address, email, phone)
+- Student Identifiers (local ID, state ID, provider-assigned ID, username, passwords)
+- Student Name
+- Student In App Performance
+- Student Program Membership (academic/extracurricular)
+- Student Survey Responses
+- Student Work (student generated content)
+- Transcript (course grades, performance scores)
+- Transportation (bus assignment, pick-up/drop-off, bus card ID)
+
+**Data Handling Rules (from NDPA Standard Clauses):**
+- [ ] **No Sale:** Provider shall not sell Student Data (Article IV §4.4)
+- [ ] **Purpose Limitation:** Data used only for Services described in Exhibit A (§4.2)
+- [ ] **No Targeted Advertising:** Targeted advertising strictly prohibited; contextual ads and adaptive learning permitted (§4.7)
+- [ ] **Subprocessor Agreements:** All subprocessors bound by equivalent terms; must not sell Student Data (§2.3)
+- [ ] **De-identification:** If creating de-identified data, must follow NIST or US DoE standards; no re-identification without LEA direction (§4.5)
+- [ ] **Data Minimization:** Only process data elements listed in Exhibit B — if new elements needed, submit Addendum with 30-day LEA objection window (§1.3)
+- [ ] **Employee Confidentiality:** All employees with access must have signed confidentiality agreements (§4.3)
+- [ ] **Storage Location:** If data stored outside US, countries listed in Exhibit B (§5.1)
+
+**Breach Notification (Article V §5.4):**
+- [ ] Provider notifies LEA within **72 hours** of confirmed breach
+- [ ] Notification includes: provider contact, date of notice, date/range of breach, description, affected data types, impacted individuals
+- [ ] Provider maintains written breach response plan consistent with industry standards
+- [ ] LEA is responsible for notifying affected students/parents/guardians
+- [ ] Annual security audit required; audit report available to LEA on 10 days' notice (§5.2)
+
+**Data Retention & Deletion (§4.6):**
+- [ ] On written LEA request: dispose of data within **60 days**
+- [ ] On DPA termination: dispose of data within **60 days** (unless directed otherwise)
+- [ ] LEA may issue special disposition instructions via Exhibit D (partial/complete, destroy/transfer)
+- [ ] De-identified data and transferred Student Generated Content survive deletion requirements
+
+### FERPA Compliance Checklist
+- [ ] Provider operates under "School Official" exception (20 U.S.C. §1232g; 34 CFR §99.31(a)(1))
+- [ ] LEA annual notification includes Provider as School Official with legitimate educational interest
+- [ ] **Minimum Necessary:** Only fields required for the stated educational purpose are transmitted
+- [ ] **Directory Information:** If using directory info, LEA has published directory info notice and opt-out period has passed
+- [ ] **Re-disclosure:** Provider does not re-disclose PII except to subprocessors bound by DPA or as permitted (34 CFR §99.33)
+- [ ] **Audit trail:** System logs who accessed what student records and when
+- [ ] **Parent/eligible student access:** Mechanism exists for LEA to request and receive student data copies within 30 days (§2.2)
+
+### State Privacy Law Considerations
+- **COPPA** (15 U.S.C. §6501-6506): Applies to children under 13. If the service collects data from students under 13, LEA provides consent on behalf of parents for school-authorized educational purposes.
+- **SOPIPA-type laws** (CA, NY, CO, CT, etc.): Many states have Student Online Personal Protection Acts that go beyond FERPA. Check Exhibit G (Supplemental State Terms) for applicable state.
+- **State breach notification:** State laws may impose shorter notification windows than the NDPA's 72 hours. Exhibit G should address this.
+
+## End-to-End Worked Example
+
+**Scenario:** District A sends student enrollment data to District B during a mid-year transfer.
+
+### Step 1: Verify DPA Coverage
+Both districts must have a signed DPA (or be Subscribing LEAs under the same Provider's Exhibit E).
+Confirm Exhibit B includes: Student Name, Student Identifiers, Demographics, Enrollment, Transcript.
+
+### Step 2: Build the Payload
+Using the recommended standards above, construct a JSON-LD credential. Map NDPA Exhibit B
+categories to spec fields using the Field-Level Crosswalk table in this skill.
+
+### Step 3: Apply Data Minimization
+Before transmitting, strip any Exhibit B categories NOT listed in the receiving district's DPA.
+For example, if the receiving DPA does not list "Special Indicator," remove IEP/504 and medical data.
+
+### Step 4: Transmit
+\`\`\`
+POST https://district-b.edu/api/v1/credentials/exchange
+Content-Type: application/ld+json
+Authorization: Bearer {oauth2_token}
+X-DPA-Reference: NDPA-2024-0042
+X-Data-Categories: student:name,student:identifiers,student:demographics,student:enrollment,student:transcript
+\`\`\`
+
+### Step 5: Audit & Confirm
+- Log the transfer: timestamp, sender, receiver, data categories, student count, DPA reference
+- Receiving district verifies credential signature (if using W3C VC)
+- Both districts retain audit log for duration of DPA + retention schedule
+
+---
+
 ## How to Use This Skill
 When a developer describes an interoperability problem involving the standards above, use the
 guidance in this skill to:
-- Suggest appropriate field mappings between specifications
+- Map the developer's data requirements to NDPA Exhibit B categories to determine what data is permissible
+- Suggest appropriate field mappings using the crosswalk table above
+- Generate JSON-LD payloads adapted from the sample templates, scoped to authorized data categories
 - Identify CEDS domain alignment for each standard
 - Recommend implementation sequence by burden level (low → medium → high)
-- Generate JSON-LD payload templates and validation hints
+- Apply the privacy compliance checklists before any data exchange goes live
+- Reference the transport layer patterns for API contracts and auth flows
 
 ## What This Skill Cannot Do
 - Make live API calls to standards registries (Credential Registry, IMS Global, etc.)
@@ -234,14 +439,20 @@ guidance in this skill to:
 - Auto-configure LMS plugins or EdTech vendor APIs
 - Provide implementation timelines — burden ratings are estimates only
 - Field mappings reflect a static ontology snapshot; verify against live spec docs
+- Replace legal review — privacy checklists are guidance, not legal advice
+- Provide state-specific privacy terms — consult Exhibit G for your state
 
 ## Installation
 Save this file to \`~/.claude/skills/edu-interop-${slug || 'mapper'}.md\`
-Then in Claude Code, type /${slug || 'edu-interop'} to invoke it.
+Then in Claude Code, type \`/${slug || 'edu-interop'}\` to invoke it.
 
 ## Reference
 Generated by EDU Reference Library — https://edc2-25.onrender.com
 Ontology: https://edc2-25.onrender.com/ontology.jsonld
+SDPC National Data Privacy Agreement (NDPA v2.2): https://files.a4l.org/privacy/NDPA/NDPA_v2-2_STANDARD_WEB.pdf
+SDPC Privacy Registry: https://privacy.a4l.org/national-dpa/
+FERPA: 20 U.S.C. §1232g (34 CFR Part 99)
+COPPA: 15 U.S.C. §6501-6506 (16 CFR Part 312)
 `;
 
     const blob = new Blob([content], { type: 'text/markdown' });
@@ -764,7 +975,7 @@ Choose the stakeholder IDs and use case IDs from the lists below that are MOST R
                       <div className="text-xs font-semibold text-slate-700 mb-0.5">Download as Claude Skill</div>
                       <p className="text-[11px] text-slate-500 leading-snug max-w-md">
                         Saves this mapping as a <code className="bg-slate-100 px-1 rounded">.md</code> skill file you can install in Claude Code (<code className="bg-slate-100 px-1 rounded">~/.claude/skills/</code>).
-                        Includes the recommended standards, CEDS domains, and mapping guidance above.
+                        Includes standards, field crosswalk, sample JSON-LD payloads, NDPA/FERPA privacy checklists, transport patterns, and an end-to-end worked example.
                         <span className="text-slate-400"> Cannot make live API calls or auto-install.</span>
                       </p>
                     </div>
