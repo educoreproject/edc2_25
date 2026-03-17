@@ -456,6 +456,117 @@ export default function TaxonomiesPage({ onNavigateToEntry, pendingActivation, o
     [selectedNeeds, showRoadmap],
   );
 
+  const downloadRoadmapSkill = () => {
+    const specNames = roadmap.map(i => i.entry.title).join(', ');
+    const slug = specNames.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40);
+
+    const needsList = Array.from(selectedNeeds.values())
+      .map(({ need, source }) => `- [${source}] ${need}`)
+      .join('\n');
+
+    const roadmapList = roadmap.map(item => {
+      const domains = item.matchedDomains
+        .map(d => `${cedsDomainLabels[d.domain] || d.domain} (${d.status})`)
+        .join(', ');
+      return `### ${item.entry.title}
+- **Burden:** ${item.entry.implementationBurden}
+- **Alignment score:** ${item.fullCount} full + ${item.partialCount} partial CEDS alignments
+- **Matched CEDS domains:** ${domains}
+- **Required capabilities:** ${item.entry.requiredCapabilities?.join(', ') || 'none specified'}`;
+    }).join('\n\n');
+
+    const content = `---
+name: edu-roadmap-${slug || 'implementation'}
+description: >
+  Education standards implementation roadmap assistant for needs involving ${specNames || 'education data standards'}.
+  TRIGGER when building systems that must implement any of these standards.
+  DO NOT TRIGGER for general programming tasks unrelated to education data exchange.
+---
+
+# EDU Standards Roadmap Skill
+
+## Business Needs This Roadmap Addresses
+${needsList || '_No needs recorded._'}
+
+## Implementation Roadmap (ranked by CEDS alignment strength, then burden)
+
+${roadmapList || '_No roadmap generated._'}
+
+---
+
+## Student Data Privacy Compliance
+
+### SDPC National Data Privacy Agreement (NDPA v2.2)
+Reference: https://files.a4l.org/privacy/NDPA/NDPA_v2-2_STANDARD_WEB.pdf
+Registry: https://privacy.a4l.org/national-dpa/
+
+Before implementing any standard from the roadmap above that handles student data, ensure a
+signed NDPA (or equivalent DPA) is in place between all parties.
+
+### Pre-Implementation Privacy Checklist
+- [ ] Signed DPA/NDPA between all parties (LEA ↔ Provider or LEA ↔ LEA)
+- [ ] Exhibit A: Services described and scoped to the standards in this roadmap
+- [ ] Exhibit B: Data elements identified as Required (R) or Optional (O) — map each standard's payload fields to NDPA data categories
+- [ ] Exhibit F: Cybersecurity framework declared (NIST CSF, ISO 27000, CIS, or SDPC GESS)
+- [ ] Provider designated as School Official with legitimate educational interest (FERPA §99.31(a)(1))
+- [ ] State-specific Exhibit G attached if applicable
+
+### NDPA Data Handling Rules
+- **No Sale:** Provider shall not sell Student Data (§4.4)
+- **Purpose Limitation:** Data used only for Services in Exhibit A (§4.2)
+- **No Targeted Advertising:** Strictly prohibited; adaptive learning and contextual ads permitted (§4.7)
+- **Subprocessors:** All subprocessors bound by equivalent terms (§2.3)
+- **De-identification:** Must follow NIST or US DoE standards; no re-identification without LEA direction (§4.5)
+- **Data Minimization:** Only process data in Exhibit B; new elements require Addendum with 30-day objection window (§1.3)
+- **Breach Notification:** 72 hours from confirmation, including date, description, affected data, impacted individuals (§5.4)
+- **Retention/Deletion:** 60 days to dispose on LEA request or DPA termination (§4.6)
+- **Annual Security Audit:** Required; report available to LEA on 10 days' notice (§5.2)
+
+### FERPA Quick Reference
+- Minimum necessary standard: transmit only fields required for the stated educational purpose
+- School Official exception: Provider operates under direct control of LEA (34 CFR §99.31(a)(1))
+- Re-disclosure restrictions: Provider cannot share PII except to bound subprocessors (34 CFR §99.33)
+- Audit trail: log who accessed what student records and when
+
+## How to Use This Skill
+When a developer is implementing any of the standards above, use this skill to:
+- Confirm which standards to prioritize given the business needs listed
+- Generate field mapping code between standards (low → medium → high burden order)
+- Identify which CEDS domains each integration must address
+- Suggest required infrastructure capabilities and flag engineering/legal effort
+- Apply the privacy checklist above before any data exchange goes live
+- Map payload fields to NDPA Exhibit B data categories to determine what is permissible
+
+## What This Skill Cannot Do
+- Auto-configure EdTech vendor APIs, LMS plugins, or identity wallets
+- Implementation timelines and burden ratings are estimates; procurement/legal steps vary
+- Roadmap scores are based on a static CEDS alignment matrix — verify against current spec versions
+- Does not include DID/wallet infrastructure required for full VC issuance flows
+- Cannot validate live CEDS RDF endpoints
+- Replace legal review — privacy checklists are guidance, not legal advice
+
+## Installation
+Save this file to \`~/.claude/skills/edu-roadmap-${slug || 'implementation'}.md\`
+Then in Claude Code, type \`/edu-roadmap\` to invoke it.
+
+## Reference
+Generated by EDU Reference Library — https://edc2-25.onrender.com
+Ontology: https://edc2-25.onrender.com/ontology.jsonld
+SDPC National Data Privacy Agreement (NDPA v2.2): https://files.a4l.org/privacy/NDPA/NDPA_v2-2_STANDARD_WEB.pdf
+SDPC Privacy Registry: https://privacy.a4l.org/national-dpa/
+FERPA: 20 U.S.C. §1232g (34 CFR Part 99)
+COPPA: 15 U.S.C. §6501-6506 (16 CFR Part 312)
+`;
+
+    const blob = new Blob([content], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `edu-roadmap-${slug || 'implementation'}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const toggleNeed = (key, need, source) => {
     setSelectedNeeds(prev => {
       const next = new Map(prev);
@@ -585,12 +696,24 @@ export default function TaxonomiesPage({ onNavigateToEntry, pendingActivation, o
                     {roadmap.length} standard{roadmap.length !== 1 ? 's' : ''}
                   </span>
                 </div>
-                <button
-                  onClick={() => setShowRoadmap(false)}
-                  className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
-                >
-                  Hide roadmap
-                </button>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={downloadRoadmapSkill}
+                    title="Download as a Claude Code skill file (~/.claude/skills/)"
+                    className="flex items-center gap-1.5 bg-slate-800 text-white text-xs font-medium rounded-lg px-3 py-1.5 hover:bg-slate-700 transition-colors shadow-sm"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download Skill (.md)
+                  </button>
+                  <button
+                    onClick={() => setShowRoadmap(false)}
+                    className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    Hide roadmap
+                  </button>
+                </div>
               </div>
               <p className="text-xs text-gray-500 mb-4">
                 Based on your selected business needs, these standards are most relevant — ranked by alignment strength and implementation burden.

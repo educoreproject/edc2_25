@@ -51,18 +51,13 @@ function parseOntology(graph) {
   const specs = [];
   const domains = [];
   const alignments = [];
-  const classes = [];
-  const otherInstances = [];
+  const domainPrivacyMap = {};   // domainId → privacyRiskLevel
+  const piiFieldCount = { total: 0 };
 
   for (const node of graph) {
     const type = node['@type'];
     if (!type) continue;
     const localType = extractLocalName(type);
-
-    if (type === 'http://www.w3.org/2002/07/owl#Class' || localType === 'Class') {
-      // skip OWL class declarations from Turtle — they show up as owl:Class in the graph only
-      // if the generate script emits them. Our generate script doesn't put them in JSON-LD @graph.
-    }
 
     if (localType === 'Specification') {
       specs.push({
@@ -81,6 +76,7 @@ function parseOntology(graph) {
         id: node['@id'],
         label: node['rdfs:label'] || extractLocalName(node['@id']),
         shortId: extractLocalName(node['@id']).replace('ceds-domain/', ''),
+        // privacyRisk filled in below after DomainPrivacyProfile pass
       });
     } else if (localType === 'CedsAlignment') {
       alignments.push({
@@ -90,25 +86,40 @@ function parseOntology(graph) {
         status: getStr(node, 'alignmentStatus'),
         notes: getStr(node, 'notes'),
         elements: getArr(node, 'cedsElement'),
+        privacyRisk: getStr(node, 'alignmentPrivacyRisk'),
       });
+    } else if (localType === 'DomainPrivacyProfile') {
+      const domainId = node['@id'].replace(EDUCORE + 'domain-privacy/', '');
+      domainPrivacyMap[domainId] = getStr(node, 'privacyRiskLevel');
+    } else if (localType === 'PIIField') {
+      piiFieldCount.total += 1;
     }
   }
 
-  // Derive OWL classes from the Turtle (they aren't instances in the JSON-LD graph).
-  // Hardcode the 9 known classes with their key properties from the ontology.
+  // Attach privacyRisk to domain nodes
+  for (const d of domains) {
+    d.privacyRisk = domainPrivacyMap[d.shortId] || 'low';
+  }
+
+  const highPrivacyDomains = Object.values(domainPrivacyMap).filter(r => r === 'high').length;
+
+  // Hardcoded OWL class reference — 12 classes including new privacy classes.
   const owlClasses = [
     { name: 'Specification', comment: 'A specification or standard in the EDU reference library', properties: ['dcterms:title', 'dcterms:description', 'dcterms:type', 'dcterms:modified', 'category', 'owner', 'governanceBody', 'status', 'version', 'accessLevel', 'implementationBurden', 'aiSummary', 'commonlyPairedWith', 'cedsAlignment'] },
-    { name: 'CedsDomain', comment: 'A CEDS ontology domain', properties: ['rdfs:label', 'dcterms:identifier'] },
-    { name: 'CedsAlignment', comment: 'Alignment assessment between a specification and a CEDS domain', properties: ['specification', 'cedsDomain', 'alignmentStatus', 'notes', 'cedsElement', 'gapNotes'] },
+    { name: 'CedsDomain', comment: 'A CEDS ontology domain', properties: ['rdfs:label', 'dcterms:identifier', 'domainPrivacyProfile'] },
+    { name: 'CedsAlignment', comment: 'Alignment between a specification and a CEDS domain', properties: ['specification', 'cedsDomain', 'alignmentStatus', 'notes', 'cedsElement', 'alignmentPrivacyRisk', 'piiField'] },
+    { name: 'DomainPrivacyProfile', comment: 'Privacy risk profile for a CEDS domain, independent of any specific specification', properties: ['privacyRiskLevel', 'privacyRiskRationale', 'piiCategories', 'applicableRegulation', 'consentRequired', 'transferRisk'] },
+    { name: 'PIICategory', comment: 'A controlled vocabulary term for classifying types of personally identifiable information', properties: ['rdfs:label', 'rdfs:comment'] },
+    { name: 'PIIField', comment: 'A specific field in a specification data model that carries personally identifiable information', properties: ['fieldPath', 'piiCategory', 'sensitivityLevel', 'ferpaProtected', 'coppaScope', 'mitigationStrategy'] },
+    { name: 'PrivacyConsideration', comment: 'Spec-level privacy and data protection assessment', properties: ['level', 'notes', 'dataClassification', 'regulation'] },
     { name: 'BurdenRubric', comment: 'Implementation burden breakdown for a specification', properties: ['timeline', 'engineering', 'infrastructure', 'legal'] },
     { name: 'BurdenDimension', comment: 'A single dimension of implementation burden', properties: ['rdfs:label', 'level', 'note'] },
     { name: 'EquityConsideration', comment: 'Equity and accessibility assessment', properties: ['level', 'notes', 'lifDerived'] },
-    { name: 'PrivacyConsideration', comment: 'Privacy and security assessment', properties: ['level', 'notes', 'dataClassification', 'regulation'] },
     { name: 'ReferenceImplementation', comment: 'A reference implementation or tool', properties: ['rdfs:label', 'foaf:page', 'dcterms:description'] },
     { name: 'TechnicalDocLink', comment: 'A link to technical documentation', properties: ['rdfs:label', 'foaf:page'] },
   ];
 
-  return { specs, domains, alignments, owlClasses, byId };
+  return { specs, domains, alignments, owlClasses, byId, highPrivacyDomains, piiFieldCount: piiFieldCount.total };
 }
 
 // ─── Force Graph Component ───────────────────────────────────────────
@@ -226,7 +237,13 @@ function ForceGraph({ specs, domains, alignments }) {
     // Circles
     node.append('circle')
       .attr('r', d => d.radius)
-      .attr('fill', d => d.group === 'spec' ? '#6366f1' : '#0ea5e9')
+      .attr('fill', d => {
+        if (d.group === 'spec') return '#6366f1';
+        // Domain: tint by privacy risk level
+        if (d.privacyRisk === 'high')   return '#f43f5e'; // rose-500
+        if (d.privacyRisk === 'medium') return '#a78bfa'; // violet-400
+        return '#0ea5e9'; // sky-500 (low / default)
+      })
       .attr('stroke', '#fff')
       .attr('stroke-width', 2)
       .attr('opacity', 0.9);
@@ -283,6 +300,15 @@ function ForceGraph({ specs, domains, alignments }) {
           {tooltip.node.group === 'spec' && tooltip.node.category && (
             <div className="text-gray-400 mt-0.5">{tooltip.node.category}</div>
           )}
+          {tooltip.node.group === 'domain' && tooltip.node.privacyRisk && (
+            <div className={`mt-1 text-xs font-semibold ${
+              tooltip.node.privacyRisk === 'high'   ? 'text-rose-400' :
+              tooltip.node.privacyRisk === 'medium' ? 'text-violet-300' :
+              'text-sky-300'
+            }`}>
+              Privacy risk: {tooltip.node.privacyRisk}
+            </div>
+          )}
           <div className="text-gray-400 mt-0.5 font-mono text-[10px] break-all">{tooltip.node.id}</div>
         </div>
       )}
@@ -327,6 +353,8 @@ export default function VocabularyPage() {
       partialCount,
       gapCount,
       classes: graph.owlClasses.length,
+      highPrivacyDomains: graph.highPrivacyDomains,
+      piiFields: graph.piiFieldCount,
     };
   }, [graph]);
 
@@ -382,7 +410,7 @@ export default function VocabularyPage() {
 
       {/* Stats bar */}
       {stats && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-9 gap-3 mb-6">
           {[
             { label: 'OWL Classes', value: stats.classes, color: 'text-gray-900' },
             { label: 'Specifications', value: stats.specs, color: 'text-indigo-600' },
@@ -391,6 +419,8 @@ export default function VocabularyPage() {
             { label: 'Full', value: stats.fullCount, color: 'text-emerald-600' },
             { label: 'Partial', value: stats.partialCount, color: 'text-amber-600' },
             { label: 'Gap', value: stats.gapCount, color: 'text-red-500' },
+            { label: 'High Privacy', value: stats.highPrivacyDomains, color: 'text-rose-600' },
+            { label: 'PII Fields', value: stats.piiFields, color: 'text-violet-600' },
           ].map(s => (
             <div key={s.label} className="bg-white border border-gray-200 rounded-xl px-4 py-3 text-center">
               <div className={`text-xl font-bold ${s.color}`}>{s.value}</div>
@@ -404,13 +434,22 @@ export default function VocabularyPage() {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-lg font-bold text-gray-900">Specification ↔ CEDS Domain Graph</h2>
-          <div className="flex items-center gap-4 text-xs text-gray-500">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-gray-500">
             <span className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded-full bg-indigo-500 inline-block" /> Specification
             </span>
+            <span className="text-gray-300">|</span>
+            <span className="text-gray-400 text-[10px] font-semibold uppercase tracking-wide">Domain privacy:</span>
             <span className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded-full bg-sky-500 inline-block" /> CEDS Domain
+              <span className="w-3 h-3 rounded-full bg-rose-500 inline-block" /> High
             </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-full bg-violet-400 inline-block" /> Medium
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-full bg-sky-500 inline-block" /> Low
+            </span>
+            <span className="text-gray-300">|</span>
             <span className="flex items-center gap-1.5">
               <span className="w-6 h-0.5 bg-emerald-500 inline-block" /> Full
             </span>

@@ -541,13 +541,56 @@ export default function LibraryEntryCard({
                         <div className="text-xs text-gray-400 font-medium mb-1">Applicable Regulations</div>
                         <div className="flex flex-wrap gap-1.5 mt-1">
                           {entry.privacyConsiderations.regulations.map(r => (
-                            <span key={r} className="text-xs bg-orange-50 text-orange-700 px-2 py-0.5 rounded-lg border border-orange-200">{r}</span>
+                            <span key={r} className={`text-xs px-2 py-0.5 rounded-lg border ${r.startsWith('NDPA') ? 'bg-indigo-50 text-indigo-700 border-indigo-200 font-semibold' : 'bg-orange-50 text-orange-700 border-orange-200'}`}>{r}</span>
                           ))}
                         </div>
                       </div>
                     )}
                   </div>
                 </section>
+
+                {/* NDPA v2.2 Provisions */}
+                {entry.privacyConsiderations.ndpaProvisions?.length > 0 && (
+                  <section>
+                    <div className="flex items-center gap-2 mb-2">
+                      <h4 className="text-sm font-semibold text-gray-800">NDPA v2.2 Provisions</h4>
+                      <a
+                        href="https://files.a4l.org/privacy/NDPA/NDPA_v2-2_STANDARD_WEB.pdf"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-xs text-indigo-500 hover:text-indigo-700 transition-colors"
+                      >
+                        View full NDPA
+                      </a>
+                    </div>
+                    <p className="text-xs text-gray-400 mb-3">
+                      Relevant provisions from the SDPC National Data Privacy Agreement (Standard v2.2) applicable to this specification.
+                    </p>
+                    <div className="space-y-2">
+                      {entry.privacyConsiderations.ndpaProvisions.map(provision => (
+                        <div key={provision.citation} className="bg-indigo-50/60 border border-indigo-100 rounded-lg p-3">
+                          <div className="flex items-start gap-2 mb-1">
+                            <span className="text-xs font-mono bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded border border-indigo-200 whitespace-nowrap flex-shrink-0">
+                              {provision.citation}
+                            </span>
+                            <span className="text-xs font-semibold text-indigo-900">{provision.title}</span>
+                          </div>
+                          <p className="text-xs text-indigo-800/80 leading-relaxed">{provision.summary}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-3">
+                      <p className="text-xs text-amber-800 leading-relaxed">
+                        <strong>Disclaimer:</strong> These NDPA citations are guidance for implementers, not legal advice.
+                        Consult your institution's legal counsel and review the{' '}
+                        <a href="https://privacy.a4l.org/national-dpa/" target="_blank" rel="noreferrer" className="underline hover:text-amber-900">
+                          SDPC Privacy Registry
+                        </a>{' '}
+                        for your state's Supplemental Terms (Exhibit G).
+                      </p>
+                    </div>
+                  </section>
+                )}
               </>
             )}
 

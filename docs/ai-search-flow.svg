@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1150" width="900" height="1150">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110 1220" width="1110" height="1220">
   <defs>
     <style>
       .box { rx: 10; ry: 10; stroke-width: 2; }
@@ -7,44 +7,53 @@
       .box-llm { fill: #fef3c7; stroke: #f59e0b; }
       .box-output { fill: #ecfdf5; stroke: #10b981; }
       .box-io { fill: #f8fafc; stroke: #64748b; }
+      .box-privacy { fill: #fff1f2; stroke: #f43f5e; stroke-width: 1.5; }
       .title { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: #1e1b4b; }
       .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #64748b; }
       .box-label { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #1e293b; }
       .box-detail { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; }
       .box-detail-sm { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; fill: #64748b; }
       .arrow { fill: none; stroke: #94a3b8; stroke-width: 2; marker-end: url(#arrowhead); }
+      .arrow-privacy { fill: none; stroke: #f43f5e; stroke-width: 1.5; stroke-dasharray: 5,3; marker-end: url(#arrowhead-privacy); }
       .arrow-label { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; fill: #6366f1; font-weight: 600; }
       .stage-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #a5b4fc; font-weight: 700; letter-spacing: 1px; }
       .parallel-bracket { fill: none; stroke: #cbd5e1; stroke-width: 1.5; stroke-dasharray: 6 3; }
+      .privacy-header { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 700; fill: #be123c; letter-spacing: 0.5px; }
+      .privacy-detail { font-family: system-ui, -apple-system, sans-serif; font-size: 9.5px; fill: #9f1239; }
+      .privacy-key { font-family: 'Courier New', monospace; font-size: 9px; fill: #be123c; font-weight: 600; }
+      .new-badge-text { font-family: system-ui, -apple-system, sans-serif; font-size: 8px; font-weight: 700; fill: #fff; }
+      .privacy-rose { fill: #be123c; }
     </style>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
     </marker>
+    <marker id="arrowhead-privacy" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f43f5e"/>
+    </marker>
   </defs>
 
   <!-- Background -->
-  <rect width="900" height="1150" fill="#ffffff" rx="0"/>
+  <rect width="1110" height="1220" fill="#ffffff"/>
+
+  <!-- Privacy column background -->
+  <rect x="908" y="75" width="188" height="1110" fill="#fef2f2" rx="8" opacity="0.45"/>
+  <text x="1002" y="97" text-anchor="middle" class="privacy-header" style="font-size:11px; letter-spacing:2px;">PRIVACY LAYER</text>
+  <line x1="918" y1="104" x2="1086" y2="104" stroke="#fecdd3" stroke-width="1"/>
 
   <!-- Title -->
   <text x="450" y="40" text-anchor="middle" class="title">AI Interoperability Mapping Pipeline</text>
-  <text x="450" y="58" text-anchor="middle" class="subtitle">LibraryPage.jsx  handleAiSubmit()</text>
+  <text x="450" y="58" text-anchor="middle" class="subtitle">LibraryPage.jsx  handleAiSubmit()  —  with Student Data Privacy Layer</text>
 
   <!-- ======================== STAGE 1: USER INPUT ======================== -->
   <text x="50" y="100" class="stage-label">STAGE 1</text>
-
-  <!-- User Query (parallelogram / I/O shape) -->
-  <polygon points="370,85 580,85 560,125 350,125" class="box-io" style="fill:#f8fafc;stroke:#64748b;stroke-width:2"/>
+  <polygon points="370,85 580,85 560,125 350,125" style="fill:#f8fafc;stroke:#64748b;stroke-width:2"/>
   <text x="465" y="108" text-anchor="middle" class="box-label">User Query</text>
   <text x="465" y="121" text-anchor="middle" class="box-detail-sm">aiQuery from textarea</text>
-
-  <!-- Arrow down from user query -->
   <line x1="450" y1="125" x2="450" y2="155" class="arrow"/>
 
   <!-- ======================== STAGE 2: PARALLEL CONTEXT ======================== -->
   <text x="50" y="172" class="stage-label">STAGE 2</text>
-
-  <!-- Parallel context bracket -->
-  <rect x="65" y="155" width="770" height="250" class="parallel-bracket" rx="12"/>
+  <rect x="65" y="155" width="770" height="255" class="parallel-bracket" rx="12"/>
   <text x="85" y="175" class="stage-label" style="fill:#94a3b8; font-size:10px;">PARALLEL CONTEXT ASSEMBLY</text>
 
   <!-- Fork arrows -->
@@ -52,173 +61,234 @@
   <line x1="450" y1="155" x2="450" y2="195" class="arrow"/>
   <line x1="450" y1="155" x2="725" y2="195" class="arrow"/>
 
-  <!-- Context Box 1: RDF Ontology -->
-  <rect x="80" y="195" width="195" height="130" class="box box-context"/>
+  <!-- Fork labels -->
+  <text x="265" y="186" text-anchor="middle" class="arrow-label">fetchOntologyContext()</text>
+  <text x="450" y="186" text-anchor="middle" class="arrow-label">buildStakeholderContext()</text>
+  <text x="645" y="186" text-anchor="middle" class="arrow-label">buildFieldMappingContext()</text>
+
+  <!-- Context Box 1: RDF Ontology (UPDATED — privacy nodes) -->
+  <rect x="80" y="195" width="195" height="160" class="box box-context"/>
   <text x="177" y="218" text-anchor="middle" class="box-label">Fetch RDF Ontology</text>
   <text x="177" y="235" text-anchor="middle" class="box-detail">ontology.jsonld</text>
   <line x1="95" y1="245" x2="260" y2="245" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="95" y="262" class="box-detail-sm">Specs: title, URI, burden,</text>
-  <text x="95" y="275" class="box-detail-sm">  category, aiSummary, pairedWith</text>
-  <text x="95" y="292" class="box-detail-sm">CEDS Domains: label, URI</text>
-  <text x="95" y="309" class="box-detail-sm">Alignments: spec-domain triples</text>
+  <text x="95" y="260" class="box-detail-sm">Specs: title, URI, burden, aiSummary</text>
+  <text x="95" y="273" class="box-detail-sm">CEDS Domains: label, URI, privacyRisk</text>
+  <text x="95" y="286" class="box-detail-sm">Alignments: triples + alignmentPrivacyRisk</text>
+  <line x1="95" y1="295" x2="260" y2="295" stroke="#fecdd3" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="95" y="309" class="box-detail-sm" style="fill:#be123c;">DomainPrivacyProfile: risk, regs (×13)</text>
+  <text x="95" y="322" class="box-detail-sm" style="fill:#be123c;">PIIField: path, piiCategory, mitigation (×11)</text>
+  <!-- NEW badge -->
+  <rect x="240" y="197" width="29" height="13" fill="#f43f5e" rx="3"/>
+  <text x="254" y="207" text-anchor="middle" class="new-badge-text">NEW</text>
 
-  <!-- Context Box 2: Stakeholder -->
-  <rect x="315" y="195" width="270" height="130" class="box box-context"/>
+  <!-- Context Box 2: Stakeholder (unchanged) -->
+  <rect x="315" y="195" width="270" height="160" class="box box-context"/>
   <text x="450" y="218" text-anchor="middle" class="box-label">Stakeholder &amp; Use Case Context</text>
   <text x="450" y="235" text-anchor="middle" class="box-detail">taxonomies.js</text>
   <line x1="330" y1="245" x2="570" y2="245" stroke="#e2e8f0" stroke-width="1"/>
   <text x="330" y="262" class="box-detail-sm">stakeholderTaxonomy: id, label, group,</text>
   <text x="330" y="275" class="box-detail-sm">  businessNeeds (flattened hierarchy)</text>
   <text x="330" y="292" class="box-detail-sm">useCasesCedsRdf: id, label,</text>
-  <text x="330" y="309" class="box-detail-sm">  stakeholders[], cedsDomains[]</text>
+  <text x="330" y="305" class="box-detail-sm">  stakeholders[], cedsDomains[]</text>
 
-  <!-- Context Box 3: Field Mappings -->
-  <rect x="625" y="195" width="195" height="130" class="box box-context"/>
+  <!-- Context Box 3: Field Mappings (unchanged) -->
+  <rect x="625" y="195" width="195" height="160" class="box box-context"/>
   <text x="722" y="218" text-anchor="middle" class="box-label">Field Mapping Crosswalk</text>
   <text x="722" y="235" text-anchor="middle" class="box-detail">fieldMappings.js</text>
   <line x1="640" y1="245" x2="805" y2="245" stroke="#e2e8f0" stroke-width="1"/>
   <text x="640" y="262" class="box-detail-sm">52+ field concepts across</text>
   <text x="640" y="275" class="box-detail-sm">5 specs: CASE 1.1, IEEE SCD,</text>
   <text x="640" y="292" class="box-detail-sm">ASN-CTDL, OB3, CLR 2.0</text>
-  <text x="640" y="309" class="box-detail-sm">Rendered as markdown table</text>
+  <text x="640" y="305" class="box-detail-sm">Rendered as markdown table</text>
 
-  <!-- Data-type labels on fork arrows -->
-  <text x="265" y="186" text-anchor="middle" class="arrow-label">fetchOntologyContext()</text>
-  <text x="450" y="186" text-anchor="middle" class="arrow-label">buildStakeholderContext()</text>
-  <text x="645" y="186" text-anchor="middle" class="arrow-label">buildFieldMappingContext()</text>
-
-  <!-- Join arrows from context boxes -->
-  <line x1="177" y1="325" x2="177" y2="365" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-  <line x1="450" y1="325" x2="450" y2="365" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-  <line x1="722" y1="325" x2="722" y2="365" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-  <!-- Horizontal join line -->
-  <line x1="177" y1="365" x2="722" y2="365" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-  <!-- Down from join -->
-  <line x1="450" y1="365" x2="450" y2="380" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-
-  <!-- Arrow into merge -->
-  <line x1="450" y1="380" x2="450" y2="430" class="arrow"/>
-  <text x="460" y="418" class="arrow-label">merge all context</text>
+  <!-- Join arrows from context boxes (boxes bottom at y=355) -->
+  <line x1="177" y1="355" x2="177" y2="390" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="355" x2="450" y2="390" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="722" y1="355" x2="722" y2="390" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="177" y1="390" x2="722" y2="390" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="390" x2="450" y2="405" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="405" x2="450" y2="455" class="arrow"/>
+  <text x="460" y="438" class="arrow-label">merge all context</text>
 
   <!-- ======================== STAGE 3: SYSTEM PROMPT ======================== -->
-  <text x="50" y="447" class="stage-label">STAGE 3</text>
-
-  <rect x="250" y="430" width="400" height="80" class="box box-primary"/>
-  <text x="450" y="458" text-anchor="middle" class="box-label">System Prompt Assembly</text>
-  <line x1="265" y1="465" x2="635" y2="465" stroke="#c7d2fe" stroke-width="1"/>
-  <text x="265" y="482" class="box-detail-sm">1. Base instructions (response format rules)</text>
-  <text x="265" y="495" class="box-detail-sm">2. Ontology specs + domains + alignments</text>
-  <text x="450" y="482" class="box-detail-sm">3. Stakeholder + use case lists</text>
-  <text x="450" y="495" class="box-detail-sm">4. Field mapping crosswalk table</text>
+  <text x="50" y="472" class="stage-label">STAGE 3</text>
+  <rect x="250" y="455" width="400" height="105" class="box box-primary"/>
+  <text x="450" y="483" text-anchor="middle" class="box-label">System Prompt Assembly</text>
+  <line x1="265" y1="490" x2="635" y2="490" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="265" y="506" class="box-detail-sm">1. Base instructions + privacy query rule (Rule 4)</text>
+  <text x="265" y="519" class="box-detail-sm">2. Ontology: specs + domains + alignments</text>
+  <text x="265" y="532" class="box-detail-sm" style="fill:#be123c;">3. Domain risk profiles + high-risk PII combos</text>
+  <text x="265" y="545" class="box-detail-sm">4. Stakeholder + use cases + field crosswalk</text>
+  <!-- NEW badge -->
+  <rect x="605" y="457" width="29" height="13" fill="#f43f5e" rx="3"/>
+  <text x="619" y="467" text-anchor="middle" class="new-badge-text">NEW</text>
 
   <!-- Arrow down -->
-  <line x1="450" y1="510" x2="450" y2="555" class="arrow"/>
-  <text x="460" y="540" class="arrow-label">systemPrompt (~10 KB)</text>
+  <line x1="450" y1="560" x2="450" y2="605" class="arrow"/>
+  <text x="460" y="590" class="arrow-label">systemPrompt (~12 KB)</text>
 
   <!-- ======================== STAGE 4: LLM CALL ======================== -->
-  <text x="50" y="575" class="stage-label">STAGE 4</text>
-
-  <rect x="275" y="555" width="350" height="85" class="box box-llm"/>
-  <text x="450" y="583" text-anchor="middle" class="box-label">Anthropic API Call</text>
-  <line x1="290" y1="590" x2="610" y2="590" stroke="#fcd34d" stroke-width="1"/>
-  <text x="450" y="607" text-anchor="middle" class="box-detail">POST https://api.anthropic.com/v1/messages</text>
-  <text x="450" y="622" text-anchor="middle" class="box-detail">model: claude-sonnet-4-6</text>
-  <text x="450" y="635" text-anchor="middle" class="box-detail-sm">system: systemPrompt, messages: [{ user: aiQuery }]</text>
+  <text x="50" y="622" class="stage-label">STAGE 4</text>
+  <rect x="275" y="605" width="350" height="85" class="box box-llm"/>
+  <text x="450" y="633" text-anchor="middle" class="box-label">Anthropic API Call</text>
+  <line x1="290" y1="640" x2="610" y2="640" stroke="#fcd34d" stroke-width="1"/>
+  <text x="450" y="657" text-anchor="middle" class="box-detail">POST https://api.anthropic.com/v1/messages</text>
+  <text x="450" y="672" text-anchor="middle" class="box-detail">model: claude-sonnet-4-6</text>
+  <text x="450" y="685" text-anchor="middle" class="box-detail-sm">system: systemPrompt, messages: [{ user: aiQuery }]</text>
 
   <!-- Arrow down -->
-  <line x1="450" y1="640" x2="450" y2="675" class="arrow"/>
-  <text x="460" y="665" class="arrow-label">fullResponse (raw text)</text>
+  <line x1="450" y1="690" x2="450" y2="725" class="arrow"/>
+  <text x="460" y="715" class="arrow-label">fullResponse (raw text)</text>
 
   <!-- ======================== STAGE 5: RESPONSE PARSING ======================== -->
-  <text x="50" y="700" class="stage-label">STAGE 5</text>
+  <text x="50" y="748" class="stage-label">STAGE 5</text>
+  <rect x="65" y="730" width="770" height="285" class="parallel-bracket" rx="12"/>
+  <text x="85" y="750" class="stage-label" style="fill:#94a3b8; font-size:10px;">RESPONSE PARSING &amp; EXTRACTION</text>
 
-  <!-- Parallel parse bracket -->
-  <rect x="65" y="685" width="770" height="280" class="parallel-bracket" rx="12"/>
-  <text x="85" y="705" class="stage-label" style="fill:#94a3b8; font-size:10px;">RESPONSE PARSING &amp; EXTRACTION</text>
+  <line x1="450" y1="725" x2="175" y2="768" class="arrow"/>
+  <line x1="450" y1="725" x2="450" y2="768" class="arrow"/>
+  <line x1="450" y1="725" x2="725" y2="768" class="arrow"/>
 
-  <!-- Fork arrows for parsing -->
-  <line x1="450" y1="675" x2="175" y2="720" class="arrow"/>
-  <line x1="450" y1="675" x2="450" y2="720" class="arrow"/>
-  <line x1="450" y1="675" x2="725" y2="720" class="arrow"/>
-
-  <!-- Parse labels -->
-  <text x="270" y="710" text-anchor="middle" class="arrow-label">split on ## headers</text>
-  <text x="450" y="710" text-anchor="middle" class="arrow-label">regex + fallback</text>
-  <text x="645" y="710" text-anchor="middle" class="arrow-label">JSON.parse</text>
+  <text x="270" y="758" text-anchor="middle" class="arrow-label">split on ## headers</text>
+  <text x="450" y="758" text-anchor="middle" class="arrow-label">regex + fallback</text>
+  <text x="645" y="758" text-anchor="middle" class="arrow-label">JSON.parse</text>
 
   <!-- Parse Box 1: Main Answer -->
-  <rect x="80" y="720" width="195" height="145" class="box box-output"/>
-  <text x="177" y="743" text-anchor="middle" class="box-label">Main Answer</text>
-  <line x1="95" y1="750" x2="260" y2="750" stroke="#a7f3d0" stroke-width="1"/>
-  <text x="95" y="767" class="box-detail-sm">Split fullResponse on</text>
-  <text x="95" y="780" class="box-detail-sm">"## Ontology Resources Used"</text>
-  <text x="95" y="800" class="box-detail-sm">mainResponse = first section</text>
-  <text x="95" y="817" class="box-detail-sm">(2-4 paragraphs of markdown</text>
-  <text x="95" y="830" class="box-detail-sm"> with spec recommendations</text>
-  <text x="95" y="843" class="box-detail-sm"> and burden levels)</text>
+  <rect x="80" y="768" width="195" height="150" class="box box-output"/>
+  <text x="177" y="791" text-anchor="middle" class="box-label">Main Answer</text>
+  <line x1="95" y1="798" x2="260" y2="798" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="95" y="814" class="box-detail-sm">Split fullResponse on</text>
+  <text x="95" y="827" class="box-detail-sm">"## Ontology Resources Used"</text>
+  <text x="95" y="843" class="box-detail-sm">mainResponse = first section</text>
+  <text x="95" y="858" class="box-detail-sm">(2–4 paragraphs: specs,</text>
+  <text x="95" y="871" class="box-detail-sm"> burden levels, FERPA / NDPA</text>
+  <text x="95" y="884" class="box-detail-sm" style="fill:#be123c;"> analysis + mitigations)</text>
 
-  <!-- Parse Box 2: URI Extraction -->
-  <rect x="315" y="720" width="270" height="145" class="box box-output"/>
-  <text x="450" y="743" text-anchor="middle" class="box-label">Ontology URI Extraction</text>
-  <line x1="330" y1="750" x2="570" y2="750" stroke="#a7f3d0" stroke-width="1"/>
-  <text x="330" y="767" class="box-detail-sm">3-stage fallback strategy:</text>
-  <text x="330" y="784" class="box-detail-sm">A. Parse "Resources Used" section</text>
-  <text x="330" y="801" class="box-detail-sm">   regex: firsteducore.org/ontology#*</text>
-  <text x="330" y="818" class="box-detail-sm">B. Scan entire response for URIs</text>
-  <text x="330" y="835" class="box-detail-sm">C. Fallback: text-match spec titles</text>
-  <text x="330" y="852" class="box-detail-sm">Enrich: { uri, label, type, status }</text>
+  <!-- Parse Box 2: URI Extraction (UPDATED) -->
+  <rect x="315" y="768" width="270" height="150" class="box box-output"/>
+  <text x="450" y="791" text-anchor="middle" class="box-label">Ontology URI Extraction</text>
+  <line x1="330" y1="798" x2="570" y2="798" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="330" y="814" class="box-detail-sm">3-stage fallback strategy:</text>
+  <text x="330" y="828" class="box-detail-sm">A. Parse "Resources Used" section</text>
+  <text x="330" y="841" class="box-detail-sm">   regex: firsteducore.org/ontology#*</text>
+  <text x="330" y="854" class="box-detail-sm" style="fill:#be123c;">   incl. domain-privacy/* + pii-field/*</text>
+  <text x="330" y="868" class="box-detail-sm">B. Scan full response for URIs</text>
+  <text x="330" y="881" class="box-detail-sm">C. Fallback: text-match spec titles</text>
+  <text x="330" y="895" class="box-detail-sm">Enrich: { uri, label, type, status }</text>
+  <!-- NEW badge -->
+  <rect x="543" y="770" width="29" height="13" fill="#f43f5e" rx="3"/>
+  <text x="557" y="780" text-anchor="middle" class="new-badge-text">NEW</text>
 
   <!-- Parse Box 3: Activated Context -->
-  <rect x="625" y="720" width="195" height="145" class="box box-output"/>
-  <text x="722" y="743" text-anchor="middle" class="box-label">Activated Context</text>
-  <line x1="640" y1="750" x2="805" y2="750" stroke="#a7f3d0" stroke-width="1"/>
-  <text x="640" y="767" class="box-detail-sm">Extract fenced JSON block</text>
-  <text x="640" y="784" class="box-detail-sm">from "## Activated Context"</text>
-  <text x="640" y="804" class="box-detail-sm">Parse:</text>
-  <text x="640" y="821" class="box-detail-sm">  stakeholderIds: string[]</text>
-  <text x="640" y="838" class="box-detail-sm">  useCaseIds: string[]</text>
-  <text x="640" y="855" class="box-detail-sm">Callback: onActivateNeeds()</text>
+  <rect x="625" y="768" width="195" height="150" class="box box-output"/>
+  <text x="722" y="791" text-anchor="middle" class="box-label">Activated Context</text>
+  <line x1="640" y1="798" x2="805" y2="798" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="640" y="814" class="box-detail-sm">Extract fenced JSON block</text>
+  <text x="640" y="827" class="box-detail-sm">from "## Activated Context"</text>
+  <text x="640" y="847" class="box-detail-sm">Parse:</text>
+  <text x="640" y="862" class="box-detail-sm">  stakeholderIds: string[]</text>
+  <text x="640" y="877" class="box-detail-sm">  useCaseIds: string[]</text>
+  <text x="640" y="892" class="box-detail-sm">Callback: onActivateNeeds()</text>
 
-  <!-- Join arrows from parse boxes -->
-  <line x1="177" y1="865" x2="177" y2="905" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-  <line x1="450" y1="865" x2="450" y2="905" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-  <line x1="722" y1="865" x2="722" y2="905" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-  <!-- Horizontal join -->
-  <line x1="177" y1="905" x2="722" y2="905" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-  <line x1="450" y1="905" x2="450" y2="920" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
-
-  <!-- Arrow down to output -->
-  <line x1="450" y1="920" x2="450" y2="975" class="arrow"/>
+  <!-- Join arrows from parse boxes (boxes bottom at y=918) -->
+  <line x1="177" y1="918" x2="177" y2="955" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="918" x2="450" y2="955" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="722" y1="918" x2="722" y2="955" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="177" y1="955" x2="722" y2="955" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="955" x2="450" y2="970" style="fill:none;stroke:#94a3b8;stroke-width:2"/>
+  <line x1="450" y1="970" x2="450" y2="1020" class="arrow"/>
 
   <!-- ======================== STAGE 6: RENDERED OUTPUT ======================== -->
-  <text x="50" y="995" class="stage-label">STAGE 6</text>
+  <text x="50" y="1040" class="stage-label">STAGE 6</text>
 
-  <!-- Output fork -->
-  <line x1="450" y1="975" x2="175" y2="1010" class="arrow"/>
-  <line x1="450" y1="975" x2="450" y2="1010" class="arrow"/>
-  <line x1="450" y1="975" x2="725" y2="1010" class="arrow"/>
+  <line x1="450" y1="1020" x2="175" y2="1058" class="arrow"/>
+  <line x1="450" y1="1020" x2="450" y2="1058" class="arrow"/>
+  <line x1="450" y1="1020" x2="725" y2="1058" class="arrow"/>
 
-  <!-- Output Box 1: Answer Panel -->
-  <rect x="80" y="1010" width="195" height="70" class="box box-primary"/>
-  <text x="177" y="1037" text-anchor="middle" class="box-label">Answer Panel</text>
-  <line x1="95" y1="1044" x2="260" y2="1044" stroke="#c7d2fe" stroke-width="1"/>
-  <text x="177" y="1061" text-anchor="middle" class="box-detail-sm">Rendered markdown with</text>
-  <text x="177" y="1074" text-anchor="middle" class="box-detail-sm">spec recommendations</text>
+  <!-- Output Box 1: Answer Panel (UPDATED) -->
+  <rect x="80" y="1058" width="195" height="95" class="box box-primary"/>
+  <text x="177" y="1082" text-anchor="middle" class="box-label">Answer Panel</text>
+  <line x1="95" y1="1089" x2="260" y2="1089" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="177" y="1104" text-anchor="middle" class="box-detail-sm">Rendered markdown with</text>
+  <text x="177" y="1117" text-anchor="middle" class="box-detail-sm">spec recommendations</text>
+  <text x="177" y="1130" text-anchor="middle" class="box-detail-sm" style="fill:#be123c;">+ privacy analysis if queried</text>
+  <!-- NEW badge -->
+  <rect x="240" y="1060" width="29" height="13" fill="#f43f5e" rx="3"/>
+  <text x="254" y="1070" text-anchor="middle" class="new-badge-text">NEW</text>
 
-  <!-- Output Box 2: RDF Sources -->
-  <rect x="315" y="1010" width="270" height="70" class="box box-primary"/>
-  <text x="450" y="1037" text-anchor="middle" class="box-label">RDF Sources Panel</text>
-  <line x1="330" y1="1044" x2="570" y2="1044" stroke="#c7d2fe" stroke-width="1"/>
-  <text x="450" y="1061" text-anchor="middle" class="box-detail-sm">enrichedSources[] displayed</text>
-  <text x="450" y="1074" text-anchor="middle" class="box-detail-sm">with type badges and URIs</text>
+  <!-- Output Box 2: RDF Sources (UPDATED) -->
+  <rect x="315" y="1058" width="270" height="95" class="box box-primary"/>
+  <text x="450" y="1082" text-anchor="middle" class="box-label">RDF Sources Panel</text>
+  <line x1="330" y1="1089" x2="570" y2="1089" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="450" y="1105" text-anchor="middle" class="box-detail-sm">enrichedSources[] with type badges</text>
+  <text x="450" y="1118" text-anchor="middle" class="box-detail-sm" style="fill:#be123c;">incl. domain-privacy/* + pii-field/*</text>
+  <text x="450" y="1131" text-anchor="middle" class="box-detail-sm">URIs when privacy query</text>
 
-  <!-- Output Box 3: Roadmap -->
-  <rect x="625" y="1010" width="195" height="70" class="box box-primary"/>
-  <text x="722" y="1037" text-anchor="middle" class="box-label">Roadmap Activation</text>
-  <line x1="640" y1="1044" x2="805" y2="1044" stroke="#c7d2fe" stroke-width="1"/>
-  <text x="722" y="1061" text-anchor="middle" class="box-detail-sm">Stakeholder &amp; use case</text>
-  <text x="722" y="1074" text-anchor="middle" class="box-detail-sm">panels highlighted</text>
+  <!-- Output Box 3: Roadmap (unchanged) -->
+  <rect x="625" y="1058" width="195" height="95" class="box box-primary"/>
+  <text x="722" y="1082" text-anchor="middle" class="box-label">Roadmap Activation</text>
+  <line x1="640" y1="1089" x2="805" y2="1089" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="722" y="1105" text-anchor="middle" class="box-detail-sm">Stakeholder &amp; use case</text>
+  <text x="722" y="1118" text-anchor="middle" class="box-detail-sm">panels highlighted</text>
+
+  <!-- ======================== PRIVACY COLUMN ANNOTATIONS ======================== -->
+
+  <!-- Annotation A: Stage 2 — ontology privacy node extraction -->
+  <rect x="916" y="188" width="170" height="200" class="box-privacy" rx="8"/>
+  <text x="1001" y="207" text-anchor="middle" class="privacy-header">PRIVACY NODE EXTRACTION</text>
+  <line x1="926" y1="213" x2="1076" y2="213" stroke="#fecdd3" stroke-width="1"/>
+  <text x="926" y="227" class="privacy-key">DomainPrivacyProfile (×13)</text>
+  <text x="931" y="239" class="privacy-detail">· privacyRiskLevel: high / med / low</text>
+  <text x="931" y="251" class="privacy-detail">· piiCategories (controlled vocab)</text>
+  <text x="931" y="263" class="privacy-detail">· applicableRegulation[]</text>
+  <text x="931" y="275" class="privacy-detail">· consentRequired, transferRisk</text>
+  <text x="926" y="290" class="privacy-key">PIIField (×11)</text>
+  <text x="931" y="302" class="privacy-detail">· fieldPath (dot-notation)</text>
+  <text x="931" y="314" class="privacy-detail">· piiCategory (vocab term)</text>
+  <text x="931" y="326" class="privacy-detail">· ferpaProtected, coppaScope</text>
+  <text x="931" y="338" class="privacy-detail">· mitigationStrategy</text>
+  <text x="926" y="353" class="privacy-key">alignmentPrivacyRisk (×65)</text>
+  <text x="931" y="365" class="privacy-detail">9 high · 14 medium · 42 low</text>
+  <!-- Connector: right edge of RDF box → annotation A -->
+  <line x1="275" y1="274" x2="916" y2="274" class="arrow-privacy"/>
+
+  <!-- Annotation B: Stage 3 — privacy context in system prompt -->
+  <rect x="916" y="458" width="170" height="125" class="box-privacy" rx="8"/>
+  <text x="1001" y="477" text-anchor="middle" class="privacy-header">PRIVACY CONTEXT IN PROMPT</text>
+  <line x1="926" y1="483" x2="1076" y2="483" stroke="#fecdd3" stroke-width="1"/>
+  <text x="926" y="498" class="privacy-detail">§ 13 domain risk profiles inline</text>
+  <text x="926" y="511" class="privacy-detail">§ 9 high-risk spec × domain combos</text>
+  <text x="926" y="524" class="privacy-detail">§ PII field paths + mitigations</text>
+  <line x1="926" y1="532" x2="1076" y2="532" stroke="#fecdd3" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="926" y="545" class="privacy-key">Rule 4 (privacy queries):</text>
+  <text x="926" y="557" class="privacy-detail">cite domains, PII fields,</text>
+  <text x="926" y="569" class="privacy-detail">regs + mitigation strategies</text>
+  <!-- Connector: right edge of system prompt box → annotation B -->
+  <line x1="650" y1="508" x2="916" y2="508" class="arrow-privacy"/>
+
+  <!-- Annotation C: Stage 5 — privacy URI extraction -->
+  <rect x="916" y="778" width="170" height="100" class="box-privacy" rx="8"/>
+  <text x="1001" y="797" text-anchor="middle" class="privacy-header">PRIVACY URIs EXTRACTED</text>
+  <line x1="926" y1="803" x2="1076" y2="803" stroke="#fecdd3" stroke-width="1"/>
+  <text x="926" y="818" class="privacy-key">educore:domain-privacy/*</text>
+  <text x="931" y="830" class="privacy-detail">e.g. domain-privacy/credentials</text>
+  <text x="931" y="842" class="privacy-detail">e.g. domain-privacy/assessments</text>
+  <text x="926" y="856" class="privacy-key">educore:pii-field/*</text>
+  <text x="931" y="868" class="privacy-detail">e.g. pii-field/clr-v2/learnerProfile</text>
+  <!-- Connector: right edge of URI extraction box → annotation C -->
+  <line x1="585" y1="833" x2="916" y2="833" class="arrow-privacy"/>
+
+  <!-- Annotation D: Stage 6 — privacy analysis in rendered output -->
+  <rect x="916" y="1058" width="170" height="100" class="box-privacy" rx="8"/>
+  <text x="1001" y="1077" text-anchor="middle" class="privacy-header">PRIVACY ANALYSIS OUTPUT</text>
+  <line x1="926" y1="1083" x2="1076" y2="1083" stroke="#fecdd3" stroke-width="1"/>
+  <text x="926" y="1098" class="privacy-detail">· High-risk CEDS domains named</text>
+  <text x="926" y="1111" class="privacy-detail">· Specific PII field paths cited</text>
+  <text x="926" y="1124" class="privacy-detail">· FERPA / COPPA / NDPA cited</text>
+  <text x="926" y="1137" class="privacy-detail">· Per-field mitigations recommended</text>
+  <!-- Connector: right edge of answer panel → annotation D -->
+  <line x1="275" y1="1105" x2="916" y2="1105" class="arrow-privacy"/>
 
   <!-- Footer -->
-  <text x="450" y="1130" text-anchor="middle" class="subtitle">FirstEduCore AI Interoperability Mapping Pipeline  |  docs/ai-search-flow.svg</text>
+  <text x="500" y="1195" text-anchor="middle" class="subtitle">FirstEduCore AI Interoperability Mapping Pipeline  |  docs/ai-search-flow.svg</text>
 </svg>
