@@ -13,79 +13,118 @@
       "@id": "https://firsteducore.org/ontology#ceds-domain/credentials",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Credentials",
-      "dcterms:identifier": "credentials"
+      "dcterms:identifier": "credentials",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/credentials"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/competencies",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Competencies",
-      "dcterms:identifier": "competencies"
+      "dcterms:identifier": "competencies",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/competencies"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/workforce",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Workforce",
-      "dcterms:identifier": "workforce"
+      "dcterms:identifier": "workforce",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/workforce"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/assessments",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Assessments",
-      "dcterms:identifier": "assessments"
+      "dcterms:identifier": "assessments",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/assessments"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/learningResources",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Learning Resources",
-      "dcterms:identifier": "learningResources"
+      "dcterms:identifier": "learningResources",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/learningResources"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/k12",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "K–12",
-      "dcterms:identifier": "k12"
+      "dcterms:identifier": "k12",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/k12"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/postsecondary",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Postsecondary",
-      "dcterms:identifier": "postsecondary"
+      "dcterms:identifier": "postsecondary",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/postsecondary"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/cte",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Career & Technical",
-      "dcterms:identifier": "cte"
+      "dcterms:identifier": "cte",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/cte"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/adultEd",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Adult Education",
-      "dcterms:identifier": "adultEd"
+      "dcterms:identifier": "adultEd",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/adultEd"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/earlyLearning",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Early Learning",
-      "dcterms:identifier": "earlyLearning"
+      "dcterms:identifier": "earlyLearning",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/earlyLearning"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/authN",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Auth & Authorization",
-      "dcterms:identifier": "authN"
+      "dcterms:identifier": "authN",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/authN"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/implVars",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Implementation Variables",
-      "dcterms:identifier": "implVars"
+      "dcterms:identifier": "implVars",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/implVars"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-domain/facilities",
       "@type": "https://firsteducore.org/ontology#CedsDomain",
       "rdfs:label": "Facilities",
-      "dcterms:identifier": "facilities"
+      "dcterms:identifier": "facilities",
+      "https://firsteducore.org/ontology#domainPrivacyProfile": {
+        "@id": "https://firsteducore.org/ontology#domain-privacy/facilities"
+      }
     },
     {
       "@id": "https://firsteducore.org/ontology#spec/lrw-competency-framework",
@@ -332,6 +371,15 @@
         "CredentialAward",
         "CredentialDefinition",
         "CredentialDefinitionVerificationType"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/lrw/holderDID"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/lrw/credentialSubject"
+        }
       ]
     },
     {
@@ -350,7 +398,8 @@
         "CompetencyDefinition",
         "CompetencySet",
         "CompetencyDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/workforce",
@@ -368,7 +417,8 @@
         "WorkforceEmploymentQuarterlyData",
         "StandardOccupationalClassification",
         "CompetencyDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/assessments",
@@ -384,6 +434,12 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS Assessments domain models full assessment lifecycle; LER standard focuses on credential-level outcomes.",
       "https://firsteducore.org/ontology#cedsElement": [
         "AssessmentResult"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/lrw/credentialSubject"
+        }
       ]
     },
     {
@@ -399,7 +455,8 @@
       "https://firsteducore.org/ontology#notes": "LER credentials can reference learning experiences. The standard does not model learning resource metadata at CEDS level of detail.",
       "https://firsteducore.org/ontology#cedsElement": [
         "LearningResource"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/k12",
@@ -415,7 +472,8 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS K12 includes detailed enrollment, attendance, and discipline data beyond LER scope.",
       "https://firsteducore.org/ontology#cedsElement": [
         "K12StudentAcademicRecord"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/postsecondary",
@@ -432,7 +490,8 @@
         "PersonDegreeOrCertificate",
         "PostsecondaryStudentAcademicRecord",
         "PostsecondaryProgram"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/cte",
@@ -449,7 +508,8 @@
         "ProgramParticipationCareerAndTechnical",
         "CareerCluster",
         "CareerAndTechnicalEducationInstructorIndustryCertification"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/adultEd",
@@ -464,7 +524,8 @@
       "https://firsteducore.org/ontology#notes": "Adult education credentials (GED, workforce certificates) are valid LER use cases. No adult-education-specific modeling in the standard.",
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonProgramParticipation"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/earlyLearning",
@@ -477,7 +538,8 @@
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
       "https://firsteducore.org/ontology#notes": "LER standard is not designed for early childhood contexts.",
-      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains not represented."
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains not represented.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/authN",
@@ -493,6 +555,15 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonIdentification",
         "AuthorizationDocument"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/lrw/holderDID"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/lrw/verificationMethod"
+        }
       ]
     },
     {
@@ -509,7 +580,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "ImplementationStatus",
         "OrganizationIdentificationSystem"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/lrw-competency-framework/facilities",
@@ -521,7 +593,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "No overlap."
+      "https://firsteducore.org/ontology#notes": "No overlap.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#spec/case-v1",
@@ -766,7 +839,8 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS Credential includes attainment date, issuing org, and verification — CASE covers competency definitions only.",
       "https://firsteducore.org/ontology#cedsElement": [
         "CredentialDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/competencies",
@@ -784,7 +858,8 @@
         "CompetencyDefinition",
         "CompetencyDefinition",
         "CompetencyDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/workforce",
@@ -801,7 +876,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "StandardOccupationalClassification",
         "CompetencyDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/assessments",
@@ -814,7 +890,8 @@
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
       "https://firsteducore.org/ontology#notes": "CASE does not model assessments. Competency frameworks may inform assessment design but CASE is not an assessment standard.",
-      "https://firsteducore.org/ontology#gapNotes": "CEDS Assessments domain (test structure, items, results) is entirely outside CASE scope."
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Assessments domain (test structure, items, results) is entirely outside CASE scope.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/learningResources",
@@ -830,7 +907,8 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS Learning Resources includes URL, media type, educational level — not in CASE scope.",
       "https://firsteducore.org/ontology#cedsElement": [
         "LearningResource"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/k12",
@@ -847,7 +925,8 @@
         "CompetencySet",
         "CompetencyDefinition",
         "CompetencyDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/postsecondary",
@@ -863,7 +942,8 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS Postsecondary includes enrollment, program, degree — CASE covers only competency definitions.",
       "https://firsteducore.org/ontology#cedsElement": [
         "PostsecondaryStudentAcademicRecord"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/cte",
@@ -880,7 +960,8 @@
         "ProgramParticipationCareerAndTechnical",
         "CareerCluster",
         "CareerAndTechnicalEducationInstructorIndustryCertification"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/adultEd",
@@ -895,7 +976,8 @@
       "https://firsteducore.org/ontology#notes": "Adult education competency frameworks can be exchanged via CASE but no adult-education-specific modeling exists.",
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonProgramParticipation"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/earlyLearning",
@@ -908,7 +990,8 @@
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
       "https://firsteducore.org/ontology#notes": "No early learning frameworks currently published via CASE.",
-      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented in CASE."
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented in CASE.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/authN",
@@ -920,7 +1003,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/authN"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "CASE defines no authentication or authorization model. API access uses standard OAuth2."
+      "https://firsteducore.org/ontology#notes": "CASE defines no authentication or authorization model. API access uses standard OAuth2.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/implVars",
@@ -932,7 +1016,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/implVars"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "No implementation variable modeling."
+      "https://firsteducore.org/ontology#notes": "No implementation variable modeling.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/case-v1/facilities",
@@ -944,7 +1029,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "No overlap."
+      "https://firsteducore.org/ontology#notes": "No overlap.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#spec/ctdl",
@@ -1206,7 +1292,8 @@
         "CredentialType",
         "CredentialAward",
         "CredentialDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/competencies",
@@ -1223,7 +1310,8 @@
         "CompetencyFramework",
         "CompetencyDefinition",
         "CompetencySet"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/workforce",
@@ -1240,7 +1328,8 @@
         "WorkforceProgramParticipation",
         "StandardOccupationalClassification",
         "CompetencyDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/assessments",
@@ -1256,7 +1345,8 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS Assessments domain models full assessment lifecycle; CTDL only describes the resulting credential.",
       "https://firsteducore.org/ontology#cedsElement": [
         "AssessmentResult"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/learningResources",
@@ -1272,7 +1362,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "LearningResource",
         "LearningResource"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/k12",
@@ -1288,7 +1379,8 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS K12 student record data is not modeled in CTDL.",
       "https://firsteducore.org/ontology#cedsElement": [
         "CompetencySet"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/postsecondary",
@@ -1305,7 +1397,8 @@
         "PersonDegreeOrCertificate",
         "PostsecondaryProgram",
         "PostsecondaryStudentAcademicRecord"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/cte",
@@ -1322,7 +1415,8 @@
         "ProgramParticipationCareerAndTechnical",
         "CareerCluster",
         "CareerAndTechnicalEducationInstructorIndustryCertification"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/adultEd",
@@ -1337,7 +1431,8 @@
       "https://firsteducore.org/ontology#notes": "Adult education credentials (GED, HiSET, workforce certificates) can be described in CTDL. No adult-education-specific vocabulary.",
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonProgramParticipation"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/earlyLearning",
@@ -1350,7 +1445,8 @@
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
       "https://firsteducore.org/ontology#notes": "Early learning credentials are not typically described in CTDL.",
-      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented."
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/authN",
@@ -1362,7 +1458,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/authN"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "CTDL does not model authentication or authorization. Registry access uses standard API keys."
+      "https://firsteducore.org/ontology#notes": "CTDL does not model authentication or authorization. Registry access uses standard API keys.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/implVars",
@@ -1378,7 +1475,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "ImplementationStatus",
         "OrganizationIdentificationSystem"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/ctdl/facilities",
@@ -1390,7 +1488,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "No overlap."
+      "https://firsteducore.org/ontology#notes": "No overlap.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#spec/open-badges-v3",
@@ -1633,6 +1732,12 @@
         "CredentialType",
         "CredentialAward",
         "CredentialDefinition"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/ob3/recipientIdentifier"
+        }
       ]
     },
     {
@@ -1649,7 +1754,8 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS Competencies domain defines full framework structure; OB3 only references competencies.",
       "https://firsteducore.org/ontology#cedsElement": [
         "CompetencyDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/workforce",
@@ -1666,7 +1772,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "CompetencyDefinition",
         "StandardOccupationalClassification"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/assessments",
@@ -1683,7 +1790,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "AssessmentResult",
         "AssessmentPerformanceLevel"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/learningResources",
@@ -1698,7 +1806,8 @@
       "https://firsteducore.org/ontology#notes": "Badge criteria can link to learning resources. OB3 does not model CEDS LearningResource metadata fields.",
       "https://firsteducore.org/ontology#cedsElement": [
         "LearningResource"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/k12",
@@ -1714,6 +1823,12 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS K12 includes detailed enrollment, course, and attendance data beyond OB3 scope.",
       "https://firsteducore.org/ontology#cedsElement": [
         "K12StudentAcademicRecord"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/ob3/recipientProfile"
+        }
       ]
     },
     {
@@ -1730,6 +1845,12 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonDegreeOrCertificate",
         "PostsecondaryStudentAcademicRecord"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/ob3/evidenceURL"
+        }
       ]
     },
     {
@@ -1746,7 +1867,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "ProgramParticipationCareerAndTechnical",
         "CareerAndTechnicalEducationInstructorIndustryCertification"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/adultEd",
@@ -1761,7 +1883,8 @@
       "https://firsteducore.org/ontology#notes": "Adult learning badges are applicable for workforce development and continuing education contexts.",
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonProgramParticipation"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/earlyLearning",
@@ -1773,7 +1896,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/earlyLearning"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "Not applicable in early learning context."
+      "https://firsteducore.org/ontology#notes": "Not applicable in early learning context.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/authN",
@@ -1789,7 +1913,8 @@
       "https://firsteducore.org/ontology#gapNotes": "CEDS Auth models full system access and role management — OB3 only handles credential identity.",
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonIdentification"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/implVars",
@@ -1805,7 +1930,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "ImplementationStatus",
         "OrganizationIdentificationSystem"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/open-badges-v3/facilities",
@@ -1817,7 +1943,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "No overlap."
+      "https://firsteducore.org/ontology#notes": "No overlap.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#spec/clr-v2",
@@ -2071,6 +2198,15 @@
         "CredentialAward",
         "CredentialDefinition",
         "CredentialDefinitionVerificationType"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/learnerProfile"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/achievementResults"
+        }
       ]
     },
     {
@@ -2088,7 +2224,8 @@
         "CompetencyDefinition",
         "CompetencySet",
         "CompetencyDefinition"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/workforce",
@@ -2105,7 +2242,8 @@
         "WorkforceProgramParticipation",
         "WorkforceEmploymentQuarterlyData",
         "StandardOccupationalClassification"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/assessments",
@@ -2122,6 +2260,15 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "AssessmentResult",
         "AssessmentPerformanceLevel"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/assessmentScore"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/learnerProfile"
+        }
       ]
     },
     {
@@ -2137,7 +2284,8 @@
       "https://firsteducore.org/ontology#notes": "CLR references learning experiences but does not model resource metadata at the CEDS level of detail.",
       "https://firsteducore.org/ontology#cedsElement": [
         "LearningResource"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/k12",
@@ -2154,6 +2302,15 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "K12StudentAcademicRecord",
         "CourseSection"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/learnerProfile"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/enrollmentHistory"
+        }
       ]
     },
     {
@@ -2171,6 +2328,15 @@
         "PostsecondaryStudentAcademicRecord",
         "PostsecondaryProgram",
         "PersonDegreeOrCertificate"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/achievementResults"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/enrollmentHistory"
+        }
       ]
     },
     {
@@ -2188,7 +2354,8 @@
         "ProgramParticipationCareerAndTechnical",
         "CareerAndTechnicalEducationInstructorIndustryCertification",
         "CareerCluster"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/adultEd",
@@ -2204,7 +2371,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonProgramParticipation",
         "PersonProgramParticipation"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "medium"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/earlyLearning",
@@ -2217,7 +2385,13 @@
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
       "https://firsteducore.org/ontology#notes": "CLR is not designed for early childhood records.",
-      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented in CLR."
+      "https://firsteducore.org/ontology#gapNotes": "CEDS Early Learning developmental domains are not represented in CLR.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/learnerProfile"
+        }
+      ]
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/authN",
@@ -2234,6 +2408,12 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "PersonIdentification",
         "AuthorizationDocument"
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "high",
+      "https://firsteducore.org/ontology#piiField": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/learnerProfile"
+        }
       ]
     },
     {
@@ -2250,7 +2430,8 @@
       "https://firsteducore.org/ontology#cedsElement": [
         "ImplementationStatus",
         "OrganizationIdentificationSystem"
-      ]
+      ],
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#ceds-alignment/clr-v2/facilities",
@@ -2262,7 +2443,8 @@
         "@id": "https://firsteducore.org/ontology#ceds-domain/facilities"
       },
       "https://firsteducore.org/ontology#alignmentStatus": "gap",
-      "https://firsteducore.org/ontology#notes": "No overlap."
+      "https://firsteducore.org/ontology#notes": "No overlap.",
+      "https://firsteducore.org/ontology#alignmentPrivacyRisk": "low"
     },
     {
       "@id": "https://firsteducore.org/ontology#field-mapping/0",
@@ -4968,6 +5150,432 @@
       "rdfs:label": "achievementType",
       "https://firsteducore.org/ontology#specKey": "clr-2.0",
       "https://firsteducore.org/ontology#jsonPath": "Achievement.achievementType"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier",
+      "@type": "https://firsteducore.org/ontology#PIICategory",
+      "rdfs:label": "Direct Identifier",
+      "rdfs:comment": "Data that directly identifies an individual: name, SSN, student ID, date of birth, email address."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord",
+      "@type": "https://firsteducore.org/ontology#PIICategory",
+      "rdfs:label": "Educational Record (FERPA)",
+      "rdfs:comment": "Education records directly related to a student maintained by an educational agency, protected under FERPA."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-category/BiographicData",
+      "@type": "https://firsteducore.org/ontology#PIICategory",
+      "rdfs:label": "Biographic / Demographic Data",
+      "rdfs:comment": "Demographic or biographic attributes: race, ethnicity, gender, disability status, language."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-category/BehavioralData",
+      "@type": "https://firsteducore.org/ontology#PIICategory",
+      "rdfs:label": "Behavioral / Disciplinary Data",
+      "rdfs:comment": "Behavioral or disciplinary records: attendance, suspensions, incidents — FERPA-protected when maintained by an educational agency."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-category/AssessmentResult",
+      "@type": "https://firsteducore.org/ontology#PIICategory",
+      "rdfs:label": "Assessment Result",
+      "rdfs:comment": "Scores, grades, or performance data from assessments or evaluations — FERPA education records when linked to a student."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-category/CredentialMetadata",
+      "@type": "https://firsteducore.org/ontology#PIICategory",
+      "rdfs:label": "Credential Metadata",
+      "rdfs:comment": "Metadata about issued credentials including type, issuer, award date — PII when linked to a specific recipient."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-category/InstitutionalHistory",
+      "@type": "https://firsteducore.org/ontology#PIICategory",
+      "rdfs:label": "Institutional History",
+      "rdfs:comment": "Records of institutional enrollment, attendance, or participation history — FERPA-protected in educational contexts."
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/credentials",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "high",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Credential records bind identity to achievement, requiring PII (name, DOB, institution) and triggering FERPA education record status. Consent required before sharing outside the issuing institution.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/CredentialMetadata"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "FERPA",
+        "COPPA",
+        "NDPA"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": true,
+      "https://firsteducore.org/ontology#transferRisk": "high"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/competencies",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "low",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Competency framework definitions are public vocabulary — no PII in the framework itself. Privacy risk arises only when competency data is linked to a specific learner record.",
+      "https://firsteducore.org/ontology#piiCategories": [],
+      "https://firsteducore.org/ontology#applicableRegulation": [],
+      "https://firsteducore.org/ontology#consentRequired": false,
+      "https://firsteducore.org/ontology#transferRisk": "low"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/workforce",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "medium",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Workforce data includes employment history and credential linkage. Not covered by FERPA but subject to state privacy laws and FCRA in employment screening contexts.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/BiographicData"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/CredentialMetadata"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "state privacy laws",
+        "FCRA"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": false,
+      "https://firsteducore.org/ontology#transferRisk": "medium"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/assessments",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "high",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Assessment scores are explicit FERPA education records when maintained by an educational institution. COPPA applies to assessments given to children under 13. Consent required before disclosure to third parties.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/AssessmentResult"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "FERPA",
+        "COPPA",
+        "NDPA"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": true,
+      "https://firsteducore.org/ontology#transferRisk": "high"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/learningResources",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "low",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Learning resource metadata (titles, descriptions, URLs) is public. Privacy risk arises only via usage tracking or activity logs linked to a learner — not inherent in the resource definition.",
+      "https://firsteducore.org/ontology#piiCategories": [],
+      "https://firsteducore.org/ontology#applicableRegulation": [],
+      "https://firsteducore.org/ontology#consentRequired": false,
+      "https://firsteducore.org/ontology#transferRisk": "low"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/k12",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "high",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "K-12 enrollment, attendance, discipline, and academic records are the core FERPA-protected data class. COPPA applies broadly (under-13 students). Highest state law coverage. Parental consent required for students under 18; student consent at 18+.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/BehavioralData"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/BiographicData"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "FERPA",
+        "COPPA",
+        "NDPA",
+        "state privacy laws"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": true,
+      "https://firsteducore.org/ontology#transferRisk": "high"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/postsecondary",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "high",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Postsecondary academic transcripts, degree records, enrollment, and financial aid records are FERPA-protected. Students have right to access and control disclosure. Transcripts shared with employers or other institutions require student consent.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/InstitutionalHistory"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "FERPA",
+        "state privacy laws"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": true,
+      "https://firsteducore.org/ontology#transferRisk": "high"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/cte",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "medium",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "CTE program data links student records to industry certifications and workforce participation. FERPA applies when records are maintained by an educational institution. Data sharing with industry partners requires consent.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/CredentialMetadata"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/InstitutionalHistory"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "FERPA",
+        "state privacy laws"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": false,
+      "https://firsteducore.org/ontology#transferRisk": "medium"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/adultEd",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "medium",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Adult education program participation data is subject to FERPA when linked to postsecondary programs. State-level adult education privacy laws apply. Workforce data crossover creates additional compliance obligations.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/BiographicData"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "FERPA (postsecondary-linked)",
+        "state privacy laws"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": false,
+      "https://firsteducore.org/ontology#transferRisk": "medium"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/earlyLearning",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "high",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Early learning records involve the most sensitive age group (under-5, under-13). COPPA is the primary federal law; parental consent mandatory for any data collection or sharing. State early childhood privacy laws are often stricter than FERPA.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/BiographicData"
+        },
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "COPPA",
+        "state early childhood laws",
+        "FERPA (K-12 transition)"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": true,
+      "https://firsteducore.org/ontology#transferRisk": "high"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/authN",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "high",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Authentication and authorization tokens directly identify individuals and represent the highest security/privacy intersection in the stack. Breach of auth data enables identity takeover. DID documents and verifiable credential holder bindings must be protected against correlation attacks.",
+      "https://firsteducore.org/ontology#piiCategories": [
+        {
+          "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+        }
+      ],
+      "https://firsteducore.org/ontology#applicableRegulation": [
+        "state breach notification laws",
+        "FERPA (if tied to student record access)",
+        "NDPA"
+      ],
+      "https://firsteducore.org/ontology#consentRequired": false,
+      "https://firsteducore.org/ontology#transferRisk": "high"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/implVars",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "low",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Implementation variable metadata (configuration, versioning, capability declarations) does not inherently contain PII. Risk arises only if system configuration data inadvertently includes identifiers or access credentials.",
+      "https://firsteducore.org/ontology#piiCategories": [],
+      "https://firsteducore.org/ontology#applicableRegulation": [],
+      "https://firsteducore.org/ontology#consentRequired": false,
+      "https://firsteducore.org/ontology#transferRisk": "low"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#domain-privacy/facilities",
+      "@type": "https://firsteducore.org/ontology#DomainPrivacyProfile",
+      "https://firsteducore.org/ontology#privacyRiskLevel": "low",
+      "https://firsteducore.org/ontology#privacyRiskRationale": "Facilities data (building locations, capacity, room identifiers) does not contain PII under most privacy frameworks. Student location data may have privacy implications but is not modeled at the facilities metadata level.",
+      "https://firsteducore.org/ontology#piiCategories": [],
+      "https://firsteducore.org/ontology#applicableRegulation": [],
+      "https://firsteducore.org/ontology#consentRequired": false,
+      "https://firsteducore.org/ontology#transferRisk": "low"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/learnerProfile",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "learnerProfile",
+      "https://firsteducore.org/ontology#fieldPath": "ClrCredential.learnerProfile",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "high",
+      "https://firsteducore.org/ontology#ferpaProtected": true,
+      "https://firsteducore.org/ontology#coppaScope": true,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Selective disclosure via W3C VC proof mechanisms; omit subfields not required by verifier"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/achievementResults",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "achievementResults",
+      "https://firsteducore.org/ontology#fieldPath": "ClrCredential.achievementResults",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "high",
+      "https://firsteducore.org/ontology#ferpaProtected": true,
+      "https://firsteducore.org/ontology#coppaScope": false,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Share only consented achievements; implement learner-controlled selective disclosure"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/assessmentScore",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "resultScore",
+      "https://firsteducore.org/ontology#fieldPath": "Result.resultScore",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/AssessmentResult"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "high",
+      "https://firsteducore.org/ontology#ferpaProtected": true,
+      "https://firsteducore.org/ontology#coppaScope": true,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Do not expose raw scores by default; present pass/fail or rubric tier only unless learner consents to full disclosure"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/enrollmentHistory",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "term / enrollment",
+      "https://firsteducore.org/ontology#fieldPath": "ClrCredential.term",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/InstitutionalHistory"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "medium",
+      "https://firsteducore.org/ontology#ferpaProtected": true,
+      "https://firsteducore.org/ontology#coppaScope": false,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Include only terms directly relevant to the claimed achievements; avoid exposing gaps or withdrawals without learner consent"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/clr-v2/issuerProfile",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "issuer / credentialSubject",
+      "https://firsteducore.org/ontology#fieldPath": "ClrCredential.issuer",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/CredentialMetadata"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "low",
+      "https://firsteducore.org/ontology#ferpaProtected": false,
+      "https://firsteducore.org/ontology#coppaScope": false,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Issuer information is public; no mitigation required"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/lrw/holderDID",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "holderDID",
+      "https://firsteducore.org/ontology#fieldPath": "VerifiablePresentation.holder",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "high",
+      "https://firsteducore.org/ontology#ferpaProtected": false,
+      "https://firsteducore.org/ontology#coppaScope": false,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Use pairwise DIDs to prevent correlation across verifiers; rotate DID after credential revocation"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/lrw/credentialSubject",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "credentialSubject",
+      "https://firsteducore.org/ontology#fieldPath": "VerifiableCredential.credentialSubject",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "high",
+      "https://firsteducore.org/ontology#ferpaProtected": true,
+      "https://firsteducore.org/ontology#coppaScope": false,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Apply selective disclosure proof (SD-JWT or BBS+) to expose only required claims per verifier request"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/lrw/verificationMethod",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "verificationMethod",
+      "https://firsteducore.org/ontology#fieldPath": "DIDDocument.verificationMethod",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "high",
+      "https://firsteducore.org/ontology#ferpaProtected": false,
+      "https://firsteducore.org/ontology#coppaScope": false,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Keep DID documents unlinkable across contexts; use did:key or did:web with per-relationship DIDs"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/ob3/recipientIdentifier",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "credentialSubject.id / recipient",
+      "https://firsteducore.org/ontology#fieldPath": "OpenBadgeCredential.credentialSubject.id",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "high",
+      "https://firsteducore.org/ontology#ferpaProtected": true,
+      "https://firsteducore.org/ontology#coppaScope": true,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Use email hashing/salting (SHA-256 + salt) for recipient identifier; or DID-based recipient for unlinkable sharing"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/ob3/recipientProfile",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "credentialSubject profile",
+      "https://firsteducore.org/ontology#fieldPath": "OpenBadgeCredential.credentialSubject.name",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/DirectIdentifier"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "medium",
+      "https://firsteducore.org/ontology#ferpaProtected": true,
+      "https://firsteducore.org/ontology#coppaScope": false,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Do not include recipient name in public-facing badge URL; use learner-controlled display settings"
+    },
+    {
+      "@id": "https://firsteducore.org/ontology#pii-field/ob3/evidenceURL",
+      "@type": "https://firsteducore.org/ontology#PIIField",
+      "rdfs:label": "evidence.url",
+      "https://firsteducore.org/ontology#fieldPath": "Evidence.url",
+      "https://firsteducore.org/ontology#piiCategory": {
+        "@id": "https://firsteducore.org/ontology#pii-category/EducationalRecord"
+      },
+      "https://firsteducore.org/ontology#sensitivityLevel": "medium",
+      "https://firsteducore.org/ontology#ferpaProtected": true,
+      "https://firsteducore.org/ontology#coppaScope": false,
+      "https://firsteducore.org/ontology#mitigationStrategy": "Ensure evidence URLs require authentication; do not link to publicly accessible student work without consent"
     }
   ]
 }

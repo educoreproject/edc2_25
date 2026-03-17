@@ -142,9 +142,33 @@ export default function LibraryPage({ selectedEntryId = null, onNavigateToEntry,
       status: getStr(n, 'alignmentStatus'),
       notes: getStr(n, 'notes'),
       elements: getArr(n, 'cedsElement'),
+      privacyRisk: getStr(n, 'alignmentPrivacyRisk'),
+      piiFields: getArr(n, 'piiField').map(r => r['@id'] || r),
     }));
 
-    return { specs, domains, alignments };
+    const domainPrivacy = graph.filter(n => n['@type']?.endsWith('DomainPrivacyProfile')).map(n => ({
+      uri: n['@id'],
+      domainId: n['@id'].replace(BASE + 'domain-privacy/', ''),
+      riskLevel: getStr(n, 'privacyRiskLevel'),
+      rationale: getStr(n, 'privacyRiskRationale'),
+      piiCategories: getArr(n, 'piiCategories').map(r => (r['@id'] || r).replace(BASE + 'pii-category/', '')),
+      regulations: getArr(n, 'applicableRegulation'),
+      consentRequired: getVal(n, 'consentRequired') === true || getVal(n, 'consentRequired') === 'true',
+      transferRisk: getStr(n, 'transferRisk'),
+    }));
+
+    const piiFields = graph.filter(n => n['@type']?.endsWith('PIIField')).map(n => ({
+      uri: n['@id'],
+      label: n['rdfs:label'] || '',
+      fieldPath: getStr(n, 'fieldPath'),
+      piiCategory: (getVal(n, 'piiCategory')?.[' @id'] || getVal(n, 'piiCategory')?.['@id'] || '').replace(BASE + 'pii-category/', ''),
+      sensitivityLevel: getStr(n, 'sensitivityLevel'),
+      ferpaProtected: getVal(n, 'ferpaProtected') === true || getVal(n, 'ferpaProtected') === 'true',
+      coppaScope: getVal(n, 'coppaScope') === true || getVal(n, 'coppaScope') === 'true',
+      mitigation: getStr(n, 'mitigationStrategy'),
+    }));
+
+    return { specs, domains, alignments, domainPrivacy, piiFields };
   };
 
   const buildStakeholderContext = () => {
@@ -480,7 +504,7 @@ COPPA: 15 U.S.C. §6501-6506 (16 CFR Part 312)
       const ontology = await fetchOntologyContext();
       if (ontology) {
         console.log('%c[1/4] Ontology loaded:', 'color: #16a34a',
-          `${ontology.specs.length} specs, ${ontology.domains.length} CEDS domains, ${ontology.alignments.length} alignment triples`);
+          `${ontology.specs.length} specs, ${ontology.domains.length} CEDS domains, ${ontology.alignments.length} alignment triples, ${ontology.domainPrivacy.length} domain privacy profiles, ${ontology.piiFields.length} PII fields`);
         console.table(ontology.specs.map(s => ({ title: s.title, uri: s.uri, burden: s.burden, category: s.category })));
         console.table(ontology.domains.map(d => ({ label: d.label, uri: d.uri })));
       } else {
@@ -491,10 +515,25 @@ COPPA: 15 U.S.C. §6501-6506 (16 CFR Part 312)
       const { stakeholders, useCases } = buildStakeholderContext();
       console.log(`  ${stakeholders.length} stakeholders, ${useCases.length} use cases`);
 
+      const highRiskAlignments = ontology
+        ? ontology.alignments.filter(a => a.privacyRisk === 'high')
+        : [];
+      const piiFieldMap = ontology
+        ? Object.fromEntries(ontology.piiFields.map(f => [f.uri, f]))
+        : {};
+
       const ontologyContext = ontology
         ? `\n\nYou have access to the EDU Reference Library ontology (JSON-LD at https://edc2-25.onrender.com/ontology.jsonld). Use it to ground your answer.\n\n## Specifications in the ontology:\n${ontology.specs.map(s =>
               `- **${s.title}** (${s.uri})\n  Category: ${s.category} | Owner: ${s.owner} | Burden: ${s.burden}\n  Summary: ${s.aiSummary}\n  Compatibility: ${s.compatibilityNotes}\n  Paired with: ${s.pairedWith.join(', ')}\n  Spec page: ${s.page}`
-            ).join('\n')}\n\n## CEDS Domains:\n${ontology.domains.map(d => `- ${d.label} (${d.uri})`).join('\n')}\n\n## CEDS Alignment Triples (spec → domain → status):\n${ontology.alignments.map(a => `- ${a.spec} → ${a.domain} = ${a.status}${a.notes ? ': ' + a.notes : ''}${a.elements.length ? ' [elements: ' + a.elements.join(', ') + ']' : ''}`).join('\n')}`
+            ).join('\n')}\n\n## CEDS Domains:\n${ontology.domains.map(d => `- ${d.label} (${d.uri})`).join('\n')}\n\n## CEDS Alignment Triples (spec → domain → status):\n${ontology.alignments.map(a => `- ${a.spec} → ${a.domain} = ${a.status}${a.privacyRisk ? ' [privacy:' + a.privacyRisk + ']' : ''}${a.notes ? ': ' + a.notes : ''}${a.elements.length ? ' [elements: ' + a.elements.join(', ') + ']' : ''}`).join('\n')}\n\n## CEDS Domain Privacy Risk Levels:\n${ontology.domainPrivacy.map(d => `- **${d.domainId}** (${d.uri}): risk=${d.riskLevel} | consent=${d.consentRequired} | transferRisk=${d.transferRisk} | regulations=[${d.regulations.join(', ')}] | piiTypes=[${d.piiCategories.join(', ')}]\n  Rationale: ${d.rationale}`).join('\n')}\n\n## High-Risk Spec × Domain Combinations (with PII fields):\n${highRiskAlignments.map(a => {
+              const specLabel = a.spec.replace('https://firsteducore.org/ontology#spec/', '');
+              const domainLabel = a.domain.replace('https://firsteducore.org/ontology#ceds-domain/', '');
+              const fields = a.piiFields.map(fUri => {
+                const f = piiFieldMap[fUri];
+                return f ? `${f.label} (${f.piiCategory}, ferpa=${f.ferpaProtected}) → mitigation: ${f.mitigation}` : fUri;
+              });
+              return `- **${specLabel}** × **${domainLabel}**: ${fields.length ? '\n    ' + fields.join('\n    ') : 'no specific PII fields listed'}`;
+            }).join('\n')}`
         : '';
 
       const stakeholderContext = `\n\n## Available Stakeholders (use these exact IDs):\n${stakeholders.map(s => `- id: "${s.id}" | ${s.label} (${s.group})`).join('\n')}\n\n## Available Use Cases (use these exact IDs):\n${useCases.map(uc => `- id: "${uc.id}" | ${uc.label} | CEDS domains: ${uc.cedsDomains.join(', ')} | stakeholders: ${uc.stakeholders.join(', ')}`).join('\n')}`;
@@ -511,7 +550,8 @@ RESPONSE FORMAT RULES:
 1. Keep your answer BRIEF — 2-4 short paragraphs maximum. Focus on WHICH specifications are needed and WHY, not detailed implementation steps.
 2. For each specification you recommend, mention its implementation burden level (low/medium/high).
 3. Include links to the technical specification pages.
-4. At the end of your response, include TWO structured sections:
+4. PRIVACY QUERIES: If the user's question is about privacy, data protection, FERPA, COPPA, NDPA, PII, or student data, structure your response to: (a) identify which specs have high/medium/low privacy concern levels, (b) state which CEDS domains are involved and their privacy risk level from the ontology, (c) name any specific PII fields at risk using their field paths and piiCategory, (d) cite applicable regulations, (e) recommend the mitigation strategies from the piiField nodes (selective disclosure, hashing, etc.), and (f) reference the educore:domain-privacy/* and educore:pii-field/* URIs in the Ontology Resources Used section.
+5. At the end of your response, include TWO structured sections:
 
 ## Ontology Resources Used
 List every educore: URI you referenced, one per line, formatted as: \`<URI>\`

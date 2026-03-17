@@ -24,6 +24,21 @@ const configs = {
   type: {
     default: 'bg-indigo-50 text-indigo-700 border-indigo-200/60',
   },
+  privacy: {
+    'high-concern':   'bg-rose-50 text-rose-700 border-rose-200/60',
+    'medium-concern': 'bg-violet-50 text-violet-700 border-violet-200/60',
+    'low-concern':    'bg-emerald-50 text-emerald-700 border-emerald-200/60',
+  },
+  pii: {
+    DirectIdentifier:    'bg-rose-100 text-rose-800 border-rose-300/60',
+    EducationalRecord:   'bg-orange-50 text-orange-700 border-orange-200/60',
+    BiographicData:      'bg-amber-50 text-amber-700 border-amber-200/60',
+    BehavioralData:      'bg-amber-50 text-amber-700 border-amber-200/60',
+    AssessmentResult:    'bg-orange-50 text-orange-700 border-orange-200/60',
+    CredentialMetadata:  'bg-violet-50 text-violet-700 border-violet-200/60',
+    InstitutionalHistory:'bg-violet-50 text-violet-700 border-violet-200/60',
+    public:              'bg-gray-50 text-gray-500 border-gray-200/60',
+  },
 };
 
 export default function MetadataBadge({ kind, value, label }) {
