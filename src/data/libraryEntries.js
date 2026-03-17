@@ -86,7 +86,29 @@ export const libraryEntries = [
       level: 'medium-concern',
       notes: 'LER ecosystems involve PII in verifiable credentials. The standard recommends selective disclosure and privacy-preserving verification. Implementers must address FERPA compliance for education records and consent management for credential sharing.',
       dataClassification: 'architectural-standard',
-      regulations: ['FERPA', 'state privacy laws'],
+      regulations: ['FERPA', 'NDPA v2.2', 'state privacy laws'],
+      ndpaProvisions: [
+        {
+          citation: 'NDPA Art. I §1.1',
+          title: 'Provider as School Official',
+          summary: 'Providers performing LER ecosystem services shall be considered a School Official with a legitimate educational interest, under the direct control and supervision of the LEA.',
+        },
+        {
+          citation: 'NDPA Art. IV §4.2',
+          title: 'Authorized Use Only',
+          summary: 'Student Data processed via LER systems shall be used only for performing the Services outlined in Exhibit A, or as instructed by the LEA.',
+        },
+        {
+          citation: 'NDPA Art. II §2.1',
+          title: 'Data Ownership',
+          summary: 'All Student Data processed through LER credential exchange remains the property of the LEA. Provider copies and modifications are subject to the same DPA provisions.',
+        },
+        {
+          citation: 'NDPA Art. V §5.3',
+          title: 'Cybersecurity Framework Required',
+          summary: 'Providers must implement an adequate Cybersecurity Framework (NIST CSF, ISO 27000, CIS, or SDPC GESS) as declared in Exhibit F.',
+        },
+      ],
     },
     relatedResources: ['case-v1', 'ctdl', 'open-badges-v3', 'clr-v2'],
     status: 'approved',
@@ -157,8 +179,15 @@ export const libraryEntries = [
     },
     privacyConsiderations: {
       level: 'low-concern',
-      notes: 'Schema/framework data only. No learner PII involved. Published frameworks are public data.',
+      notes: 'Schema/framework data only. No learner PII involved. Published frameworks are public data. NDPA obligations are minimal since CASE exchanges competency definitions, not Student Data as defined in Exhibit C.',
       dataClassification: 'public',
+      ndpaProvisions: [
+        {
+          citation: 'NDPA Exhibit C',
+          title: 'Student Data Definition — Not Applicable',
+          summary: 'CASE exchanges competency framework definitions (public data), not Student Data as defined by the NDPA. No DPA is required for CASE framework data alone.',
+        },
+      ],
     },
     relatedResources: ['lrw-competency-framework', 'ctdl', 'clr-v2'],
     status: 'approved',
@@ -234,8 +263,15 @@ export const libraryEntries = [
     },
     privacyConsiderations: {
       level: 'low-concern',
-      notes: 'Describes credentials and organizations — no learner PII. Published data is public by design. Organizations publishing to the Registry share institutional information voluntarily.',
+      notes: 'Describes credentials and organizations — no learner PII. Published data is public by design. Organizations publishing to the Registry share institutional information voluntarily. NDPA obligations are minimal since CTDL describes credentials, not individual student records.',
       dataClassification: 'public',
+      ndpaProvisions: [
+        {
+          citation: 'NDPA Exhibit C',
+          title: 'Student Data Definition — Not Applicable',
+          summary: 'CTDL describes credential types and organizations (public registry data), not Student Data as defined by the NDPA. No DPA is required for CTDL metadata publishing alone.',
+        },
+      ],
     },
     relatedResources: ['case-v1', 'open-badges-v3', 'lrw-competency-framework'],
     status: 'approved',
@@ -314,9 +350,31 @@ export const libraryEntries = [
     },
     privacyConsiderations: {
       level: 'medium-concern',
-      notes: 'Badges contain learner achievement data. Hosted badge verification can create tracking vectors. Learner consent required before public sharing. Revocation mechanisms needed for accuracy. FERPA considerations when badges are issued by educational institutions.',
+      notes: 'Badges contain learner achievement data. Hosted badge verification can create tracking vectors. Learner consent required before public sharing. Revocation mechanisms needed for accuracy. FERPA considerations when badges are issued by educational institutions. Under the NDPA, badge data maps to multiple Exhibit B categories requiring a signed DPA.',
       dataClassification: 'credential-metadata',
-      regulations: ['FERPA (educational contexts)', 'GDPR (international)'],
+      regulations: ['FERPA (educational contexts)', 'NDPA v2.2', 'GDPR (international)'],
+      ndpaProvisions: [
+        {
+          citation: 'NDPA Art. IV §4.4',
+          title: 'No Disclosure of Student Data',
+          summary: 'Provider shall not sell or disclose any Student Data or PII contained in badges, including achievement data and learner identifiers, except as directed by the LEA or permitted under the DPA.',
+        },
+        {
+          citation: 'NDPA Art. IV §4.7',
+          title: 'Targeted Advertising Prohibited',
+          summary: 'Providers are prohibited from using badge achievement data to inform, influence, or enable Targeted Advertising. Adaptive learning recommendations and contextual advertising are permitted.',
+        },
+        {
+          citation: 'NDPA Art. II §2.2',
+          title: 'Parent/Student Access Rights',
+          summary: 'Parents, legal guardians, or eligible students may review badge data and request corrections. Provider must respond within 30 days or per state law timelines.',
+        },
+        {
+          citation: 'NDPA Exhibit B',
+          title: 'Data Categories for Badges',
+          summary: 'Badge issuance typically maps to Exhibit B categories: Student Name, Student Identifiers, Student In App Performance, and potentially Assessment data. Each must be designated Required (R) or Optional (O).',
+        },
+      ],
     },
     relatedResources: ['clr-v2', 'ctdl', 'lrw-competency-framework'],
     status: 'approved',
@@ -400,9 +458,46 @@ export const libraryEntries = [
     },
     privacyConsiderations: {
       level: 'high-concern',
-      notes: 'CLR records aggregate comprehensive learner data including achievements, competencies, and institutional history. FERPA compliance mandatory for educational issuers. Learner consent required for each achievement included. Selective disclosure mechanisms (from W3C VC) should be implemented to let learners share only relevant portions.',
+      notes: 'CLR records aggregate comprehensive learner data including achievements, competencies, and institutional history. FERPA compliance mandatory for educational issuers. Learner consent required for each achievement included. Selective disclosure mechanisms (from W3C VC) should be implemented to let learners share only relevant portions. The NDPA imposes the most extensive obligations on CLR implementations due to the breadth of Student Data aggregated.',
       dataClassification: 'PII / educational-record',
-      regulations: ['FERPA', 'COPPA (under-13 contexts)', 'GDPR (international)', 'state privacy laws'],
+      regulations: ['FERPA', 'NDPA v2.2', 'COPPA (under-13 contexts)', 'GDPR (international)', 'state privacy laws'],
+      ndpaProvisions: [
+        {
+          citation: 'NDPA Art. II §2.1',
+          title: 'Student Data Property of LEA',
+          summary: 'All Student Data in CLR records — including aggregated achievements, competencies, and institutional history — remains the property of the LEA. All copies and modifications are subject to the DPA.',
+        },
+        {
+          citation: 'NDPA Art. IV §4.6',
+          title: 'Data Disposition Within 60 Days',
+          summary: 'On written LEA request or DPA termination, Provider must dispose of all CLR Student Data within 60 days. LEA may issue special disposition instructions via Exhibit D (partial/complete, destroy/transfer).',
+        },
+        {
+          citation: 'NDPA Art. V §5.4',
+          title: 'Breach Notification — 72 Hours',
+          summary: 'Provider must notify LEA within 72 hours of a confirmed Data Breach affecting CLR records. Notification must include: date, description, affected data types, and impacted individuals. Provider must maintain a written breach response plan.',
+        },
+        {
+          citation: 'NDPA Art. IV §4.5',
+          title: 'De-Identification Standards',
+          summary: 'If creating de-identified data from CLR records, Provider must follow NIST or US DoE de-identification standards. Re-identification is prohibited without LEA written direction.',
+        },
+        {
+          citation: 'NDPA Art. II §2.3',
+          title: 'Subprocessor Agreements Required',
+          summary: 'All subprocessors handling CLR data must be bound by agreements no less stringent than the DPA. Subprocessors must not sell Student Data.',
+        },
+        {
+          citation: 'NDPA Art. IV §4.3',
+          title: 'Employee Confidentiality',
+          summary: 'All Provider employees with access to CLR Student Data must have signed confidentiality agreements covering the DPA provisions.',
+        },
+        {
+          citation: 'NDPA Exhibit B',
+          title: 'Comprehensive Data Categories',
+          summary: 'CLR aggregation may span most Exhibit B categories: Student Name, Student Identifiers, Demographics, Enrollment, Assessment, Transcript, Student In App Performance, and Student Work. Each must be explicitly listed and designated.',
+        },
+      ],
     },
     relatedResources: ['open-badges-v3', 'case-v1', 'lrw-competency-framework'],
     status: 'approved',
