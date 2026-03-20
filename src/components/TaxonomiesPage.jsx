@@ -297,7 +297,7 @@ function TechResourceCard({ group }) {
   );
 }
 
-function UseCaseCard({ useCase, searchQuery, selectedNeeds, onToggleNeed }) {
+function UseCaseCard({ useCase, searchQuery, selectedNeeds, onToggleNeed, nested = false }) {
   const [expanded, setExpanded] = useState(false);
 
   const isHighlighted = searchQuery && (
@@ -305,13 +305,17 @@ function UseCaseCard({ useCase, searchQuery, selectedNeeds, onToggleNeed }) {
     useCase.businessNeeds.some(n => n.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  if (searchQuery && !isHighlighted) return null;
+  if (!nested && searchQuery && !isHighlighted) return null;
+
+  const wrapperClass = nested
+    ? `${isHighlighted ? 'bg-amber-50/30' : 'bg-white'}`
+    : `bg-white border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all ${isHighlighted ? 'border-amber-200' : 'border-gray-200'}`;
 
   return (
-    <div className={`bg-white border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all ${isHighlighted ? 'border-amber-200' : 'border-gray-200'}`}>
+    <div className={wrapperClass}>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full text-left px-4 py-3 hover:bg-gray-50/40 flex items-center gap-3 transition-colors"
+        className={`w-full text-left px-4 py-3 hover:bg-gray-50/40 flex items-center gap-3 transition-colors ${nested ? 'pl-5' : ''}`}
       >
         <span className="text-xl">{useCase.icon}</span>
         <div className="flex-1 min-w-0">
@@ -329,7 +333,7 @@ function UseCaseCard({ useCase, searchQuery, selectedNeeds, onToggleNeed }) {
       </button>
 
       {expanded && (
-        <div className="px-4 pb-4 space-y-4 border-t border-gray-100 pt-3">
+        <div className={`pb-4 space-y-4 border-t border-gray-100 pt-3 ${nested ? 'px-5' : 'px-4'}`}>
           <div>
             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Business Needs</div>
             <div className="space-y-1.5">
@@ -391,6 +395,168 @@ function UseCaseCard({ useCase, searchQuery, selectedNeeds, onToggleNeed }) {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// Build domain → use cases map, preserving cedsDomains order
+function buildDomainGroups() {
+  const groups = [];
+  const seen = new Set();
+  cedsDomains.forEach(domain => {
+    const cases = useCasesCedsRdf.filter(uc => uc.cedsDomains.includes(domain.id));
+    if (cases.length > 0) {
+      groups.push({ domain, cases });
+      cases.forEach(uc => seen.add(uc.id));
+    }
+  });
+  // Any use cases not covered by the above (shouldn't happen, but safety net)
+  const uncategorized = useCasesCedsRdf.filter(uc => !seen.has(uc.id));
+  if (uncategorized.length > 0) {
+    groups.push({ domain: { id: 'other', label: 'Other', icon: '📄' }, cases: uncategorized });
+  }
+  return groups;
+}
+
+const ALL_STANDARDS_LABELS = {
+  'open-badges': 'Open Badges',
+  'clr': 'CLR 2.0',
+  'ctdl': 'CTDL',
+  'ler-framework': 'IEEE LER',
+  'case-framework': 'CASE',
+  'ceds': 'CEDS',
+  'xapi': 'xAPI',
+  'ferpa': 'FERPA',
+  'coppa': 'COPPA',
+  'ndpa': 'NDPA',
+};
+
+function UseCasesHierarchyView({ showExplainers, searchQuery, selectedNeeds, onToggleNeed }) {
+  const [expandedDomains, setExpandedDomains] = useState(new Set());
+  const [activeStdFilter, setActiveStdFilter] = useState(null);
+
+  const domainGroups = useMemo(() => buildDomainGroups(), []);
+
+  // All unique related standards across use cases
+  const allStandards = useMemo(() => {
+    const ids = new Set();
+    useCasesCedsRdf.forEach(uc => uc.relatedStandards.forEach(s => ids.add(s)));
+    return Array.from(ids);
+  }, []);
+
+  const toggleDomain = (domainId) => {
+    setExpandedDomains(prev => {
+      const next = new Set(prev);
+      next.has(domainId) ? next.delete(domainId) : next.add(domainId);
+      return next;
+    });
+  };
+
+  const expandAll = () => setExpandedDomains(new Set(domainGroups.map(g => g.domain.id)));
+  const collapseAll = () => setExpandedDomains(new Set());
+
+  // Filter use cases within a group by search + standard filter
+  const filterCases = (cases) => {
+    return cases.filter(uc => {
+      const matchesStd = !activeStdFilter || uc.relatedStandards.includes(activeStdFilter);
+      if (!matchesStd) return false;
+      if (!searchQuery) return true;
+      const q = searchQuery.toLowerCase();
+      return (
+        uc.label.toLowerCase().includes(q) ||
+        uc.description.toLowerCase().includes(q) ||
+        uc.businessNeeds.some(n => n.toLowerCase().includes(q))
+      );
+    });
+  };
+
+  return (
+    <div>
+      {showExplainers && (
+        <ExplainerBadge icon="🗺️">
+          <strong>Use cases mapped to CEDS RDF:</strong> Use cases are grouped by CEDS domain. Expand a domain to see
+          the use cases within it, then expand a use case to select business needs or view RDF elements.
+        </ExplainerBadge>
+      )}
+
+      {/* Standard filter chips */}
+      <div className="mt-4 mb-3 flex flex-wrap items-center gap-1.5">
+        <span className="text-xs text-gray-400 font-medium mr-1">Filter by standard:</span>
+        {allStandards.map(std => (
+          <button
+            key={std}
+            onClick={() => setActiveStdFilter(activeStdFilter === std ? null : std)}
+            className={`text-xs px-2.5 py-1 rounded-full border font-medium transition-colors ${
+              activeStdFilter === std
+                ? 'bg-indigo-600 border-indigo-600 text-white'
+                : 'bg-white border-gray-200 text-gray-500 hover:border-indigo-300 hover:text-indigo-600'
+            }`}
+          >
+            {ALL_STANDARDS_LABELS[std] || std}
+          </button>
+        ))}
+        {activeStdFilter && (
+          <button
+            onClick={() => setActiveStdFilter(null)}
+            className="text-xs text-gray-400 hover:text-gray-600 ml-1 transition-colors"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
+      {/* Expand / collapse controls */}
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-xs text-gray-400">
+          {domainGroups.length} CEDS domains · {useCasesCedsRdf.length} use cases
+        </span>
+        <div className="flex gap-3">
+          <button onClick={expandAll} className="text-xs text-indigo-500 hover:text-indigo-700 transition-colors">Expand all</button>
+          <button onClick={collapseAll} className="text-xs text-gray-400 hover:text-gray-600 transition-colors">Collapse all</button>
+        </div>
+      </div>
+
+      {/* Domain accordion groups */}
+      <div className="space-y-2">
+        {domainGroups.map(({ domain, cases }) => {
+          const visibleCases = filterCases(cases);
+          if (visibleCases.length === 0) return null;
+          const isOpen = expandedDomains.has(domain.id);
+
+          return (
+            <div key={domain.id} className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm">
+              {/* Domain header — clickable */}
+              <button
+                onClick={() => toggleDomain(domain.id)}
+                className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50/60 transition-colors text-left"
+              >
+                <span className="text-lg">{domain.icon}</span>
+                <span className="font-semibold text-gray-800 text-sm flex-1">{domain.label}</span>
+                <span className="text-xs bg-sky-50 text-sky-600 px-2 py-0.5 rounded-full border border-sky-100 font-medium">
+                  {visibleCases.length} use case{visibleCases.length !== 1 ? 's' : ''}
+                </span>
+                <span className="text-xs text-gray-400 ml-1">{isOpen ? '▼' : '▶'}</span>
+              </button>
+
+              {/* Use case list */}
+              {isOpen && (
+                <div className="border-t border-gray-100 divide-y divide-gray-50">
+                  {visibleCases.map(uc => (
+                    <UseCaseCard
+                      key={uc.id}
+                      useCase={uc}
+                      searchQuery={searchQuery}
+                      selectedNeeds={selectedNeeds}
+                      onToggleNeed={onToggleNeed}
+                      nested
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -790,25 +956,12 @@ COPPA: 15 U.S.C. §6501-6506 (16 CFR Part 312)
       )}
 
       {activeTab === 'usecases' && (
-        <div>
-          {showExplainers && (
-            <ExplainerBadge icon="🗺️">
-              <strong>Use cases mapped to CEDS RDF:</strong> Each use case maps to specific CEDS data elements via
-              their RDF URIs, enabling semantic interoperability.
-            </ExplainerBadge>
-          )}
-          <div className="space-y-3 mt-4">
-            {useCasesCedsRdf.map(uc => (
-              <UseCaseCard
-                key={uc.id}
-                useCase={uc}
-                searchQuery={searchQuery}
-                selectedNeeds={selectedNeeds}
-                onToggleNeed={toggleNeed}
-              />
-            ))}
-          </div>
-        </div>
+        <UseCasesHierarchyView
+          showExplainers={showExplainers}
+          searchQuery={searchQuery}
+          selectedNeeds={selectedNeeds}
+          onToggleNeed={toggleNeed}
+        />
       )}
     </div>
   );

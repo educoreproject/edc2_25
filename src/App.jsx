@@ -1,5 +1,8 @@
 // App.jsx — Root component for the EDU Working Reference Library.
-// Wires together the page-level router and shared header/footer.
+// Manages page-level routing and the three UI modes:
+//   classic   → full library browser with filters, AI mapper, and sub-pages
+//   usecases  → GitHub-issues-driven use case browser
+//   chat      → conversational standards discovery advisor
 
 import { useState } from 'react';
 import SiteHeader from './components/SiteHeader';
@@ -9,6 +12,8 @@ import PartnersPage from './components/PartnersPage';
 import CedsAlignmentPage from './components/CedsAlignmentPage';
 import TaxonomiesPage from './components/TaxonomiesPage';
 import VocabularyPage from './components/VocabularyPage';
+import UseCasesPage from './components/UseCasesPage';
+import ChatPage from './components/ChatPage';
 
 function Footer() {
   return (
@@ -65,27 +70,36 @@ function Footer() {
 }
 
 export default function App() {
-  const [activePage, setActivePage] = useState('library');
+  // UI mode: which top-level experience is active
+  const [uiMode,          setUiMode]          = useState('classic'); // 'classic' | 'usecases' | 'chat'
+
+  // Classic-mode sub-page routing
+  const [activePage,      setActivePage]      = useState('library');
   const [selectedEntryId, setSelectedEntryId] = useState(null);
   const [pendingActivation, setPendingActivation] = useState(null);
 
-  const handleNavigateToEntry = (entryId) => {
+  function handleNavigateToEntry(entryId) {
     setSelectedEntryId(entryId);
     setActivePage('library');
-  };
+    if (uiMode !== 'classic') setUiMode('classic');
+  }
 
-  // Called by LibraryPage AI when it activates stakeholder/use case context.
-  // Stores activation but does NOT navigate — the user stays on the Library
-  // page to read the AI response. A button lets them jump to the roadmap.
-  const handleActivateNeeds = (stakeholderIds, useCaseIds) => {
+  function handleActivateNeeds(stakeholderIds, useCaseIds) {
     setPendingActivation({ stakeholderIds, useCaseIds });
-  };
+  }
 
-  const handleGoToRoadmap = () => {
+  function handleGoToRoadmap() {
     setActivePage('taxonomies');
-  };
+  }
 
-  const pages = {
+  // Switching UI mode resets classic sub-page to library
+  function handleSetUiMode(mode) {
+    setUiMode(mode);
+    if (mode === 'classic') setActivePage('library');
+  }
+
+  // Classic sub-pages
+  const classicPages = {
     library: (
       <LibraryPage
         selectedEntryId={selectedEntryId}
@@ -96,9 +110,9 @@ export default function App() {
         onGoToRoadmap={handleGoToRoadmap}
       />
     ),
-    standards: <StandardsPage onNavigateToEntry={handleNavigateToEntry} />,
-    partners: <PartnersPage />,
-    ceds: <CedsAlignmentPage onNavigateToEntry={handleNavigateToEntry} />,
+    standards:  <StandardsPage onNavigateToEntry={handleNavigateToEntry} />,
+    partners:   <PartnersPage />,
+    ceds:       <CedsAlignmentPage onNavigateToEntry={handleNavigateToEntry} />,
     taxonomies: (
       <TaxonomiesPage
         onNavigateToEntry={handleNavigateToEntry}
@@ -111,10 +125,17 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <SiteHeader activePage={activePage} onNavigate={setActivePage} />
+      <SiteHeader
+        uiMode={uiMode}
+        onSetUiMode={handleSetUiMode}
+        activePage={activePage}
+        onNavigate={setActivePage}
+      />
 
       <main className="flex-1 bg-slate-50/50">
-        {pages[activePage]}
+        {uiMode === 'classic'   && classicPages[activePage]}
+        {uiMode === 'usecases'  && <UseCasesPage onNavigateToEntry={handleNavigateToEntry} />}
+        {uiMode === 'chat'      && <ChatPage />}
       </main>
 
       <Footer />
