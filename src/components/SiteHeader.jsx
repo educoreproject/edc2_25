@@ -27,9 +27,7 @@ export default function SiteHeader({ uiMode, onSetUiMode, activePage, onNavigate
 
           {/* Logo */}
           <div className="flex items-center gap-3 flex-shrink-0">
-            <div className="w-9 h-9 bg-gradient-to-br from-indigo-600 to-indigo-500 rounded-lg flex items-center justify-center text-white text-xs font-bold shadow-sm">
-              EDU
-            </div>
+            <img src="/educore-logo.png" alt="EDUcore" className="w-9 h-9 object-contain" />
             <div className="hidden sm:block">
               <div className="font-semibold text-gray-900 text-sm leading-tight">Reference Library</div>
               <div className="text-xs text-gray-400">Education Data Unlimited</div>
