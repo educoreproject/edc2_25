@@ -1,5 +1,5 @@
 // UseCasesPage.jsx — Use-case-first view of the reference library.
-// Pulls live issues from github.com/INFERable-app/educore_use_cases
+// Pulls live issues from github.com/educoreproject/educore_use_cases
 // and maps each issue to relevant standards from libraryEntries.
 // Clicking a use case opens a two-pane split: chat (left) + data flow diagram (right).
 
@@ -671,7 +671,7 @@ export default function UseCasesPage({ onNavigateToEntry }) {
   const [activeIssue, setActiveIssue] = useState(null); // issue object when in explorer mode
 
   useEffect(() => {
-    fetch('https://api.github.com/repos/INFERable-app/educore_use_cases/issues?state=open&per_page=100&sort=created&direction=desc')
+    fetch('https://api.github.com/repos/educoreproject/educore_use_cases/issues?state=open&per_page=100&sort=created&direction=desc')
       .then(r => {
         if (!r.ok) throw new Error(`GitHub API error (${r.status} ${r.statusText})`);
         return r.json();
@@ -738,7 +738,7 @@ export default function UseCasesPage({ onNavigateToEntry }) {
         <p className="text-sm text-gray-500 mt-1 max-w-2xl leading-relaxed">
           Click any use case to explore it — you'll see which standards apply, how they connect, and can ask clarifying questions.
           <a
-            href="https://github.com/INFERable-app/educore_use_cases/issues/new"
+            href="https://github.com/educoreproject/educore_use_cases/issues/new"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2 text-indigo-600 hover:underline font-medium"
@@ -825,7 +825,7 @@ export default function UseCasesPage({ onNavigateToEntry }) {
           {error}
           <div className="mt-2 text-xs text-red-500">
             GitHub's unauthenticated API allows 60 requests/hour. Try again in a moment or{' '}
-            <a href="https://github.com/INFERable-app/educore_use_cases/issues" target="_blank" rel="noopener noreferrer" className="underline">view on GitHub</a>.
+            <a href="https://github.com/educoreproject/educore_use_cases/issues" target="_blank" rel="noopener noreferrer" className="underline">view on GitHub</a>.
           </div>
         </div>
       )}

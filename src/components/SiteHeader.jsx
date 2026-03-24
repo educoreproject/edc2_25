@@ -1,9 +1,10 @@
 // SiteHeader.jsx — Global navigation with three-mode UI toggle.
-// Modes: classic (full library), usecases (GitHub issues), chat (conversational advisor)
+// Modes: classic (full library), usecases (GitHub issues), taxonomy (use case taxonomy), chat (conversational advisor)
 
 const UI_MODES = [
   { id: 'classic',   label: 'Classic Library', icon: '📚', shortLabel: 'Classic' },
   { id: 'usecases',  label: 'Use Cases',        icon: '🎯', shortLabel: 'Use Cases' },
+  { id: 'taxonomy',  label: 'Use Case Taxonomy', icon: '🗂️', shortLabel: 'Taxonomy' },
   { id: 'chat',      label: 'Chat Advisor',     icon: '💬', shortLabel: 'Chat' },
 ];
 
@@ -95,14 +96,32 @@ export default function SiteHeader({ uiMode, onSetUiMode, activePage, onNavigate
             <span className="font-semibold text-gray-700">Use Case Explorer</span>
             <span className="text-gray-300">·</span>
             <a
-              href="https://github.com/INFERable-app/educore_use_cases/issues"
+              href="https://github.com/educoreproject/educore_use_cases/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="text-indigo-600 hover:underline"
             >
-              github.com/INFERable-app/educore_use_cases
+              github.com/educoreproject/educore_use_cases
             </a>
             <span className="ml-auto text-gray-400">Live from GitHub Issues</span>
+          </div>
+        )}
+
+        {uiMode === 'taxonomy' && (
+          <div className="flex items-center gap-2 pb-2.5 text-xs text-gray-500">
+            <span className="font-semibold text-gray-700">Use Case Taxonomy</span>
+            <span className="text-gray-300">·</span>
+            <span>Browse and select use cases across education, workforce, and government systems</span>
+            <span className="ml-auto">
+              <a
+                href="https://github.com/educoreproject/educore_use_cases/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-600 hover:underline"
+              >
+                GitHub Issues
+              </a>
+            </span>
           </div>
         )}
 

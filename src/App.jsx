@@ -1,7 +1,8 @@
 // App.jsx — Root component for the EDU Working Reference Library.
-// Manages page-level routing and the three UI modes:
+// Manages page-level routing and the four UI modes:
 //   classic   → full library browser with filters, AI mapper, and sub-pages
 //   usecases  → GitHub-issues-driven use case browser
+//   taxonomy  → hierarchical use case taxonomy browser
 //   chat      → conversational standards discovery advisor
 
 import { useState } from 'react';
@@ -13,6 +14,7 @@ import CedsAlignmentPage from './components/CedsAlignmentPage';
 import TaxonomiesPage from './components/TaxonomiesPage';
 import VocabularyPage from './components/VocabularyPage';
 import UseCasesPage from './components/UseCasesPage';
+import UseCaseTaxonomyPage from './components/UseCaseTaxonomyPage';
 import ChatPage from './components/ChatPage';
 
 function Footer() {
@@ -71,7 +73,7 @@ function Footer() {
 
 export default function App() {
   // UI mode: which top-level experience is active
-  const [uiMode,          setUiMode]          = useState('classic'); // 'classic' | 'usecases' | 'chat'
+  const [uiMode,          setUiMode]          = useState('classic'); // 'classic' | 'usecases' | 'taxonomy' | 'chat'
 
   // Classic-mode sub-page routing
   const [activePage,      setActivePage]      = useState('library');
@@ -135,6 +137,7 @@ export default function App() {
       <main className="flex-1 bg-slate-50/50">
         {uiMode === 'classic'   && classicPages[activePage]}
         {uiMode === 'usecases'  && <UseCasesPage onNavigateToEntry={handleNavigateToEntry} />}
+        {uiMode === 'taxonomy'  && <UseCaseTaxonomyPage onNavigateToEntry={handleNavigateToEntry} />}
         {uiMode === 'chat'      && <ChatPage />}
       </main>
 
