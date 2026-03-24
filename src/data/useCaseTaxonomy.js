@@ -150,6 +150,73 @@ export const useCaseTaxonomy = [
   },
 ];
 
+// ─── CEDS Domain Mapping ────────────────────────────────────────────────────
+// Maps each use case ID to relevant CEDS domains for standards scoring.
+// Domain IDs match cedsAlignment.js: credentials, competencies, workforce,
+// assessments, learningResources, k12, postsecondary, cte, adultEd,
+// earlyLearning, authN, implVars, facilities
+
+export const useCaseCedsDomains = {
+  // All Learning Counts — LER Issuing
+  'ler-issuing-general':      ['credentials', 'competencies'],
+  'k12-after-school':         ['credentials', 'k12'],
+  'slds-issuance':            ['credentials', 'k12', 'postsecondary', 'implVars'],
+  'workforce-training':       ['credentials', 'workforce', 'competencies'],
+  'military-transition':      ['credentials', 'workforce', 'competencies'],
+  'employment-records':       ['workforce', 'credentials'],
+  'volunteer-records':        ['credentials'],
+  'vaccination-records':      ['credentials', 'authN'],
+  'allergy-records':          ['credentials', 'authN'],
+  'health-worker-recognition':['credentials', 'workforce', 'competencies'],
+
+  // All Learning Counts — LER Verifying
+  'ler-verification-general': ['credentials', 'authN'],
+  'program-qualification':    ['credentials', 'workforce', 'authN'],
+  'community-college-app':    ['credentials', 'postsecondary', 'k12'],
+  'job-application':          ['credentials', 'workforce'],
+  'endorsement-trust':        ['credentials', 'authN'],
+
+  // AI-Empowered Learning — General
+  'ai-lifelong-learning':     ['competencies', 'learningResources', 'assessments'],
+  'ai-early-learning':        ['earlyLearning', 'learningResources', 'assessments'],
+  'ai-k12':                   ['k12', 'learningResources', 'assessments', 'competencies'],
+  'ai-postsecondary':         ['postsecondary', 'learningResources', 'assessments', 'competencies'],
+  'ai-workforce':             ['workforce', 'competencies', 'learningResources'],
+
+  // AI-Empowered Learning — Specialized
+  'career-navigation':        ['workforce', 'competencies', 'credentials'],
+  'health-worker-learning':   ['workforce', 'competencies', 'learningResources'],
+  'advanced-manufacturing':   ['workforce', 'competencies', 'cte'],
+  'military-learning':        ['workforce', 'competencies', 'learningResources'],
+  'ai-ed-research':           ['assessments', 'learningResources', 'implVars'],
+
+  // Government & Administrative — Compliance
+  'compliance-general':       ['k12', 'postsecondary', 'implVars'],
+  'edfacts-fs002':            ['k12', 'implVars'],
+  'edfacts-general':          ['k12', 'implVars'],
+
+  // Government & Administrative — SEDM / JEDx / NDP
+  'sedm-general':             ['k12', 'postsecondary', 'implVars'],
+  'jedx-general':             ['workforce', 'implVars'],
+  'ndp-general':              ['implVars'],
+
+  // Government & Administrative — Operations
+  'school-ops':               ['k12', 'facilities', 'implVars'],
+  'eval-what-works':          ['assessments', 'learningResources', 'implVars'],
+  'decision-policy':          ['implVars', 'k12', 'postsecondary'],
+  'decision-programs':        ['implVars', 'k12', 'postsecondary'],
+  'decision-practices':       ['implVars', 'assessments', 'learningResources'],
+  'support-state-gov':        ['implVars', 'k12', 'postsecondary', 'workforce'],
+  'support-local-gov':        ['implVars', 'k12', 'facilities'],
+  'structured-fed-data':      ['implVars', 'k12', 'postsecondary', 'workforce'],
+
+  // Health Care
+  'clinical-research-general':['authN', 'implVars'],
+  'health-vaccination-records':['credentials', 'authN'],
+  'health-allergy-records':   ['credentials', 'authN'],
+  'health-worker-dev':        ['credentials', 'workforce', 'competencies'],
+};
+
 // Helper: flatten all leaf use cases
 export function getAllUseCases() {
   const cases = [];

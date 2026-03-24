@@ -3,7 +3,9 @@
 // subcategories, checkable items, and GitHub issue integration.
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import { useCaseTaxonomy } from '../data/useCaseTaxonomy';
+import { useCaseTaxonomy, useCaseCedsDomains } from '../data/useCaseTaxonomy';
+import { libraryEntries } from '../data/libraryEntries';
+import { cedsAlignmentMatrix, cedsDomains } from '../data/cedsAlignment';
 
 const GITHUB_REPO = 'educoreproject/educore_use_cases';
 
@@ -151,13 +153,175 @@ function GitHubIcon({ className = '' }) {
   );
 }
 
+// ─── Roadmap computation (mirrors TaxonomiesPage pattern) ───────────────────
+
+const burdenIcon = { low: '🟢', medium: '🟡', high: '🔴' };
+const burdenLabel = { low: 'Low', medium: 'Moderate', high: 'High' };
+const burdenOrder = { low: 0, medium: 1, high: 2 };
+const rubricLevelColor = {
+  low: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  moderate: 'bg-amber-50 text-amber-700 border-amber-200',
+  high: 'bg-red-50 text-red-700 border-red-200',
+};
+const cedsStatusColor = {
+  full: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  partial: 'bg-amber-50 text-amber-700 border-amber-200',
+};
+const cedsDomainLabels = Object.fromEntries(cedsDomains.map(d => [d.id, d.label]));
+
+function computeRoadmapFromUseCases(selectedIds) {
+  if (selectedIds.size === 0) return [];
+
+  // Collect relevant CEDS domains from selected use cases
+  const relevantDomains = new Set();
+  for (const ucId of selectedIds) {
+    const domains = useCaseCedsDomains[ucId];
+    if (domains) domains.forEach(d => relevantDomains.add(d));
+  }
+  if (relevantDomains.size === 0) return [];
+
+  // Score each library entry by CEDS alignment
+  const scored = libraryEntries.map(entry => {
+    const alignment = cedsAlignmentMatrix.find(a => a.entryId === entry.id);
+    if (!alignment) return null;
+
+    let fullCount = 0;
+    let partialCount = 0;
+    const matchedDomains = [];
+
+    for (const domain of relevantDomains) {
+      const domainData = alignment.domains[domain];
+      if (domainData) {
+        if (domainData.status === 'full') {
+          fullCount++;
+          matchedDomains.push({ domain, status: 'full' });
+        } else if (domainData.status === 'partial') {
+          partialCount++;
+          matchedDomains.push({ domain, status: 'partial' });
+        }
+      }
+    }
+
+    const score = fullCount * 2 + partialCount;
+    if (score === 0) return null;
+    return { entry, score, fullCount, partialCount, matchedDomains };
+  }).filter(Boolean);
+
+  scored.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return (burdenOrder[a.entry.implementationBurden] || 0) - (burdenOrder[b.entry.implementationBurden] || 0);
+  });
+
+  return scored;
+}
+
+function RoadmapCard({ item, onNavigateToEntry }) {
+  const { entry, matchedDomains, fullCount, partialCount } = item;
+  const [showCapabilities, setShowCapabilities] = useState(false);
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+      <div className="px-4 py-3 border-b border-gray-100">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 min-w-0">
+            <h4 className="text-sm font-semibold text-gray-900 truncate">{entry.title}</h4>
+            <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-md border border-gray-200 whitespace-nowrap flex-shrink-0">
+              {entry.category}
+            </span>
+          </div>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <span className="text-xs font-medium">
+              {burdenIcon[entry.implementationBurden]} {burdenLabel[entry.implementationBurden]} burden
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-4 py-3 space-y-3">
+        <div>
+          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">CEDS Alignment</div>
+          <div className="flex flex-wrap gap-1.5">
+            {matchedDomains.map(({ domain, status }) => (
+              <span key={domain} className={`text-xs px-2 py-0.5 rounded-md border font-medium ${cedsStatusColor[status]}`}>
+                {cedsDomainLabels[domain] || domain} ({status})
+              </span>
+            ))}
+          </div>
+          <div className="text-xs text-gray-400 mt-1">
+            {fullCount} full + {partialCount} partial alignment{fullCount + partialCount !== 1 ? 's' : ''} with your selected use cases
+          </div>
+        </div>
+
+        {entry.burdenRubric && (
+          <div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Burden Breakdown</div>
+            <div className="grid grid-cols-3 gap-2">
+              {['engineering', 'infrastructure', 'legal'].map(dim => {
+                const r = entry.burdenRubric[dim];
+                if (!r) return null;
+                return (
+                  <div key={dim} className="bg-gray-50 rounded-lg px-2.5 py-2">
+                    <div className="text-[10px] text-gray-400 uppercase tracking-wider capitalize">{dim}</div>
+                    <span className={`text-xs font-medium px-1.5 py-0.5 rounded border capitalize inline-block mt-0.5 ${rubricLevelColor[r.level]}`}>
+                      {r.level}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            {entry.burdenRubric.timeline && (
+              <div className="flex items-center gap-1.5 mt-2 text-xs text-gray-500">
+                <span>Timeline:</span>
+                <span className="font-medium text-gray-700">{entry.burdenRubric.timeline}</span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {entry.requiredCapabilities?.length > 0 && (
+          <div>
+            <button
+              onClick={() => setShowCapabilities(!showCapabilities)}
+              className="text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-1 hover:text-gray-700 transition-colors"
+            >
+              <span>{showCapabilities ? '▼' : '▶'}</span>
+              Required Capabilities ({entry.requiredCapabilities.length})
+            </button>
+            {showCapabilities && (
+              <div className="mt-1.5 space-y-1">
+                {entry.requiredCapabilities.map(cap => (
+                  <div key={cap} className="text-xs text-gray-600 bg-gray-50 rounded px-2.5 py-1.5 flex items-start gap-1.5">
+                    <span className="text-indigo-400 mt-px">-</span>
+                    {cap}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        <button
+          onClick={() => onNavigateToEntry?.(entry.id)}
+          className="text-xs font-medium text-indigo-600 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-50 transition-colors"
+        >
+          View in Library
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ─── Main Component ─────────────────────────────────────────────────────────
+
 export default function UseCaseTaxonomyPage({ onExploreUseCases, onNavigateToEntry }) {
   const [activeCategories, setActiveCategories] = useState(new Set());
   const [expandedSubcategories, setExpandedSubcategories] = useState(new Set());
   const [selectedUseCases, setSelectedUseCases] = useState(new Set());
   const [githubIssues, setGithubIssues] = useState({});
   const [githubLoading, setGithubLoading] = useState(true);
+  const [showRoadmap, setShowRoadmap] = useState(false);
   const treeRef = useRef(null);
+  const roadmapRef = useRef(null);
 
   // Fetch GitHub issues on mount
   useEffect(() => {
@@ -235,8 +399,9 @@ export default function UseCaseTaxonomyPage({ onExploreUseCases, onNavigateToEnt
     });
   }, []);
 
-  // Toggle a single use case
+  // Toggle a single use case (hide roadmap on change)
   const toggleUseCase = useCallback((ucId) => {
+    setShowRoadmap(false);
     setSelectedUseCases(prev => {
       const next = new Set(prev);
       if (next.has(ucId)) next.delete(ucId);
@@ -247,6 +412,7 @@ export default function UseCaseTaxonomyPage({ onExploreUseCases, onNavigateToEnt
 
   // Select all in a subcategory
   const selectAllInSubcategory = useCallback((subcategory) => {
+    setShowRoadmap(false);
     const ids = collectSubcategoryIds(subcategory);
     setSelectedUseCases(prev => {
       const next = new Set(prev);
@@ -257,6 +423,7 @@ export default function UseCaseTaxonomyPage({ onExploreUseCases, onNavigateToEnt
 
   // Clear all in a subcategory
   const clearSubcategory = useCallback((subcategory) => {
+    setShowRoadmap(false);
     const ids = collectSubcategoryIds(subcategory);
     setSelectedUseCases(prev => {
       const next = new Set(prev);
@@ -267,15 +434,31 @@ export default function UseCaseTaxonomyPage({ onExploreUseCases, onNavigateToEnt
 
   // Clear all selections
   const clearAll = useCallback(() => {
+    setShowRoadmap(false);
     setSelectedUseCases(new Set());
   }, []);
 
-  // Handle explore button
-  const handleExplore = useCallback(() => {
-    if (onExploreUseCases) {
-      onExploreUseCases(Array.from(selectedUseCases));
+  // Compute roadmap from selected use cases
+  const roadmap = useMemo(
+    () => computeRoadmapFromUseCases(selectedUseCases),
+    [selectedUseCases]
+  );
+
+  // Collect the CEDS domains touched by the selection for the summary
+  const selectedDomains = useMemo(() => {
+    const domains = new Set();
+    for (const ucId of selectedUseCases) {
+      const d = useCaseCedsDomains[ucId];
+      if (d) d.forEach(dd => domains.add(dd));
     }
-  }, [selectedUseCases, onExploreUseCases]);
+    return domains;
+  }, [selectedUseCases]);
+
+  // Handle explore button — show roadmap inline and scroll to it
+  const handleExplore = useCallback(() => {
+    setShowRoadmap(true);
+    setTimeout(() => roadmapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }, []);
 
   // Active categories data
   const visibleCategories = useMemo(() => {
@@ -549,8 +732,47 @@ export default function UseCaseTaxonomyPage({ onExploreUseCases, onNavigateToEnt
         </div>
       )}
 
+      {/* ─── Standards Roadmap ──────────────────────────────────────────── */}
+      {showRoadmap && roadmap.length > 0 && (
+        <div ref={roadmapRef} className="mt-10 scroll-mt-24">
+          <div className="mb-6">
+            <h2 className="text-lg font-bold text-gray-900 tracking-tight">
+              Recommended Standards
+            </h2>
+            <p className="text-sm text-gray-500 mt-1">
+              {roadmap.length} specification{roadmap.length !== 1 ? 's' : ''} ranked by alignment
+              to your {selectedUseCases.size} selected use case{selectedUseCases.size !== 1 ? 's' : ''} across{' '}
+              {selectedDomains.size} CEDS domain{selectedDomains.size !== 1 ? 's' : ''}.
+            </p>
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {[...selectedDomains].map(d => (
+                <span key={d} className="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-200 font-medium">
+                  {cedsDomainLabels[d] || d}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {roadmap.map(item => (
+              <RoadmapCard key={item.entry.id} item={item} onNavigateToEntry={onNavigateToEntry} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {showRoadmap && roadmap.length === 0 && (
+        <div ref={roadmapRef} className="mt-10 text-center py-12 scroll-mt-24">
+          <div className="text-3xl mb-2">📭</div>
+          <h3 className="text-sm font-semibold text-gray-700">No matching standards found</h3>
+          <p className="text-xs text-gray-400 mt-1 max-w-md mx-auto">
+            The selected use cases don't have CEDS domain mappings that align with current library entries.
+            Try selecting different or additional use cases.
+          </p>
+        </div>
+      )}
+
       {/* Empty state when no categories selected */}
-      {visibleCategories.length === 0 && (
+      {visibleCategories.length === 0 && !showRoadmap && (
         <div className="text-center py-16">
           <div className="text-4xl mb-3">
             <span role="img" aria-hidden="true">&#x1F50D;</span>
