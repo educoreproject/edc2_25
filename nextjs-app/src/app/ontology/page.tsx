@@ -48,6 +48,7 @@ function typeContains(node: Record<string, unknown>, keyword: string): boolean {
 export default function OntologyPage() {
   const svgRef = useRef<SVGSVGElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
   const [stats, setStats] = useState<Stats | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -219,11 +220,9 @@ export default function OntologyPage() {
           .attr('font-weight', (d) => (d.type === 'spec' ? 600 : 400))
           .attr('fill', '#374151');
 
-        // Tooltip
-        const tooltip = d3
-          .select(wrapperRef.current)
-          .append('div')
-          .attr('class', 'absolute pointer-events-none bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg max-w-[240px] leading-relaxed hidden z-50');
+        // Tooltip — use React-controlled div to avoid removeChild conflicts
+        const tooltip = d3.select(tooltipRef.current!)
+          .classed('hidden', true);
 
         node
           .on('mouseover', (event, d) => {
@@ -290,8 +289,6 @@ export default function OntologyPage() {
       if (simulationRef.current) {
         simulationRef.current.stop();
       }
-      // Remove old tooltip divs from wrapper
-      wrapper.querySelectorAll(':scope > div').forEach((el) => el.remove());
       buildGraph();
     });
 
@@ -347,6 +344,12 @@ export default function OntologyPage() {
         className="relative bg-white border border-gray-200 rounded-xl overflow-hidden"
         style={{ height: 'calc(100vh - 320px)', minHeight: '500px' }}
       >
+        {/* Tooltip — React-controlled div, manipulated by D3 via tooltipRef */}
+        <div
+          ref={tooltipRef}
+          className="absolute pointer-events-none bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg max-w-[240px] leading-relaxed hidden z-50"
+        />
+
         {loading && (
           <div className="absolute inset-0 flex items-center justify-center bg-white/80 z-20">
             <div className="text-center">
