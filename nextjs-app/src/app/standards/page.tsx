@@ -6,19 +6,20 @@ export default function StandardsPage() {
   const grouped = getStandardsByCategory();
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 animate-fade-up">
       {/* Header */}
       <div className="mb-10">
         <Link
           href="/"
-          className="text-sm text-indigo-600 hover:text-indigo-800 transition-colors"
+          className="text-xs font-medium transition-colors hover:underline"
+          style={{ color: '#8892A8' }}
         >
           &larr; Home
         </Link>
-        <h1 className="text-3xl font-bold text-gray-900 mt-4 mb-2">
+        <h1 className="text-3xl font-bold mt-4 mb-2" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>
           Standards Library
         </h1>
-        <p className="text-gray-500 max-w-2xl">
+        <p className="text-sm max-w-2xl leading-relaxed" style={{ color: '#8892A8' }}>
           Browse education data interoperability standards grouped by category.
           Select a standard to explore its implementation details, data objects,
           and connections.
@@ -28,31 +29,32 @@ export default function StandardsPage() {
       {/* Categories */}
       {Object.entries(grouped).map(([category, entries]) => (
         <section key={category} className="mb-12">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+          <h2 className="text-base font-bold mb-4 flex items-center gap-2" style={{ color: '#072A6C' }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#FFAB40' }} />
             {category}
-            <span className="text-sm font-normal text-gray-400">
+            <span className="text-xs font-normal" style={{ color: '#B0B8C9' }}>
               ({entries.length})
             </span>
           </h2>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
             {entries.map((entry) => (
               <Link
                 key={entry.id}
                 href={`/standards/${entry.id}`}
-                className="group bg-white border border-gray-200 rounded-xl p-5 hover:border-indigo-300 hover:shadow-md transition-all"
+                className="card group p-5"
+                style={{ border: '1px solid rgba(7,42,108,0.08)' }}
               >
                 <div className="flex items-start justify-between gap-3 mb-3">
-                  <h3 className="text-sm font-semibold text-gray-900 group-hover:text-indigo-700 transition-colors leading-snug">
+                  <h3 className="text-sm font-semibold leading-snug transition-colors group-hover:text-[#072A6C]" style={{ color: '#1E293B' }}>
                     {entry.title}
                   </h3>
-                  <span className="text-gray-300 group-hover:text-indigo-400 transition-colors shrink-0">
+                  <span className="transition-all group-hover:translate-x-0.5 shrink-0" style={{ color: '#B0B8C9' }}>
                     &rarr;
                   </span>
                 </div>
 
-                <p className="text-xs text-gray-500 leading-relaxed mb-4 line-clamp-3">
+                <p className="text-xs leading-relaxed mb-4 line-clamp-3" style={{ color: '#8892A8' }}>
                   {entry.description}
                 </p>
 
@@ -68,7 +70,7 @@ export default function StandardsPage() {
                   />
                 </div>
 
-                <div className="mt-3 text-xs text-gray-400">
+                <div className="mt-3 text-xs" style={{ color: '#B0B8C9' }}>
                   {entry.owner}
                 </div>
               </Link>

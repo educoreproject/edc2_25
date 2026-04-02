@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full bg-[#F8F9FC] flex flex-col" style={{ fontFamily: "'Open Sans', system-ui, sans-serif" }}>
+      <body className="min-h-full bg-[#F8F9FC] flex flex-col" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <Footer />
