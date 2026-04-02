@@ -1,9 +1,18 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Open+Sans:wght@400;600;700;800&display=swap');
 
 @theme inline {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --color-background: #ffffff;
-  --color-foreground: #0f172a;
+  --font-sans: 'Open Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --color-background: #F8F9FC;
+  --color-foreground: #111827;
+
+  /* Brand palette */
+  --color-brand-blue:   #072A6C;
+  --color-brand-teal:   #00B5B8;
+  --color-brand-orange: #FFAB40;
+  --color-brand-violet: #5B3FD3;
+  --color-brand-yellow: #F4F38C;
 }
 
 body {
@@ -12,15 +21,21 @@ body {
   font-family: var(--font-sans);
 }
 
+h1, h2 { font-family: var(--font-display); }
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+::-webkit-scrollbar-thumb { background: #C4CBDA; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #7A8499; }
 
 /* Glass morphism utility */
 .glass {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.92);
 }
+
+/* Brand shadows */
+.shadow-brand { box-shadow: 0 2px 12px rgba(7,42,108,.08), 0 0 0 1px rgba(7,42,108,.06); }
+.shadow-brand-hover { box-shadow: 0 8px 32px rgba(7,42,108,.14); }

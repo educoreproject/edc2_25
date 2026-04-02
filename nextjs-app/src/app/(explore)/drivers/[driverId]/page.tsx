@@ -18,46 +18,47 @@ export default async function DriverDetailPage({
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
 
       {/* Breadcrumb */}
-      <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-6 flex-wrap">
-        <Link href="/" className="hover:text-gray-600 transition-colors">Home</Link>
+      <div className="flex items-center gap-1.5 text-xs mb-6 flex-wrap" style={{ color: '#7A8499' }}>
+        <Link href="/" className="hover:underline">Home</Link>
         <span>›</span>
-        <Link href="/topics" className="flex items-center gap-1 hover:text-violet-600 transition-colors">
-          <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
-          <span className="text-violet-600 font-medium">Topics</span>
+        <Link href="/topics" className="hover:underline font-semibold flex items-center gap-1" style={{ color: '#5B3FD3' }}>
+          <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#5B3FD3' }} />
+          Topics
         </Link>
         <span>›</span>
-        <Link href="/drivers" className="flex items-center gap-1 hover:text-indigo-600 transition-colors">
-          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-          <span className="text-indigo-600 font-medium">Business Drivers</span>
+        <Link href="/drivers" className="hover:underline font-semibold flex items-center gap-1" style={{ color: '#072A6C' }}>
+          <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#072A6C' }} />
+          Business Drivers
         </Link>
         <span>›</span>
-        <span className="text-gray-700 font-medium">{group.label}</span>
+        <span className="font-semibold" style={{ color: '#072A6C' }}>{group.label}</span>
       </div>
 
       {/* Header */}
-      <div className="rounded-xl border border-indigo-200 overflow-hidden mb-8">
-        <div className="h-1.5 bg-indigo-500" />
-        <div className="bg-indigo-50 px-6 py-5">
+      <div className="rounded-xl overflow-hidden mb-8" style={{ border: '1.5px solid rgba(7,42,108,0.25)', boxShadow: '0 2px 8px rgba(7,42,108,0.06)' }}>
+        <div className="h-1.5" style={{ background: '#072A6C' }} />
+        <div className="px-6 py-5" style={{ background: 'rgba(7,42,108,0.05)' }}>
           <div className="flex items-start gap-4">
-            <div className="w-14 h-14 bg-white rounded-xl border border-indigo-200 flex items-center justify-center text-3xl shrink-0">
+            <div className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl shrink-0"
+              style={{ background: '#fff', border: '1.5px solid rgba(7,42,108,0.2)' }}>
               {group.icon}
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1 flex-wrap">
-                <h1 className="text-xl font-bold text-indigo-700">{group.label}</h1>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700">
+                <h1 className="text-xl font-bold" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>{group.label}</h1>
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(7,42,108,0.1)', color: '#072A6C' }}>
                   Level 2 — Business Driver
                 </span>
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
-                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-100 text-indigo-700">
+                <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(7,42,108,0.1)', color: '#072A6C' }}>
                   {group.children.length} stakeholder{group.children.length !== 1 ? 's' : ''}
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-100 text-gray-600">
+                <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: '#F8F9FC', color: '#7A8499', border: '1px solid #EEF1F7' }}>
                   {allNeeds.length} business needs
                 </span>
                 {useCases.length > 0 && (
-                  <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-sky-100 text-sky-700">
+                  <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(0,181,184,0.12)', color: '#007B7D' }}>
                     {useCases.length} related use case{useCases.length !== 1 ? 's' : ''}
                   </span>
                 )}
@@ -71,28 +72,29 @@ export default async function DriverDetailPage({
 
         {/* Main: Stakeholders + Needs */}
         <div>
-          <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+          <p className="text-[10px] font-bold uppercase tracking-widest mb-4 flex items-center gap-2" style={{ color: '#C4CBDA' }}>
+            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#072A6C' }} />
             Stakeholders &amp; Business Needs
-          </h2>
+          </p>
 
           <div className="space-y-4">
             {group.children.map((stakeholder) => (
               <div
                 key={stakeholder.id}
-                className="bg-white border border-gray-200 rounded-xl overflow-hidden"
+                className="rounded-xl overflow-hidden"
+                style={{ background: '#fff', border: '1.5px solid #EEF1F7', boxShadow: '0 2px 8px rgba(7,42,108,0.04)' }}
               >
-                <div className="px-5 py-3.5 border-b border-gray-100 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-indigo-300" />
-                  <h3 className="text-sm font-semibold text-gray-900">{stakeholder.label}</h3>
-                  <span className="text-xs text-gray-400 ml-auto">
+                <div className="px-5 py-3.5 flex items-center gap-2" style={{ borderBottom: '1px solid #EEF1F7' }}>
+                  <span className="w-2 h-2 rounded-full" style={{ background: '#072A6C' }} />
+                  <h3 className="text-sm font-bold" style={{ color: '#072A6C' }}>{stakeholder.label}</h3>
+                  <span className="ml-auto text-xs font-semibold" style={{ color: '#C4CBDA' }}>
                     {stakeholder.businessNeeds.length} needs
                   </span>
                 </div>
                 <ul className="px-5 py-4 grid sm:grid-cols-2 gap-x-6 gap-y-2">
                   {stakeholder.businessNeeds.map((need, i) => (
-                    <li key={i} className="text-xs text-gray-600 flex items-start gap-2 leading-snug">
-                      <span className="text-indigo-400 mt-0.5 shrink-0">•</span>
+                    <li key={i} className="text-xs flex items-start gap-2 leading-snug" style={{ color: '#7A8499' }}>
+                      <span className="mt-0.5 shrink-0" style={{ color: '#00B5B8' }}>•</span>
                       <span>{need}</span>
                     </li>
                   ))}
@@ -102,57 +104,55 @@ export default async function DriverDetailPage({
           </div>
         </div>
 
-        {/* Sidebar: Related Use Cases */}
+        {/* Sidebar */}
         <div className="space-y-5">
           {useCases.length > 0 && (
             <div>
-              <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
+              <p className="text-[10px] font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: '#C4CBDA' }}>
+                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#00B5B8' }} />
                 Related Use Cases
-                <span className="font-normal text-gray-300">— Level 3</span>
-              </h2>
+                <span style={{ fontWeight: 400 }}>— Level 3</span>
+              </p>
 
               <div className="space-y-2">
                 {useCases.map((uc) => (
                   <Link
                     key={uc.id}
                     href={`/use-cases/${uc.id}`}
-                    className="group flex items-start gap-3 bg-white border border-gray-200 rounded-xl p-4 hover:border-sky-300 hover:shadow-sm transition-all"
+                    className="group flex items-start gap-3 rounded-xl p-4 transition-all hover:shadow-brand-hover"
+                    style={{ background: '#fff', border: '1.5px solid #EEF1F7', boxShadow: '0 2px 8px rgba(7,42,108,0.04)' }}
                   >
                     <span className="text-lg shrink-0 mt-0.5">{uc.icon}</span>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-xs font-semibold text-gray-900 group-hover:text-sky-700 transition-colors leading-snug">
+                      <h3 className="text-xs font-semibold leading-snug" style={{ color: '#072A6C' }}>
                         {uc.label}
                       </h3>
                       {uc.description && (
-                        <p className="text-[11px] text-gray-400 mt-1 line-clamp-2 leading-snug">
+                        <p className="text-[11px] mt-1 line-clamp-2 leading-snug" style={{ color: '#7A8499' }}>
                           {uc.description}
                         </p>
                       )}
                     </div>
-                    <span className="text-gray-300 group-hover:text-sky-400 transition-colors shrink-0">→</span>
+                    <span className="shrink-0 font-bold" style={{ color: '#00B5B8' }}>→</span>
                   </Link>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Navigate up */}
-          <div className="rounded-xl border border-gray-200 bg-white p-4">
-            <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-3">
-              Navigate
-            </p>
+          <div className="rounded-xl p-4" style={{ background: '#fff', border: '1.5px solid #EEF1F7' }}>
+            <p className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{ color: '#C4CBDA' }}>Navigate</p>
             <div className="space-y-2">
-              <Link href="/topics" className="flex items-center gap-2 text-xs text-violet-600 hover:text-violet-800 transition-colors">
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" />
+              <Link href="/topics" className="flex items-center gap-2 text-xs font-semibold hover:underline" style={{ color: '#5B3FD3' }}>
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#5B3FD3' }} />
                 ↑ All Topics
               </Link>
-              <Link href="/drivers" className="flex items-center gap-2 text-xs text-indigo-600 hover:text-indigo-800 transition-colors">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
+              <Link href="/drivers" className="flex items-center gap-2 text-xs font-semibold hover:underline" style={{ color: '#072A6C' }}>
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#072A6C' }} />
                 ← All Business Drivers
               </Link>
-              <Link href="/use-cases" className="flex items-center gap-2 text-xs text-sky-600 hover:text-sky-800 transition-colors">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shrink-0" />
+              <Link href="/use-cases" className="flex items-center gap-2 text-xs font-semibold hover:underline" style={{ color: '#007B7D' }}>
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#00B5B8' }} />
                 ↓ All Use Cases
               </Link>
             </div>
