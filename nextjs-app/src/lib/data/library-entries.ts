@@ -502,6 +502,255 @@ export const libraryEntries = [
     relatedResources: ['open-badges-v3', 'case-v1', 'lrw-competency-framework'],
     status: 'approved',
   },
+
+  // ─── CEDS ──────────────────────────────────────────────────────────────────
+  {
+    id: 'ceds',
+    title: 'Common Education Data Standards (CEDS)',
+    type: 'Standard',
+    category: 'Data Standards',
+    description: 'CEDS is a national collaborative effort to develop voluntary, common data standards for a key set of education data elements to streamline the exchange and comparison of data across institutions, sectors, and states. CEDS includes a data model, data elements dictionary, a connection to data exchange standards, and tools for mapping and aligning data across P-20W (preschool through workforce) contexts.',
+    owner: 'National Center for Education Statistics (NCES)',
+    governanceBody: 'US Department of Education / NCES',
+    lastUpdated: '2024-01-01',
+    version: 'v11',
+    accessLevel: 'open',
+    opennessStatus: 'open',
+    accessUrl: 'https://ceds.ed.gov',
+    authoritativeRepoUrl: null,
+    tags: ['CEDS', 'P-20W', 'data-dictionary', 'interoperability', 'NCES', 'federal', 'education-data'],
+    aiTaxonomy: ['data-dictionary', 'education-data-model', 'P-20W-interoperability'],
+    aiSummary: 'The foundational US education data dictionary and model covering P-20W. Use CEDS as the common vocabulary for aligning data elements across education and workforce systems, state longitudinal data systems, and federal reporting.',
+    aiUnlocksSummary: 'Provides the canonical reference vocabulary for education data elements. Aligning to CEDS enables data exchange across K-12 districts, postsecondary institutions, and workforce agencies. Essential for state longitudinal data systems (SLDS) and federal EdFacts reporting.',
+    implementationBurden: 'low',
+    implementationBurdenRationale: 'CEDS is a voluntary data dictionary and reference model — no specific technology stack is mandated. Implementation involves mapping your existing data elements to CEDS definitions. Tools like CEDS Align and CEDS Connect assist with mapping.',
+    burdenRubric: {
+      engineering: { level: 'low', note: 'CEDS is a reference vocabulary, not a wire protocol. Main effort is data element mapping and alignment.' },
+      infrastructure: { level: 'low', note: 'No infrastructure changes required. CEDS provides the common language; implementation is done in your existing systems.' },
+      legal: { level: 'low', note: 'Open, publicly funded standard. No licensing fees. Data sharing governed by existing FERPA/state agreements.' },
+    },
+    requiredCapabilities: ['Data element mapping capability', 'Understanding of P-20W data domains'],
+    implementationGuidance: 'Start by using the CEDS Data Model at ceds.ed.gov to identify the domains and elements relevant to your system. Use the CEDS Align tool to map your local data dictionary to CEDS elements. Focus on the domains most critical to your reporting and interoperability needs. CEDS Connect provides ETL templates for common data exchange scenarios.',
+    referenceImplementations: [
+      { name: 'CEDS Data Model & Element Finder', url: 'https://ceds.ed.gov', description: 'Browse and search the full CEDS data model, elements, and option sets.' },
+      { name: 'CEDS Align', url: 'https://ceds.ed.gov/cedsAlign.aspx', description: 'Tool for mapping local data dictionaries to CEDS elements.' },
+    ],
+    samplePayloads: [
+      {
+        label: 'CEDS Domain Coverage (conceptual)',
+        language: 'json',
+        code: `{
+  "standard": "CEDS v11",
+  "domains": [
+    "Assessments", "Authentication & Authorization",
+    "Competencies", "Credentials", "CTE",
+    "Early Learning", "Facilities", "K-12",
+    "Learning Resources", "Postsecondary",
+    "Workforce", "Adult Education",
+    "Implementation Variables"
+  ],
+  "totalElements": 1800,
+  "scope": "P-20W (Preschool through Workforce)"
+}`,
+      },
+    ],
+    knownAdopters: ['State Longitudinal Data Systems (SLDS)', 'EdFacts', 'Ed-Fi Alliance', 'CEDS Community of Practice members'],
+    technicalDocLinks: [
+      { label: 'CEDS Website', url: 'https://ceds.ed.gov' },
+      { label: 'CEDS Data Model', url: 'https://ceds.ed.gov/dataModel.aspx' },
+      { label: 'CEDS Align Tool', url: 'https://ceds.ed.gov/cedsAlign.aspx' },
+    ],
+    commonlyPairedWith: [
+      { id: 'edfi', rationale: 'Ed-Fi operationalizes CEDS data elements into a REST API standard for real-time K-12 data exchange. Ed-Fi data elements are mapped to CEDS definitions.' },
+      { id: 'sif', rationale: 'SIF data objects are mapped to CEDS elements. CEDS provides the canonical vocabulary; SIF provides the infrastructure-level exchange protocol.' },
+      { id: 'case-v1', rationale: 'CASE competency frameworks align to CEDS Competencies domain elements for standards-based competency exchange.' },
+    ],
+    compatibilityNotes: 'CEDS is the semantic foundation — it defines what data elements mean. Ed-Fi and SIF are operational standards that move data using CEDS-aligned definitions. Most US education interoperability efforts reference CEDS for semantic alignment.',
+    equityConsiderations: {
+      level: 'low-concern',
+      summary: 'CEDS is freely available and publicly funded. It includes elements for tracking equity-relevant data (disability status, economic disadvantage, English learner status) but does not mandate their collection.',
+    },
+    privacyConsiderations: {
+      level: 'low-concern',
+      summary: 'CEDS is a data dictionary — it defines elements but does not prescribe data collection or sharing. Privacy governance is handled by the implementing system and applicable laws (FERPA, COPPA).',
+      ndpaClauses: [],
+    },
+    relatedResources: ['edfi', 'sif', 'case-v1'],
+    status: 'approved',
+  },
+
+  // ─── SIF ───────────────────────────────────────────────────────────────────
+  {
+    id: 'sif',
+    title: 'Schools Interoperability Framework (SIF) 3.7',
+    type: 'Standard',
+    category: 'Data Standards',
+    description: 'SIF is a data sharing specification for K-12 education systems maintained by A4L Community (formerly the Access 4 Learning Community). SIF 3.7 defines a REST-based infrastructure for exchanging education data objects between systems using a publish/subscribe and request/response model. It includes a comprehensive data model covering student demographics, enrollment, scheduling, assessment, and more.',
+    owner: 'A4L Community (Access 4 Learning)',
+    governanceBody: 'A4L Community',
+    lastUpdated: '2023-06-01',
+    version: '3.7',
+    accessLevel: 'open',
+    opennessStatus: 'open',
+    accessUrl: 'https://files.a4l.org/Implementation/Infrastructure/3.7/',
+    authoritativeRepoUrl: null,
+    tags: ['SIF', 'A4L', 'K-12', 'data-exchange', 'REST', 'infrastructure', 'publish-subscribe'],
+    aiTaxonomy: ['data-exchange-protocol', 'K-12-infrastructure', 'publish-subscribe'],
+    aiSummary: 'REST-based K-12 data exchange infrastructure standard. Use SIF when you need a mature, standards-body-backed protocol for system-to-system data exchange in K-12 environments, especially in environments with SIF Zones and middleware.',
+    aiUnlocksSummary: 'Provides a mature infrastructure for real-time data exchange between K-12 systems (SIS, LMS, assessment, transportation, food service, etc.). The SIF data model and Zone architecture enable publish/subscribe data flows across vendor systems without point-to-point integration.',
+    implementationBurden: 'medium',
+    implementationBurdenRationale: 'SIF 3.7 requires implementing REST endpoints conforming to the SIF Infrastructure specification and adopting SIF data objects. Middleware (Zone Integration Server) may be needed. The data model is comprehensive but complex.',
+    burdenRubric: {
+      engineering: { level: 'moderate', note: 'Implementing SIF REST consumers/providers requires conformance to the SIF Infrastructure spec. Data object modeling is well-documented but extensive.' },
+      infrastructure: { level: 'moderate', note: 'A SIF Zone Integration Server (ZIS) or equivalent middleware may be needed for multi-system environments. Cloud-hosted ZIS options available.' },
+      legal: { level: 'low', note: 'Open specification. A4L membership recommended but not required for implementation. NDPA compliance needed for student data exchange.' },
+    },
+    requiredCapabilities: ['REST API implementation', 'SIF data object modeling', 'Zone Integration Server (for multi-system deployments)', 'CEDS-aligned data dictionary mapping'],
+    implementationGuidance: 'Start with the SIF 3.7 Infrastructure specification to understand the REST-based request/response and eventing models. Identify which SIF data objects (e.g., StudentPersonal, SchoolInfo, StaffPersonal) your system needs to produce or consume. For multi-vendor environments, deploy a Zone Integration Server. Map SIF data objects to your internal schema using CEDS alignment.',
+    referenceImplementations: [
+      { name: 'SIF 3.7 Infrastructure Specification', url: 'https://files.a4l.org/Implementation/Infrastructure/3.7/', description: 'Full SIF 3.7 infrastructure specification and implementation guide.' },
+      { name: 'A4L Unity (SIF successor)', url: 'https://www.a4l.org/unity', description: 'Next-generation A4L data exchange framework building on SIF concepts.' },
+    ],
+    samplePayloads: [
+      {
+        label: 'SIF StudentPersonal Object (simplified)',
+        language: 'json',
+        code: `{
+  "StudentPersonal": {
+    "RefId": "D3E34B35-9D75-101A-8C3D-00AA001A1652",
+    "LocalId": "S1234567",
+    "Name": {
+      "Type": "04",
+      "FirstName": "Maria",
+      "LastName": "Santos"
+    },
+    "Demographics": {
+      "BirthDate": "2010-03-15",
+      "Gender": "Female"
+    },
+    "EnrollmentStatus": "Active"
+  }
+}`,
+      },
+    ],
+    knownAdopters: ['PowerSchool', 'Infinite Campus', 'Follett', 'Tyler Technologies (SIS)', 'Pearson'],
+    technicalDocLinks: [
+      { label: 'SIF 3.7 Specification', url: 'https://files.a4l.org/Implementation/Infrastructure/3.7/' },
+      { label: 'A4L Community', url: 'https://www.a4l.org' },
+    ],
+    commonlyPairedWith: [
+      { id: 'ceds', rationale: 'SIF data objects are mapped to CEDS data elements. CEDS provides the canonical vocabulary; SIF provides the transport mechanism.' },
+      { id: 'edfi', rationale: 'Ed-Fi and SIF address similar K-12 data exchange needs with different architectural approaches. Many districts use both — SIF for legacy integrations and Ed-Fi for newer REST API patterns.' },
+    ],
+    compatibilityNotes: 'SIF 3.7 is the current REST-based version. Legacy SIF 2.x used XML/SOAP. Many K-12 environments have both SIF and Ed-Fi deployments. A4L Unity is the next-generation framework intended to unify these approaches.',
+    equityConsiderations: {
+      level: 'low-concern',
+      summary: 'SIF is an open specification focused on data exchange infrastructure. It includes data objects for tracking equity-relevant student characteristics but does not mandate data collection practices.',
+    },
+    privacyConsiderations: {
+      level: 'medium-concern',
+      summary: 'SIF enables system-to-system student data exchange which requires careful FERPA and NDPA compliance. Zone architecture provides access control, but data governance policies must be established separately.',
+      ndpaClauses: [
+        {
+          citation: 'NDPA Art. IV §4.2',
+          title: 'Authorized Use',
+          summary: 'SIF data exchange must be scoped to authorized educational purposes per the NDPA.',
+        },
+      ],
+    },
+    relatedResources: ['ceds', 'edfi'],
+    status: 'approved',
+  },
+
+  // ─── Ed-Fi ─────────────────────────────────────────────────────────────────
+  {
+    id: 'edfi',
+    title: 'Ed-Fi Data Standard',
+    type: 'Standard',
+    category: 'Data Standards',
+    description: 'The Ed-Fi Data Standard is a widely adopted, CEDS-aligned, REST API-based data standard for K-12 education data. It provides a Unifying Data Model (UDM) and API surface that enables real-time, standards-based data exchange between K-12 operational systems. The Ed-Fi ODS/API platform is the reference implementation used by state education agencies and districts nationwide for data integration and reporting.',
+    owner: 'Ed-Fi Alliance',
+    governanceBody: 'Ed-Fi Alliance (Michael & Susan Dell Foundation)',
+    lastUpdated: '2024-06-01',
+    version: 'v5.1',
+    accessLevel: 'open',
+    opennessStatus: 'open',
+    accessUrl: 'https://www.ed-fi.org/ed-fi-data-standard/',
+    authoritativeRepoUrl: 'https://github.com/Ed-Fi-Alliance-OSS',
+    tags: ['Ed-Fi', 'K-12', 'REST-API', 'ODS', 'CEDS-aligned', 'data-integration', 'open-source', 'SIS', 'LMS', 'assessment'],
+    aiTaxonomy: ['K-12-data-standard', 'REST-API', 'operational-data-store'],
+    aiSummary: 'The leading open-source, REST API-based K-12 data standard. Use Ed-Fi when you need real-time, CEDS-aligned data exchange between K-12 systems (SIS, LMS, assessment, HR) with a well-supported open-source platform and active community.',
+    aiUnlocksSummary: 'Provides an operational data store (ODS) and REST API that serves as the data integration backbone for K-12 districts and state agencies. Ed-Fi\'s Unifying Data Model maps to CEDS and enables real-time data flows from SIS, LMS, assessment, and HR systems into a central, standards-based data store for analytics, reporting, and interoperability.',
+    implementationBurden: 'medium',
+    implementationBurdenRationale: 'Ed-Fi provides a complete open-source platform (ODS/API) which reduces build effort, but deploying and maintaining the ODS requires database and API infrastructure. Writing API client integrations requires conformance to the Ed-Fi API specification. Strong community and documentation support.',
+    burdenRubric: {
+      engineering: { level: 'moderate', note: 'Implementing Ed-Fi API clients is straightforward with comprehensive Swagger documentation. The ODS/API platform requires .NET and SQL Server (or PostgreSQL) infrastructure.' },
+      infrastructure: { level: 'moderate', note: 'The Ed-Fi ODS/API requires a hosted application server, database (SQL Server or PostgreSQL), and API gateway. Cloud deployment options available via Ed-Fi Alliance guidance.' },
+      legal: { level: 'low', note: 'Fully open-source under Apache 2.0 license. No licensing fees. Community membership is free. Data governance per existing FERPA/state agreements.' },
+    },
+    requiredCapabilities: ['REST API implementation', 'SQL Server or PostgreSQL database', '.NET runtime (for ODS/API hosting)', 'Ed-Fi Unifying Data Model understanding'],
+    implementationGuidance: 'Start with the Ed-Fi ODS/API platform as your data integration hub. Deploy the ODS using the Ed-Fi installer or Docker containers. Use the Swagger UI to explore API resources. For vendor integrations, implement Ed-Fi API clients that POST data to the ODS. Map your local data elements to the Ed-Fi Unifying Data Model (which is CEDS-aligned). Leverage the Ed-Fi Analytics Middle Tier for reporting views.',
+    referenceImplementations: [
+      { name: 'Ed-Fi ODS/API Platform', url: 'https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS', description: 'Open-source Operational Data Store and REST API — the reference implementation of the Ed-Fi Data Standard.' },
+      { name: 'Ed-Fi Data Standard Documentation', url: 'https://www.ed-fi.org/ed-fi-data-standard/', description: 'Official documentation for the Ed-Fi Unifying Data Model and API specification.' },
+    ],
+    samplePayloads: [
+      {
+        label: 'Ed-Fi Student API Resource (simplified)',
+        language: 'json',
+        code: `{
+  "studentUniqueId": "604822",
+  "birthDate": "2010-01-13",
+  "firstName": "Maria",
+  "lastSurname": "Santos",
+  "identificationCodes": [
+    {
+      "assigningOrganizationIdentificationCode": "District",
+      "identificationCode": "S1234567",
+      "studentIdentificationSystemDescriptor": "uri://ed-fi.org/StudentIdentificationSystemDescriptor#Local"
+    }
+  ],
+  "races": [
+    { "raceDescriptor": "uri://ed-fi.org/RaceDescriptor#White" }
+  ]
+}`,
+      },
+    ],
+    knownAdopters: ['Texas Education Agency', 'Wisconsin DPI', 'Nebraska Department of Education', 'Arizona Department of Education', 'Schoology', 'PowerSchool', 'Clever'],
+    technicalDocLinks: [
+      { label: 'Ed-Fi Data Standard', url: 'https://www.ed-fi.org/ed-fi-data-standard/' },
+      { label: 'Ed-Fi Technology Suite', url: 'https://www.ed-fi.org/what-is-ed-fi/ed-fi-technology/' },
+      { label: 'GitHub (Open Source)', url: 'https://github.com/Ed-Fi-Alliance-OSS' },
+    ],
+    commonlyPairedWith: [
+      { id: 'ceds', rationale: 'Ed-Fi\'s Unifying Data Model is explicitly mapped to CEDS data elements, making Ed-Fi the operational implementation of CEDS semantics for K-12 data exchange.' },
+      { id: 'sif', rationale: 'Many districts use both Ed-Fi and SIF. Ed-Fi handles newer REST-based integrations; SIF handles legacy system connections. Both map to CEDS.' },
+      { id: 'case-v1', rationale: 'Ed-Fi can exchange competency and learning standard data that aligns with CASE-published frameworks for standards-aligned instruction and assessment.' },
+    ],
+    compatibilityNotes: 'Ed-Fi is CEDS-aligned by design — the Unifying Data Model maps directly to CEDS data elements. Ed-Fi is the most widely deployed K-12 data integration standard in the US, with strong support from state education agencies. The open-source ecosystem includes starter kits, vendor certifications, and community extensions.',
+    equityConsiderations: {
+      level: 'low-concern',
+      summary: 'Ed-Fi is fully open-source (Apache 2.0) with no licensing costs. The data model includes elements for tracking equity-relevant demographics, program participation, and student outcomes. Free community resources lower adoption barriers for under-resourced districts.',
+    },
+    privacyConsiderations: {
+      level: 'medium-concern',
+      summary: 'Ed-Fi ODS stores student-level data requiring FERPA compliance. The platform includes role-based access control and API authentication. Data governance policies, NDPA agreements, and security hardening are the implementer\'s responsibility.',
+      ndpaClauses: [
+        {
+          citation: 'NDPA Art. IV §4.2',
+          title: 'Authorized Use',
+          summary: 'Ed-Fi ODS deployments must scope API access to authorized educational purposes per NDPA agreements.',
+        },
+        {
+          citation: 'NDPA Art. V §5.4',
+          title: 'Breach Notification',
+          summary: 'Organizations hosting Ed-Fi ODS must comply with breach notification requirements within 72 hours.',
+        },
+      ],
+    },
+    relatedResources: ['ceds', 'sif'],
+    status: 'approved',
+  },
 ];
 
 // Human-readable title lookup keyed by entry ID.
@@ -511,6 +760,9 @@ export const entryTitles = {
   'ctdl': 'CTDL',
   'open-badges-v3': 'Open Badges 3.0',
   'clr-v2': 'CLR 2.0',
+  'ceds': 'CEDS',
+  'sif': 'SIF 3.7',
+  'edfi': 'Ed-Fi Data Standard',
 };
 
 export const categoryFilters = [
@@ -519,6 +771,7 @@ export const categoryFilters = [
   'Competency Frameworks',
   'Credential Transparency',
   'Digital Credentials',
+  'Data Standards',
 ];
 
 export const typeFilters = ['All', 'Standard'];

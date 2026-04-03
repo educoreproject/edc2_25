@@ -464,6 +464,68 @@ export const cedsAlignmentMatrix = [
       },
     },
   },
+  // ─── CEDS ────────────────────────────────────────────────────────────────
+  {
+    entryId: 'ceds',
+    entryShortName: 'CEDS',
+    domains: {
+      credentials:       { status: 'full',    cedsElements: ['Credential', 'CredentialType', 'CredentialAward', 'CredentialDefinition'], notes: 'CEDS is the canonical definition source for credential data elements.', gapNotes: null },
+      competencies:      { status: 'full',    cedsElements: ['CompetencyFramework', 'CompetencyDefinition', 'CompetencySet'], notes: 'CEDS defines the competency domain vocabulary used across all aligned standards.', gapNotes: null },
+      workforce:         { status: 'full',    cedsElements: ['WorkforceEmploymentQuarterlyData', 'WorkforceProgramParticipation', 'StandardOccupationalClassification'], notes: 'Comprehensive workforce data elements for employment outcomes and program participation.', gapNotes: null },
+      assessments:       { status: 'full',    cedsElements: ['Assessment', 'AssessmentResult', 'AssessmentPerformanceLevel', 'AssessmentItem'], notes: 'Full assessment lifecycle coverage.', gapNotes: null },
+      learningResources: { status: 'full',    cedsElements: ['LearningResource', 'LearningResourceEducationLevel'], notes: 'Complete learning resource metadata vocabulary.', gapNotes: null },
+      k12:               { status: 'full',    cedsElements: ['K12StudentAcademicRecord', 'K12StudentEnrollment', 'CourseSection', 'GradeLevel'], notes: 'CEDS is the foundational K-12 data dictionary for US education.', gapNotes: null },
+      postsecondary:     { status: 'full',    cedsElements: ['PostsecondaryStudentAcademicRecord', 'PostsecondaryProgram', 'PostsecondaryInstitution'], notes: 'Comprehensive postsecondary data coverage.', gapNotes: null },
+      cte:               { status: 'full',    cedsElements: ['ProgramParticipationCareerAndTechnical', 'CareerCluster'], notes: 'Full CTE pathway and career cluster coverage.', gapNotes: null },
+      adultEd:           { status: 'full',    cedsElements: ['AdultEducationProgramParticipation'], notes: 'Adult education program participation elements defined.', gapNotes: null },
+      earlyLearning:     { status: 'full',    cedsElements: ['EarlyLearningProgramParticipation', 'EarlyLearningOrganization'], notes: 'Early learning domain with program and organization elements.', gapNotes: null },
+      authN:             { status: 'full',    cedsElements: ['PersonIdentification', 'Authorization', 'AuthorizationDocument'], notes: 'Authentication and authorization elements for identity and access.', gapNotes: null },
+      implVars:          { status: 'full',    cedsElements: ['ImplementationVariable'], notes: 'Implementation variables domain is intrinsic to CEDS.', gapNotes: null },
+      facilities:        { status: 'full',    cedsElements: ['Facility', 'FacilityDesign', 'FacilityMortgage'], notes: 'Facilities domain with building and design elements.', gapNotes: null },
+    },
+  },
+
+  // ─── SIF ─────────────────────────────────────────────────────────────────
+  {
+    entryId: 'sif',
+    entryShortName: 'SIF 3.7',
+    domains: {
+      credentials:       { status: 'partial', cedsElements: ['CredentialType'], notes: 'SIF can transport credential-related data but does not define a credential issuance model.', gapNotes: 'No native credential issuance or verification framework.' },
+      competencies:      { status: 'partial', cedsElements: ['CompetencyDefinition'], notes: 'SIF includes learning standards objects that map to competency elements.', gapNotes: 'Not a competency framework exchange standard.' },
+      workforce:         { status: 'gap',     cedsElements: [], notes: 'SIF is scoped to K-12; no workforce data objects.', gapNotes: 'No workforce employment or program participation coverage.' },
+      assessments:       { status: 'full',    cedsElements: ['Assessment', 'AssessmentResult', 'AssessmentItem'], notes: 'SIF has robust assessment data objects for K-12 test score exchange.', gapNotes: null },
+      learningResources: { status: 'partial', cedsElements: ['LearningResource'], notes: 'SIF includes learning resource metadata objects.', gapNotes: 'Less granular than dedicated learning resource standards.' },
+      k12:               { status: 'full',    cedsElements: ['K12StudentAcademicRecord', 'K12StudentEnrollment', 'CourseSection'], notes: 'Core strength of SIF — comprehensive K-12 data objects for student, school, staff, enrollment, and scheduling.', gapNotes: null },
+      postsecondary:     { status: 'gap',     cedsElements: [], notes: 'SIF is focused on K-12; no postsecondary data objects.', gapNotes: 'No postsecondary coverage.' },
+      cte:               { status: 'partial', cedsElements: ['ProgramParticipationCareerAndTechnical'], notes: 'Limited CTE data objects within K-12 context.', gapNotes: 'No dedicated CTE pathway modeling.' },
+      adultEd:           { status: 'gap',     cedsElements: [], notes: 'Not in scope for SIF.', gapNotes: null },
+      earlyLearning:     { status: 'gap',     cedsElements: [], notes: 'Not in scope for SIF.', gapNotes: null },
+      authN:             { status: 'partial', cedsElements: ['PersonIdentification', 'Authorization'], notes: 'SIF Zone architecture includes authentication and access control.', gapNotes: 'Authentication is infrastructure-level, not data-model-level.' },
+      implVars:          { status: 'partial', cedsElements: ['ImplementationVariable'], notes: 'SIF Infrastructure spec addresses implementation configuration.', gapNotes: null },
+      facilities:        { status: 'partial', cedsElements: ['Facility'], notes: 'SIF includes SchoolInfo and basic facility objects.', gapNotes: 'Limited facility detail compared to CEDS facilities domain.' },
+    },
+  },
+
+  // ─── Ed-Fi ───────────────────────────────────────────────────────────────
+  {
+    entryId: 'edfi',
+    entryShortName: 'Ed-Fi Data Standard',
+    domains: {
+      credentials:       { status: 'partial', cedsElements: ['Credential', 'CredentialType'], notes: 'Ed-Fi includes credential objects for staff and student credentials within the K-12 context.', gapNotes: 'Not a credential issuance/verification standard. Limited to K-12 credential tracking.' },
+      competencies:      { status: 'full',    cedsElements: ['CompetencyFramework', 'CompetencyDefinition', 'CompetencySet'], notes: 'Ed-Fi supports learning standards and competency framework exchange aligned to CEDS.', gapNotes: null },
+      workforce:         { status: 'partial', cedsElements: ['StandardOccupationalClassification'], notes: 'Ed-Fi includes staff employment and HR data objects. Limited workforce outcomes data.', gapNotes: 'Primarily K-12 staff workforce data, not learner workforce outcomes.' },
+      assessments:       { status: 'full',    cedsElements: ['Assessment', 'AssessmentResult', 'AssessmentPerformanceLevel', 'AssessmentItem'], notes: 'Comprehensive assessment data model — one of Ed-Fi\'s strongest domains.', gapNotes: null },
+      learningResources: { status: 'partial', cedsElements: ['LearningResource'], notes: 'Ed-Fi includes learning objective and standard references but limited learning resource metadata.', gapNotes: 'Not a learning resource cataloging standard.' },
+      k12:               { status: 'full',    cedsElements: ['K12StudentAcademicRecord', 'K12StudentEnrollment', 'CourseSection', 'GradeLevel'], notes: 'Core domain of Ed-Fi — the most comprehensive K-12 operational data model in active deployment.', gapNotes: null },
+      postsecondary:     { status: 'gap',     cedsElements: [], notes: 'Ed-Fi is scoped to K-12.', gapNotes: 'No postsecondary data model.' },
+      cte:               { status: 'full',    cedsElements: ['ProgramParticipationCareerAndTechnical', 'CareerCluster'], notes: 'Ed-Fi includes CTE program and pathway data objects within K-12 context.', gapNotes: null },
+      adultEd:           { status: 'gap',     cedsElements: [], notes: 'Not in scope for Ed-Fi.', gapNotes: null },
+      earlyLearning:     { status: 'partial', cedsElements: ['EarlyLearningProgramParticipation'], notes: 'Limited early childhood data elements via community extensions.', gapNotes: 'Not a core Ed-Fi domain; available through extensions.' },
+      authN:             { status: 'partial', cedsElements: ['PersonIdentification', 'Authorization'], notes: 'Ed-Fi ODS/API includes OAuth2 authentication and API key authorization.', gapNotes: 'Authentication is API-infrastructure-level, not data-model-level.' },
+      implVars:          { status: 'full',    cedsElements: ['ImplementationVariable'], notes: 'Ed-Fi descriptors and configuration are well-mapped to CEDS implementation variables.', gapNotes: null },
+      facilities:        { status: 'partial', cedsElements: ['Facility'], notes: 'Ed-Fi includes EducationOrganization and School entities with basic facility attributes.', gapNotes: 'No detailed facility design or mortgage elements.' },
+    },
+  },
 ];
 
 // Derived: per-domain summary across all entries

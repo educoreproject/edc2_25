@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 
 const TAB_NAV = [
   { href: '/', label: 'Dashboard' },
-  { href: '/alignment', label: 'Analytics' },
-  { href: '/explorer', label: 'Settings' },
+  { href: '/ontology', label: 'Ontology Map' },
+  { href: '/explorer', label: 'Data Model Explorer' },
 ];
 
 export default function TopBar() {
