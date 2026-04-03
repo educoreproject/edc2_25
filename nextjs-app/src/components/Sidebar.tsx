@@ -103,14 +103,14 @@ export default function Sidebar() {
 
       {/* User context */}
       <div className="px-5 mb-5">
-        <div className="text-[10px] uppercase tracking-wider font-semibold mb-0.5" style={{ color: '#B0B8C9' }}>
+        <div className="text-[10px] uppercase tracking-wider font-semibold mb-0.5" style={{ color: '#7A8499' }}>
           Reference Library
         </div>
       </div>
 
       {/* Main nav */}
       <nav className="flex-1 px-3 space-y-0.5">
-        <div className="text-[10px] uppercase tracking-wider font-semibold px-2 mb-2" style={{ color: '#B0B8C9' }}>
+        <div className="text-[10px] uppercase tracking-wider font-semibold px-2 mb-2" style={{ color: '#7A8499' }}>
           Explore
         </div>
         {MAIN_NAV.map(({ href, label, icon }) => (
@@ -121,17 +121,17 @@ export default function Sidebar() {
             style={
               isActive(href)
                 ? { background: 'rgba(91,63,211,0.08)', color: '#5B3FD3' }
-                : { color: '#6B7589' }
+                : { color: '#4B5563' }
             }
           >
-            <span style={{ color: isActive(href) ? '#5B3FD3' : '#B0B8C9' }}>{icon}</span>
+            <span style={{ color: isActive(href) ? '#5B3FD3' : '#7A8499' }}>{icon}</span>
             {label}
           </Link>
         ))}
 
         <div className="h-px my-3" style={{ background: 'rgba(7,42,108,0.05)' }} />
 
-        <div className="text-[10px] uppercase tracking-wider font-semibold px-2 mb-2" style={{ color: '#B0B8C9' }}>
+        <div className="text-[10px] uppercase tracking-wider font-semibold px-2 mb-2" style={{ color: '#7A8499' }}>
           Tools
         </div>
         {TOOLS_NAV.map(({ href, label, icon }) => (
@@ -142,10 +142,10 @@ export default function Sidebar() {
             style={
               isActive(href)
                 ? { background: 'rgba(91,63,211,0.08)', color: '#5B3FD3' }
-                : { color: '#6B7589' }
+                : { color: '#4B5563' }
             }
           >
-            <span style={{ color: isActive(href) ? '#5B3FD3' : '#B0B8C9' }}>{icon}</span>
+            <span style={{ color: isActive(href) ? '#5B3FD3' : '#7A8499' }}>{icon}</span>
             {label}
           </Link>
         ))}
@@ -157,9 +157,9 @@ export default function Sidebar() {
         <Link
           href="/explorer"
           className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] font-medium transition-all"
-          style={{ color: '#6B7589' }}
+          style={{ color: '#4B5563' }}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B0B8C9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A8499" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" />
           </svg>
           Support

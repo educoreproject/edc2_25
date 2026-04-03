@@ -73,7 +73,7 @@ function OverviewView({ useCase, ownIssue, tags, siblingStories }: Omit<Props, '
               {useCase.label}
             </h2>
 
-            <p className="text-[15px] leading-relaxed mb-6 max-w-lg" style={{ color: '#6B7589' }}>
+            <p className="text-[15px] leading-relaxed mb-6 max-w-lg" style={{ color: '#4B5563' }}>
               Use case under <strong style={{ color: '#072A6C' }}>{useCase.subcategoryLabel}</strong>{' '}
               within the {useCase.categoryLabel} topic, linking stakeholder needs to interoperable ecosystem nodes.
             </p>
@@ -82,7 +82,7 @@ function OverviewView({ useCase, ownIssue, tags, siblingStories }: Omit<Props, '
               <div className="flex flex-wrap gap-2 mb-6">
                 {tags.map(tag => (
                   <span key={tag} className="text-[11px] font-medium px-2.5 py-1 rounded-full"
-                    style={{ background: 'rgba(7,42,108,0.05)', color: '#6B7589', border: '1px solid rgba(7,42,108,0.08)' }}>
+                    style={{ background: 'rgba(7,42,108,0.05)', color: '#4B5563', border: '1px solid rgba(7,42,108,0.08)' }}>
                     {tag}
                   </span>
                 ))}
@@ -126,20 +126,20 @@ function OverviewView({ useCase, ownIssue, tags, siblingStories }: Omit<Props, '
             </div>
             <div>
               <div className="text-base font-bold" style={{ color: '#072A6C' }}>{useCase.subcategoryLabel}</div>
-              <div className="text-xs" style={{ color: '#B0B8C9' }}>Primary Actor</div>
+              <div className="text-xs" style={{ color: '#7A8499' }}>Primary Actor</div>
             </div>
           </div>
-          <p className="text-sm leading-relaxed mb-4" style={{ color: '#8892A8' }}>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: '#5A6478' }}>
             Responsible for initiating and managing use cases in this domain.
           </p>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full" style={{ background: '#F4F5F8' }}>
             <div className="w-5 h-5 rounded-full" style={{ background: 'linear-gradient(135deg, #5B3FD3, #7C5CFC)' }} />
-            <span className="text-xs font-medium" style={{ color: '#6B7589' }}>{useCase.categoryLabel}</span>
+            <span className="text-xs font-medium" style={{ color: '#4B5563' }}>{useCase.categoryLabel}</span>
           </div>
         </div>
 
         <div>
-          <div className="text-[11px] uppercase tracking-wider font-semibold mb-4" style={{ color: '#B0B8C9' }}>CEDS Domains</div>
+          <div className="text-[11px] uppercase tracking-wider font-semibold mb-4" style={{ color: '#7A8499' }}>CEDS Domains</div>
           <div className="grid grid-cols-3 gap-3">
             {useCase.cedsDomains.slice(0, 6).map(domainId => (
               <div key={domainId} className="rounded-xl p-4 text-center" style={{ background: '#fff', border: '1px solid rgba(7,42,108,0.06)' }}>
@@ -156,14 +156,14 @@ function OverviewView({ useCase, ownIssue, tags, siblingStories }: Omit<Props, '
       {/* Related stories */}
       {siblingStories.length > 0 && (
         <div>
-          <div className="text-[11px] uppercase tracking-wider font-semibold mb-3" style={{ color: '#B0B8C9' }}>Related User Stories</div>
+          <div className="text-[11px] uppercase tracking-wider font-semibold mb-3" style={{ color: '#7A8499' }}>Related User Stories</div>
           <div className="space-y-2">
             {siblingStories.map(s => (
               <Link key={s.id} href={`/use-cases/${s.id}`}
                 className="flex items-center justify-between rounded-xl px-5 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-brand-hover"
                 style={{ background: '#fff', border: '1px solid rgba(7,42,108,0.06)' }}>
                 <span className="text-sm font-medium" style={{ color: '#4B5563' }}>{s.label}</span>
-                <span className="text-xs font-mono shrink-0 ml-3" style={{ color: '#B0B8C9' }}>#{s.githubIssue}</span>
+                <span className="text-xs font-mono shrink-0 ml-3" style={{ color: '#7A8499' }}>#{s.githubIssue}</span>
               </Link>
             ))}
           </div>
@@ -179,7 +179,7 @@ function TChartView({ useCase, siblingStories }: { useCase: UseCaseData; sibling
     <div>
       <div className="mb-5">
         <h2 className="text-lg font-bold" style={{ color: '#072A6C' }}>T-Chart</h2>
-        <p className="text-xs mt-0.5" style={{ color: '#8892A8' }}>
+        <p className="text-xs mt-0.5" style={{ color: '#5A6478' }}>
           T-shaped view showing the use case within the topic context (vertical) and implementation specifics (horizontal).
         </p>
       </div>
@@ -198,7 +198,7 @@ function TChartView({ useCase, siblingStories }: { useCase: UseCaseData; sibling
 
           <div className="text-[10px] font-bold uppercase tracking-wider px-3 py-2 w-full text-center text-white"
             style={{ background: '#1d4ed8' }}>
-            Business Driver
+            Value Driver
           </div>
           <div className="text-sm px-3 py-3 w-full text-center min-h-[60px] flex items-center justify-center text-white"
             style={{ background: '#2563eb' }}>
@@ -215,7 +215,7 @@ function TChartView({ useCase, siblingStories }: { useCase: UseCaseData; sibling
           </div>
 
           {/* Vertical connector */}
-          <div className="w-0.5 flex-1 my-0" style={{ minHeight: 40, background: '#DEE2EC' }} />
+          <div className="w-0.5 flex-1 my-0" style={{ minHeight: 40, background: '#C4CBDA' }} />
         </div>
 
         {/* Right horizontal bar — implementation details */}
@@ -318,7 +318,7 @@ function SwimlaneView({ useCase, siblingStories }: { useCase: UseCaseData; sibli
     <div>
       <div className="mb-5">
         <h2 className="text-lg font-bold" style={{ color: '#072A6C' }}>Swimlane Diagram</h2>
-        <p className="text-xs mt-0.5" style={{ color: '#8892A8' }}>
+        <p className="text-xs mt-0.5" style={{ color: '#5A6478' }}>
           Process-oriented view — who does what, with what data.
         </p>
       </div>
@@ -329,7 +329,7 @@ function SwimlaneView({ useCase, siblingStories }: { useCase: UseCaseData; sibli
           <div key={i} className="flex items-center gap-2 text-xs font-semibold">
             <span className="inline-block w-3 h-3 rounded-sm" style={{ background: LANE_COLORS[i % LANE_COLORS.length].header }} />
             <span style={{ color: '#072A6C' }}>{a.name}</span>
-            <span className="font-normal" style={{ color: '#B0B8C9' }}>— {a.desc}</span>
+            <span className="font-normal" style={{ color: '#7A8499' }}>— {a.desc}</span>
           </div>
         ))}
       </div>
@@ -358,7 +358,7 @@ function SwimlaneView({ useCase, siblingStories }: { useCase: UseCaseData; sibli
           <tbody>
             {steps.map((step, si) => (
               <tr key={si} style={{ background: si % 2 === 0 ? '#fff' : '#FAFBFD' }}>
-                <td className="text-center text-[10px] font-bold px-1 py-3" style={{ color: '#B0B8C9', borderRight: '1px solid rgba(7,42,108,0.06)' }}>
+                <td className="text-center text-[10px] font-bold px-1 py-3" style={{ color: '#7A8499', borderRight: '1px solid rgba(7,42,108,0.06)' }}>
                   {si + 1}
                 </td>
                 {actors.map((_, ai) => {
@@ -382,7 +382,7 @@ function SwimlaneView({ useCase, siblingStories }: { useCase: UseCaseData; sibli
                                 style={{ background: 'rgba(29,78,216,0.1)', color: '#1d4ed8' }}>
                                 IN
                               </span>
-                              <span style={{ color: '#6B7589' }}>{step.dataIn}</span>
+                              <span style={{ color: '#4B5563' }}>{step.dataIn}</span>
                             </div>
                           )}
                           {step.dataOut && (
@@ -391,7 +391,7 @@ function SwimlaneView({ useCase, siblingStories }: { useCase: UseCaseData; sibli
                                 style={{ background: 'rgba(5,150,105,0.1)', color: '#059669' }}>
                                 OUT
                               </span>
-                              <span style={{ color: '#6B7589' }}>{step.dataOut}</span>
+                              <span style={{ color: '#4B5563' }}>{step.dataOut}</span>
                             </div>
                           )}
                         </div>
@@ -408,7 +408,7 @@ function SwimlaneView({ useCase, siblingStories }: { useCase: UseCaseData; sibli
       {/* Connected stories */}
       {siblingStories.length > 0 && (
         <div className="mt-6">
-          <div className="text-[10px] font-bold uppercase tracking-wider mb-2" style={{ color: '#B0B8C9' }}>
+          <div className="text-[10px] font-bold uppercase tracking-wider mb-2" style={{ color: '#7A8499' }}>
             Connected User Stories
           </div>
           <div className="flex flex-wrap gap-2">
@@ -438,7 +438,7 @@ function StandardsMapView({ standards, useCase }: { standards: StandardData[]; u
           View All Specs
         </Link>
       </div>
-      <p className="text-xs mb-6" style={{ color: '#8892A8' }}>
+      <p className="text-xs mb-6" style={{ color: '#5A6478' }}>
         How this use case&apos;s data domains map to interoperability standards.
       </p>
 
@@ -489,7 +489,7 @@ function StandardsMapView({ standards, useCase }: { standards: StandardData[]; u
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[11px] uppercase tracking-wider font-semibold" style={{ color: '#B0B8C9' }}>
+                    <span className="text-[11px] uppercase tracking-wider font-semibold" style={{ color: '#7A8499' }}>
                       Integration Progress
                     </span>
                     <span className="text-sm font-bold tabular-nums" style={{ color: '#072A6C' }}>{pct}%</span>
@@ -498,7 +498,7 @@ function StandardsMapView({ standards, useCase }: { standards: StandardData[]; u
                     <div className="h-full rounded-full"
                       style={{
                         width: `${pct}%`,
-                        background: pct >= 80 ? '#059669' : pct >= 50 ? '#5B3FD3' : '#B0B8C9',
+                        background: pct >= 80 ? '#059669' : pct >= 50 ? '#5B3FD3' : '#7A8499',
                         transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                       }} />
                   </div>
@@ -509,7 +509,7 @@ function StandardsMapView({ standards, useCase }: { standards: StandardData[]; u
         </div>
       ) : (
         <div className="rounded-2xl p-10 text-center" style={{ background: '#fff', border: '1px solid rgba(7,42,108,0.06)' }}>
-          <p className="text-sm" style={{ color: '#8892A8' }}>No standards mapped to this use case yet.</p>
+          <p className="text-sm" style={{ color: '#5A6478' }}>No standards mapped to this use case yet.</p>
         </div>
       )}
     </div>
@@ -524,7 +524,7 @@ export default function UseCaseDetail({ useCase, standards, ownIssue, tags, sibl
     <div className="max-w-4xl mx-auto px-6 sm:px-8 py-8 animate-fade-up">
 
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-[11px] uppercase tracking-wider mb-6 flex-wrap" style={{ color: '#B0B8C9' }}>
+      <nav className="flex items-center gap-2 text-[11px] uppercase tracking-wider mb-6 flex-wrap" style={{ color: '#7A8499' }}>
         <Link href="/" className="hover:underline">Home</Link>
         <span>&gt;</span>
         <Link href="/topics" className="hover:underline">Topics</Link>
@@ -538,7 +538,7 @@ export default function UseCaseDetail({ useCase, standards, ownIssue, tags, sibl
 
       {/* Title */}
       {ownIssue && (
-        <div className="text-[11px] uppercase tracking-wider font-semibold mb-2" style={{ color: '#B0B8C9' }}>
+        <div className="text-[11px] uppercase tracking-wider font-semibold mb-2" style={{ color: '#7A8499' }}>
           User Story #{ownIssue}
         </div>
       )}
@@ -556,7 +556,7 @@ export default function UseCaseDetail({ useCase, standards, ownIssue, tags, sibl
             style={
               activeTab === tab.id
                 ? { background: '#fff', border: '1px solid rgba(7,42,108,0.08)', borderBottom: '1px solid #fff', color: '#5B3FD3', marginBottom: -1 }
-                : { color: '#B0B8C9', border: '1px solid transparent' }
+                : { color: '#7A8499', border: '1px solid transparent' }
             }
           >
             {tab.label}

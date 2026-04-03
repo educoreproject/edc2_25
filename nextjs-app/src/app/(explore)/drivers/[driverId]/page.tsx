@@ -28,7 +28,7 @@ export default async function DriverDetailPage({
         <span>›</span>
         <Link href="/drivers" className="hover:underline font-semibold flex items-center gap-1" style={{ color: '#072A6C' }}>
           <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#072A6C' }} />
-          Business Drivers
+          Value Drivers
         </Link>
         <span>›</span>
         <span className="font-semibold" style={{ color: '#072A6C' }}>{group.label}</span>
@@ -47,7 +47,7 @@ export default async function DriverDetailPage({
               <div className="flex items-center gap-2 mb-1 flex-wrap">
                 <h1 className="text-xl font-bold" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>{group.label}</h1>
                 <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(7,42,108,0.1)', color: '#072A6C' }}>
-                  Level 2 — Business Driver
+                  Level 2 — Value Driver
                 </span>
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
@@ -55,7 +55,7 @@ export default async function DriverDetailPage({
                   {group.children.length} stakeholder{group.children.length !== 1 ? 's' : ''}
                 </span>
                 <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: '#F8F9FC', color: '#7A8499', border: '1px solid #EEF1F7' }}>
-                  {allNeeds.length} business needs
+                  {allNeeds.length} value needs
                 </span>
                 {useCases.length > 0 && (
                   <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(0,181,184,0.12)', color: '#007B7D' }}>
@@ -74,7 +74,7 @@ export default async function DriverDetailPage({
         <div>
           <p className="text-[10px] font-bold uppercase tracking-widest mb-4 flex items-center gap-2" style={{ color: '#C4CBDA' }}>
             <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#072A6C' }} />
-            Stakeholders &amp; Business Needs
+            Stakeholders &amp; Value Needs
           </p>
 
           <div className="space-y-4">
@@ -149,7 +149,7 @@ export default async function DriverDetailPage({
               </Link>
               <Link href="/drivers" className="flex items-center gap-2 text-xs font-semibold hover:underline" style={{ color: '#072A6C' }}>
                 <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#072A6C' }} />
-                ← All Business Drivers
+                ← All Value Drivers
               </Link>
               <Link href="/use-cases" className="flex items-center gap-2 text-xs font-semibold hover:underline" style={{ color: '#007B7D' }}>
                 <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#00B5B8' }} />

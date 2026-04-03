@@ -2,13 +2,13 @@ import Link from 'next/link';
 import { stakeholderTaxonomy, useCasesCedsRdf } from '@/lib/data/taxonomies';
 
 export const metadata = {
-  title: 'Business Drivers | EDUcore Reference Library',
-  description: 'Stakeholder groups and the business challenges driving education data interoperability.',
+  title: 'Value Drivers | EDUcore Reference Library',
+  description: 'Stakeholder groups and the value drivers behind education data interoperability.',
 };
 
 const LEVEL_CHAIN = [
   { label: 'Topics',           color: '#5B3FD3', href: '/topics',    active: false },
-  { label: 'Business Drivers', color: '#072A6C', href: '/drivers',   active: true  },
+  { label: 'Value Drivers', color: '#072A6C', href: '/drivers',   active: true  },
   { label: 'Use Cases',        color: '#00B5B8', href: '/use-cases', active: false },
   { label: 'User Stories',     color: '#0D8F92', href: '/use-cases', active: false },
 ];
@@ -18,14 +18,14 @@ export default function DriversPage() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 animate-fade-up">
 
       {/* Breadcrumb */}
-      <div className="flex items-center gap-1.5 text-xs mb-6" style={{ color: '#8892A8' }}>
+      <div className="flex items-center gap-1.5 text-xs mb-6" style={{ color: '#5A6478' }}>
         <Link href="/" className="hover:underline">Home</Link>
         <span>/</span>
         <Link href="/topics" className="hover:underline font-medium" style={{ color: '#5B3FD3' }}>Topics</Link>
         <span>/</span>
         <span className="flex items-center gap-1.5 font-medium" style={{ color: '#072A6C' }}>
           <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#072A6C' }} />
-          Business Drivers
+          Value Drivers
         </span>
       </div>
 
@@ -36,13 +36,13 @@ export default function DriversPage() {
         </div>
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <h1 className="text-2xl font-bold" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>Business Drivers</h1>
+            <h1 className="text-2xl font-bold" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>Value Drivers</h1>
             <span className="badge" style={{ background: 'rgba(7,42,108,0.07)', color: '#072A6C' }}>
               Level 2
             </span>
           </div>
-          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: '#8892A8' }}>
-            Stakeholder groups and the business challenges they face. Each links down to Use Cases and up to Topics.
+          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: '#5A6478' }}>
+            Stakeholder groups and the value drivers they face. Each links down to Use Cases and up to Topics.
           </p>
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function DriversPage() {
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full font-medium transition-colors"
               style={active
                 ? { background: '#072A6C', color: '#fff' }
-                : { color: '#8892A8' }
+                : { color: '#5A6478' }
               }
             >
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: active ? '#00B5B8' : color }} />
@@ -109,21 +109,21 @@ export default function DriversPage() {
                 <h2 className="text-sm font-bold mb-1 transition-colors" style={{ color: '#072A6C' }}>
                   {group.label}
                 </h2>
-                <p className="text-xs mb-4 leading-snug" style={{ color: '#8892A8' }}>
+                <p className="text-xs mb-4 leading-snug" style={{ color: '#5A6478' }}>
                   {group.children.map(c => c.label).join(' · ')}
                 </p>
 
                 <div className="mt-auto">
-                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#B0B8C9' }}>Top Business Needs</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#7A8499' }}>Top Value Needs</p>
                   <ul className="space-y-1.5">
                     {previewNeeds.map((need, i) => (
-                      <li key={i} className="text-xs flex items-start gap-1.5 leading-snug" style={{ color: '#8892A8' }}>
+                      <li key={i} className="text-xs flex items-start gap-1.5 leading-snug" style={{ color: '#5A6478' }}>
                         <span className="mt-0.5 shrink-0" style={{ color: '#00B5B8' }}>&#8226;</span>
                         <span className="line-clamp-2">{need}</span>
                       </li>
                     ))}
                     {allNeeds.length > 3 && (
-                      <li className="text-xs pl-3" style={{ color: '#B0B8C9' }}>+{allNeeds.length - 3} more</li>
+                      <li className="text-xs pl-3" style={{ color: '#7A8499' }}>+{allNeeds.length - 3} more</li>
                     )}
                   </ul>
                 </div>

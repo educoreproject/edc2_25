@@ -3,7 +3,7 @@ import { useCaseTaxonomy } from '@/lib/data/use-case-taxonomy';
 
 export const metadata = {
   title: 'Topics | EDUcore Reference Library',
-  description: 'High-level subject areas organizing use cases, business drivers, and standards.',
+  description: 'High-level subject areas organizing use cases, value drivers, and standards.',
 };
 
 const colorMap: Record<string, { stripe: string; bg: string; border: string; text: string; badgeBg: string; badgeText: string }> = {
@@ -15,7 +15,7 @@ const colorMap: Record<string, { stripe: string; bg: string; border: string; tex
 
 const LEVEL_CHAIN = [
   { label: 'Topics',           color: '#5B3FD3', active: true },
-  { label: 'Business Drivers', color: '#072A6C', active: false },
+  { label: 'Value Drivers', color: '#072A6C', active: false },
   { label: 'Use Cases',        color: '#00B5B8', active: false },
   { label: 'User Stories',     color: '#0D8F92', active: false },
 ];
@@ -25,7 +25,7 @@ export default function TopicsPage() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 animate-fade-up">
 
       {/* Breadcrumb */}
-      <div className="flex items-center gap-1.5 text-xs mb-6" style={{ color: '#8892A8' }}>
+      <div className="flex items-center gap-1.5 text-xs mb-6" style={{ color: '#5A6478' }}>
         <Link href="/" className="hover:underline transition-colors">Home</Link>
         <span>/</span>
         <span className="flex items-center gap-1.5 font-medium" style={{ color: '#5B3FD3' }}>
@@ -46,9 +46,9 @@ export default function TopicsPage() {
               Level 1
             </span>
           </div>
-          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: '#8892A8' }}>
+          <p className="text-sm leading-relaxed max-w-2xl" style={{ color: '#5A6478' }}>
             High-level subject areas that organize the entire knowledge base. Each topic contains
-            Business Drivers which map to Use Cases and, ultimately, to standards and ontology elements.
+            Value Drivers which map to Use Cases and, ultimately, to standards and ontology elements.
           </p>
         </div>
       </div>
@@ -57,12 +57,12 @@ export default function TopicsPage() {
       <div className="flex items-center gap-2 mb-8 text-xs overflow-x-auto pb-1">
         {LEVEL_CHAIN.map(({ label, color, active }, i) => (
           <span key={label} className="flex items-center gap-2 shrink-0">
-            {i > 0 && <span style={{ color: '#DEE2EC' }}>/</span>}
+            {i > 0 && <span style={{ color: '#C4CBDA' }}>/</span>}
             <span
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full font-medium transition-colors"
               style={active
                 ? { background: '#5B3FD3', color: '#fff' }
-                : { color: '#8892A8' }
+                : { color: '#5A6478' }
               }
             >
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: active ? '#fff' : color }} />
@@ -106,7 +106,7 @@ export default function TopicsPage() {
                       {topic.label}
                     </h2>
                     {topic.subtitle && (
-                      <p className="text-xs mt-0.5 leading-snug" style={{ color: '#8892A8' }}>
+                      <p className="text-xs mt-0.5 leading-snug" style={{ color: '#5A6478' }}>
                         {topic.subtitle}
                       </p>
                     )}
@@ -128,17 +128,17 @@ export default function TopicsPage() {
                   )}
                 </div>
 
-                {/* Business drivers */}
+                {/* Value drivers */}
                 <div className="mt-auto">
-                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#8892A8' }}>
-                    Business Drivers
+                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#5A6478' }}>
+                    Value Drivers
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {topic.children.map((driver) => (
                       <span
                         key={driver.id}
                         className="text-xs px-2 py-0.5 rounded-md font-medium"
-                        style={{ background: '#F4F5F8', color: '#8892A8' }}
+                        style={{ background: '#F4F5F8', color: '#5A6478' }}
                       >
                         {driver.label}
                       </span>

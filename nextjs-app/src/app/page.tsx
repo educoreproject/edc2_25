@@ -49,7 +49,7 @@ export default function HomePage() {
             EDUcore Reference Library
           </h1>
           <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            Navigate from Topics through Business Drivers and Use Cases to individual User Stories
+            Navigate from Topics through Value Drivers and Use Cases to individual User Stories
             — each linked to Object Models and Ontology that implement them.
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function HomePage() {
             style={{ background: '#fff', border: '1px solid rgba(7,42,108,0.06)' }}
           >
             <div className="text-2xl font-bold mb-1" style={{ color, fontFamily: 'var(--font-display)' }}>{value}</div>
-            <div className="text-[11px] font-medium uppercase tracking-wider" style={{ color: '#B0B8C9' }}>{label}</div>
+            <div className="text-[11px] font-medium uppercase tracking-wider" style={{ color: '#7A8499' }}>{label}</div>
           </Link>
         ))}
       </div>
@@ -89,7 +89,7 @@ export default function HomePage() {
                 <span className="text-2xl">{topic.icon}</span>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-bold mb-0.5" style={{ color: '#072A6C' }}>{topic.label}</div>
-                  <p className="text-xs leading-snug mb-2" style={{ color: '#8892A8' }}>{topic.subtitle}</p>
+                  <p className="text-xs leading-snug mb-2" style={{ color: '#5A6478' }}>{topic.subtitle}</p>
                   <div className="flex gap-2">
                     <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md" style={{ background: 'rgba(91,63,211,0.06)', color: '#5B3FD3' }}>
                       {topic.children.length} drivers
@@ -121,7 +121,7 @@ export default function HomePage() {
               <span className="text-xl">{icon}</span>
               <div>
                 <div className="text-sm font-bold mb-0.5" style={{ color: '#072A6C' }}>{label}</div>
-                <p className="text-xs leading-snug" style={{ color: '#8892A8' }}>{desc}</p>
+                <p className="text-xs leading-snug" style={{ color: '#5A6478' }}>{desc}</p>
               </div>
             </Link>
           ))}

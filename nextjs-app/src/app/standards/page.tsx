@@ -12,14 +12,14 @@ export default function StandardsPage() {
         <Link
           href="/"
           className="text-xs font-medium transition-colors hover:underline"
-          style={{ color: '#8892A8' }}
+          style={{ color: '#5A6478' }}
         >
           &larr; Home
         </Link>
         <h1 className="text-3xl font-bold mt-4 mb-2" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>
           Standards Library
         </h1>
-        <p className="text-sm max-w-2xl leading-relaxed" style={{ color: '#8892A8' }}>
+        <p className="text-sm max-w-2xl leading-relaxed" style={{ color: '#5A6478' }}>
           Browse education data interoperability standards grouped by category.
           Select a standard to explore its implementation details, data objects,
           and connections.
@@ -32,7 +32,7 @@ export default function StandardsPage() {
           <h2 className="text-base font-bold mb-4 flex items-center gap-2" style={{ color: '#072A6C' }}>
             <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#FFAB40' }} />
             {category}
-            <span className="text-xs font-normal" style={{ color: '#B0B8C9' }}>
+            <span className="text-xs font-normal" style={{ color: '#7A8499' }}>
               ({entries.length})
             </span>
           </h2>
@@ -49,12 +49,12 @@ export default function StandardsPage() {
                   <h3 className="text-sm font-semibold leading-snug transition-colors group-hover:text-[#072A6C]" style={{ color: '#1E293B' }}>
                     {entry.title}
                   </h3>
-                  <span className="transition-all group-hover:translate-x-0.5 shrink-0" style={{ color: '#B0B8C9' }}>
+                  <span className="transition-all group-hover:translate-x-0.5 shrink-0" style={{ color: '#7A8499' }}>
                     &rarr;
                   </span>
                 </div>
 
-                <p className="text-xs leading-relaxed mb-4 line-clamp-3" style={{ color: '#8892A8' }}>
+                <p className="text-xs leading-relaxed mb-4 line-clamp-3" style={{ color: '#5A6478' }}>
                   {entry.description}
                 </p>
 
@@ -70,7 +70,7 @@ export default function StandardsPage() {
                   />
                 </div>
 
-                <div className="mt-3 text-xs" style={{ color: '#B0B8C9' }}>
+                <div className="mt-3 text-xs" style={{ color: '#7A8499' }}>
                   {entry.owner}
                 </div>
               </Link>
