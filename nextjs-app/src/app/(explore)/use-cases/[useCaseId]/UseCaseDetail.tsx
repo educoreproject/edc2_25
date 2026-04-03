@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { getDomainLabel } from '@/lib/data/resolvers';
 import MetadataBadge from '@/components/MetadataBadge';
 
-type Tab = 'overview' | 'tchart' | 'standards';
+type Tab = 'overview' | 'tchart' | 'swimlane' | 'standards';
 
 interface UseCaseData {
   label: string;
@@ -50,6 +50,7 @@ function alignmentPercent(fullCount: number, partialCount: number, totalDomains:
 const TABS: { id: Tab; label: string; badge?: string }[] = [
   { id: 'overview', label: 'Overview' },
   { id: 'tchart', label: 'T-Chart' },
+  { id: 'swimlane', label: 'Swimlane' },
   { id: 'standards', label: 'Standards Map' },
 ];
 
@@ -287,6 +288,144 @@ function TChartView({ useCase, siblingStories }: { useCase: UseCaseData; sibling
   );
 }
 
+// ── Swimlane Tab ────────────────────────────────────────────────────────────
+function SwimlaneView({ useCase, siblingStories }: { useCase: UseCaseData; siblingStories: SiblingStory[] }) {
+  // Build actors from the hierarchy context + CEDS domains
+  const actors = [
+    { name: useCase.subcategoryLabel, desc: 'Primary actor driving this use case' },
+    { name: 'System', desc: 'Automated processing and validation' },
+    { name: 'Verifier', desc: 'Credential verification and trust' },
+  ];
+
+  // Build steps from the use case context
+  const steps: { actorIdx: number; action: string; dataIn?: string; dataOut?: string }[] = [
+    { actorIdx: 0, action: `Initiate ${useCase.label}`, dataIn: 'Request or trigger event' },
+    { actorIdx: 1, action: 'Validate inputs against CEDS domains', dataOut: useCase.cedsDomains.slice(0, 2).map(d => getDomainLabel(d)).join(', ') },
+    { actorIdx: 0, action: 'Provide required credentials and documentation', dataIn: 'Source documents' },
+    { actorIdx: 1, action: 'Process and map to interoperability standards', dataIn: 'Raw data', dataOut: 'Structured records' },
+    { actorIdx: 2, action: 'Verify credential authenticity and claims', dataIn: 'Structured records', dataOut: 'Verification result' },
+    { actorIdx: 1, action: 'Update records and generate output', dataOut: 'Final LER / credential artifact' },
+    { actorIdx: 0, action: 'Receive and review results' },
+  ];
+
+  const LANE_COLORS = [
+    { bg: 'rgba(29,78,216,0.05)', border: 'rgba(29,78,216,0.15)', header: '#1d4ed8' },
+    { bg: 'rgba(91,63,211,0.05)', border: 'rgba(91,63,211,0.15)', header: '#5B3FD3' },
+    { bg: 'rgba(5,150,105,0.05)', border: 'rgba(5,150,105,0.15)', header: '#059669' },
+  ];
+
+  return (
+    <div>
+      <div className="mb-5">
+        <h2 className="text-lg font-bold" style={{ color: '#072A6C' }}>Swimlane Diagram</h2>
+        <p className="text-xs mt-0.5" style={{ color: '#8892A8' }}>
+          Process-oriented view — who does what, with what data.
+        </p>
+      </div>
+
+      {/* Legend */}
+      <div className="flex flex-wrap gap-3 mb-5">
+        {actors.map((a, i) => (
+          <div key={i} className="flex items-center gap-2 text-xs font-semibold">
+            <span className="inline-block w-3 h-3 rounded-sm" style={{ background: LANE_COLORS[i % LANE_COLORS.length].header }} />
+            <span style={{ color: '#072A6C' }}>{a.name}</span>
+            <span className="font-normal" style={{ color: '#B0B8C9' }}>— {a.desc}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="overflow-x-auto rounded-xl" style={{ border: '1px solid rgba(7,42,108,0.08)' }}>
+        <table className="w-full border-collapse" style={{ tableLayout: 'fixed' }}>
+          <colgroup>
+            <col style={{ width: 40 }} />
+            {actors.map((_, i) => (
+              <col key={i} style={{ width: `${Math.floor(100 / actors.length)}%` }} />
+            ))}
+          </colgroup>
+          <thead>
+            <tr>
+              <th className="text-[10px] font-bold uppercase px-2 py-2.5 text-center text-white" style={{ background: '#1e293b' }}>
+                #
+              </th>
+              {actors.map((a, i) => (
+                <th key={i} className="text-xs font-bold px-3 py-2.5 text-white"
+                  style={{ background: LANE_COLORS[i % LANE_COLORS.length].header }}>
+                  {a.name}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {steps.map((step, si) => (
+              <tr key={si} style={{ background: si % 2 === 0 ? '#fff' : '#FAFBFD' }}>
+                <td className="text-center text-[10px] font-bold px-1 py-3" style={{ color: '#B0B8C9', borderRight: '1px solid rgba(7,42,108,0.06)' }}>
+                  {si + 1}
+                </td>
+                {actors.map((_, ai) => {
+                  const isActive = ai === step.actorIdx;
+                  const lane = LANE_COLORS[ai % LANE_COLORS.length];
+                  return (
+                    <td key={ai} className="px-3 py-3 align-top"
+                      style={{
+                        borderRight: ai < actors.length - 1 ? '1px solid rgba(7,42,108,0.04)' : undefined,
+                        background: isActive ? lane.bg : undefined,
+                        borderLeft: isActive ? `2px solid ${lane.header}` : undefined,
+                      }}>
+                      {isActive && (
+                        <div>
+                          <div className="text-sm font-semibold leading-snug" style={{ color: '#072A6C' }}>
+                            {step.action}
+                          </div>
+                          {step.dataIn && (
+                            <div className="mt-1.5 flex items-start gap-1 text-[11px]">
+                              <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded shrink-0 mt-0.5"
+                                style={{ background: 'rgba(29,78,216,0.1)', color: '#1d4ed8' }}>
+                                IN
+                              </span>
+                              <span style={{ color: '#6B7589' }}>{step.dataIn}</span>
+                            </div>
+                          )}
+                          {step.dataOut && (
+                            <div className="mt-1 flex items-start gap-1 text-[11px]">
+                              <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded shrink-0 mt-0.5"
+                                style={{ background: 'rgba(5,150,105,0.1)', color: '#059669' }}>
+                                OUT
+                              </span>
+                              <span style={{ color: '#6B7589' }}>{step.dataOut}</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Connected stories */}
+      {siblingStories.length > 0 && (
+        <div className="mt-6">
+          <div className="text-[10px] font-bold uppercase tracking-wider mb-2" style={{ color: '#B0B8C9' }}>
+            Connected User Stories
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {siblingStories.map(s => (
+              <Link key={s.id} href={`/use-cases/${s.id}`}
+                className="text-xs font-medium px-3 py-1.5 rounded-full transition-all hover:shadow-brand-hover"
+                style={{ background: 'rgba(5,150,105,0.06)', color: '#059669', border: '1px solid rgba(5,150,105,0.15)' }}>
+                #{s.githubIssue} {s.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Standards Map Tab ───────────────────────────────────────────────────────
 function StandardsMapView({ standards, useCase }: { standards: StandardData[]; useCase: UseCaseData }) {
   const totalDomains = useCase.cedsDomains.length;
@@ -438,6 +577,9 @@ export default function UseCaseDetail({ useCase, standards, ownIssue, tags, sibl
         )}
         {activeTab === 'tchart' && (
           <TChartView useCase={useCase} siblingStories={siblingStories} />
+        )}
+        {activeTab === 'swimlane' && (
+          <SwimlaneView useCase={useCase} siblingStories={siblingStories} />
         )}
         {activeTab === 'standards' && (
           <StandardsMapView standards={standards} useCase={useCase} />
