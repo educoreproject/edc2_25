@@ -8,6 +8,7 @@ export const specLabels = {
   'asn-ctdl': 'ASN / CE CTDL-ASN',
   'ob3':      'Open Badges 3.0',
   'clr-2.0':  'CLR Standard 2.0',
+  'lif-2.0':  'LIF 2.0',
 };
 
 // Each entry maps a conceptual field across specs.

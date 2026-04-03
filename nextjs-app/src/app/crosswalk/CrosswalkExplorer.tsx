@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { fieldMappings, specLabels } from '@/lib/data/field-mappings';
+import { lifEntities } from '@/lib/data/lif-schema';
 
 // ── Derive spec field hierarchies from field-mappings data ──────────────────
 
@@ -21,11 +22,28 @@ interface EntityGroup {
   fields: FieldNode[];
 }
 
+/** Build LIF hierarchy from the full OpenAPI schema */
+function buildLIFHierarchy(): EntityGroup[] {
+  return lifEntities.map(entity => ({
+    entity: entity.name,
+    fields: entity.fields.map(f => ({
+      name: f.name,
+      path: `${entity.name}.${f.name}`,
+      parent: entity.name,
+      concept: f.description.slice(0, 80) || f.name,
+      entityType: entity.name,
+    })),
+  }));
+}
+
 function buildSpecHierarchy(specKey: SpecKey): EntityGroup[] {
+  // LIF uses its own rich schema
+  if (specKey === 'lif-2.0') return buildLIFHierarchy();
+
   const entityMap = new Map<string, FieldNode[]>();
 
   for (const mapping of fieldMappings) {
-    const specMapping = mapping.mappings[specKey];
+    const specMapping = mapping.mappings[specKey as Exclude<SpecKey, 'lif-2.0'>];
     if (!specMapping) continue;
 
     const parts = specMapping.path.split('.');
@@ -64,8 +82,8 @@ function findMappings(sourceSpec: SpecKey, targetSpec: SpecKey, sourceFieldName:
   const results: MappingSuggestion[] = [];
 
   for (const mapping of fieldMappings) {
-    const sourceMapping = mapping.mappings[sourceSpec];
-    const targetMapping = mapping.mappings[targetSpec];
+    const sourceMapping = (mapping.mappings as Record<string, { field: string; path: string } | undefined>)[sourceSpec];
+    const targetMapping = (mapping.mappings as Record<string, { field: string; path: string } | undefined>)[targetSpec];
 
     if (!sourceMapping || sourceMapping.field !== sourceFieldName) continue;
 
@@ -308,8 +326,9 @@ export default function CrosswalkExplorer() {
     let targetOnly = 0;
 
     for (const mapping of fieldMappings) {
-      const hasSource = !!mapping.mappings[sourceSpec];
-      const hasTarget = !!mapping.mappings[targetSpec];
+      const m = mapping.mappings as Record<string, unknown>;
+      const hasSource = !!m[sourceSpec];
+      const hasTarget = !!m[targetSpec];
       if (hasSource && hasTarget) existing++;
       else if (hasSource) sourceOnly++;
       else if (hasTarget) targetOnly++;

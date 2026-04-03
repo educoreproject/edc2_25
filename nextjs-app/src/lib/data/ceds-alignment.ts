@@ -526,6 +526,26 @@ export const cedsAlignmentMatrix = [
       facilities:        { status: 'partial', cedsElements: ['Facility'], notes: 'Ed-Fi includes EducationOrganization and School entities with basic facility attributes.', gapNotes: 'No detailed facility design or mortgage elements.' },
     },
   },
+  // ─── LIF ──────────────────────────────────────────────────────────────────
+  {
+    entryId: 'lif',
+    entryShortName: 'LIF 2.0',
+    domains: {
+      credentials:       { status: 'full',    cedsElements: ['Credential', 'CredentialType', 'CredentialAward', 'CredentialDefinition'], notes: 'LIF Credential entity maps directly to CEDS Credential domain with comprehensive field coverage including requirements, accreditation, and alignments.', gapNotes: null },
+      competencies:      { status: 'full',    cedsElements: ['CompetencyFramework', 'CompetencyDefinition', 'CompetencySet'], notes: 'LIF CompetencyFramework entity with 30 fields covers framework metadata, competency definitions, associations, and alignments.', gapNotes: null },
+      workforce:         { status: 'full',    cedsElements: ['WorkforceEmploymentQuarterlyData', 'StandardOccupationalClassification', 'WorkforceProgramParticipation'], notes: 'LIF Position entity covers employment status, compensation, hours, industry codes, job codes, and organizational relationships.', gapNotes: null },
+      assessments:       { status: 'full',    cedsElements: ['Assessment', 'AssessmentResult', 'AssessmentPerformanceLevel', 'AssessmentItem'], notes: 'LIF Assessment entity has 54 fields — the most comprehensive assessment coverage of any standard in the library, including performance levels, scoring methods, and competency alignment.', gapNotes: null },
+      learningResources: { status: 'partial', cedsElements: ['LearningResource'], notes: 'LIF Course and Program entities cover learning contexts but not standalone learning resource metadata.', gapNotes: 'No dedicated learning resource cataloging entity.' },
+      k12:               { status: 'full',    cedsElements: ['K12StudentAcademicRecord', 'CourseSection', 'GradeLevel'], notes: 'LIF Course entity (62 fields) covers K-12 course data comprehensively including grades, credits, enrollment, and standards alignment.', gapNotes: null },
+      postsecondary:     { status: 'full',    cedsElements: ['PostsecondaryStudentAcademicRecord', 'PostsecondaryProgram'], notes: 'LIF Program entity (54 fields) covers postsecondary program data including credits, credentials, financial aid, and outcomes.', gapNotes: null },
+      cte:               { status: 'partial', cedsElements: ['ProgramParticipationCareerAndTechnical', 'CareerCluster'], notes: 'LIF covers CTE through Program and Position entities but lacks dedicated career cluster modeling.', gapNotes: 'No explicit CTE pathway entity; handled through Program.programType.' },
+      adultEd:           { status: 'partial', cedsElements: ['AdultEducationProgramParticipation'], notes: 'LIF Program entity can represent adult education programs; not a dedicated domain.', gapNotes: 'No adult-education-specific fields.' },
+      earlyLearning:     { status: 'gap',     cedsElements: [], notes: 'LIF does not include early learning-specific entities or fields.', gapNotes: 'No early learning coverage.' },
+      authN:             { status: 'partial', cedsElements: ['PersonIdentification', 'Authorization'], notes: 'LIF Person entity includes Identifier and Consent sub-entities for identity and authorization.', gapNotes: 'Consent model is included but not a full AuthN/AuthZ framework.' },
+      implVars:          { status: 'partial', cedsElements: ['ImplementationVariable'], notes: 'LIF includes informationSourceId, informationSourceOrganization, and informationSourceSystem on every entity for provenance tracking.', gapNotes: null },
+      facilities:        { status: 'gap',     cedsElements: [], notes: 'LIF Organization entity covers organizations but not physical facilities.', gapNotes: 'No facilities domain coverage.' },
+    },
+  },
 ];
 
 // Derived: per-domain summary across all entries

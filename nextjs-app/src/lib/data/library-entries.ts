@@ -842,6 +842,115 @@ export const libraryEntries = [
     relatedResources: ['ceds', 'sif'],
     status: 'approved',
   },
+
+  // ─── LIF ───────────────────────────────────────────────────────────────────
+  {
+    id: 'lif',
+    title: 'Learning & Employment Record Interoperability Framework (LIF) 2.0',
+    type: 'Standard',
+    category: 'Learner Records',
+    targetCanonicalEntity: 'Person / Credential / Assessment / CompetencyFramework / Course / Program / Organization / Position',
+    fieldMappingDescription: 'JSON-based data model with 8 core entities: Person, Credential, Assessment, CompetencyFramework, Course, Program, Organization, Position. Each entity has detailed fields with privacy use_recommendations. LIF fields map to CEDS elements — e.g., Assessment.identifier → CEDS AssessmentIdentifier, Person.Name → CEDS PersonName, Credential.name → CEDS CredentialDefinition.',
+    transformationNotes: 'LIF is designed as the comprehensive interoperability layer across education and workforce. Covers territory of multiple specs: Assessment (like CEDS Assessment domain), CompetencyFramework (like CASE), Credential (like OB3/CLR), Position (workforce). Every field includes use_recommendations for equity and privacy. Missing: no specific wire protocol defined (transport-agnostic). Unique: includes Person entity with consent model and demographic sensitivity guidance.',
+    description: 'The Learning & Employment Record Interoperability Framework (LIF) 2.0 is a comprehensive data model for representing learning and employment records across the full P-20W lifecycle. LIF defines 8 core entities (Person, Credential, Assessment, CompetencyFramework, Course, Program, Organization, Position) with over 290 fields, each annotated with privacy and equity use recommendations. Designed to bridge education and workforce data systems with built-in sensitivity guidance.',
+    owner: 'A4L Community (Access 4 Learning)',
+    governanceBody: 'A4L Community / LIF Work Group',
+    lastUpdated: '2025-01-01',
+    version: '2.0',
+    accessLevel: 'open',
+    opennessStatus: 'open',
+    accessUrl: 'https://www.a4l.org/lif',
+    authoritativeRepoUrl: null,
+    tags: ['LIF', 'A4L', 'LER', 'P-20W', 'interoperability', 'equity', 'privacy-by-design', 'workforce', 'credentials', 'assessments', 'competencies', 'K-12', 'postsecondary', 'use-recommendations'],
+    aiTaxonomy: ['comprehensive-data-model', 'LER-interoperability', 'equity-aware'],
+    aiSummary: 'Comprehensive education-to-workforce data model with 8 entities and 290+ fields, each with equity and privacy use recommendations. Use LIF when you need a single interoperability model spanning credentials, assessments, competencies, courses, programs, organizations, and employment positions with built-in sensitivity guidance.',
+    aiUnlocksSummary: 'Provides a unified data model that bridges the gap between education-focused standards (CASE, OB3, CLR) and workforce systems. Unique in including Person-level consent and demographic sensitivity guidance at the field level. Positions your platform to handle the full learner lifecycle from assessment through employment.',
+    implementationBurden: 'medium',
+    implementationBurdenRationale: 'LIF is a data model specification, not a wire protocol — implementation involves mapping your system\'s data to LIF entities and fields. The model is comprehensive (290+ fields) but well-structured into 8 clear entities. JSON-based payloads. Equity use_recommendations require review during implementation.',
+    burdenRubric: {
+      engineering: { level: 'moderate', note: 'Mapping to 8 entities with 290+ fields requires significant data modeling effort. JSON payloads are straightforward. Use_recommendations add review overhead.' },
+      infrastructure: { level: 'low', note: 'Transport-agnostic — LIF works over REST, message queues, or file exchange. No specific infrastructure requirements beyond JSON serialization.' },
+      legal: { level: 'low', note: 'Open specification from A4L. No licensing fees. Privacy use_recommendations help with compliance but do not replace legal review.' },
+    },
+    requiredCapabilities: ['JSON data serialization', 'Data element mapping to LIF entities', 'Privacy/equity review process for use_recommendations', 'CEDS alignment for cross-standard interoperability'],
+    implementationGuidance: 'Start by identifying which LIF entities your system touches (most will need Person, Credential, and at least one of Assessment/Course/Program). Map your existing data fields to LIF fields within those entities. Review the use_recommendations for each field you implement — they contain critical equity and privacy guidance. Use CEDS element alignment to connect LIF data to other standards in your ecosystem.',
+    referenceImplementations: [
+      { name: 'LIF 2.0 OpenAPI Schema', url: 'https://www.a4l.org/lif', description: 'Machine-readable OpenAPI specification for the LIF data model.' },
+    ],
+    samplePayloads: [
+      {
+        label: 'LIF Person Entity (simplified)',
+        language: 'json',
+        code: `{
+  "Person": {
+    "Identifier": [{ "id": "P-12345", "system": "district-sis" }],
+    "Name": { "firstName": "Maria", "lastName": "Santos" },
+    "Birth": { "date": "2010-03-15" },
+    "Consent": { "type": "FERPA", "granted": true },
+    "CredentialAward": [
+      { "credentialId": "C-001", "awardDate": "2025-06-15" }
+    ]
+  }
+}`,
+      },
+    ],
+    knownAdopters: ['A4L Community members', 'State longitudinal data system pilots'],
+    technicalDocLinks: [
+      { label: 'A4L Community', url: 'https://www.a4l.org' },
+      { label: 'LIF Specification', url: 'https://www.a4l.org/lif' },
+    ],
+    commonlyPairedWith: [
+      { id: 'ceds', rationale: 'LIF fields are mapped to CEDS data elements. CEDS provides the canonical vocabulary; LIF provides the comprehensive entity model spanning education and workforce.' },
+      { id: 'sif', rationale: 'LIF extends and modernizes SIF concepts. SIF K-12 data objects map to LIF entities (StudentPersonal → Person, SchoolInfo → Organization). LIF adds workforce and credential coverage.' },
+      { id: 'clr-v2', rationale: 'CLR credential and achievement data maps to LIF Credential and Assessment entities. LIF adds Person-level context and organizational relationships.' },
+      { id: 'open-badges-v3', rationale: 'OB3 badge data maps to LIF Credential entity. LIF adds assessment, course, and program context around credential awards.' },
+    ],
+    compatibilityNotes: 'LIF is positioned as the comprehensive successor/complement to SIF, extending coverage from K-12 into workforce and credentials. It bridges the gap between education-focused standards (CASE, OB3, CLR) and workforce data needs. The model is CEDS-aligned and designed to interoperate with all major education data standards.',
+    equityConsiderations: {
+      level: 'low-concern',
+      summary: 'LIF is uniquely equity-aware — every field includes use_recommendations with guidance on preventing bias, protecting sensitive data, and ensuring equitable access. The Person entity includes explicit consent modeling and demographic sensitivity guidance.',
+    },
+    privacyConsiderations: {
+      level: 'medium-concern',
+      summary: 'LIF handles extensive PII across Person, Credential, and employment entities. Every field includes privacy use_recommendations. The Person entity includes Consent sub-entity for explicit consent tracking. Implementers must follow use_recommendations and applicable regulations.',
+      dataClassification: 'comprehensive-PII',
+      regulations: ['FERPA', 'COPPA', 'NDPA v2.2', 'state privacy laws', 'GDPR (international contexts)'],
+      ndpaClauses: [
+        {
+          citation: 'NDPA Art. I §1.1',
+          title: 'Provider as School Official',
+          summary: 'Systems implementing LIF Person and Credential entities are handling student data and must be designated as School Officials under NDPA.',
+        },
+        {
+          citation: 'NDPA Art. IV §4.2',
+          title: 'Authorized Use',
+          summary: 'LIF data across all 8 entities must be used only for authorized educational and workforce development purposes per NDPA.',
+        },
+        {
+          citation: 'NDPA Art. IV §4.5',
+          title: 'De-Identification Standards',
+          summary: 'LIF Person entity fields (Name, Birth, Demographics) must be de-identified per FERPA standards when used for analytics. LIF use_recommendations provide field-level guidance.',
+        },
+        {
+          citation: 'NDPA Art. V §5.4',
+          title: 'Breach Notification',
+          summary: 'Systems storing LIF Person data must comply with 72-hour breach notification requirements.',
+        },
+        {
+          citation: 'NDPA Art. IV §4.6',
+          title: 'Data Disposition',
+          summary: 'LIF data across all entities must be deleted or returned within 60 days of contract termination.',
+        },
+        {
+          citation: 'NDPA Exhibit B',
+          title: 'Comprehensive Data Categories',
+          summary: 'LIF spans nearly all Exhibit B categories: Person (Name, Identifiers, Demographics), Assessment, Credential, Course, Program. Each entity must be explicitly listed in Exhibit B.',
+        },
+      ],
+    },
+    relatedResources: ['ceds', 'sif', 'clr-v2', 'open-badges-v3'],
+    status: 'approved',
+  },
 ];
 
 // Human-readable title lookup keyed by entry ID.
@@ -854,6 +963,7 @@ export const entryTitles = {
   'ceds': 'CEDS',
   'sif': 'SIF 3.7',
   'edfi': 'Ed-Fi Data Standard',
+  'lif': 'LIF 2.0',
 };
 
 export const categoryFilters = [
