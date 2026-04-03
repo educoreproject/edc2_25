@@ -124,34 +124,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Ecosystem Map */}
-      <section className="max-w-6xl mx-auto px-6 sm:px-8 pt-10 pb-6">
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-bold" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>Ecosystem Map</h2>
-          <Link href="/drivers" className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#5B3FD3' }}>All Drivers &rarr;</Link>
-        </div>
-        <div className="rounded-2xl p-4 sm:p-5" style={{ background: '#fff', border: '1px solid rgba(7,42,108,0.06)' }}>
-          <EcosystemMap />
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section className="max-w-6xl mx-auto px-6 sm:px-8 py-10" id="use-cases">
-        <h2 className="text-2xl font-normal mb-1" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>Use Cases</h2>
-        <p className="text-sm mb-6 pb-3 border-b" style={{ color: '#7A8499', borderColor: '#EEF1F7' }}>
-          Real-world scenarios driving EduCore&apos;s design and priorities.
-        </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {USE_CASES.map((uc) => (
-            <div key={uc.title} className="card p-6">
-              <div className="text-2xl mb-3">{uc.icon}</div>
-              <h3 className="text-sm font-bold mb-2" style={{ color: '#072A6C' }}>{uc.title}</h3>
-              <p className="text-[13px] leading-relaxed" style={{ color: '#7A8499' }}>{uc.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Why EDUcore */}
       <section className="max-w-6xl mx-auto px-6 sm:px-8 py-10" id="why">
         <h2 className="text-2xl font-normal mb-1" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>Why EDUcore?</h2>
@@ -189,6 +161,34 @@ export default function HomePage() {
               <li><strong className="text-gray-900">Future-proofed, safe-by-design enablement</strong> &mdash; Architecture that supports modern AI workflows while embedding guardrails for privacy, provenance, auditability, and human oversight in high-stakes contexts.</li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Ecosystem Map */}
+      <section className="max-w-6xl mx-auto px-6 sm:px-8 pt-10 pb-6">
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="text-lg font-bold" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>Ecosystem Map</h2>
+          <Link href="/drivers" className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#5B3FD3' }}>All Drivers &rarr;</Link>
+        </div>
+        <div className="rounded-2xl p-4 sm:p-5" style={{ background: '#fff', border: '1px solid rgba(7,42,108,0.06)' }}>
+          <EcosystemMap />
+        </div>
+      </section>
+
+      {/* Use Cases */}
+      <section className="max-w-6xl mx-auto px-6 sm:px-8 py-10" id="use-cases">
+        <h2 className="text-2xl font-normal mb-1" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>Use Cases</h2>
+        <p className="text-sm mb-6 pb-3 border-b" style={{ color: '#7A8499', borderColor: '#EEF1F7' }}>
+          Real-world scenarios driving EduCore&apos;s design and priorities.
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {USE_CASES.map((uc) => (
+            <div key={uc.title} className="card p-6">
+              <div className="text-2xl mb-3">{uc.icon}</div>
+              <h3 className="text-sm font-bold mb-2" style={{ color: '#072A6C' }}>{uc.title}</h3>
+              <p className="text-[13px] leading-relaxed" style={{ color: '#7A8499' }}>{uc.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
