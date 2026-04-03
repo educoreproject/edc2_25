@@ -1,25 +1,6 @@
 import Link from 'next/link';
-import { stakeholderTaxonomy } from '@/lib/data/taxonomies';
 import { useCaseTaxonomy } from '@/lib/data/use-case-taxonomy';
-import { libraryEntries } from '@/lib/data/library-entries';
-
-const useCaseCount = useCaseTaxonomy.reduce(
-  (sum, cat) => sum + cat.children.reduce((s, sub) => s + sub.children.length, 0), 0
-);
-
-const userStoryCount = useCaseTaxonomy.reduce(
-  (sum, cat) => sum + cat.children.reduce(
-    (ss, sub) => ss + sub.children.filter(uc => 'githubIssue' in uc && uc.githubIssue).length, 0
-  ), 0
-);
-
-const STATS = [
-  { label: 'Topics', value: useCaseTaxonomy.length, color: '#5B3FD3', href: '/topics' },
-  { label: 'Value Drivers', value: stakeholderTaxonomy.length, color: '#072A6C', href: '/drivers' },
-  { label: 'Use Cases', value: useCaseCount, color: '#00B5B8', href: '/use-cases' },
-  { label: 'Standards', value: libraryEntries.length, color: '#FFAB40', href: '/standards' },
-  { label: 'User Stories', value: userStoryCount, color: '#0D8F92', href: '/use-cases' },
-];
+import EcosystemMap from '@/components/EcosystemMap';
 
 const TOOLS = [
   { href: '/explorer', label: 'AI Explorer', desc: 'Natural language discovery across the entire reference library.', icon: '💬' },
@@ -30,7 +11,7 @@ const TOOLS = [
 
 export default function HomePage() {
   return (
-    <div className="max-w-4xl mx-auto px-6 sm:px-8 py-8 animate-fade-up">
+    <div className="max-w-6xl mx-auto px-6 sm:px-8 py-8 animate-fade-up">
 
       {/* Hero */}
       <div className="hero-gradient rounded-2xl px-8 sm:px-10 py-10 mb-8 relative overflow-hidden">
@@ -55,20 +36,19 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Stats row */}
-      <div className="grid grid-cols-5 gap-3 mb-10">
-        {STATS.map(({ label, value, color, href }) => (
-          <Link
-            key={label}
-            href={href}
-            className="rounded-xl p-4 text-center transition-all hover:-translate-y-0.5 hover:shadow-brand-hover"
-            style={{ background: '#fff', border: '1px solid rgba(7,42,108,0.06)' }}
-          >
-            <div className="text-2xl font-bold mb-1" style={{ color, fontFamily: 'var(--font-display)' }}>{value}</div>
-            <div className="text-[11px] font-medium uppercase tracking-wider" style={{ color: '#7A8499' }}>{label}</div>
-          </Link>
-        ))}
-      </div>
+      {/* Ecosystem Map */}
+      <section className="mb-10">
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="text-lg font-bold" style={{ color: '#072A6C', fontFamily: 'var(--font-display)' }}>Ecosystem Map</h2>
+          <Link href="/drivers" className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#5B3FD3' }}>All Drivers &rarr;</Link>
+        </div>
+        <div
+          className="rounded-2xl p-4 sm:p-5"
+          style={{ background: '#fff', border: '1px solid rgba(7,42,108,0.06)' }}
+        >
+          <EcosystemMap />
+        </div>
+      </section>
 
       {/* Quick access — Topics */}
       <section className="mb-10">

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import SearchFilter from './SearchFilter';
 
 const MAIN_NAV = [
   {
@@ -122,11 +123,9 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* User context */}
-      <div className="px-5 mb-5">
-        <div className="text-[10px] uppercase tracking-wider font-semibold mb-0.5" style={{ color: '#7A8499' }}>
-          Reference Library
-        </div>
+      {/* Search */}
+      <div className="px-3 mb-4">
+        <SearchFilter />
       </div>
 
       {/* Main nav */}
