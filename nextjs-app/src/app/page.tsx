@@ -15,7 +15,7 @@ const userStoryCount = useCaseTaxonomy.reduce(
 
 const STATS = [
   { label: 'Topics', value: useCaseTaxonomy.length, color: '#5B3FD3', href: '/topics' },
-  { label: 'Drivers', value: stakeholderTaxonomy.length, color: '#072A6C', href: '/drivers' },
+  { label: 'Value Drivers', value: stakeholderTaxonomy.length, color: '#072A6C', href: '/drivers' },
   { label: 'Use Cases', value: useCaseCount, color: '#00B5B8', href: '/use-cases' },
   { label: 'Standards', value: libraryEntries.length, color: '#FFAB40', href: '/standards' },
   { label: 'User Stories', value: userStoryCount, color: '#0D8F92', href: '/use-cases' },
