@@ -6,7 +6,7 @@ export const useCaseTaxonomy = [
     id: 'all-learning-counts',
     label: 'All Learning Counts',
     subtitle: 'Every learning experience, skill, and credential recognized and portable.',
-    icon: '🎓',
+    icon: '📜',
     color: 'indigo',
     children: [
       {
@@ -70,7 +70,7 @@ export const useCaseTaxonomy = [
     id: 'ai-empowered-learning',
     label: 'AI-Empowered Learning',
     subtitle: 'Helping learning happen for every learner in any context.',
-    icon: '🤖',
+    icon: '✦',
     color: 'sky',
     children: [
       {
@@ -102,7 +102,7 @@ export const useCaseTaxonomy = [
     id: 'government-administrative',
     label: 'Government & Administrative',
     subtitle: 'Education and workforce systems administration and optimization.',
-    icon: '🏛️',
+    icon: '⚙️',
     color: 'amber',
     children: [
       {
@@ -168,7 +168,7 @@ export const useCaseTaxonomy = [
     id: 'health-care',
     label: 'Health Care',
     subtitle: 'Clinical research enclaves and health-related learning and credentialing.',
-    icon: '🏥',
+    icon: '🩺',
     color: 'emerald',
     children: [
       {
