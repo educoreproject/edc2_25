@@ -132,6 +132,17 @@ h1, h2 { font-family: var(--font-display); }
   background: linear-gradient(to right, transparent, rgba(7,42,108,0.08), transparent);
 }
 
+/* Watch link (bakeoff cards) */
+.watch-link {
+  color: #072A6C;
+  border-color: #072A6C;
+  background: transparent;
+}
+.watch-link:hover {
+  background: #072A6C;
+  color: #fff;
+}
+
 /* Focus ring */
 *:focus-visible {
   outline: 2px solid #00B5B8;
