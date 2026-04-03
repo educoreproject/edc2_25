@@ -16,6 +16,7 @@ import VocabularyPage from './components/VocabularyPage';
 import UseCasesPage from './components/UseCasesPage';
 import UseCaseTaxonomyPage from './components/UseCaseTaxonomyPage';
 import ChatPage from './components/ChatPage';
+import CrosswalkPage from './components/CrosswalkPage';
 
 function Footer() {
   return (
@@ -123,6 +124,7 @@ export default function App() {
       />
     ),
     vocabulary: <VocabularyPage />,
+    crosswalk:  <CrosswalkPage />,
   };
 
   return (

@@ -15,6 +15,7 @@ const CLASSIC_NAV = [
   { id: 'partners',   label: 'Partners' },
   { id: 'ceds',       label: 'CEDS Alignment' },
   { id: 'vocabulary', label: 'Ontology' },
+  { id: 'crosswalk',  label: 'Crosswalk' },
 ];
 
 export default function SiteHeader({ uiMode, onSetUiMode, activePage, onNavigate }) {
