@@ -84,8 +84,29 @@ const TOOLS_NAV = [
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(href + '/');
+
+  // Highlight the nav item that matches the content level being viewed:
+  // - /topics (list) → Topics
+  // - /topics/[id] (detail, shows drivers/use cases) → Value Drivers
+  // - /drivers/[id] (detail, shows use cases) → Use Cases
+  // - /use-cases/[id] (detail) → Use Cases
+  const isActive = (href: string) => {
+    // Exact match for list pages
+    if (pathname === href) return true;
+
+    // Topic detail pages show value driver content → highlight Value Drivers
+    if (href === '/drivers' && pathname.startsWith('/topics/') && pathname !== '/topics') return true;
+
+    // Driver detail pages show use case content → highlight Use Cases
+    if (href === '/use-cases' && pathname.startsWith('/drivers/') && pathname !== '/drivers') return true;
+
+    // Subpages — but exclude topic/driver detail pages already handled above
+    if (href === '/topics' && pathname.startsWith('/topics/') && pathname !== '/topics') return false;
+    if (href === '/drivers' && pathname.startsWith('/drivers/') && pathname !== '/drivers') return false;
+    if (pathname.startsWith(href + '/')) return true;
+
+    return false;
+  };
 
   return (
     <aside
